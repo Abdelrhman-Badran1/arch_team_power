@@ -1,5 +1,7 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/intro_pages_data.dart';
 import '../../../core/routes/app_routes_name.dart';
@@ -41,17 +43,15 @@ class _CustomPageState extends State<CustomPage>
       duration: const Duration(milliseconds: 800),
     );
 
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.2),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeOutCubic),
-    );
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.2), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
 
-    _fadeAnimation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
 
@@ -82,7 +82,9 @@ class _CustomPageState extends State<CustomPage>
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage("assets/image/onboarding_background.png"),
+                  image: const AssetImage(
+                    "assets/image/onboarding_background.png",
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -97,9 +99,7 @@ class _CustomPageState extends State<CustomPage>
                       child: Container(
                         width: 400.w,
                         height: 800.h,
-                        child: Image.asset(
-                          widget.introPagesData.image,
-                        ),
+                        child: Image.asset(widget.introPagesData.image),
                       ),
                     ),
                   ),
@@ -126,8 +126,10 @@ class _CustomPageState extends State<CustomPage>
                     ),
                   ),
                   child: Padding(
-                    padding:
-                    EdgeInsets.symmetric(horizontal: 24.w, vertical: 30.h),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 24.w,
+                      vertical: 30.h,
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -139,9 +141,7 @@ class _CustomPageState extends State<CustomPage>
                             color: deepDark,
                             fontSize: 30.sp,
                             fontWeight: FontWeight.bold,
-
-
-                          )
+                          ),
                         ),
 
                         /// النقاط (Indicators)
@@ -149,7 +149,7 @@ class _CustomPageState extends State<CustomPage>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(
                             3,
-                                (value) => AnimatedContainer(
+                            (value) => AnimatedContainer(
                               duration: const Duration(milliseconds: 400),
                               margin: EdgeInsets.symmetric(horizontal: 4.w),
                               width: value == widget.introPagesData.index
@@ -177,17 +177,21 @@ class _CustomPageState extends State<CustomPage>
 
                                 if (widget.introPagesData.index == 2) {
                                   await _exitAnimation(() {
-                                    Navigator.pushNamedAndRemoveUntil(
+                                    GoRouter.of(
                                       context,
-                                      AppRoutesName.layout,
-                                          (route) => false,
-                                    );
+                                    ).push(AppRouter.klayout);
+                                    // Navigator.pushNamedAndRemoveUntil(
+                                    //   context,
+                                    //   AppRoutesName.layout,
+                                    //       (route) => false,
+                                    // );
                                   });
                                 } else {
                                   await _exitAnimation(() {
                                     widget.pageController.nextPage(
-                                      duration:
-                                      const Duration(milliseconds: 500),
+                                      duration: const Duration(
+                                        milliseconds: 500,
+                                      ),
                                       curve: Curves.easeInCubic,
                                     );
                                   });
@@ -220,11 +224,7 @@ class _CustomPageState extends State<CustomPage>
                               onTap: () async {
                                 if (_isExiting) return;
                                 await _exitAnimation(() {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                    context,
-                                    AppRoutesName.layout,
-                                        (route) => false,
-                                  );
+                                  GoRouter.of(context).push(AppRouter.klayout);
                                 });
                               },
                               borderRadius: BorderRadius.circular(12.r),

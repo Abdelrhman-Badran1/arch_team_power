@@ -1,8 +1,10 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/routes/app_routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/widgets/background_pattern_painter.dart';
 
@@ -42,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // ⏳ الانتقال بعد 3 ثوانٍ إلى شاشة الـ Onboarding
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, AppRoutesName.introHomeScreen);
+      GoRouter.of(context).push(AppRouter.kIntroHomeScreen);
     });
   }
 
