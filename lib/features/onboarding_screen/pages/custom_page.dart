@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/intro_pages_data.dart';
-import '../../../core/routes/app_routes_name.dart';
 
 class CustomPage extends StatefulWidget {
   final IntroPagesData introPagesData;

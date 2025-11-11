@@ -1,3 +1,7 @@
+import 'package:arch_team_power/features/auth_screen/presentation/view/forgot_password_view.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/view/new_password_view.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/view/otp_view.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/view/verify_email_view.dart';
 import 'package:arch_team_power/features/layout/layout_page.dart';
 import 'package:arch_team_power/features/onboarding_screen/pages/intro_home_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
@@ -19,19 +23,19 @@ class AppRouter {
         builder: (context, state) => IntroHomeScreen(),
       ),
       GoRoute(path: klayout, builder: (context, state) => LayoutPage()),
-      // GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const ForgotPasswordView(),
-      // ),
-      // GoRoute(
-      //   path: kVerifyEmailView,
-      //   builder: (context, state) => const VerifyEmailView(),
-      // ),
-      // GoRoute(path: kOtpView, builder: (context, state) => const OtpView()),
-      // GoRoute(
-      //   path: kNewPasswordView,
-      //   builder: (context, state) => const NewPasswordView(),
-      // ),
+      GoRoute(
+        path: kForgotPasswordView,
+        builder: (context, state) => const ForgotPasswordView(),
+      ),
+      GoRoute(
+        path: kVerifyEmailView,
+        builder: (context, state) => const VerifyEmailView(),
+      ),
+      GoRoute(path: kOtpView, builder: (context, state) => const OtpView()),
+      GoRoute(
+        path: kNewPasswordView,
+        builder: (context, state) => const NewPasswordView(),
+      ),
     ],
   );
 }
