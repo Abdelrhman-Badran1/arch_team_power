@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../widget/categories_list.dart';
+import '../widget/famous_places_list.dart';
+import '../widget/home_header.dart';
+import '../widget/inscription_library_list.dart';
+import '../widget/section_title.dart';
+
+
+class HomeSceen extends StatelessWidget {
+  const HomeSceen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const HomeHeader(),
+
+            /// ====== التصنيفات ======
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            //   child: const SectionTitle(title: "التصنيفات")
+            //       .animate()
+            //       .fade(duration: 600.ms)
+            //       .slideY(begin: 0.3, duration: 600.ms),
+            // ),
+            // const CategoriesList()
+            //     .animate()
+            //     .fade(duration: 700.ms)
+            //     .slideY(begin: 0.3, duration: 700.ms, curve: Curves.easeOut),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(35)),
+                child: Image.asset("assets/image/befor_search.png" , fit: BoxFit.cover,width: 400.w),
+              ),
+            ),
+
+            /// ====== أكثر الأماكن المشهورة ======
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+              child: const SectionTitle(title: "أكثر الأماكن المشهورة")
+                  .animate()
+                  .fade(duration: 600.ms)
+                  .slideY(begin: 0.3, duration: 600.ms),
+            ),
+            const FamousPlacesList()
+                .animate()
+                .fade(duration: 700.ms)
+                .slideY(begin: 0.3, duration: 700.ms),
+
+            /// ====== مكتبة النقوش القديمة ======
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+              child: const SectionTitle(title: "مكتبة النقوش القديمة")
+                  .animate()
+                  .fade(duration: 600.ms)
+                  .slideY(begin: 0.3, duration: 600.ms),
+            ),
+            const InscriptionLibraryList()
+                .animate()
+                .fade(duration: 700.ms)
+                .slideY(begin: 0.3, duration: 700.ms),
+
+            SizedBox(height: 20.h),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -2,8 +2,8 @@ import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,27 +75,39 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 8.0),
-
+                const SizedBox(height: 16.0),
+                Text(
+                  'تأكيد كلمة المرور ',
+                  style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'ادخل كلمة المرور',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(
+                        color: Colors.grey.withOpacity(0.3),
+                      ), // قبل التركيز
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(
+                        color: Colors.grey.withOpacity(0.5),
+                      ), // بعد التركيز
+                    ),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Checkbox(value: false, onChanged: null),
-                        const Text('تذكرني'),
+                        const Text('أوافق علي الشروط والأحكام'),
                       ],
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        GoRouter.of(
-                          context,
-                        ).push(AppRouter.kForgotPasswordView);
-                      },
-                      child: const Text(
-                        'هل نسيت كلمة المرور؟',
-                        style: TextStyle(color: Color(0xffD2B48C)),
-                      ),
                     ),
                   ],
                 ),
@@ -112,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      'تسجيل الدخول',
+                      'إنشاء حساب',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -178,12 +190,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 150.0),
+                const SizedBox(height: 100.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'ليس لديك حساب؟ ',
+                      'لديك حساب ؟ ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14.0,
@@ -192,10 +204,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        GoRouter.of(context).push(AppRouter.kSignUpScreen);
+                        GoRouter.of(
+                          context,
+                        ).pushReplacement(AppRouter.kLoginScreen);
                       },
                       child: Text(
-                        'إنشاء حساب',
+                        ' تسجيل دخول',
                         style: TextStyle(
                           color: Color(0xffD2B48C),
                           fontSize: 14.0,

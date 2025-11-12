@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.arch_team_power"
-    compileSdk = 34
+    compileSdk = 35
     ndkVersion ="25.2.9519653"
 
 
