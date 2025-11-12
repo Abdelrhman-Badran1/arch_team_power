@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountUpTimer extends StatefulWidget {
   const CountUpTimer({super.key});
@@ -44,11 +44,7 @@ class _CountUpTimerState extends State<CountUpTimer> {
   Widget build(BuildContext context) {
     return Text(
       timeString,
-      style: TextStyle(
-        fontFamily: 'Norsal',
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
-      ),
+      style: AppTextStyles.syleNorsalRegular14(context)
     );
   }
 }

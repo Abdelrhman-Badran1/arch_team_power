@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,12 +26,7 @@ class AuthButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Norsal',
-              color: Colors.white,
-              fontSize: 15.sp,
-            ),
+            style: AppTextStyles.syleNorsalMedium15(context).copyWith(color: Colors.white,)
           ),
         ),
       ),

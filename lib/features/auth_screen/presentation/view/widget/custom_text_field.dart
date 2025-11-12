@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,12 +55,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           children: [
             Text(
               widget.textFieldTitle,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Norsal',
-                color: Colors.black,
-                fontSize: 14.sp,
-              ),
+              style: AppTextStyles.syleNorsalMedium15(context),
             ),
             SizedBox(height: 10.h),
             Container(

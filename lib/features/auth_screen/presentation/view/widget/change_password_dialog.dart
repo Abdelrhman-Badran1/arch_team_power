@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,23 +23,17 @@ class ChangePasswordDialog extends StatelessWidget {
               Text(
                 S.of(context).password_has_been_changed,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Norsal',
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
+                style: AppTextStyles.syleNorsalMedium16(
+                  context,
+                ).copyWith(color: Colors.black),
               ),
               SizedBox(height: 6),
               Text(
                 S.of(context).your_password_has_been_successfully_changed,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Norsal',
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xff8A8A8A),
-                ),
+                style: AppTextStyles.syleNorsalRegular14(
+                  context,
+                ).copyWith(color: Color(0xff8A8A8A)),
               ),
             ],
           ),
