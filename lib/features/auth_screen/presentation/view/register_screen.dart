@@ -1,4 +1,6 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -189,20 +191,24 @@ class RegisterScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 100.0),
-                TextButton(
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'لديك حساب ؟ ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'لديك حساب ؟ ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        GoRouter.of(
+                          context,
+                        ).pushReplacement(AppRouter.kLoginScreen);
+                      },
+                      child: Text(
                         ' تسجيل دخول',
                         style: TextStyle(
                           color: Color(0xffD2B48C),
@@ -210,8 +216,8 @@ class RegisterScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/routes/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,12 +25,7 @@ class CustomAppBar extends StatelessWidget {
           child: Center(
             child: Text(
               title,
-              style: TextStyle(
-                fontFamily: 'Norsal',
-                color: Colors.black,
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w500,
-              ),
+              style: AppTextStyles.syleNorsalMedium17(context),
             ),
           ),
         ),

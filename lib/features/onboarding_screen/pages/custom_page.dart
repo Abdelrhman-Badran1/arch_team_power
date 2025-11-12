@@ -178,12 +178,7 @@ class _CustomPageState extends State<CustomPage>
                                   await _exitAnimation(() {
                                     GoRouter.of(
                                       context,
-                                    ).push(AppRouter.klayout);
-                                    // Navigator.pushNamedAndRemoveUntil(
-                                    //   context,
-                                    //   AppRoutesName.layout,
-                                    //       (route) => false,
-                                    // );
+                                    ).push(AppRouter.kLoginScreen);
                                   });
                                 } else {
                                   await _exitAnimation(() {
@@ -223,7 +218,9 @@ class _CustomPageState extends State<CustomPage>
                               onTap: () async {
                                 if (_isExiting) return;
                                 await _exitAnimation(() {
-                                  GoRouter.of(context).push(AppRouter.klayout);
+                                  GoRouter.of(
+                                    context,
+                                  ).push(AppRouter.kLoginScreen);
                                 });
                               },
                               borderRadius: BorderRadius.circular(12.r),

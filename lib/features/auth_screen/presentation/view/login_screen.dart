@@ -179,20 +179,22 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 150.0),
-                TextButton(
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'ليس لديك حساب؟ ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'ليس لديك حساب؟ ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kSignUpScreen);
+                      },
+                      child: Text(
                         'إنشاء حساب',
                         style: TextStyle(
                           color: Color(0xffD2B48C),
@@ -200,8 +202,8 @@ class LoginScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

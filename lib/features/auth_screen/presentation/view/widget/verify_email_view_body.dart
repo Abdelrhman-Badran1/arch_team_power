@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/routes/app_text_style.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/widget/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/widget/custom_app_bar.dart';
 import 'package:arch_team_power/generated/l10n.dart';
@@ -22,12 +23,9 @@ class VerifyEmailViewBody extends StatelessWidget {
           Text(
             S.of(context).password_recovery,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'Norsal',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              color: Color(0xff8A8A8A),
-            ),
+            style: AppTextStyles.syleNorsalRegular14(
+              context,
+            ).copyWith(color: Color(0xff8A8A8A)),
           ),
           SizedBox(height: 30.h),
           AuthButton(
