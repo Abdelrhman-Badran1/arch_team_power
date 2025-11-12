@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:arch_team_power/core/routes/app_text_style.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 
 class CountUpTimer extends StatefulWidget {

@@ -34,4 +34,15 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
     );
   }
+
+    static TextStyle styleFontNorsalMedium13CGray(context) {
+    return TextStyle(
+      fontFamily: 'FontNorsal',
+      fontWeight: FontWeight.w500,
+      fontStyle:
+      FontStyle.normal, // أو FontStyle.italic لو محتاج مائل
+      fontSize: 13.86.sp,
+      color: Color(0xFF8A8A8A),
+    );
+    }
 }

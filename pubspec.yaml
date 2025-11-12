@@ -1,7 +1,5 @@
 name: arch_team_power
 description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -35,6 +33,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   animate_do: ^4.2.0
+  flutter_animate:
   google_fonts: ^6.3.2
   provider: ^6.1.5+1
   flutter_svg: ^2.2.2
@@ -74,7 +73,8 @@ flutter:
     - assets/image/
     - assets/icons/
     - assets/splash_asstes/
-    - assets/icons/
+    - assets/fonts/
+    - assets/fonts/norsal/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -91,12 +91,19 @@ flutter:
   fonts:
     - family: Norsal
       fonts:
-        - asset: assets/text/norsal.ttf
+        - asset: assets/fonts/norsal.ttf
           weight: 700
-        - asset: assets/text/norsal_medium.otf
+        - asset: assets/fonts/norsal_medium.otf
           weight: 500
-        - asset: assets/text/norsal_regular.otf
+        - asset: assets/fonts/norsal/norsal_regular.otf
           weight: 400
-  #
+    - family: FontNorsal
+      fonts:
+          - asset: assets/fonts/norsal/medium.otf
+            weight: 500
+          - asset: assets/fonts/norsal/norsal_regular.otf
+            weight:  400
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

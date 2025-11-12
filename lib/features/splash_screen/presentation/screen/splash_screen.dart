@@ -23,14 +23,11 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-
-    // 🎞️ حركة الدوران البطيئة للخلفية
     _rotationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 10),
     )..repeat(reverse: true);
 
-    // ✨ حركة الـ Fade-in عند البداية
     _fadeController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1200),
@@ -41,7 +38,6 @@ class _SplashScreenState extends State<SplashScreen>
       curve: Curves.easeInOut,
     );
 
-    // ⏳ الانتقال بعد 3 ثوانٍ إلى شاشة الـ Onboarding
     Future.delayed(const Duration(seconds: 3), () {
       GoRouter.of(context).push(AppRouter.kIntroHomeScreen);
     });
@@ -88,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ZoomIn(
                     duration: const Duration(seconds: 2),
                     child: SvgPicture.asset(
-                      'assets/icons/app_icon.svg', // ضع صورتك هنا يدوياً
+                      'assets/icons/app_icon.svg',
                       width: 120.w,
                       height: 120.w,
                       // إذا أردت تلوين الأيقونة لتتلاءم مع اللون، تأكد أن الصورة PNG بها قناة ألفا

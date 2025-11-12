@@ -1,4 +1,4 @@
-import 'package:arch_team_power/core/routes/app_text_style.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,5 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
-import 'package:arch_team_power/core/routes/app_text_style.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/widget/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/widget/custom_app_bar.dart';
 import 'package:arch_team_power/generated/l10n.dart';

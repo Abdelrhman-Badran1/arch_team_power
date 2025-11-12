@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.arch_team_power"
-    compileSdk = 34
+    compileSdk = 35
     ndkVersion ="25.2.9519653"
 
 
@@ -25,7 +25,7 @@ android {
         applicationId = "com.example.arch_team_power"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 21
+        minSdk = flutter.minSdkVersion
         targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
