@@ -17,5 +17,19 @@
     "check_your_email":"تحقق من بريدك الالكتروني",
     "password_has_been_changed":"تم تغيير كلمة المرور",
     "your_password_has_been_successfully_changed":"تم تغيير كلمة المرور الخاصه بك بنجاح",
-    "confirm_code":"تأكيد الكود"
+    "confirm_code":"تأكيد الكود",
+    "rate":"تقييم",
+    "similar_places_near_you":"أماكن مشابهه بالقرب منك",
+    "the_kings_valley":"وادي الملوك",
+    "did_you_like_the_engraving":"هل اعجبك النقش ؟ ",
+    "rate_the_engraving":"رجاءا قم بتقييم النقش ليطلع عليه غيرك",
+    "confirm":"تاكيد",
+    "cancel":"الغاء",
+    "status":"الحالة :",
+    "not_clear":"غير واضح",
+    "date_of_discovery_of_the_inscription":"تاريخ العثور على النقش :",
+    "details_of_finding_the_inscription":"تفاصيل العثور علي النقش :",
+    "translation_of_the_inscription":"ترجمة النقش :",
+    "closed_now":"مغلق الان",
+    "description":"الوصف"
 }

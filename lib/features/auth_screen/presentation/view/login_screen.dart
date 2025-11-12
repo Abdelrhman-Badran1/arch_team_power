@@ -1,4 +1,6 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -84,9 +86,16 @@ class LoginScreen extends StatelessWidget {
                         const Text('تذكرني'),
                       ],
                     ),
-                    const Text(
-                      'هل نسيت كلمة المرور؟',
-                      style: TextStyle(color: Color(0xffD2B48C)),
+                    GestureDetector(
+                      onTap: () {
+                        GoRouter.of(
+                          context,
+                        ).push(AppRouter.kForgotPasswordView);
+                      },
+                      child: const Text(
+                        'هل نسيت كلمة المرور؟',
+                        style: TextStyle(color: Color(0xffD2B48C)),
+                      ),
                     ),
                   ],
                 ),
