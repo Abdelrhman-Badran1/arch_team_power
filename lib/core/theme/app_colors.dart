@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // ه اللون الأساسي للتطبيق (Primary accent)
-  static const Color primary = Color(0xFFC78C4A);
+
+  static const Color primary = Color(0xffD2B48C);
   // ه لون ثانوي للعناصر التانية (Secondary accents)
-  static const Color secondary = Color(0xFF624E38);
+  static const Color secondary = Color(0xff4B5320);
   // ه لون الخلفية الرئيسي (Background)
   static const Color background = Color(0xFFFCFBFB);
   // ه لون خلفية الكروت والسطوح (Surface)
