@@ -12,7 +12,7 @@ class IntroHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.primary,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 10.h),
