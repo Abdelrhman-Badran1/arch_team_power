@@ -34,4 +34,28 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
     );
   }
+
+  static TextStyle syleNorsalMedium14(context) {
+    return TextStyle(
+      fontFamily: 'Norsal',
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle syleNorsalMedium12(context) {
+    return TextStyle(
+      fontFamily: 'Norsal',
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle syleNorsalRegular12(context) {
+    return TextStyle(
+      fontFamily: 'Norsal',
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w400,
+    );
+  }
 }
