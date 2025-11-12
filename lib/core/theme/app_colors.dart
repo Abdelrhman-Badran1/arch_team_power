@@ -7,7 +7,7 @@ class AppColors {
   // ه لون ثانوي للعناصر التانية (Secondary accents)
   static const Color secondary = Color(0xff4B5320);
   // ه لون الخلفية الرئيسي (Background)
-  static const Color background = Color(0xFFFCFBFB);
+  static const Color background = Color(0xffFFFFFF);
   // ه لون خلفية الكروت والسطوح (Surface)
   static const Color surface = Color(0xFFEAE9E8);
   // ه لون النص الرئيسي (Primary text)
