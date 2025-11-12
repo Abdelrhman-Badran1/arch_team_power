@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/models/intro_pages_data.dart';
+import '../../../../core/models/intro_pages_data.dart';
 
 class CustomPage extends StatefulWidget {
   final IntroPagesData introPagesData;
@@ -74,6 +74,7 @@ class _CustomPageState extends State<CustomPage>
     return Container(
       color: Colors.white,
       child: Stack(
+        textDirection: TextDirection.ltr,
         alignment: Alignment.bottomCenter,
         children: [
           /// الخلفية المزخرفة + الصورة
@@ -146,6 +147,7 @@ class _CustomPageState extends State<CustomPage>
                         /// النقاط (Indicators)
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          textDirection: TextDirection.ltr,
                           children: List.generate(
                             3,
                             (value) => AnimatedContainer(
@@ -169,9 +171,33 @@ class _CustomPageState extends State<CustomPage>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            /// زر "التالي" مع حركة خروج
+                            /// زر "تخطي" مع خروج سريع
                             InkWell(
                               onTap: () async {
+                                if (_isExiting) return;
+                                await _exitAnimation(() {
+                                  GoRouter.of(context).push(AppRouter.klayout);
+                                });
+                              },
+                              borderRadius: BorderRadius.circular(12.r),
+                              child: Container(
+                                width: 80.w,
+                                height: 50.h,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "تخطي",
+                                  style: TextStyle(
+                                    color: deepDark,
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            /// زر "التالي" مع حركة خروج
+                            InkWell(
+                              onTap: (
+                                  ) async {
                                 if (_isExiting) return;
 
                                 if (widget.introPagesData.index == 2) {
@@ -218,29 +244,7 @@ class _CustomPageState extends State<CustomPage>
                               ),
                             ),
 
-                            /// زر "تخطي" مع خروج سريع
-                            InkWell(
-                              onTap: () async {
-                                if (_isExiting) return;
-                                await _exitAnimation(() {
-                                  GoRouter.of(context).push(AppRouter.klayout);
-                                });
-                              },
-                              borderRadius: BorderRadius.circular(12.r),
-                              child: Container(
-                                width: 80.w,
-                                height: 50.h,
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "تخطي",
-                                  style: TextStyle(
-                                    color: deepDark,
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
+
                           ],
                         ),
                       ],

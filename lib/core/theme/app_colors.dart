@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // ه اللون الأساسي للتطبيق (Primary accent)
-  static const Color primary = Color(0xFFC78C4A);
+  static const Color primary = Color(0xFFD2B48C);
   // ه لون ثانوي للعناصر التانية (Secondary accents)
-  static const Color secondary = Color(0xFF624E38);
+  static const Color secondary = Color(0xFF4B5320);
   // ه لون الخلفية الرئيسي (Background)
-  static const Color background = Color(0xFFFCFBFB);
+  static const Color background = Color(0xFF837561);
   // ه لون خلفية الكروت والسطوح (Surface)
-  static const Color surface = Color(0xFFEAE9E8);
+  static const Color surface = Color(0xFF40442B);
   // ه لون النص الرئيسي (Primary text)
   static const Color textPrimary = Color(0xFF353434);
   // ه لون النصوص الثانوية أو العناصر الخافتة (Secondary text)
@@ -31,4 +31,5 @@ class AppColors {
   static const Color divider = Color(0xFFE0D5C0);
   // ه لون ظل الكروت أو العناصر العائمة (Shadow)
   static const Color shadow = Color(0x33000000);
+  static const Color unSelectItemSelectedColor = Color(0xFF8A8A8A);
 }

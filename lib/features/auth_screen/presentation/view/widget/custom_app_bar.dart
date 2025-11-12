@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget {
           child: Icon(
             CupertinoIcons.back,
             size: 20.sp,
-            fontWeight: FontWeight.w500,
+            weight: 400,
           ),
         ),
         Expanded(

@@ -2,14 +2,16 @@ import 'package:arch_team_power/features/auth_screen/presentation/view/forgot_pa
 import 'package:arch_team_power/features/auth_screen/presentation/view/new_password_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/otp_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/verify_email_view.dart';
-import 'package:arch_team_power/features/layout/layout_page.dart';
-import 'package:arch_team_power/features/onboarding_screen/pages/intro_home_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/layout/presentation/layout_page.dart';
+import '../../features/onboarding_screen/presentation/pages/intro_home_screen.dart';
+
 class AppRouter {
-  static const kIntroHomeScreen = "intro_home_screen";
-  static const klayout = "layout";
+  static const String kSplashScreen = '/';
+  static const kIntroHomeScreen = "/intro_home_screen";
+  static const klayout = "/layout";
   static const kForgotPasswordView = '/forgotPasswordView';
   static const kNewPasswordView = '/newPasswordView';
   static const kOtpView = '/otpView';
@@ -17,7 +19,7 @@ class AppRouter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
+      GoRoute(path: kSplashScreen, builder: (context, state) => const SplashScreen()),
       GoRoute(
         path: kIntroHomeScreen,
         builder: (context, state) => IntroHomeScreen(),

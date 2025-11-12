@@ -4,6 +4,20 @@ import 'app_colors.dart'; // نفترض إن AppColors في ملف app_colors.da
 class AppTheme {
   // ه الثيم الفاتح
   static final ThemeData lightTheme = ThemeData(
+
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.white,
+      unselectedItemColor: AppColors.unSelectItemSelectedColor,
+      type: BottomNavigationBarType.fixed,
+      showUnselectedLabels: false,
+      showSelectedLabels: true,
+      selectedItemColor: AppColors.primary,
+      selectedLabelStyle: TextStyle(
+        color: AppColors.primary,
+        fontSize: 16,
+        fontWeight: FontWeight.bold
+      )
+    ),
     primaryColor: AppColors.primary, // ه اللون الأساسي
     scaffoldBackgroundColor: AppColors.background, // ه الخلفية الرئيسية
     cardColor: AppColors.surface, // ه خلفية الكروت
