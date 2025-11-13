@@ -1,7 +1,5 @@
-import 'package:arch/features/details/widget/similar_places_near_you_item.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/details_screen/widget/similar_places_near_you_item.dart';
-import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +13,7 @@ class SimilarPlacesNearYouListView extends StatelessWidget {
 
       children: [
         Text(
-          S.of(context).similar_places_near_you,
+          'أماكن مشابهه بالقرب منك',
           style: AppTextStyles.syleNorsalRegular14(context),
         ),
         SizedBox(height: 14.h),

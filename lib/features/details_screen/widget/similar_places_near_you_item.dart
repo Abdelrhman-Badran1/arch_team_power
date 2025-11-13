@@ -1,5 +1,4 @@
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +21,7 @@ class SimilarPlacesNearYouItem extends StatelessWidget {
           ),
         ),
         Text(
-          S.of(context).the_kings_valley,
+          'وادي الملوك',
           style: AppTextStyles.syleNorsalRegular12(
             context,
           ).copyWith(color: Color(0xFF8A8A8A)),

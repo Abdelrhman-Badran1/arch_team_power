@@ -2,7 +2,6 @@ import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/details_screen/data/details_actions.dart';
 import 'package:arch_team_power/features/details_screen/widget/details_screen_body_info_title_and_category_name.dart';
 import 'package:arch_team_power/features/details_screen/widget/similar_places_near_you_list_view.dart';
-import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,13 +31,13 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
           Row(
             children: [
               Text(
-                S.of(context).status,
+                'الحالة :',
                 style: AppTextStyles.syleNorsalRegular14(
                   context,
                 ).copyWith(color: Color(0xFF282828)),
               ),
               Text(
-                S.of(context).not_clear,
+                'غير واضح',
                 style: AppTextStyles.syleNorsalRegular12(
                   context,
                 ).copyWith(color: Color(0xFF8A8A8A)),
@@ -49,7 +48,7 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
           Row(
             children: [
               Text(
-                S.of(context).date_of_discovery_of_the_inscription,
+                'تاريخ العثور على النقش',
                 style: AppTextStyles.syleNorsalRegular14(
                   context,
                 ).copyWith(color: Color(0xFF282828)),
@@ -64,7 +63,7 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Text(
-            S.of(context).details_of_finding_the_inscription,
+            'تفاصيل العثور علي النقش :',
             style: AppTextStyles.syleNorsalRegular14(
               context,
             ).copyWith(color: Color(0xFF282828)),
@@ -78,7 +77,7 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Text(
-            S.of(context).translation_of_the_inscription,
+            'ترجمة النقش',
             style: AppTextStyles.syleNorsalRegular14(
               context,
             ).copyWith(color: Color(0xFF282828)),
