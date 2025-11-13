@@ -45,4 +45,37 @@ class AppTextStyles {
       color: Color(0xFF8A8A8A),
     );
     }
+    static TextStyle styleFontNorsalMedium10CGray(context) {
+    return TextStyle(
+      fontSize: 10.39.sp,
+      fontFamily: "FontNorsal",
+      color: Colors.black87,
+      fontWeight: FontWeight.w400,
+    );
+    }
+  static TextStyle styleFontNorsalMedium10kGray10(context) {
+    return TextStyle(
+      fontSize: 10.39.sp,
+      fontFamily: "FontNorsal",
+      color: Color(0xFF8A8A8A),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleFontNorsalMedium12CGray(context) {
+    return TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: "FontNorsal",
+      color: Colors.grey[700],
+    );
+  }
+  static TextStyle styleFontNorsalMedium12CGray20(context) {
+    return TextStyle(
+      fontSize: 12.12.sp,
+      fontFamily: "FontNorsal",
+      fontWeight: FontWeight.w500,
+      color: Color(0xFF282828),
+    );
+  }
 }

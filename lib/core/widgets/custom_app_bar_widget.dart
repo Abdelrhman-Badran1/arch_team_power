@@ -8,27 +8,34 @@ class CustomAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(),
-        Text(
-          title, // نصك هنا
-          style: TextStyle(
-            fontFamily: 'FontNorsal',
-            fontWeight: FontWeight.w500,
-            fontSize: 17.32.sp,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Color(0xFF282828),
+              size: 22.h,
+            ),
           ),
-        ),
-        IconButton(
-          onPressed: onPressed,
-          icon: Icon(
-            Icons.arrow_forward_ios_sharp,
-            color: Color(0xFF282828),
-            size: 22.h,
+          Padding(
+            padding: EdgeInsets.only(left: 30.w),
+            child: Text(
+              title, // نصك هنا
+              style: TextStyle(
+                fontFamily: 'FontNorsal',
+                fontWeight: FontWeight.w500,
+                fontSize: 17.32.sp,
+              ),
+            ),
           ),
-        ),
-      ],
+
+          Container(),
+        ],
+      ),
     );
   }
 }

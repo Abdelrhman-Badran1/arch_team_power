@@ -2,6 +2,8 @@ import 'package:arch_team_power/features/opetion/view/option_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/liberty/presentation/view/library_view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: OptionView(),
+          home: LibraryView(),
         );
         // return MaterialApp.router(
         //   debugShowCheckedModeBanner: false,
