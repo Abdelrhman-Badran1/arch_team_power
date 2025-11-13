@@ -1,5 +1,4 @@
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,7 +28,7 @@ class TotalRateStar extends StatelessWidget {
           ],
         ),
         Text(
-          '(200 ${S.of(context).rate})',
+          '(200 تقييم)',
           style: AppTextStyles.syleNorsalRegular12(
             context,
           ).copyWith(color: Color(0xFF8A8A8A)),

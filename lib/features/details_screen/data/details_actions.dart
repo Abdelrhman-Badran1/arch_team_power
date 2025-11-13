@@ -1,5 +1,5 @@
-import 'package:arch/features/details/widget/rate_dialog.dart';
-import 'package:arch/features/details/widget/details_screen_body_info_actions_item.dart';
+import 'package:arch_team_power/features/details_screen/widget/details_screen_body_info_actions_item.dart';
+import 'package:arch_team_power/features/details_screen/widget/rate_dialog.dart';
 import 'package:flutter/material.dart';
 
 final List<Widget> actions = [
