@@ -2,9 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/add_palace_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/fav_screen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/home_sceen.dart';
+import 'package:arch_team_power/features/layout/presentation/pages/home/screens/home_sceen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/map_screen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/personal_screen.dart';
+import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +23,7 @@ class _LayoutPageState extends State<LayoutPage> {
     MapScreen(),
     AddPalaceScreen(),
     FavScreen(),
-    PersonalScreen()
+    ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _LayoutPageState extends State<LayoutPage> {
         selectedLabelStyle: TextStyle(
           color: AppColors.primary,
           fontStyle: FontStyle.normal,
-          fontSize: 14.sp ,
+          fontSize: 10.sp ,
           fontWeight: FontWeight.bold,
 
         ),
@@ -53,9 +53,9 @@ class _LayoutPageState extends State<LayoutPage> {
         items: [
           customBtnItem(image: "home_icon.svg", label: "الرئيسية"),
           customBtnItem(image: "local_icon.svg", label: "الخرائط"),
-          customBtnItem(image: "two_icon.svg", label: "الاشعارات"),
+          customBtnItem(image: "two_icon.svg", label: "الكاميرا"),
           customBtnItem(image: "fav_icon.svg", label: "المفضله"),
-          customBtnItem(image: "personal_icon.svg", label: "الاعدادت"),
+          customBtnItem(image: "personal_icon.svg", label: "الملف الشخصي"),
         ],
       ),
       body: screens [selectedIndex],

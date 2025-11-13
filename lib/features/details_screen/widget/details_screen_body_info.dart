@@ -30,7 +30,7 @@ class DetailsScreenBodyInfo extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Text(
-            S.of(context).closed_now,
+            S.of(context).change_password,
             style: AppTextStyles.syleNorsalRegular14(
               context,
             ).copyWith(color: Color(0xFFCE1225)),

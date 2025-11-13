@@ -3,12 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../widget/categories_list.dart';
-import '../widget/famous_places_list.dart';
-import '../widget/home_header.dart';
-import '../widget/inscription_library_list.dart';
-import '../widget/section_title.dart';
-
+import '../../../widget/home_screen_widget/famous_places_list.dart';
+import '../../../widget/home_screen_widget/home_header.dart';
+import '../../../widget/home_screen_widget/inscription_library_list.dart';
+import '../../../widget/home_screen_widget/section_title.dart';
 
 class HomeSceen extends StatelessWidget {
   const HomeSceen({super.key});
@@ -38,8 +36,14 @@ class HomeSceen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(35)),
-                child: Image.asset("assets/image/befor_search.png" , fit: BoxFit.cover,width: 400.w),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                child: Image.asset(
+                  "assets/image/befor_search.png",
+                  fit: BoxFit.cover,
+                  width: 400.w,
+                ),
               ),
             ),
 
