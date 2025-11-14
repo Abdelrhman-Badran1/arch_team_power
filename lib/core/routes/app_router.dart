@@ -7,7 +7,6 @@ import 'package:arch_team_power/features/auth_screen/presentation/view/register_
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/layout/presentation/layout_page.dart';
@@ -70,28 +69,30 @@ class AppRouter {
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),
       ),
-      GoRoute(path: kSubscriptionScreen   , builder: (context, state) => SubscriptionScreen(),),
+      GoRoute(path: kSubscriptionScreen   , builder: (context, state) => SubscriptionScreen()),
+      GoRoute(
+        path: kFaqScreen,
+        builder: (context, state) => const FaqScreen(),
+      ),
+
+      GoRoute(
+        path: kDigitalLibraryScreen,
+        builder: (context, state) => const DigitalLibraryScreen(),
+      ),
+
+      GoRoute(
+        path: kEventsScreen,
+        builder: (context, state) => const EventsScreen(),
+      ),
+
+      GoRoute(
+        path: kVipHallScreen,
+        builder: (context, state) => const VipHallScreen(),
+      ),
+
 
     ],
   );
 
-  Widget _zoomTransition(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child,
-  ) {
-    return FadeTransition(
-      opacity: animation,
-      child: ScaleTransition(
-        scale: Tween<double>(begin: 0.85, end: 1.0).animate(
-          CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeOutBack, // زووم ناعم واحترافي
-          ),
-        ),
-        child: child,
-      ),
-    );
-  }
+
 }
