@@ -38,12 +38,24 @@ class _MapScreenBodyState extends State<MapScreenBody> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CustomGoogleMapWidget(
-          mapStyle: mapStyle,
-          markers: markers,
-          polylines: polylines,
-          places: places,
-          controller: controller,
+        GestureDetector(
+          onTap: () async {
+            for (var place in places) {
+              place.isActive = false;
+            }
+            polylines.clear();
+
+            await loadMarkers(places, controller, markers, polylines, setState);
+
+            setState(() {});
+          },
+          child: CustomGoogleMapWidget(
+            controller: controller,
+            mapStyle: mapStyle,
+            markers: markers,
+            polylines: polylines,
+            places: places,
+          ),
         ),
 
         MapSearchTextField(),
@@ -57,7 +69,7 @@ class _MapScreenBodyState extends State<MapScreenBody> {
   void loadMapStyle() async {
     final style = await DefaultAssetBundle.of(
       context,
-    ).loadString('assets/map/map_style.json');
+    ).loadString('assets/map_style/map_style.json');
     setState(() {
       mapStyle = style;
     });

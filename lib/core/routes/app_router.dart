@@ -3,15 +3,11 @@ import 'package:arch_team_power/features/auth_screen/presentation/view/forgot_pa
 import 'package:arch_team_power/features/auth_screen/presentation/view/new_password_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/otp_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/view/verify_email_view.dart';
-<<<<<<< HEAD
 import 'package:arch_team_power/features/auth_screen/presentation/view/register_screen.dart';
+import 'package:arch_team_power/features/details_screen/presentation/details_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
-=======
 import 'package:arch_team_power/features/comments/page/comments_page.dart';
-import 'package:arch_team_power/features/layout/layout_page.dart';
-import 'package:arch_team_power/features/onboarding_screen/pages/intro_home_screen.dart';
->>>>>>> 267030e (Save my local changes)
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,18 +19,15 @@ import '../../features/layout/presentation/pages/profile/screens/vip_hall_screen
 import '../../features/onboarding_screen/presentation/pages/intro_home_screen.dart';
 
 class AppRouter {
-<<<<<<< HEAD
   static const String kSplashScreen = '/';
-=======
->>>>>>> 267030e (Save my local changes)
   static const kIntroHomeScreen = "/intro_home_screen";
   static const klayout = "/layout";
   static const kForgotPasswordView = '/forgotPasswordView';
   static const kNewPasswordView = '/newPasswordView';
   static const kOtpView = '/otpView';
   static const kVerifyEmailView = '/verifyEmailView';
-<<<<<<< HEAD
   static const kRegisterScreen = '/kregisterscreen';
+  static const kDetailsScreen = '/DetailsScreen';
   static const kLoginScreen = '/kloginscreen';
   static const kSettingsScreen = '/settingsscreen';
   static const String kFaqScreen = "/faq_screen";
@@ -42,9 +35,7 @@ class AppRouter {
   static const String kEventsScreen = "/events_screen";
   static const String kVipHallScreen = "/vip_hall_screen";
   static const String kSubscriptionScreen = "/subscriptionscreen";
-=======
   static const kComments = '/comments';
->>>>>>> 267030e (Save my local changes)
 
   static final router = GoRouter(
     routes: [
@@ -70,7 +61,6 @@ class AppRouter {
         path: kNewPasswordView,
         builder: (context, state) => const NewPasswordView(),
       ),
-<<<<<<< HEAD
       GoRoute(
         path: kRegisterScreen,
         builder: (context, state) => const RegisterScreen(),
@@ -83,17 +73,20 @@ class AppRouter {
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),
       ),
-      GoRoute(path: kSubscriptionScreen   , builder: (context, state) => SubscriptionScreen()),
       GoRoute(
-        path: kFaqScreen,
-        builder: (context, state) => const FaqScreen(),
+        path: kSubscriptionScreen,
+        builder: (context, state) => SubscriptionScreen(),
       ),
+      GoRoute(path: kFaqScreen, builder: (context, state) => const FaqScreen()),
 
       GoRoute(
         path: kDigitalLibraryScreen,
         builder: (context, state) => const DigitalLibraryScreen(),
       ),
-
+      GoRoute(
+        path: kDetailsScreen,
+        builder: (context, state) => DetailsScreen(),
+      ),
       GoRoute(
         path: kEventsScreen,
         builder: (context, state) => const EventsScreen(),
@@ -104,12 +97,7 @@ class AppRouter {
         builder: (context, state) => const VipHallScreen(),
       ),
 
-
-=======
       GoRoute(path: kComments, builder: (context, state) => CommentsPage()),
->>>>>>> 267030e (Save my local changes)
     ],
   );
-
-
 }

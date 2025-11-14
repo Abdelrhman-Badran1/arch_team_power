@@ -50,16 +50,25 @@ class _CustomGoogleMapWidgetState extends State<CustomGoogleMapWidget> {
       markers: widget.markers,
       polylines: widget.polylines,
 
-      onTap: (position) {
+      onTap: (position) async {
         for (var mapPlace in widget.places) {
           mapPlace.isActive = false;
         }
         widget.polylines.clear();
-        loadMarkers(places, controller, markers, polylines, setState);
+
+        await loadMarkers(
+          widget.places,
+          widget.controller,
+          widget.markers,
+          widget.polylines,
+          setState,
+        );
       },
 
       onMapCreated: (controller) {
-        widget.controller.complete(controller);
+        if (!widget.controller.isCompleted) {
+          widget.controller.complete(controller);
+        }
       },
     );
   }

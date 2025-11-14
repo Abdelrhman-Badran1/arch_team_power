@@ -29,9 +29,9 @@ Future<void> loadMarkers(
 
     final icon = await buildCustomMarker(
       mainIcon: item.isActive
-          ? "assets/map/slected_icon.png"
-          : "assets/map/un_slected_icon.png",
-      centerIcon: "assets/map/test.png",
+          ? "assets/icons/slected_icon.png"
+          : "assets/icons/un_slected_icon.png",
+      centerIcon: "assets/icons/test.png",
       markerSize: markerSize,
       centerSize: centerSize,
     );
@@ -48,14 +48,15 @@ Future<void> loadMarkers(
 
           item.isActive = true;
 
-          polylines = {
+          polylines.clear();
+          polylines.add(
             Polyline(
               polylineId: const PolylineId("route"),
               width: 1,
-              color: Color(0xFFD2B48C),
+              color: const Color(0xFFD2B48C),
               points: [userLocation, item.location],
             ),
-          };
+          );
 
           loadMarkers(places, controller, markers, polylines, setState);
         },
@@ -65,7 +66,7 @@ Future<void> loadMarkers(
 
   final userIcon = await BitmapDescriptor.asset(
     const ImageConfiguration(size: Size(30, 33)),
-    "assets/map/user_location_icon.png",
+    "assets/icons/user_location_icon.png",
   );
 
   markers.add(

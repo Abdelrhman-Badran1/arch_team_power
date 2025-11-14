@@ -5,21 +5,21 @@ import '../widget/rate_dialog.dart';
 
 final List<Widget> actions = [
   DetailsScreenBodyInfoActionsItem(
-    icon: 'assets/image/message_icon.svg',
+    icon: 'assets/icons/message_icon.svg',
     title: '45',
   ),
   DetailsScreenBodyInfoActionsItem(
-    icon: 'assets/image/location_icon.svg',
+    icon: 'assets/icons/location_icon.svg',
     title: '4.5 km',
   ),
   RateAction(),
 
   DetailsScreenBodyInfoActionsItem(
-    icon: 'assets/image/vr_icon.svg',
+    icon: 'assets/icons/vr_icon.svg',
     title: 'VR',
   ),
   DetailsScreenBodyInfoActionsItem(
-    icon: 'assets/image/voice_icon.svg',
+    icon: 'assets/icons/voice_icon.svg',
     title: 'VO',
   ),
 ];
@@ -34,7 +34,7 @@ class RateAction extends StatelessWidget {
         showDialog(context: context, builder: (context) => RateDialog());
       },
       child: DetailsScreenBodyInfoActionsItem(
-        icon: 'assets/image/star_icon.svg',
+        icon: 'assets/icons/star_icon.svg',
         title: '4.5',
       ),
     );

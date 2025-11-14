@@ -6,11 +6,8 @@ class AppColors {
   // ه لون ثانوي للعناصر التانية (Secondary accents)
   static const Color secondary = Color(0xFF4B5320);
   // ه لون الخلفية الرئيسي (Background)
-<<<<<<< HEAD
-  static const Color background = Color(0xFF837561);
-=======
+  // static const Color background = Color(0xFF837561);
   static const Color background = Color(0xffF1F1F1);
->>>>>>> 267030e (Save my local changes)
   // ه لون خلفية الكروت والسطوح (Surface)
   static const Color surface = Color(0xFF40442B);
   // ه لون النص الرئيسي (Primary text)
@@ -35,9 +32,6 @@ class AppColors {
   static const Color divider = Color(0xFFE0D5C0);
   // ه لون ظل الكروت أو العناصر العائمة (Shadow)
   static const Color shadow = Color(0x33000000);
-<<<<<<< HEAD
   static const Color unSelectItemSelectedColor = Color(0xFF8A8A8A);
-=======
   static const Color white = Color(0xffFFFFFF);
->>>>>>> 267030e (Save my local changes)
 }
