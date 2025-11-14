@@ -42,10 +42,7 @@ class DetailsScreenBodyInfo extends StatelessWidget {
             ).copyWith(color: Color(0xFF282828)),
           ),
           SizedBox(height: 20.h),
-          Text(
-            S.of(context).description,
-            style: AppTextStyles.syleNorsalRegular14(context),
-          ),
+          Text('الوصف', style: AppTextStyles.syleNorsalRegular14(context)),
           Text(
             'معبد الكرنك، الواقع في مدينة الأقصر بجنوب مصر، هو أحد أعظم المعابد في العالم وأكبر دور عبادة تاريخي شُيد في العصور القديمة، يتميز بقاعة الأعمدة الضخمة التي تضم 134 عمودًا شاهقًا، وطريق الكباش الممتد، والبحيرة المقدسة التي كانت تستخدم في الطقوس الدينية',
             style: AppTextStyles.syleNorsalMedium12(
