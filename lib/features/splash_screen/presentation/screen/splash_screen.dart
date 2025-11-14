@@ -42,8 +42,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     // ⏳ الانتقال بعد 3 ثوانٍ إلى شاشة الـ Onboarding
-    Future.delayed(const Duration(seconds: 3), () {
-      GoRouter.of(context).push(AppRouter.kIntroHomeScreen);
+    Future.delayed(const Duration(seconds: 3), () async {
+      // استخدم go بدل push عشان يستبدل الشاشة الحالية
+      GoRouter.of(context).go(AppRouter.kIntroHomeScreen);
     });
   }
 
@@ -80,7 +81,11 @@ class _SplashScreenState extends State<SplashScreen>
                 );
               },
             ),
+
+            // 🖼️ الصورة اللي في الخلفية (SVG)
             SvgPicture.asset("assets/splash_asstes/frame 1.svg"),
+
+            // 🎯 اللوجو والنص في المنتصف
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -88,10 +93,9 @@ class _SplashScreenState extends State<SplashScreen>
                   ZoomIn(
                     duration: const Duration(seconds: 2),
                     child: SvgPicture.asset(
-                      'assets/icons/app_icon.svg', // ضع صورتك هنا يدوياً
+                      'assets/icons/app_icon.svg',
                       width: 120.w,
                       height: 120.w,
-                      // إذا أردت تلوين الأيقونة لتتلاءم مع اللون، تأكد أن الصورة PNG بها قناة ألفا
                       color: const Color(0xFF3C492F),
                       colorBlendMode: BlendMode.srcIn,
                     ),

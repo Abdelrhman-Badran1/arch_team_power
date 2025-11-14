@@ -1,3 +1,5 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +13,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(
-        324.77,
-        674.65,
-      ), // مقاس التصميم في Figma مثلاً (iPhone 13)
+      designSize: const Size(324.77, 674.65), // مقاس التصميم في Figma مثلاً
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
-          routerConfig: AppRouter.router,
+          routerConfig: AppRouter.router, // نظام التنقل بالـ GoRouter
         );
       },
     );
