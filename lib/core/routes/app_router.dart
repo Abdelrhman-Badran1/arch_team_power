@@ -8,6 +8,7 @@ import 'package:arch_team_power/features/comments/presentation/comments_page.dar
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
+import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
 import 'package:arch_team_power/features/onboarding_screen/presentation/screens/intro_home_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -35,6 +36,7 @@ class AppRouter {
   static const String kVipHallScreen = "/vip_hall_screen";
   static const String kSubscriptionScreen = "/subscriptionscreen";
   static const kComments = '/comments';
+  static const kLibraryScreen = '/LibraryScreen';
 
   static final router = GoRouter(
     routes: [
@@ -97,6 +99,10 @@ class AppRouter {
       ),
 
       GoRoute(path: kComments, builder: (context, state) => CommentsPage()),
+      GoRoute(
+        path: kLibraryScreen,
+        builder: (context, state) => LibraryScreen(),
+      ),
     ],
   );
 }
