@@ -8,20 +8,36 @@ class PhotosSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 10.w,
-      runSpacing: 10.h,
-      children: photos.map((img) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(12.r),
-          child: Image.asset(
-            img,
-            width: 100.w,
-            height: 90.h,
-            fit: BoxFit.cover,
-          ),
-        );
-      }).toList(),
+    return SizedBox(
+      height: 250.h,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        itemCount: photos.length,
+        separatorBuilder: (_, __) => SizedBox(width: 14.w),
+
+        itemBuilder: (context, index) {
+          final img = photos[index];
+
+          return Container(
+            width: 300.w,
+            height: 250.h,
+            padding: EdgeInsets.all(8.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16.r),
+                bottomRight: Radius.circular(16.r),
+                topLeft: Radius.circular(16.r),
+                topRight: Radius.circular(16.r),
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12.r),
+              child: Image.asset(img, fit: BoxFit.cover),
+            ),
+          );
+        },
+      ),
     );
   }
 }
