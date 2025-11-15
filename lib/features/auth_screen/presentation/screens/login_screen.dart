@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      GoRouter.of(context).pushReplacement(AppRouter.klayout);
+                      GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD2B48C),
