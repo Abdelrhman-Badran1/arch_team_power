@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,7 +43,7 @@ class CustomSrearchTextField extends StatelessWidget {
                 cursorColor: Colors.black,
                 canRequestFocus: canRequestFocus ?? true,
                 onChanged: onChanged,
-                style: TextStyle(color: Colors.black, fontSize: 14.sp),
+                style: AppTextStyles.syleNorsalMedium14(context),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   enabledBorder: outLineInputBorderMethod(),
@@ -68,12 +69,9 @@ class CustomSrearchTextField extends StatelessWidget {
 
                   hintStyle:
                       hintStyle ??
-                      TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Norsal',
-                        color: const Color(0xffD0D0D0),
-                        fontSize: 10.sp,
-                      ),
+                      AppTextStyles.syleNorsalRegular10(
+                        context,
+                      ).copyWith(color: const Color(0xffD0D0D0)),
                 ),
               ),
             ),

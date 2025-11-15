@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animate_do/animate_do.dart';
@@ -93,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ZoomIn(
                     duration: const Duration(seconds: 2),
                     child: SvgPicture.asset(
-                      'assets/icons/app_icon.svg',
+                      AppIcons.kAppIcon,
                       width: 120.w,
                       height: 120.w,
                       color: const Color(0xFF3C492F),

@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,28 +10,19 @@ class ProfileHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-
-
-
         CircleAvatar(
           radius: 28.r,
-          backgroundImage: AssetImage("assets/image/profile_pic2.png"),
+          backgroundImage: AssetImage(AppAssets.kProfileImage2),
         ),
         Column(
           children: [
             Text(
               "محمد عبدالله",
-              style: TextStyle(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
             ),
             Text(
               "سائح",
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Colors.grey,
-              ),
+              style: TextStyle(fontSize: 14.sp, color: Colors.grey),
             ),
           ],
         ),

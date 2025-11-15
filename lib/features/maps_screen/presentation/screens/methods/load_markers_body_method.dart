@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/models/map_place_model.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/methods/build_custom_marker_method.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,9 @@ Future<void> loadMarkers(
 
     final icon = await buildCustomMarker(
       mainIcon: item.isActive
-          ? "assets/icons/slected_icon.png"
-          : "assets/icons/un_slected_icon.png",
-      centerIcon: "assets/icons/test.png",
+          ? AppIcons.kSlectedMarkerIcon
+          : AppIcons.kUnSlectedMarkerIcon,
+      centerIcon: AppIcons.kTestIcon,
       markerSize: markerSize,
       centerSize: centerSize,
     );
@@ -66,7 +67,7 @@ Future<void> loadMarkers(
 
   final userIcon = await BitmapDescriptor.asset(
     const ImageConfiguration(size: Size(30, 33)),
-    "assets/icons/user_location_icon.png",
+    AppIcons.kUserLocatMarkerIcon,
   );
 
   markers.add(

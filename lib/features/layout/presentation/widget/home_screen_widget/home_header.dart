@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -16,7 +17,7 @@ class HomeHeader extends StatelessWidget {
           height: 300.h,
           width: double.infinity,
           child: Image.asset(
-            'assets/image/back_search.png',
+            AppAssets.kSearchbackGroundImage,
             fit: BoxFit.cover,
           ),
         ),
@@ -47,10 +48,9 @@ class HomeHeader extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 22.r,
-                backgroundImage: AssetImage('assets/image/profile.png'),
+                backgroundImage: AssetImage(AppAssets.kProfileIamge1),
               ),
               Icon(Icons.notifications_none, color: Colors.white, size: 28.sp),
-
             ],
           ),
         ),

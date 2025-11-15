@@ -1,7 +1,6 @@
+import 'package:arch_team_power/features/details_screen/presentation/screens/widget/details_screen_body_info_actions_item.dart';
+import 'package:arch_team_power/features/details_screen/presentation/screens/widget/rate_dialog.dart';
 import 'package:flutter/material.dart';
-
-import '../widget/details_screen_body_info_actions_item.dart';
-import '../widget/rate_dialog.dart';
 
 final List<Widget> actions = [
   DetailsScreenBodyInfoActionsItem(

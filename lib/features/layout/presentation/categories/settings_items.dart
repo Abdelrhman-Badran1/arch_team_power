@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/utils/app_icons.dart';
 
 import '../../../../core/models/settings_item_model.dart';
 
@@ -5,27 +6,15 @@ class SettingsItemsData {
   static List<SettingsItemModel> items = [
     SettingsItemModel(
       title: "تعديل الملف الشخصي",
-      iconPath: "assets/icons/edit_profile.png",
+      iconPath: AppIcons.kEditProfileIcon,
     ),
-    SettingsItemModel(
-      title: "تغيير اللغه",
-      iconPath: "assets/icons/lang_ic.png",
-    ),
-    SettingsItemModel(
-      title: "وسائل الدفع",
-      iconPath: "assets/icons/payment_ic.png",
-    ),
-    SettingsItemModel(
-      title: "الخصوصية",
-      iconPath: "assets/icons/privacy_ic.png",
-    ),
-    SettingsItemModel(
-      title: "الدعم",
-      iconPath: "assets/icons/contact_ic.png",
-    ),
+    SettingsItemModel(title: "تغيير اللغه", iconPath: AppIcons.kLangIcon),
+    SettingsItemModel(title: "وسائل الدفع", iconPath: AppIcons.kPaymentIcon),
+    SettingsItemModel(title: "الخصوصية", iconPath: AppIcons.kPrivacyIcon),
+    SettingsItemModel(title: "الدعم", iconPath: AppIcons.kContactIcon),
     SettingsItemModel(
       title: "الخروج من الحساب",
-      iconPath: "assets/icons/logout_ic.png",
+      iconPath: AppIcons.kLogOutIcon,
       isLogout: true,
     ),
   ];

@@ -25,7 +25,7 @@ class SubscriptionHeader extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(20.r),
             image: const DecorationImage(
-              image: AssetImage("assets/image/sub_bg.png"),
+              image: AssetImage(""),
               fit: BoxFit.cover,
               opacity: 0.18,
             ),
@@ -61,10 +61,7 @@ class SubscriptionHeader extends StatelessWidget {
 
               Text(
                 "اشترك للحصول علي ميزات أفضل",
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.grey.shade600,
-                ),
+                style: TextStyle(fontSize: 14.sp, color: Colors.grey.shade600),
               ),
             ],
           ),

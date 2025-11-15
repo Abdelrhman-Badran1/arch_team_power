@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,12 +23,9 @@ class _SomeDetailsAboutTheActivePlaceRateState
         Text(
           '(4.5)',
           textAlign: TextAlign.right,
-          style: TextStyle(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF8A8A8A),
-            fontFamily: 'Norsal',
-          ),
+          style: AppTextStyles.syleNorsalMedium12(
+            context,
+          ).copyWith(color: Color(0xFF8A8A8A)),
         ),
         StarRating(
           size: 16.sp,

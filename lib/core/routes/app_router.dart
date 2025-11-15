@@ -1,22 +1,21 @@
-import 'package:arch_team_power/features/auth_screen/presentation/login/pages/login_screen.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/view/forgot_password_view.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/view/new_password_view.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/view/otp_view.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/view/verify_email_view.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/view/register_screen.dart';
-import 'package:arch_team_power/features/details_screen/presentation/details_screen.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/forgot_password_view.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/login_screen.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/new_password_view.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/otp_view.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/register_screen.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/verify_email_view.dart';
+import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
+import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
-import 'package:arch_team_power/features/comments/page/comments_page.dart';
+import 'package:arch_team_power/features/onboarding_screen/presentation/screens/intro_home_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../features/layout/presentation/layout_page.dart';
 import '../../features/layout/presentation/pages/profile/screens/digital_library_screen.dart';
 import '../../features/layout/presentation/pages/profile/screens/events_screen.dart';
 import '../../features/layout/presentation/pages/profile/screens/faq_screen.dart';
 import '../../features/layout/presentation/pages/profile/screens/vip_hall_screen.dart';
-import '../../features/onboarding_screen/presentation/pages/intro_home_screen.dart';
 
 class AppRouter {
   static const String kSplashScreen = '/';

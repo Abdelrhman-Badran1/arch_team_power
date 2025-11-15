@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -30,7 +31,7 @@ class CancelPopup extends StatelessWidget {
                 color: Colors.black12,
                 blurRadius: 12,
                 offset: const Offset(0, 5),
-              )
+              ),
             ],
           ),
           child: Column(
@@ -48,7 +49,7 @@ class CancelPopup extends StatelessWidget {
                   ),
                   child: Center(
                     child: Image.asset(
-                      "assets/icons/cancel_sub_ic.png",
+                      AppIcons.kCancelSubicon,
                       width: 35.w,
                       height: 35.w,
                     ),

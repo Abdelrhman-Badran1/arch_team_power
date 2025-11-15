@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:arch_team_power/core/utils/map_styles.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/models/map_place_model.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/methods/load_markers_body_method.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/custom_google_map_widget.dart';
@@ -69,7 +70,7 @@ class _MapScreenBodyState extends State<MapScreenBody> {
   void loadMapStyle() async {
     final style = await DefaultAssetBundle.of(
       context,
-    ).loadString('assets/map_style/map_style.json');
+    ).loadString(MapStyles.kMapStyle);
     setState(() {
       mapStyle = style;
     });

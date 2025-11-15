@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,10 +9,10 @@ class FamousPlacesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final places = [
-      {'image': 'assets/image/noqosh.png', 'title': 'النقوش'},
-      {'image': 'assets/image/asar.png', 'title': 'الاثار'},
-      {'image': 'assets/image/musuem.png', 'title': 'المعابد'},
-      {'image': 'assets/image/saleh.png', 'title': 'مدائن صالح'},
+      {'image': AppAssets.kNoqoshImage, 'title': 'النقوش'},
+      {'image': AppAssets.kAser, 'title': 'الاثار'},
+      {'image': AppAssets.kMusuemImage, 'title': 'المعابد'},
+      {'image': AppAssets.kSalehimage, 'title': 'مدائن صالح'},
     ];
 
     return SizedBox(

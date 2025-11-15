@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -13,13 +14,12 @@ class AppDrawer extends StatelessWidget {
       child: Drawer(
         backgroundColor: Colors.white,
         width: 250,
-      
-      
+
         /// ⭐ Wave Effect باستخدام ClipOval + flutter_animate
         child: Animate(
           effects: [
             FadeEffect(duration: 350.ms),
-      
+
             /// Wave Animation (يبدأ صغير ويرتفع)
             CustomEffect(
               builder: (context, value, child) {
@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
               duration: 550.ms,
               curve: Curves.easeOutCubic,
             ),
-      
+
             /// Slide + Scale للـ Drawer نفسه
             SlideEffect(
               begin: const Offset(0.35, 0),
@@ -51,20 +51,20 @@ class AppDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 40.h),
-      
+
                 /// صورة
                 CircleAvatar(
                       radius: 40.r,
                       backgroundImage: const AssetImage(
-                        "assets/image/profile_pic2.png",
+                        AppAssets.kProfileImage2,
                       ),
                     )
                     .animate()
                     .fadeIn(duration: 350.ms, delay: 100.ms)
                     .slideX(begin: 0.1, end: 0),
-      
+
                 SizedBox(height: 15.h),
-      
+
                 Text(
                       "محمد عبدالله",
                       style: TextStyle(
@@ -75,9 +75,9 @@ class AppDrawer extends StatelessWidget {
                     .animate()
                     .fadeIn(duration: 350.ms, delay: 150.ms)
                     .slideX(begin: 0.15, end: 0),
-      
+
                 SizedBox(height: 30.h),
-      
+
                 ListTile(
                   leading: const Icon(Icons.settings),
                   title: Text("الإعدادات", style: TextStyle(fontSize: 16.sp)),
@@ -87,7 +87,7 @@ class AppDrawer extends StatelessWidget {
                   },
                 ).animate().fadeIn(delay: 220.ms).slideX(begin: 0.2, end: 0),
                 SizedBox(height: 20.h),
-      
+
                 ListTile(
                   leading: const Icon(Icons.logout, color: Colors.red),
                   title: Text(

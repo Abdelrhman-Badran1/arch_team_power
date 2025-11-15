@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/models/category_model.dart';
@@ -9,11 +10,11 @@ class CategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = [
-      CategoryModel(title: 'فنادق', image: 'assets/image/neqosh.svg'),
-      CategoryModel(title: 'مطاعم', image: 'assets/image/neqosh.svg'),
-      CategoryModel(title: 'متاحف', image: 'assets/image/museum.svg'),
-      CategoryModel(title: 'طبيعة', image: 'assets/image/neqosh.svg'),
-      CategoryModel(title: 'تراث', image: 'assets/image/neqosh.svg'),
+      CategoryModel(title: 'فنادق', image: AppAssets.kNoqoshImage),
+      CategoryModel(title: 'مطاعم', image: AppAssets.kNoqoshImage),
+      CategoryModel(title: 'متاحف', image: AppAssets.kMusuemImage),
+      CategoryModel(title: 'طبيعة', image: AppAssets.kMusuemImage),
+      CategoryModel(title: 'تراث', image: AppAssets.kNoqoshImage),
     ];
 
     return SizedBox(
@@ -24,10 +25,7 @@ class CategoriesList extends StatelessWidget {
         itemCount: categories.length,
         separatorBuilder: (context, index) => SizedBox(width: 15.w),
         itemBuilder: (context, index) {
-          return CategoryItem(
-            category: categories[index],
-            onTap: () {},
-          );
+          return CategoryItem(category: categories[index], onTap: () {});
         },
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,10 +22,7 @@ class SearchBox extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(30.r),
-              border: Border.all(
-                color: Colors.white,
-                width: 2,
-              ),
+              border: Border.all(color: Colors.white, width: 2),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black12.withOpacity(0.05),
@@ -37,34 +35,29 @@ class SearchBox extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.search,
-                    color: Colors.white,
-                    size: 24.sp,
-                  ),
+                  Icon(Icons.search, color: Colors.white, size: 24.sp),
                   Expanded(
                     child: TextField(
-                      decoration:
-                      InputDecoration(
+                      decoration: InputDecoration(
                         hintText: "ابحث عن أماكن ومواقع أثرية...",
                         hintStyle: GoogleFonts.tajawal(
                           fontSize: 12.sp,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.transparent
+                          backgroundColor: Colors.transparent,
                         ),
                         border: InputBorder.none,
                       ),
                       textAlign: TextAlign.right,
                     ),
                   ),
-
                 ],
               ),
             ),
           ),
         ),
         SizedBox(width: 12.w),
+
         /// ===== زر الفلتر (الإعدادات) =====
         Expanded(
           flex: 0,
@@ -77,15 +70,16 @@ class SearchBox extends StatelessWidget {
             ),
             child: Center(
               child: SvgPicture.asset(
-                'assets/icons/filter.svg', // أيقونة SVG الخاصة بالفلتر
+                AppIcons.kFilterIcon, // أيقونة SVG الخاصة بالفلتر
                 width: 22.w,
-                colorFilter:
-                const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                colorFilter: const ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),
         ),
-
       ],
     );
   }

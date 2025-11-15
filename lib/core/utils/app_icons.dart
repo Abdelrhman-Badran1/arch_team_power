@@ -1,0 +1,35 @@
+class AppIcons {
+  static const kGoogleIcon = 'assets/icons/google_icon.svg';
+  static const kFaceBookIcon = 'assets/icons/facebook_icon.svg';
+  static const kAppleIcon = 'assets/icons/apple_icon.svg';
+  static const kAppIcon = 'assets/icons/app_icon.svg';
+  static const kCancelSubicon = 'assets/icons/cancel_sub_ic.png';
+  static const kContactIcon = 'assets/icons/contact_ic.png';
+  static const kEditProfileIcon = 'assets/icons/edit_profile.png';
+  static const kFavIcon = 'assets/icons/fav_icon.svg';
+  static const kFilterIcon = 'assets/icons/filter.svg';
+  static const kHomeIcon = 'assets/icons/home_icon.svg';
+  static const kLangIcon = 'assets/icons/lang_ic.png';
+  static const kLocatMarkerIcon = 'assets/icons/local_icon.svg';
+  static const kLocationIcon = 'assets/icons/location_icon.svg';
+  static const kLogOutIcon = 'assets/icons/logout_ic.png';
+  static const kLoveIcon = 'assets/icons/love_icon.svg';
+  static const kCommentsIcon = 'assets/icons/message_icon.svg';
+  static const kNotificationsIcon = 'assets/icons/notification.svg';
+  static const kPaymentIcon = 'assets/icons/payment_ic.png';
+  static const kPrsonalIcon = 'assets/icons/personal_icon.svg';
+  static const kPrivacyIcon = 'assets/icons/privacy_ic.png';
+  static const kSearchIcon = 'assets/icons/search.svg';
+  static const kSlectedMarkerIcon = 'assets/icons/slected_icon.png';
+  static const kStarIcon = 'assets/icons/star_icon.svg';
+  static const kTestIcon = 'assets/icons/test.png';
+  static const kCameraIcon = 'assets/icons/camera_icon.svg';
+  static const kUnSlectedMarkerIcon = 'assets/icons/un_slected_icon.png';
+  static const kUserLocatMarkerIcon = 'assets/icons/user_location_icon.png';
+  static const kVoiceIcon = 'assets/icons/voice_icon.svg';
+  static const kVrIcon = 'assets/icons/vr_icon.svg';
+  static const kSendMessageIcon = 'assets/icons/arrowsendmessege.png';
+  static const kDisLikeIcon = 'assets/icons/Dislike.png';
+  static const kLikeIcon = 'assets/icons/like.png';
+  static const kLike2Icon = 'assets/icons/like2.png';
+}

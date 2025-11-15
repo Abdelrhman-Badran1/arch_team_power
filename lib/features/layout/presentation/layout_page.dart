@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/utils/app_assets.dart';
+import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/add_palace_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/fav_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/home/screens/home_sceen.dart';
@@ -48,11 +50,11 @@ class _LayoutPageState extends State<LayoutPage> {
         ),
 
         items: [
-          customBtnItem(image: "home_icon.svg", label: "الرئيسية"),
-          customBtnItem(image: "local_icon.svg", label: "الخرائط"),
-          customBtnItem(image: "two_icon.svg", label: "الكاميرا"),
-          customBtnItem(image: "fav_icon.svg", label: "المفضله"),
-          customBtnItem(image: "personal_icon.svg", label: "الملف الشخصي"),
+          customBtnItem(image: AppIcons.kHomeIcon, label: "الرئيسية"),
+          customBtnItem(image: AppIcons.kLocatMarkerIcon, label: "الخرائط"),
+          customBtnItem(image: AppIcons.kCameraIcon, label: "الكاميرا"),
+          customBtnItem(image: AppIcons.kFavIcon, label: "المفضله"),
+          customBtnItem(image: AppIcons.kPrsonalIcon, label: "الملف الشخصي"),
         ],
       ),
       body: screens[selectedIndex],
@@ -64,7 +66,7 @@ class _LayoutPageState extends State<LayoutPage> {
     required String label,
   }) {
     return BottomNavigationBarItem(
-      icon: SvgPicture.asset("assets/icons/$image", color: Colors.black),
+      icon: SvgPicture.asset(image, color: Colors.black),
       activeIcon: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
@@ -73,10 +75,7 @@ class _LayoutPageState extends State<LayoutPage> {
         ),
         child: ZoomIn(
           animate: true,
-          child: SvgPicture.asset(
-            "assets/icons/$image",
-            color: AppColors.primary,
-          ),
+          child: SvgPicture.asset(image, color: AppColors.primary),
         ),
       ),
       label: label,

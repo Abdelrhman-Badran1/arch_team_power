@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/some_details_about_the_active_place_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,7 @@ class SomeDetailsAboutTheActivePlace extends StatelessWidget {
                   height: 88.h,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/image/mdaen_test_image.png'),
+                      image: AssetImage(AppAssets.kMdaenImage),
                       fit: BoxFit.cover,
                     ),
                   ),
