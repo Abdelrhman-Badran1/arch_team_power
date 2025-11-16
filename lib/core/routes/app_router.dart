@@ -6,6 +6,7 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/regist
 import 'package:arch_team_power/features/auth_screen/presentation/screens/verify_email_view.dart';
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
+import 'package:arch_team_power/features/information/presentation/screens/information_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
 import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
@@ -101,7 +102,7 @@ class AppRouter {
       GoRoute(path: kComments, builder: (context, state) => CommentsPage()),
       GoRoute(
         path: kLibraryScreen,
-        builder: (context, state) => LibraryScreen(),
+        builder: (context, state) => InformationScreen(),
       ),
     ],
   );
