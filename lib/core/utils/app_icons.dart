@@ -32,4 +32,6 @@ class AppIcons {
   static const kDisLikeIcon = 'assets/icons/Dislike.png';
   static const kLikeIcon = 'assets/icons/like.png';
   static const kLike2Icon = 'assets/icons/like2.png';
+  static const kProiconsPhotoIcon = 'assets/icons/proicons_photo_icon.svg';
+  static const kSendIcon = 'assets/icons/send_icon.svg';
 }

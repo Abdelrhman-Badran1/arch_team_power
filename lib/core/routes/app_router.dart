@@ -10,6 +10,8 @@ import 'package:arch_team_power/features/information/presentation/screens/inform
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
 import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/notes_screen.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/widget/notes_screen_body.dart';
 import 'package:arch_team_power/features/onboarding_screen/presentation/screens/intro_home_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -100,10 +102,7 @@ class AppRouter {
       ),
 
       GoRoute(path: kComments, builder: (context, state) => CommentsPage()),
-      GoRoute(
-        path: kLibraryScreen,
-        builder: (context, state) => InformationScreen(),
-      ),
+      GoRoute(path: kLibraryScreen, builder: (context, state) => NotesScreen()),
     ],
   );
 }
