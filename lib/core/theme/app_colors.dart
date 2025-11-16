@@ -8,6 +8,7 @@ class AppColors {
   // ه لون الخلفية الرئيسي (Background)
   // static const Color background = Color(0xFF837561);
   static const Color background = Color(0xffF1F1F1);
+  static const Color bacBottom = Color(0xffE0E0E0);
   // ه لون خلفية الكروت والسطوح (Surface)
   static const Color surface = Color(0xFF40442B);
   // ه لون النص الرئيسي (Primary text)
