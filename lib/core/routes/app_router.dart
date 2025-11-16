@@ -20,7 +20,7 @@ import '../../features/layout/presentation/pages/profile/screens/vip_hall_screen
 class AppRouter {
   static const String kSplashScreen = '/';
   static const kIntroHomeScreen = "/intro_home_screen";
-  static const klayout = "/layout";
+  static const kHomeScreen = "/home_screen";
   static const kForgotPasswordView = '/forgotPasswordView';
   static const kNewPasswordView = '/newPasswordView';
   static const kOtpView = '/otpView';
@@ -46,7 +46,7 @@ class AppRouter {
         path: kIntroHomeScreen,
         builder: (context, state) => IntroHomeScreen(),
       ),
-      GoRoute(path: klayout, builder: (context, state) => LayoutPage()),
+      GoRoute(path: kHomeScreen, builder: (context, state) => LayoutPage()),
       GoRoute(
         path: kForgotPasswordView,
         builder: (context, state) => const ForgotPasswordView(),

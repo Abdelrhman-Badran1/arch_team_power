@@ -1,9 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
-import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/screens/favorite_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/add_palace_screen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/fav_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/home/screens/home_sceen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +21,10 @@ class LayoutPage extends StatefulWidget {
 class _LayoutPageState extends State<LayoutPage> {
   int selectedIndex = 0;
   List<Widget> screens = [
-    HomeSceen(),
+    HomeScreen(),
     MapScreen(),
     AddPalaceScreen(),
-    FavScreen(),
+    FavoriteScreen(),
     ProfileScreen(),
   ];
   @override

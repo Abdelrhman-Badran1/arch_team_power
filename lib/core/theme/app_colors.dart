@@ -4,7 +4,7 @@ class AppColors {
   // ه اللون الأساسي للتطبيق (Primary accent)
   static const Color primary = Color(0xFFD2B48C);
   // ه لون ثانوي للعناصر التانية (Secondary accents)
-  static const Color secondary = Color(0xFF4B5320);
+  static const Color secondary = Color(0xffDB9448);
   // ه لون الخلفية الرئيسي (Background)
   // static const Color background = Color(0xFF837561);
   static const Color background = Color(0xffF1F1F1);
