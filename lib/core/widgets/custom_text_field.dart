@@ -15,6 +15,8 @@ class CustomTextField extends StatefulWidget {
     required this.textFieldTitle,
     this.controller,
     this.showEyeIcon = false,
+    this.textAlign,
+    this.heightTextfield,
   });
 
   final bool? canRequestFocus;
@@ -25,6 +27,8 @@ class CustomTextField extends StatefulWidget {
   final TextStyle? hintStyle;
   final TextEditingController? controller;
   final bool showEyeIcon;
+  final TextAlign? textAlign;
+  final double? heightTextfield;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -59,7 +63,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             SizedBox(height: 10.h),
             Container(
-              height: 45.h,
+              height: widget.heightTextfield,
               width: 297.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(9.r),
@@ -76,6 +80,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
+                        textAlign: widget.textAlign ?? TextAlign.start,
                         autocorrect: false,
                         enableSuggestions: false,
                         controller: widget.controller,

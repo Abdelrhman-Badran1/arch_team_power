@@ -1,38 +1,72 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-import 'package:arch_team_power/core/routes/app_router.dart';
-import 'package:arch_team_power/generated/l10n.dart';
+import 'package:arch_team_power/features/Form_Page/form_page.dart';
+import 'package:arch_team_power/features/Payment_Methods/payment_page.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => ScreenUtilInit(
+        designSize: const Size(360, 690), // اختار حجم الديزاين بتاعك
+        minTextAdapt: true,
+        builder: (context, child) => const MyTestApp(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyTestApp extends StatelessWidget {
+  const MyTestApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(324.77, 674.65), // مقاس التصميم في Figma مثلاً
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          locale: const Locale('ar'),
-          localizationsDelegates: [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          routerConfig: AppRouter.router, // نظام التنقل بالـ GoRouter
-        );
-      },
+    return MaterialApp(
+      useInheritedMediaQuery: true,
+      debugShowCheckedModeBanner: false,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      home: MyFormPage(),
     );
   }
 }
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// import 'package:arch_team_power/core/routes/app_router.dart';
+// import 'package:arch_team_power/generated/l10n.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ScreenUtilInit(
+//       designSize: const Size(324.77, 674.65), // مقاس التصميم في Figma مثلاً
+//       minTextAdapt: true,
+//       splitScreenMode: true,
+//       builder: (context, child) {
+//         return MaterialApp.router(
+//           debugShowCheckedModeBanner: false,
+//           locale: const Locale('ar'),
+//           localizationsDelegates: [
+//             S.delegate,
+//             GlobalMaterialLocalizations.delegate,
+//             GlobalWidgetsLocalizations.delegate,
+//             GlobalCupertinoLocalizations.delegate,
+//           ],
+//           supportedLocales: S.delegate.supportedLocales,
+//           routerConfig: AppRouter.router, // نظام التنقل بالـ GoRouter
+//         );
+//       },
+//     );
+//   }
+// }
