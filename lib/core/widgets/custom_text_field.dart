@@ -12,7 +12,7 @@ class CustomTextField extends StatefulWidget {
     this.onChanged,
     required this.hintText,
     this.hintStyle,
-    required this.textFieldTitle,
+    this.textFieldTitle,
     this.controller,
     this.showEyeIcon = false,
     this.textAlign,
@@ -23,7 +23,7 @@ class CustomTextField extends StatefulWidget {
   final bool? obscureText;
   final String? Function(String?)? validator;
   final Function(String p1)? onChanged;
-  final String hintText, textFieldTitle;
+  final String? hintText, textFieldTitle;
   final TextStyle? hintStyle;
   final TextEditingController? controller;
   final bool showEyeIcon;
@@ -58,7 +58,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.textFieldTitle,
+              widget.textFieldTitle ?? '',
               style: AppTextStyles.syleNorsalMedium15(context),
             ),
             SizedBox(height: 10.h),

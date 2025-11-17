@@ -1,6 +1,8 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyFormPage extends StatelessWidget {
   const MyFormPage({super.key});
@@ -17,37 +19,50 @@ class MyFormPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        title: const Text('النموذج بتاعي'),
+        title: const Text('البطاقه الخاصه بي'),
         centerTitle: true,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // ========== العنصر الأول: صورة + ثلاث نقط ==========
               Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Container(
-                    width: 276,
-                    height: 176,
-                    child: PageView.builder(
-                      itemCount: sampleImages.length,
-                      itemBuilder: (context, index) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            "image/cardvisa.png",
-                            width: 276, //
-                            height: 155,
+                  Material(
+                    elevation: 9,
+                    borderRadius: BorderRadius.circular(12),
+
+                    child: Container(
+                      height: 200,
+                      width: 320,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.15),
+                            blurRadius: 18,
+
+                            offset: Offset(0, 9),
                           ),
-                        );
-                      },
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: PageView.builder(
+                          itemCount: sampleImages.length,
+                          itemBuilder: (context, index) {
+                            return Image.asset(
+                              "image/cardvisa.png",
+                              fit: BoxFit.cover,
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 19),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
@@ -69,20 +84,20 @@ class MyFormPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // ========== العنصر التاني: TextField كامل العرض ==========
               CustomTextField(
+                heightTextfield: 64,
                 textAlign: TextAlign.right,
                 hintText: "محمد الزهراني",
                 textFieldTitle: "الاسم الثنائي",
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               CustomTextField(
+                heightTextfield: 64,
                 hintText: "1267  2312  0918  2344",
-                textFieldTitle: "الاسم الثنائي",
+                textFieldTitle: "رقم البطاقه :",
               ),
 
-              // ========== العنصر الثالث: Row فيه 2 Text متباعدين ==========
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -118,8 +133,24 @@ class MyFormPage extends StatelessWidget {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('تأكيد'),
+                  onPressed: () {
+                    debugPrint('Confirm pressed');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    'تأكيد',
+                    style: AppTextStyles.syleNorsalMedium15(context).copyWith(
+                      fontSize: 10.sp,
+                      letterSpacing: 1,
+                      color: AppColors.white,
+                    ),
+                  ),
                 ),
               ),
             ],
