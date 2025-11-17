@@ -2,7 +2,7 @@ import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/change_password_dialog.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
-import 'package:arch_team_power/core/widgets/custom_text_field.dart';
+import 'package:arch_team_power/features/camera/presentation/screens/widget/custom_text_field.dart';
 import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

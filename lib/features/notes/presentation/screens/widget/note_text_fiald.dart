@@ -1,7 +1,5 @@
-import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class NotesTextField extends StatelessWidget {
   const NotesTextField({

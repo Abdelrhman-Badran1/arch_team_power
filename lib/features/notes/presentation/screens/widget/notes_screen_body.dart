@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/features/notes/models/note_model.dart';
 import 'package:arch_team_power/features/notes/presentation/screens/widget/note_dialog.dart';
@@ -89,7 +90,12 @@ class _NotesScreenBodyState extends State<NotesScreenBody> {
             valueListenable: notesBox.listenable(),
             builder: (context, Box<NoteModel> box, widget) {
               if (box.isEmpty) {
-                return const Center(child: Text("لا يوجد ملاحظات"));
+                return Center(
+                  child: Text(
+                    "لا يوجد ملاحظات",
+                    style: AppTextStyles.syleNorsalMedium15(context),
+                  ),
+                );
               }
 
               return ListView.builder(

@@ -34,4 +34,9 @@ class AppIcons {
   static const kLike2Icon = 'assets/icons/like2.png';
   static const kProiconsPhotoIcon = 'assets/icons/proicons_photo_icon.svg';
   static const kSendIcon = 'assets/icons/send_icon.svg';
+  static const kCameraLangIcon = 'assets/icons/lang_icon.svg';
+  static const kTakePhotoIcon = 'assets/icons/take_photo_icon.svg';
+  static const kMeteorIconsImages = 'assets/icons/meteor-icons_images.svg';
+  static const kEnglishLangFlage = 'assets/icons/english_flag_icon.png';
+  static const kArbicLangFlage = 'assets/icons/arabic_flag_icon.png';
 }

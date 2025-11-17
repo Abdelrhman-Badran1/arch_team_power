@@ -20,6 +20,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle syleNorsalSemiBold7(context) {
+    return TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Norsal',
+
+      fontSize: 7.sp,
+    );
+  }
+
   static TextStyle syleNorsalMedium16(context) {
     return TextStyle(
       fontFamily: 'Norsal',
