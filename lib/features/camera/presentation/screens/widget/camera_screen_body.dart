@@ -28,10 +28,15 @@ class _CameraScreenBodyState extends State<CameraScreenBody> {
 
   Future<void> initCamera() async {
     try {
-      await controller?.dispose();
+      if (controller != null) {
+        await controller!.dispose();
+        controller = null;
+      }
+
       cameras = await availableCameras();
 
       if (cameras == null || cameras!.isEmpty) {
+        debugPrint("No cameras available");
         return;
       }
 
@@ -42,10 +47,13 @@ class _CameraScreenBodyState extends State<CameraScreenBody> {
       );
 
       await controller!.initialize();
+
       if (!mounted) return;
 
       setState(() {});
-    } catch (e) {}
+    } catch (e, s) {
+      debugPrint("Camera init error: $e\n$s");
+    }
   }
 
   Future<void> takePhoto() async {
@@ -78,7 +86,9 @@ class _CameraScreenBodyState extends State<CameraScreenBody> {
           child: selectedImage != null
               ? Image.file(selectedImage!, fit: BoxFit.cover)
               : (controller == null || !controller!.value.isInitialized)
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                  child: CircularProgressIndicator(color: Color(0xffD2B48C)),
+                )
               : GestureDetector(
                   onScaleUpdate: (details) {
                     if (details.scale != 1.0) {

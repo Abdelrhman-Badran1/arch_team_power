@@ -1,12 +1,8 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../core/widgets/background_pattern_painter.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,121 +11,23 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
-  late AnimationController _rotationController;
-  late AnimationController _fadeController;
-  late Animation<double> _fadeAnimation;
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
 
-    // 🎞️ حركة الدوران البطيئة للخلفية
-    _rotationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..repeat(reverse: true);
-
-    // ✨ حركة الـ Fade-in عند البداية
-    _fadeController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    )..forward();
-
-    _fadeAnimation = CurvedAnimation(
-      parent: _fadeController,
-      curve: Curves.easeInOut,
-    );
-
-    // ⏳ الانتقال بعد 3 ثوانٍ إلى شاشة الـ Onboarding
-    Future.delayed(const Duration(seconds: 3), () async {
-      // استخدم go بدل push عشان يستبدل الشاشة الحالية
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       GoRouter.of(context).go(AppRouter.kIntroHomeScreen);
     });
   }
 
   @override
-  void dispose() {
-    _rotationController.dispose();
-    _fadeController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFD7B48D),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            // ✨ خلفية متحركة + Fade-in (مربعات هندسية فقط)
-            AnimatedBuilder(
-              animation: Listenable.merge([
-                _rotationController,
-                _fadeAnimation,
-              ]),
-              builder: (context, child) {
-                return Opacity(
-                  opacity: _fadeAnimation.value,
-                  child: CustomPaint(
-                    size: Size.infinite,
-                    painter: BackgroundPatternPainter(
-                      rotation: _rotationController.value * 0.4,
-                      offsetShift: _rotationController.value * 20,
-                    ),
-                  ),
-                );
-              },
-            ),
-
-            // 🖼️ الصورة اللي في الخلفية (SVG)
-            SvgPicture.asset("assets/splash_asstes/frame 1.svg"),
-
-            // 🎯 اللوجو والنص في المنتصف
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ZoomIn(
-                    duration: const Duration(seconds: 2),
-                    child: SvgPicture.asset(
-                      AppIcons.kAppIcon,
-                      width: 120.w,
-                      height: 120.w,
-                      color: const Color(0xFF3C492F),
-                      colorBlendMode: BlendMode.srcIn,
-                    ),
-                  ),
-                  SizedBox(height: 25.h),
-                  FadeInDown(
-                    duration: const Duration(seconds: 2),
-                    delay: const Duration(milliseconds: 500),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.5,
-                        ),
-                        children: const [
-                          TextSpan(
-                            text: 'ARCH',
-                            style: TextStyle(color: Color(0xFF3C492F)),
-                          ),
-                          TextSpan(
-                            text: 'TECH',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xFFD2B48C),
+        body: SizedBox.expand(
+          child: Image.asset("assets/image/spash_image.png", fit: BoxFit.cover),
         ),
       ),
     );

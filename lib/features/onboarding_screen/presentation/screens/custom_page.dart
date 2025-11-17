@@ -4,7 +4,6 @@ import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/intro_pages_data.dart';
 
 class CustomPage extends StatefulWidget {
@@ -79,7 +78,6 @@ class _CustomPageState extends State<CustomPage>
         textDirection: TextDirection.ltr,
         alignment: Alignment.bottomCenter,
         children: [
-          /// الخلفية المزخرفة + الصورة
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
@@ -108,7 +106,6 @@ class _CustomPageState extends State<CustomPage>
             ),
           ),
 
-          /// الـ Container البيج فوق الصورة
           Positioned(
             bottom: 0,
             child: SlideTransition(
@@ -169,7 +166,6 @@ class _CustomPageState extends State<CustomPage>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            /// زر "تخطي" مع خروج سريع
                             InkWell(
                               onTap: () async {
                                 if (_isExiting) return;
@@ -193,7 +189,6 @@ class _CustomPageState extends State<CustomPage>
                               ),
                             ),
 
-                            /// زر "التالي" مع حركة خروج
                             InkWell(
                               onTap: () async {
                                 if (_isExiting) return;
@@ -203,11 +198,6 @@ class _CustomPageState extends State<CustomPage>
                                     GoRouter.of(
                                       context,
                                     ).push(AppRouter.kLoginScreen);
-                                    // Navigator.pushNamedAndRemoveUntil(
-                                    //   context,
-                                    //   AppRoutesName.layout,
-                                    //       (route) => false,
-                                    // );
                                   });
                                 } else {
                                   await _exitAnimation(() {
