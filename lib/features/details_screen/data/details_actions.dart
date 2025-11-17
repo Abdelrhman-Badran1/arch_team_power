@@ -1,12 +1,11 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/details_screen_body_info_actions_item.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/rate_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 final List<Widget> actions = [
-  DetailsScreenBodyInfoActionsItem(
-    icon: 'assets/icons/message_icon.svg',
-    title: '45',
-  ),
+  MessageAction(),
   DetailsScreenBodyInfoActionsItem(
     icon: 'assets/icons/location_icon.svg',
     title: '4.5 km',
@@ -22,6 +21,19 @@ final List<Widget> actions = [
     title: 'VO',
   ),
 ];
+
+class MessageAction extends StatelessWidget {
+  const MessageAction({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DetailsScreenBodyInfoActionsItem(
+      onTap: () => GoRouter.of(context).push(AppRouter.kComments),
+      icon: 'assets/icons/message_icon.svg',
+      title: '45',
+    );
+  }
+}
 
 class RateAction extends StatelessWidget {
   const RateAction({super.key});

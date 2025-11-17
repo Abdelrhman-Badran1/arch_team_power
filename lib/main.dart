@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  // final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-  // Hive.initFlutter(appDocumentDir.path);
+
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>('notes');
   runApp(const MyApp());

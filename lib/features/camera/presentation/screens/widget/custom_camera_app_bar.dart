@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/features/camera/presentation/screens/widget/open_lang_widget.dart';
@@ -17,7 +18,8 @@ class CameraAppBar extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () => GoRouter.of(context).pop(),
+            onTap: () =>
+                GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen),
             child: Icon(
               CupertinoIcons.back,
               size: 20.sp,

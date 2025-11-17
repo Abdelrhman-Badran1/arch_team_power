@@ -48,6 +48,12 @@ dependencies:
     sdk: flutter
   flutter_rating: ^2.0.2
   google_maps_flutter: ^2.14.0
+  hive: ^2.2.3
+  gallery_saver_plus: ^3.2.9
+  path_provider: ^2.1.5
+  camera: ^0.11.3
+  image_picker: ^1.2.1
+  hive_flutter: ^1.1.0
 
 
 

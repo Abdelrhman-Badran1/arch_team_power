@@ -1,6 +1,6 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/features/camera/presentation/screens/widget/custom_text_field.dart';
+import 'package:arch_team_power/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -77,7 +77,9 @@ class LoginScreen extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen);
+                      GoRouter.of(
+                        context,
+                      ).pushReplacement(AppRouter.kHomeScreen);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD2B48C),

@@ -15,21 +15,19 @@ class FavoriteScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            children:  [
+            children: [
               SizedBox(height: 20),
               Row(
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        GoRouter.of(
-                          context,
-                        ).push(AppRouter.kHomeScreen);
-                      },
-                      child: Icon(Icons.arrow_back_ios)),
-                  SizedBox(
-                    width: 90.w,
-
+                    onTap: () {
+                      GoRouter.of(
+                        context,
+                      ).pushReplacement(AppRouter.kHomeScreen);
+                    },
+                    child: Icon(Icons.arrow_back_ios),
                   ),
+                  SizedBox(width: 90.w),
                   Text(
                     "المفضلة",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
