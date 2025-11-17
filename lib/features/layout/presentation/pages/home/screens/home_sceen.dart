@@ -1,6 +1,8 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../widget/home_screen_widget/famous_places_list.dart';
 import '../../../widget/home_screen_widget/home_header.dart';
@@ -62,10 +64,14 @@ class HomeScreen extends StatelessWidget {
             /// ====== مكتبة النقوش القديمة ======
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              child: const SectionTitle(title: "مكتبة النقوش القديمة")
-                  .animate()
-                  .fade(duration: 600.ms)
-                  .slideY(begin: 0.3, duration: 600.ms),
+              child: GestureDetector(
+                onTap: () =>
+                    GoRouter.of(context).push(AppRouter.kLibraryScreen),
+                child: const SectionTitle(title: "مكتبة النقوش القديمة")
+                    .animate()
+                    .fade(duration: 600.ms)
+                    .slideY(begin: 0.3, duration: 600.ms),
+              ),
             ),
             const InscriptionLibraryList()
                 .animate()

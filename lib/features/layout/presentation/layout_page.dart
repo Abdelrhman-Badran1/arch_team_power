@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
-import 'package:arch_team_power/features/favorite_screen/presentation/screens/favorite_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/add_palace_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/home/screens/home_sceen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/profile_screen.dart';
@@ -24,38 +23,45 @@ class _LayoutPageState extends State<LayoutPage> {
     HomeScreen(),
     MapScreen(),
     AddPalaceScreen(),
-    FavoriteScreen(),
+    FavScreen(),
     ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: (value) {
-          selectedIndex = value;
-          setState(() {});
-        },
-        backgroundColor: Colors.white,
-        unselectedItemColor: AppColors.unSelectItemSelectedColor,
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: false,
-        fixedColor: AppColors.unSelectItemSelectedColor,
-        selectedLabelStyle: TextStyle(
-          color: AppColors.primary,
-          fontStyle: FontStyle.normal,
-          fontSize: 10.sp,
-          fontWeight: FontWeight.bold,
-        ),
-
-        items: [
-          customBtnItem(image: AppIcons.kHomeIcon, label: "الرئيسية"),
-          customBtnItem(image: AppIcons.kLocatMarkerIcon, label: "الخرائط"),
-          customBtnItem(image: AppIcons.kCameraIcon, label: "الكاميرا"),
-          customBtnItem(image: AppIcons.kFavIcon, label: "المفضله"),
-          customBtnItem(image: AppIcons.kPrsonalIcon, label: "الملف الشخصي"),
-        ],
-      ),
+      bottomNavigationBar: selectedIndex == 2
+          ? null
+          : BottomNavigationBar(
+              currentIndex: selectedIndex,
+              onTap: (value) {
+                selectedIndex = value;
+                setState(() {});
+              },
+              backgroundColor: Colors.white,
+              unselectedItemColor: AppColors.unSelectItemSelectedColor,
+              type: BottomNavigationBarType.fixed,
+              showUnselectedLabels: false,
+              fixedColor: AppColors.unSelectItemSelectedColor,
+              selectedLabelStyle: TextStyle(
+                color: AppColors.primary,
+                fontStyle: FontStyle.normal,
+                fontSize: 10.sp,
+                fontWeight: FontWeight.bold,
+              ),
+              items: [
+                customBtnItem(image: AppIcons.kHomeIcon, label: "الرئيسية"),
+                customBtnItem(
+                  image: AppIcons.kLocatMarkerIcon,
+                  label: "الخرائط",
+                ),
+                customBtnItem(image: AppIcons.kCameraIcon, label: "الكاميرا"),
+                customBtnItem(image: AppIcons.kFavIcon, label: "المفضله"),
+                customBtnItem(
+                  image: AppIcons.kPrsonalIcon,
+                  label: "الملف الشخصي",
+                ),
+              ],
+            ),
       body: screens[selectedIndex],
     );
   }

@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FavButton extends StatefulWidget {
-  const FavButton({super.key});
+class CustomFavButton extends StatefulWidget {
+  const CustomFavButton({super.key});
 
   @override
-  State<FavButton> createState() => _FavButtonState();
+  State<CustomFavButton> createState() => _CustomFavButtonState();
 }
 
-class _FavButtonState extends State<FavButton> {
-  bool isActive = true;
+class _CustomFavButtonState extends State<CustomFavButton> {
+  bool isActive = false;
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/count_up_timer.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/custom_app_bar.dart';
+import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/otp.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/resend_code_widget.dart';
 import 'package:arch_team_power/generated/l10n.dart';
