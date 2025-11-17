@@ -1,13 +1,18 @@
-import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
+import 'package:arch_team_power/features/maps_screen/presentation/models/map_place_model.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/some_details_about_the_active_place_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class SomeDetailsAboutTheActivePlace extends StatelessWidget {
-  const SomeDetailsAboutTheActivePlace({super.key});
+  const SomeDetailsAboutTheActivePlace({
+    super.key,
+    required this.onTap,
+    required this.place,
+  });
+  final MapPlaceModel place;
 
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -15,9 +20,7 @@ class SomeDetailsAboutTheActivePlace extends StatelessWidget {
       left: 20,
       right: 20,
       child: GestureDetector(
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kDetailsScreen);
-        },
+        onTap: onTap,
         child: Container(
           height: 112.h,
           width: 248.w,

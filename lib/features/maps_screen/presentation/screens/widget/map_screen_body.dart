@@ -1,12 +1,11 @@
 import 'dart:async';
-
-import 'package:arch_team_power/core/utils/map_styles.dart';
-import 'package:arch_team_power/features/maps_screen/presentation/models/map_place_model.dart';
-import 'package:arch_team_power/features/maps_screen/presentation/screens/methods/load_markers_body_method.dart';
-import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/custom_google_map_widget.dart';
+import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/features/maps_screen/presentation/models/map_view_model.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/map_search_text_field.dart';
+import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/map_widget.dart';
 import 'package:arch_team_power/features/maps_screen/presentation/screens/widget/some_details_about_the_active_location.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreenBody extends StatefulWidget {
@@ -17,62 +16,42 @@ class MapScreenBody extends StatefulWidget {
 
 class _MapScreenBodyState extends State<MapScreenBody> {
   final Completer<GoogleMapController> controller = Completer();
-
-  String mapStyle = '';
-  Set<Marker> markers = {};
-  Set<Polyline> polylines = {};
-
-  List<MapPlaceModel> places = [
-    MapPlaceModel(id: "1", location: LatLng(29.97529, 31.13755)),
-    MapPlaceModel(id: "2", location: LatLng(29.9785, 31.13600)),
-    MapPlaceModel(id: "3", location: LatLng(29.97620, 31.13340)),
-  ];
+  late final MapViewModel viewModel;
 
   @override
   void initState() {
     super.initState();
-    loadMapStyle();
-    loadMarkers(places, controller, markers, polylines, setState);
+    viewModel = MapViewModel(
+      onMapRefresh: () => setState(() {}),
+      controller: controller,
+    );
+    viewModel.init();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        GestureDetector(
-          onTap: () async {
-            for (var place in places) {
-              place.isActive = false;
-            }
-            polylines.clear();
-
-            await loadMarkers(places, controller, markers, polylines, setState);
-
-            setState(() {});
-          },
-          child: CustomGoogleMapWidget(
+    return Scaffold(
+      body: Stack(
+        children: [
+          MapWidget(
             controller: controller,
-            mapStyle: mapStyle,
-            markers: markers,
-            polylines: polylines,
-            places: places,
+            mapStyle: viewModel.mapStyle,
+            markers: viewModel.markers,
+            polylines: viewModel.polylines,
+            onMapTapped: (position) => viewModel.clearSelection(),
+            onMapCreated: (c) => controller.complete(c),
           ),
-        ),
-
-        MapSearchTextField(),
-
-        if (places.any((placeMarker) => placeMarker.isActive))
-          SomeDetailsAboutTheActivePlace(),
-      ],
+          const MapSearchTextField(),
+          if (viewModel.activePlace != null)
+            SomeDetailsAboutTheActivePlace(
+              place: viewModel.activePlace!,
+              onTap: () => context.push(
+                AppRouter.kDetailsScreen,
+                extra: viewModel.activePlace,
+              ),
+            ),
+        ],
+      ),
     );
-  }
-
-  void loadMapStyle() async {
-    final style = await DefaultAssetBundle.of(
-      context,
-    ).loadString(MapStyles.kMapStyle);
-    setState(() {
-      mapStyle = style;
-    });
   }
 }
