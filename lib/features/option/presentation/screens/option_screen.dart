@@ -6,9 +6,11 @@ class OptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffF6F6F6),
-      body: OptionScreenBody(),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xffF6F6F6),
+        body: OptionScreenBody(),
+      ),
     );
   }
 }

@@ -1,7 +1,9 @@
+import 'package:arch_team_power/core/cubit/locale_cubit/locale_cubit.dart';
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/features/notes/models/note_model.dart';
-import 'package:arch_team_power/generated/l10n.dart';
+import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -12,7 +14,7 @@ void main() async {
 
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>('notes');
-  runApp(const MyApp());
+  runApp(BlocProvider(create: (context) => LocaleCubit(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,17 +27,21 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          locale: const Locale('ar'),
-          localizationsDelegates: [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          routerConfig: AppRouter.router, // نظام التنقل بالـ GoRouter
+        return BlocBuilder<LocaleCubit, Locale>(
+          builder: (context, locale) {
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              locale: locale,
+              supportedLocales: AppLocalizations.supportedLocales,
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              routerConfig: AppRouter.router,
+            );
+          },
         );
       },
     );

@@ -85,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                     CustomButton(
                       onTap: () => GoRouter.of(
                         context,
-                      ).pushReplacement(AppRouter.kHomeScreen),
+                      ).pushReplacement(AppRouter.kLangSelector),
                       title: 'تسجيل الدخول',
                       buttonColor: Color(0xffD2B48C),
                     ),

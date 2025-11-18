@@ -1,9 +1,11 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class OptionScreenBody extends StatelessWidget {
   const OptionScreenBody({super.key});
@@ -34,7 +36,12 @@ class OptionScreenBody extends StatelessWidget {
             ),
             SizedBox(height: 56.h),
 
-            CustomButton(title: "ايقونه سائح", buttonColor: Color(0xFFD2B48C)),
+            CustomButton(
+              title: "ايقونه سائح",
+              buttonColor: Color(0xFFD2B48C),
+              onTap: () =>
+                  GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen),
+            ),
             SizedBox(height: 17.h),
             CustomButton(
               buttonColor: Colors.white,

@@ -3,7 +3,7 @@ import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/change_password_dialog.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/core/widgets/custom_text_field.dart';
-import 'package:arch_team_power/generated/l10n.dart';
+import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,15 +16,15 @@ class NewPasswordViewBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 20.h),
-          CustomAppBar(title: S.of(context).new_password),
+          CustomAppBar(title: AppLocalizations.of(context)!.new_password),
           SizedBox(height: 40.h),
           Image.asset(AppAssets.kNewPasswordAvater),
           SizedBox(height: 41.h),
           CustomTextField(
             obscureText: true,
             showEyeIcon: true,
-            hintText: S.of(context).enter_new_password,
-            textFieldTitle: S.of(context).new_password,
+            hintText: AppLocalizations.of(context)!.enter_new_password,
+            textFieldTitle: AppLocalizations.of(context)!.new_password,
           ),
 
           SizedBox(height: 21.h),
@@ -32,8 +32,8 @@ class NewPasswordViewBody extends StatelessWidget {
           CustomTextField(
             obscureText: true,
             showEyeIcon: true,
-            hintText: S.of(context).confirm_password,
-            textFieldTitle: S.of(context).enter_new_password,
+            hintText: AppLocalizations.of(context)!.confirm_password,
+            textFieldTitle: AppLocalizations.of(context)!.enter_new_password,
           ),
           SizedBox(height: 35.h),
           CustomButton(
@@ -45,7 +45,7 @@ class NewPasswordViewBody extends StatelessWidget {
                 },
               );
             },
-            title: S.of(context).change_password,
+            title: AppLocalizations.of(context)!.change_password,
             buttonColor: Color(0xffD2B48C),
           ),
         ],

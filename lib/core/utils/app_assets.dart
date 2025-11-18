@@ -32,4 +32,5 @@ class AppAssets {
   static const kVerifyAvatar = 'assets/image/verify_avatar.png';
   static const kRashedStone = 'assets/image/rashed_stone.png';
   static const kStartYourJourney = 'assets/image/start_your_journey_avatar.png';
+  static const kChoseApplangAvatar = 'assets/image/chose_app_lang_avatar.png';
 }

@@ -2,7 +2,7 @@ import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/details_screen/data/details_actions.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/details_screen_body_info_title_and_category_name.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/similar_places_near_you_list_view.dart';
-import 'package:arch_team_power/generated/l10n.dart';
+import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +30,7 @@ class DetailsScreenBodyInfo extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Text(
-            S.of(context).change_password,
+            AppLocalizations.of(context)!.change_password,
             style: AppTextStyles.syleNorsalRegular14(
               context,
             ).copyWith(color: Color(0xFFCE1225)),

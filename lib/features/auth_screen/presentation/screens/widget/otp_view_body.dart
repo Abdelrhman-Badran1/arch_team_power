@@ -4,7 +4,7 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/widget
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/otp.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/resend_code_widget.dart';
-import 'package:arch_team_power/generated/l10n.dart';
+import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +17,7 @@ class OtpViewBody extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 20.h),
-        CustomAppBar(title: S.of(context).code_verification),
+        CustomAppBar(title: AppLocalizations.of(context)!.code_verification),
         SizedBox(height: 48.h),
         Center(child: CountUpTimer()),
         SizedBox(height: 13.5.h),
@@ -25,7 +25,7 @@ class OtpViewBody extends StatelessWidget {
         SizedBox(height: 41.5.h),
         CustomButton(
           onTap: () => GoRouter.of(context).push(AppRouter.kNewPasswordView),
-          title: S.of(context).send,
+          title: AppLocalizations.of(context)!.send,
           buttonColor: Color(0xffD2B48C),
         ),
         SizedBox(height: 14.h),

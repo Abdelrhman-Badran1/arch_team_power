@@ -1,6 +1,6 @@
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
-import 'package:arch_team_power/generated/l10n.dart';
+import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,7 +22,7 @@ class ChangePasswordDialog extends StatelessWidget {
               SvgPicture.asset(AppAssets.kDoneSticker),
               SizedBox(height: 45.h),
               Text(
-                S.of(context).password_has_been_changed,
+                AppLocalizations.of(context)!.password_has_been_changed,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.syleNorsalMedium16(
                   context,
@@ -30,7 +30,9 @@ class ChangePasswordDialog extends StatelessWidget {
               ),
               SizedBox(height: 6),
               Text(
-                S.of(context).your_password_has_been_successfully_changed,
+                AppLocalizations.of(
+                  context,
+                )!.your_password_has_been_successfully_changed,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.syleNorsalRegular14(
                   context,

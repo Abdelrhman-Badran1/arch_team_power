@@ -4,6 +4,8 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/new_pa
 import 'package:arch_team_power/features/auth_screen/presentation/screens/otp_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/register_screen.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/verify_email_view.dart';
+import 'package:arch_team_power/features/choseAppLang/presentation/screens/chose_app_lang_screen.dart';
+import 'package:arch_team_power/features/choseAppLang/presentation/screens/widget/lang_selector.dart';
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
@@ -28,6 +30,7 @@ class AppRouter {
   static const kNewPasswordView = '/newPasswordView';
   static const kOtpView = '/otpView';
   static const kVerifyEmailView = '/verifyEmailView';
+  static const kLangSelector = '/LangSelector';
   static const kOptionScreen = '/OptionScreen';
   static const kHomeScreen = "/home_screen";
   static const kDetailsScreen = '/DetailsScreen';
@@ -57,6 +60,10 @@ class AppRouter {
       GoRoute(
         path: kRegisterScreen,
         builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: kLangSelector,
+        builder: (context, state) => const ChoseAppLangScreen(),
       ),
       GoRoute(
         path: kOptionScreen,
