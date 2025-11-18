@@ -2,7 +2,6 @@ import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'search_box.dart';
 
 class HomeHeader extends StatelessWidget {

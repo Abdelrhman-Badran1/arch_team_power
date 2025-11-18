@@ -1,9 +1,8 @@
-import 'package:arch_team_power/core/utils/app_keys.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 Future<List<LatLng>> getRoutePoints(LatLng origin, LatLng destination) async {
-  final polylinePoints = PolylinePoints(apiKey: AppKeys.kGoogleMapsKey);
+  final polylinePoints = PolylinePoints();
 
   final request = PolylineRequest(
     origin: PointLatLng(origin.latitude, origin.longitude),

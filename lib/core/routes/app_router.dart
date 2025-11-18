@@ -5,7 +5,6 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/otp_vi
 import 'package:arch_team_power/features/auth_screen/presentation/screens/register_screen.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/verify_email_view.dart';
 import 'package:arch_team_power/features/choseAppLang/presentation/screens/chose_app_lang_screen.dart';
-import 'package:arch_team_power/features/choseAppLang/presentation/screens/widget/lang_selector.dart';
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';

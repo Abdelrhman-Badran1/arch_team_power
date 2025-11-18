@@ -24,6 +24,8 @@ class CustomSrearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 7.h),
+
       height: 39.h,
       width: 255.w,
       decoration: BoxDecoration(
@@ -34,45 +36,42 @@ class CustomSrearchTextField extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w),
-              child: TextFormField(
-                autocorrect: false,
-                enableSuggestions: false,
-                controller: controller,
-                cursorColor: Colors.black,
-                canRequestFocus: canRequestFocus ?? true,
-                onChanged: onChanged,
-                style: AppTextStyles.syleNorsalMedium14(context),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  enabledBorder: outLineInputBorderMethod(),
-                  focusedBorder: outLineInputBorderMethod(),
-                  hintText: hintText,
-                  prefixIcon: prefix,
-                  prefixIconColor: const Color(0xffD0D0D0),
-                  prefixIconConstraints: BoxConstraints(
-                    maxWidth: 15.w,
-                    maxHeight: 15.h,
-                    minHeight: 15.h,
-                    minWidth: 15.w,
-                  ),
-
-                  suffixIcon: suffix,
-                  suffixIconColor: Colors.black,
-                  suffixIconConstraints: BoxConstraints(
-                    maxWidth: 15.w,
-                    maxHeight: 15.h,
-                    minHeight: 15.h,
-                    minWidth: 15.w,
-                  ),
-
-                  hintStyle:
-                      hintStyle ??
-                      AppTextStyles.syleNorsalRegular10(
-                        context,
-                      ).copyWith(color: const Color(0xffD0D0D0)),
+            child: TextFormField(
+              autocorrect: false,
+              enableSuggestions: false,
+              controller: controller,
+              cursorColor: Colors.black,
+              canRequestFocus: canRequestFocus ?? true,
+              onChanged: onChanged,
+              style: AppTextStyles.syleNorsalMedium14(context),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                enabledBorder: outLineInputBorderMethod(),
+                focusedBorder: outLineInputBorderMethod(),
+                hintText: hintText,
+                prefixIcon: prefix,
+                prefixIconColor: const Color(0xffD0D0D0),
+                prefixIconConstraints: BoxConstraints(
+                  maxWidth: 15.w,
+                  maxHeight: 15.h,
+                  minHeight: 15.h,
+                  minWidth: 15.w,
                 ),
+
+                suffixIcon: suffix,
+                suffixIconColor: Colors.black,
+                suffixIconConstraints: BoxConstraints(
+                  maxWidth: 15.w,
+                  maxHeight: 15.h,
+                  minHeight: 15.h,
+                  minWidth: 15.w,
+                ),
+
+                hintStyle:
+                    hintStyle ??
+                    AppTextStyles.syleNorsalRegular10(
+                      context,
+                    ).copyWith(color: const Color(0xffD0D0D0)),
               ),
             ),
           ),

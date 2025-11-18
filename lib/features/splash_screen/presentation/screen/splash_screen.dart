@@ -1,5 +1,4 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
-import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';

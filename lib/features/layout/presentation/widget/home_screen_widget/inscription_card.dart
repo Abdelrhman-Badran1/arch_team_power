@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -58,10 +57,7 @@ class _InscriptionCardState extends State<InscriptionCard> {
                     height: 120.h,
                     width: double.infinity,
                     color: Colors.white,
-                    child: Image.asset(
-                      widget.image,
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.asset(widget.image, fit: BoxFit.cover),
                   ),
                 ),
                 Positioned(
@@ -88,24 +84,26 @@ class _InscriptionCardState extends State<InscriptionCard> {
                           ),
                         ],
                       ),
-                      child: Icon(
-                        isFav ? Icons.favorite : Icons.favorite_border,
-                        color: isFav
-                            ? Colors.pinkAccent
-                            : Colors.pinkAccent.withOpacity(0.6),
-                        size: 20,
-                      )
-                          .animate(target: isFav ? 1 : 0)
-                          .scale(
-                        duration: 250.ms,
-                        curve: Curves.easeOutBack,
-                        begin: const Offset(0.8, 0.8),
-                        end: const Offset(1.1, 1.1),
-                      )
-                          .then()
-                          .scale(
-                          begin: const Offset(1.1, 1.1),
-                          end: const Offset(1, 1)),
+                      child:
+                          Icon(
+                                isFav ? Icons.favorite : Icons.favorite_border,
+                                color: isFav
+                                    ? Colors.pinkAccent
+                                    : Colors.pinkAccent.withOpacity(0.6),
+                                size: 20,
+                              )
+                              .animate(target: isFav ? 1 : 0)
+                              .scale(
+                                duration: 250.ms,
+                                curve: Curves.easeOutBack,
+                                begin: const Offset(0.8, 0.8),
+                                end: const Offset(1.1, 1.1),
+                              )
+                              .then()
+                              .scale(
+                                begin: const Offset(1.1, 1.1),
+                                end: const Offset(1, 1),
+                              ),
                     ),
                   ),
                 ),
@@ -114,8 +112,7 @@ class _InscriptionCardState extends State<InscriptionCard> {
 
             /// ======= تفاصيل النصوص =======
             Padding(
-              padding:
-              EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -134,8 +131,11 @@ class _InscriptionCardState extends State<InscriptionCard> {
                   /// الموقع
                   Row(
                     children: [
-                      const Icon(Icons.location_on_outlined,
-                          size: 16, color: Colors.grey),
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 16,
+                        color: Colors.grey,
+                      ),
                       SizedBox(width: 4.w),
                       Text(
                         widget.location,
@@ -154,8 +154,7 @@ class _InscriptionCardState extends State<InscriptionCard> {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.star,
-                              color: Colors.amber, size: 16),
+                          const Icon(Icons.star, color: Colors.amber, size: 16),
                           SizedBox(width: 2.w),
                           Text(
                             "(${widget.rating})",

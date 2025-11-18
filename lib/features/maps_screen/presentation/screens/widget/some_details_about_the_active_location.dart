@@ -33,6 +33,7 @@ class SomeDetailsAboutTheActivePlace extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                SomeDetailsAboutTheActivePlaceInfo(),
                 Container(
                   width: 91.w,
                   height: 88.h,
@@ -43,7 +44,6 @@ class SomeDetailsAboutTheActivePlace extends StatelessWidget {
                     ),
                   ),
                 ),
-                SomeDetailsAboutTheActivePlaceInfo(),
               ],
             ),
           ),

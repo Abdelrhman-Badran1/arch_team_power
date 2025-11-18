@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:arch_team_power/core/utils/app_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -24,6 +25,8 @@ class MapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
+      key: const ValueKey(AppKeys.kGoogleMapsKey),
+
       initialCameraPosition: const CameraPosition(
         target: LatLng(29.9773, 31.1325),
         zoom: 14.5,

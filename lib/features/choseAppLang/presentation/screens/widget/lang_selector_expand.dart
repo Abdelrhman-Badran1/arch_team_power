@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LangSelectorExpandFaild extends StatefulWidget {
-  LangSelectorExpandFaild({super.key, required this.isOpen});
-  bool isOpen;
+  const LangSelectorExpandFaild({super.key, this.isOpen = false});
+  final bool? isOpen;
   @override
   State<LangSelectorExpandFaild> createState() =>
       _LangSelectorExpandFaildState();
@@ -36,7 +36,7 @@ class _LangSelectorExpandFaildState extends State<LangSelectorExpandFaild> {
           return GestureDetector(
             onTap: () {
               context.read<LocaleCubit>().changeLocale(lang["locale"]);
-              setState(() => widget.isOpen = false);
+              setState(() => widget.isOpen);
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),

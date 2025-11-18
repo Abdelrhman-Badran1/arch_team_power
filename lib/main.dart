@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -14,6 +15,7 @@ void main() async {
 
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>('notes');
+  AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
   runApp(BlocProvider(create: (context) => LocaleCubit(), child: MyApp()));
 }
 
