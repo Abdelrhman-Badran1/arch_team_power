@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/widgets/action_button.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,14 @@ class NotificationItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         textDirection: TextDirection.rtl,
         children: [
-          CircleAvatar(radius: 25, backgroundImage: AssetImage(imagePath)),
+          SizedBox(
+            height: 27,
+            width: 27,
+            child: CircleAvatar(
+              radius: 25,
+              backgroundImage: AssetImage(imagePath),
+            ),
+          ),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -33,9 +41,9 @@ class NotificationItem extends StatelessWidget {
                 Text(
                   mainText,
                   textAlign: TextAlign.right,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: AppTextStyles.syleNorsalMedium15(context),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   textDirection: TextDirection.rtl,
@@ -48,11 +56,13 @@ class NotificationItem extends StatelessWidget {
                       )
                       .toList(),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 5),
                 Text(
                   timeText,
                   textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 20, color: AppColors.disabled),
+                  style: AppTextStyles.syleNorsalRegular14(
+                    context,
+                  ).copyWith(color: AppColors.textHistory),
                 ),
               ],
             ),

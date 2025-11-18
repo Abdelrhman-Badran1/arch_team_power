@@ -16,20 +16,15 @@ Widget buildMessage(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.4),
-
-            blurRadius: 4,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(17),
+          topLeft: Radius.circular(17),
+          topRight: Radius.circular(17),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // الصورة والاسم والصفة
           Row(
             children: [
               CircleAvatar(radius: 25, backgroundImage: AssetImage(imagePath)),

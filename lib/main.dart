@@ -54,7 +54,9 @@ class MyApp extends StatelessWidget {
 // import 'package:arch_team_power/core/routes/app_router.dart';
 // import 'package:arch_team_power/features/Form_Page/form_page.dart';
 // import 'package:arch_team_power/features/Notifications/presentation/screens/notifications_page.dart';
-// import 'package:arch_team_power/generated/l10n.dart';
+// import 'package:arch_team_power/features/auth_screen/presentation/screens/login_screen.dart';
+// import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
+// import 'package:arch_team_power/l10n/app_localizations.dart';
 // import 'package:device_preview/device_preview.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
@@ -82,17 +84,16 @@ class MyApp extends StatelessWidget {
 //           // DevicePreview builder
 //           builder: DevicePreview.appBuilder,
 
-//           // Localization setup
 //           localizationsDelegates: const [
-//             S.delegate,
+//             AppLocalizations.delegate,
 //             GlobalMaterialLocalizations.delegate,
 //             GlobalWidgetsLocalizations.delegate,
 //             GlobalCupertinoLocalizations.delegate,
 //           ],
-//           supportedLocales: S.delegate.supportedLocales,
+//           supportedLocales: AppLocalizations.supportedLocales,
 
 //           // Home Page (زي ما انت عايز)
-//           home: const MyFormPage(),
+//           home: NotificationsPage(),
 //         );
 //       },
 //     );

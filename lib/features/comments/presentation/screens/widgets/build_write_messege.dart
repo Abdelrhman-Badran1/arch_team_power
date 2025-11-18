@@ -2,6 +2,7 @@ import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 Widget buildWriteMessegeAndSend(BuildContext context) {
   return Padding(
@@ -11,6 +12,13 @@ Widget buildWriteMessegeAndSend(BuildContext context) {
         Expanded(
           child: TextField(
             decoration: InputDecoration(
+              suffixIcon: Container(
+                width: 16,
+                height: 14,
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset("image/image.svg", fit: BoxFit.contain),
+              ),
+
               hintText: "اكتب تعليق...",
               hintStyle: AppTextStyles.syleNorsalRegular10(
                 context,
