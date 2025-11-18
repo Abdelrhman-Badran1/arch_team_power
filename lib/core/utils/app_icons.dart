@@ -11,7 +11,7 @@ class AppIcons {
   static const kHomeIcon = 'assets/icons/home_icon.svg';
   static const kLangIcon = 'assets/icons/lang_ic.png';
   static const kLocatMarkerIcon = 'assets/icons/local_icon.svg';
-  static const kLocationIcon = 'assets/icons/location_icon.svg';
+  static const kActiveLocationIcon = 'assets/icons/location_icon.svg';
   static const kLogOutIcon = 'assets/icons/logout_ic.png';
   static const kLoveIcon = 'assets/icons/love_icon.svg';
   static const kCommentsIcon = 'assets/icons/message_icon.svg';
@@ -39,4 +39,7 @@ class AppIcons {
   static const kMeteorIconsImages = 'assets/icons/meteor-icons_images.svg';
   static const kEnglishLangFlage = 'assets/icons/english_flag_icon.png';
   static const kArbicLangFlage = 'assets/icons/arabic_flag_icon.png';
+  static const kUnAciveHomeIcon = 'assets/icons/un_acive_home_icon.svg';
+  static const kActiveFavIcon = 'assets/icons/active_fav_icon.svg';
+  static const kActiveProfileIcon = 'assets/icons/active_profile_icon.svg';
 }

@@ -1,7 +1,8 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
-Widget buildRatingTile(String label, int stars) {
+Widget buildRatingTile(BuildContext context, String label, int stars) {
   return RadioListTile<int>(
     value: 1,
     groupValue: 0,
@@ -24,7 +25,9 @@ Widget buildRatingTile(String label, int stars) {
         const SizedBox(width: 15),
         Text(
           label,
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          style: AppTextStyles.syleNorsalMedium14(
+            context,
+          ).copyWith(color: Color(0xFF8A8A8A)),
         ),
         const SizedBox(width: 8),
       ],

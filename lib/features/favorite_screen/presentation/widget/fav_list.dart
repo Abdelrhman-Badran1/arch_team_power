@@ -49,7 +49,10 @@ class _FavListState extends State<FavList> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content:  Text("تم حذف العنصر من المفضلة" , style: AppTextStyles.syleNorsalMedium12(context) ),
+        content: Text(
+          "تم حذف العنصر من المفضلة",
+          style: AppTextStyles.syleNorsalMedium12(context),
+        ),
         backgroundColor: AppColors.primary,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -62,7 +65,7 @@ class _FavListState extends State<FavList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding:  EdgeInsets.only(top: 20.w),
+      padding: EdgeInsets.only(bottom: 20.h),
       itemCount: items.length,
       itemBuilder: (context, index) {
         final item = items[index];
@@ -75,29 +78,29 @@ class _FavListState extends State<FavList> {
           background: Container(
             decoration: BoxDecoration(
               color: AppColors.primary,
-              borderRadius: BorderRadius.circular(26)
-
+              borderRadius: BorderRadius.circular(26),
             ),
-            margin:  EdgeInsets.only(bottom: 15.w),
+            margin: EdgeInsets.only(bottom: 15.w),
             alignment: Alignment.centerRight,
-            padding:  EdgeInsets.only(right: 25.w),
-            child:  Icon(Icons.delete, color: AppColors.unSelectItemSelectedColor, size: 30.w),
+            padding: EdgeInsets.only(right: 25.w),
+            child: Icon(
+              Icons.delete,
+              color: AppColors.unSelectItemSelectedColor,
+              size: 30.w,
+            ),
           ),
 
           /// 🔥 عند السحب
           onDismissed: (_) => removeItem(index),
 
           child: Padding(
-            padding:  EdgeInsets.only(bottom: 15.w),
+            padding: EdgeInsets.only(bottom: 15.w),
 
             /// 🔥 Animation لكل كارد عند ظهوره
             child: FavItemCard(
               model: item,
               onRemove: () => removeItem(index),
-            )
-                .animate()
-                .fadeIn(duration: 350.ms)
-                .slideX(begin: 0.1, end: 0),
+            ).animate().fadeIn(duration: 350.ms).slideX(begin: 0.1, end: 0),
           ),
         );
       },

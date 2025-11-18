@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class DistanceSlider extends StatelessWidget {
@@ -8,10 +9,7 @@ class DistanceSlider extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'المسافة',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        ),
+        Text('المسافة', style: AppTextStyles.syleNorsalMedium14(context)),
         const SizedBox(height: 8),
         RangeSlider(
           values: const RangeValues(10, 1000),
@@ -25,11 +23,31 @@ class DistanceSlider extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text('4 ك', style: TextStyle(fontSize: 20)),
-            Text('10 ك', style: TextStyle(fontSize: 20)),
-            Text('1000 ك', style: TextStyle(fontSize: 20)),
-            Text('3000 ك', style: TextStyle(fontSize: 20)),
+          children: [
+            Text(
+              '4 ك',
+              style: AppTextStyles.syleNorsalMedium12(
+                context,
+              ).copyWith(color: Color(0xFF8A8A8A)),
+            ),
+            Text(
+              '10 ك',
+              style: AppTextStyles.syleNorsalMedium12(
+                context,
+              ).copyWith(color: Color(0xFF8A8A8A)),
+            ),
+            Text(
+              '1000 ك',
+              style: AppTextStyles.syleNorsalMedium12(
+                context,
+              ).copyWith(color: Color(0xFF8A8A8A)),
+            ),
+            Text(
+              '3000 ك',
+              style: AppTextStyles.syleNorsalMedium12(
+                context,
+              ).copyWith(color: Color(0xFF8A8A8A)),
+            ),
           ],
         ),
       ],

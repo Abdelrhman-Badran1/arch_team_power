@@ -1,4 +1,6 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomChip extends StatelessWidget {
   final String text;
@@ -21,9 +23,8 @@ class CustomChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 69,
-        height: 40,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        width: 58.w,
+        height: 32.h,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(8),
@@ -32,11 +33,9 @@ class CustomChip extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyles.syleNorsalMedium14(
+              context,
+            ).copyWith(color: textColor),
           ),
         ),
       ),

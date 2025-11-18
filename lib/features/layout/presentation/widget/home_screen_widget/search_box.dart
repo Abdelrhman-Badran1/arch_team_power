@@ -1,8 +1,10 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SearchBox extends StatelessWidget {
@@ -41,12 +43,9 @@ class SearchBox extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "ابحث عن أماكن ومواقع أثرية...",
-                        hintStyle: GoogleFonts.tajawal(
-                          fontSize: 12.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.transparent,
-                        ),
+                        hintStyle: AppTextStyles.syleNorsalMedium10(
+                          context,
+                        ).copyWith(color: Colors.white),
                         border: InputBorder.none,
                       ),
                       textAlign: TextAlign.right,
@@ -63,20 +62,23 @@ class SearchBox extends StatelessWidget {
         /// ===== زر الفلتر (الإعدادات) =====
         Expanded(
           flex: 0,
-          child: Container(
-            height: 50.h,
-            width: 50.w,
-            decoration: BoxDecoration(
-              color: const Color(0xFFD4B48C), // لون ذهبي فاتح
-              borderRadius: BorderRadius.circular(14.r),
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                AppIcons.kFilterIcon, // أيقونة SVG الخاصة بالفلتر
-                width: 22.w,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
+          child: GestureDetector(
+            onTap: () => GoRouter.of(context).push(AppRouter.kFilterUI),
+            child: Container(
+              height: 50.h,
+              width: 50.w,
+              decoration: BoxDecoration(
+                color: const Color(0xFFD4B48C), // لون ذهبي فاتح
+                borderRadius: BorderRadius.circular(14.r),
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  AppIcons.kFilterIcon, // أيقونة SVG الخاصة بالفلتر
+                  width: 22.w,
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),

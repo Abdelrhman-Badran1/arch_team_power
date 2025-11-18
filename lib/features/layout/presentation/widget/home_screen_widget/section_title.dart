@@ -1,6 +1,6 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -11,10 +11,9 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: GoogleFonts.tajawal(
-        fontSize: 18.sp,
-        fontWeight: FontWeight.bold,
-      ),
+      style: AppTextStyles.syleNorsalRegular14(
+        context,
+      ).copyWith(fontSize: 15.sp),
     );
   }
 }

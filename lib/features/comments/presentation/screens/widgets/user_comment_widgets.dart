@@ -1,8 +1,10 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
-Widget buildMessage({
+Widget buildMessage(
+  BuildContext context, {
   required String name,
   required String role,
   required String text,
@@ -35,13 +37,13 @@ Widget buildMessage({
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+                  Text(name, style: AppTextStyles.syleNorsalMedium12(context)),
                   Text(
                     role,
-                    style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                    style: AppTextStyles.syleNorsalRegular10(context).copyWith(
+                      color: Color(0xFF8A8A8A),
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ],
               ),
@@ -53,10 +55,9 @@ Widget buildMessage({
           // الكومنت
           Text(
             text,
-            style: const TextStyle(
-              fontSize: 15,
-              color: AppColors.textSecondary,
-            ),
+            style: AppTextStyles.syleNorsalRegular12(
+              context,
+            ).copyWith(color: Color(0xFF8A8A8A)),
           ),
 
           const SizedBox(height: 10),

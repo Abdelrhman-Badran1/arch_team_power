@@ -1,8 +1,9 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
-Widget buildWriteMessegeAndSend() {
+Widget buildWriteMessegeAndSend(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 30),
     child: Row(
@@ -11,6 +12,9 @@ Widget buildWriteMessegeAndSend() {
           child: TextField(
             decoration: InputDecoration(
               hintText: "اكتب تعليق...",
+              hintStyle: AppTextStyles.syleNorsalRegular10(
+                context,
+              ).copyWith(color: Color(0xFFD0D0D0)),
               filled: true,
               fillColor: AppColors.white,
               enabledBorder: OutlineInputBorder(

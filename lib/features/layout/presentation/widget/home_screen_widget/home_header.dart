@@ -1,7 +1,9 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'search_box.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -11,7 +13,6 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        /// خلفية SVG
         SizedBox(
           height: 300.h,
           width: double.infinity,
@@ -21,7 +22,6 @@ class HomeHeader extends StatelessWidget {
           ),
         ),
 
-        /// تدرج لوني فوق الخلفية
         Container(
           height: 300.h,
           width: double.infinity,
@@ -49,7 +49,15 @@ class HomeHeader extends StatelessWidget {
                 radius: 22.r,
                 backgroundImage: AssetImage(AppAssets.kProfileIamge1),
               ),
-              Icon(Icons.notifications_none, color: Colors.white, size: 28.sp),
+              GestureDetector(
+                onTap: () =>
+                    GoRouter.of(context).push(AppRouter.kNotificationsPage),
+                child: Icon(
+                  Icons.notifications_none,
+                  color: Colors.white,
+                  size: 28.sp,
+                ),
+              ),
             ],
           ),
         ),

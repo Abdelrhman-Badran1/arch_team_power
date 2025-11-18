@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,11 +9,7 @@ class FavItemCard extends StatefulWidget {
   final FavModel model;
   final VoidCallback onRemove;
 
-  const FavItemCard({
-    super.key,
-    required this.model,
-    required this.onRemove,
-  });
+  const FavItemCard({super.key, required this.model, required this.onRemove});
 
   @override
   State<FavItemCard> createState() => _FavItemCardState();
@@ -49,7 +46,6 @@ class _FavItemCardState extends State<FavItemCard> {
         child: Row(
           textDirection: TextDirection.rtl,
           children: [
-
             /// الصورة + القلب (على الصورة)
             Stack(
               children: [
@@ -83,11 +79,7 @@ class _FavItemCardState extends State<FavItemCard> {
                           curve: Curves.elasticOut,
                         ),
 
-                        RotateEffect(
-                          begin: 0,
-                          end: 0.10,
-                          duration: 150.ms,
-                        ),
+                        RotateEffect(begin: 0, end: 0.10, duration: 150.ms),
 
                         MoveEffect(
                           begin: const Offset(0, 0),
@@ -132,20 +124,16 @@ class _FavItemCardState extends State<FavItemCard> {
                 children: [
                   Text(
                     widget.model.title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTextStyles.syleNorsalRegular14(context),
                   ),
 
                   const SizedBox(height: 5),
 
                   Text(
                     widget.model.description,
-                    style: TextStyle(
-                      color: Colors.grey.shade700,
-                      fontSize: 13,
-                    ),
+                    style: AppTextStyles.syleNorsalRegular10(
+                      context,
+                    ).copyWith(color: Color(0xFF8A8A8A)),
                   ),
 
                   const SizedBox(height: 8),
@@ -153,20 +141,18 @@ class _FavItemCardState extends State<FavItemCard> {
                     children: [
                       Text(
                         widget.model.rate.toString(),
-                        style: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                        style: AppTextStyles.syleNorsalMedium12(context),
                       ),
-                       SizedBox(width: 4.w),
-                       SizedBox(width: 6.w),
+                      SizedBox(width: 4.w),
+                      SizedBox(width: 6.w),
                       Text(
                         "(${widget.model.reviews} تقييم)",
-                        style:  TextStyle(
-                          color: Color(0xffD4A06A),
-                          fontSize: 13,
-                        ),
+                        style: AppTextStyles.syleNorsalRegular10(
+                          context,
+                        ).copyWith(color: Color(0xFFDB9448)),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

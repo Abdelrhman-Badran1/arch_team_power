@@ -1,3 +1,5 @@
+import 'package:arch_team_power/features/Notifications/presentation/screens/notifications_page.dart';
+import 'package:arch_team_power/features/Search_Fliter/presentation/screens/search_fillter.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/forgot_password_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/login_screen.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/new_password_view.dart';
@@ -32,6 +34,8 @@ class AppRouter {
   static const kLangSelector = '/LangSelector';
   static const kOptionScreen = '/OptionScreen';
   static const kHomeScreen = "/home_screen";
+  static const kFilterUI = '/FilterUI';
+  static const kNotificationsPage = '/NotificationsPage';
   static const kDetailsScreen = '/DetailsScreen';
   static const kSettingsScreen = '/settingsscreen';
   static const kFaqScreen = "/faq_screen";
@@ -82,7 +86,11 @@ class AppRouter {
         builder: (context, state) => const NewPasswordView(),
       ),
       GoRoute(path: kHomeScreen, builder: (context, state) => LayoutPage()),
-
+      GoRoute(path: kFilterUI, builder: (context, state) => FilterUI()),
+      GoRoute(
+        path: kNotificationsPage,
+        builder: (context, state) => NotificationsPage(),
+      ),
       GoRoute(
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),

@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -29,7 +30,7 @@ class _InscriptionCardState extends State<InscriptionCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 15.w),
+      padding: EdgeInsets.only(left: 15.w),
       child: Container(
         width: 250.w,
         decoration: BoxDecoration(
@@ -117,35 +118,29 @@ class _InscriptionCardState extends State<InscriptionCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// العنوان
-                  Text(
-                    widget.title,
-                    textAlign: TextAlign.right,
-                    style: GoogleFonts.tajawal(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        widget.title,
+                        textAlign: TextAlign.right,
+                        style: AppTextStyles.syleNorsalMedium12(context),
+                      ),
+                      Spacer(),
+                      Row(
+                        children: [
+                          const Icon(Icons.star, color: Colors.amber, size: 16),
+                          SizedBox(width: 2.w),
+                          Text(
+                            "(${widget.rating})",
+                            style: AppTextStyles.syleNorsalMedium10(context),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   SizedBox(height: 4.h),
 
                   /// الموقع
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.location_on_outlined,
-                        size: 16,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        widget.location,
-                        style: GoogleFonts.tajawal(
-                          fontSize: 13.sp,
-                          color: Colors.grey[700],
-                        ),
-                      ),
-                    ],
-                  ),
                   SizedBox(height: 8.h),
 
                   /// التقييم + الحالة
@@ -154,14 +149,17 @@ class _InscriptionCardState extends State<InscriptionCard> {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          SizedBox(width: 2.w),
+                          const Icon(
+                            Icons.location_on_outlined,
+                            size: 16,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(width: 4.w),
                           Text(
-                            "(${widget.rating})",
+                            widget.location,
                             style: GoogleFonts.tajawal(
                               fontSize: 13.sp,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w500,
+                              color: Colors.grey[700],
                             ),
                           ),
                         ],
@@ -170,10 +168,7 @@ class _InscriptionCardState extends State<InscriptionCard> {
                         child: Text(
                           widget.status,
                           textAlign: TextAlign.end,
-                          style: GoogleFonts.tajawal(
-                            fontSize: 12.sp,
-                            color: Colors.grey[700],
-                          ),
+                          style: AppTextStyles.syleNorsalMedium10(context),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
