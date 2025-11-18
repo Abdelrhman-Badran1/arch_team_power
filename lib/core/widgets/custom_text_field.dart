@@ -17,6 +17,10 @@ class CustomTextField extends StatefulWidget {
     this.showEyeIcon = false,
     this.textAlign,
     this.heightTextfield,
+    this.fontSizeTextFieldTitle,
+    this.fontSizeHintText,
+    this.contentPadding,
+    this.colorHintText,
   });
 
   final bool? canRequestFocus;
@@ -29,7 +33,10 @@ class CustomTextField extends StatefulWidget {
   final bool showEyeIcon;
   final TextAlign? textAlign;
   final double? heightTextfield;
-
+  final double? fontSizeTextFieldTitle;
+  final double? fontSizeHintText;
+  final EdgeInsetsGeometry? contentPadding;
+  final Color? colorHintText;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -59,7 +66,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           children: [
             Text(
               widget.textFieldTitle ?? '',
-              style: AppTextStyles.syleNorsalMedium15(context),
+              style: AppTextStyles.syleNorsalMedium15(
+                context,
+              ).copyWith(fontSize: widget.fontSizeTextFieldTitle),
             ),
             SizedBox(height: 10.h),
             Container(
@@ -77,33 +86,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        textAlign: widget.textAlign ?? TextAlign.start,
-                        autocorrect: false,
-                        enableSuggestions: false,
-                        controller: widget.controller,
-                        cursorColor: Colors.black,
-                        canRequestFocus: widget.canRequestFocus ?? true,
-                        obscureText: obscureText,
-                        onChanged: (value) {
-                          widget.onChanged?.call(value);
-                          fieldState.didChange(value);
-                        },
-                        style: TextStyle(color: Colors.black, fontSize: 14.sp),
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: widget.hintText,
-                          hintStyle:
-                              widget.hintStyle ??
-                              TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Norsal',
-                                color: const Color(0xffD0D0D0),
-                                fontSize: 10.sp,
-                              ),
-                        ),
+                    child: TextFormField(
+                      textAlign: widget.textAlign ?? TextAlign.start,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      controller: widget.controller,
+                      cursorColor: Colors.black,
+                      canRequestFocus: widget.canRequestFocus ?? true,
+                      obscureText: obscureText,
+                      onChanged: (value) {
+                        widget.onChanged?.call(value);
+                        fieldState.didChange(value);
+                      },
+                      style: TextStyle(color: Colors.black, fontSize: 14.sp),
+                      decoration: InputDecoration(
+                        contentPadding: widget.contentPadding,
+                        border: InputBorder.none,
+                        hintText: widget.hintText,
+                        hintStyle:
+                            widget.hintStyle ??
+                            TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Norsal',
+                              color: widget.colorHintText,
+                              fontSize: widget.fontSizeHintText,
+                            ),
                       ),
                     ),
                   ),

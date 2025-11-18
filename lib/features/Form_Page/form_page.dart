@@ -1,6 +1,7 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/widgets/custom_text_field.dart';
+import 'package:arch_team_power/features/Form_Page/widgets/card_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,10 @@ class MyFormPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        title: const Text('البطاقه الخاصه بي'),
+        title: const Text(
+          'البطاقه الخاصه بي',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -29,39 +33,8 @@ class MyFormPage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Material(
-                    elevation: 9,
-                    borderRadius: BorderRadius.circular(12),
+                  CardSliderWidget(images: ["image/cardvisa.png"]),
 
-                    child: Container(
-                      height: 200,
-                      width: 320,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
-                            blurRadius: 18,
-
-                            offset: Offset(0, 9),
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: PageView.builder(
-                          itemCount: sampleImages.length,
-                          itemBuilder: (context, index) {
-                            return Image.asset(
-                              "image/cardvisa.png",
-                              fit: BoxFit.cover,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
                   const SizedBox(height: 19),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -84,69 +57,94 @@ class MyFormPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              CustomTextField(
-                heightTextfield: 64,
-                textAlign: TextAlign.right,
-                hintText: "محمد الزهراني",
-                textFieldTitle: "الاسم الثنائي",
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: CustomTextField(
+                  heightTextfield: 64,
+                  textAlign: TextAlign.right,
+                  hintText: "محمد الزهراني",
+                  textFieldTitle: "الاسم الثنائي :",
+                  fontSizeTextFieldTitle: 25,
+                  fontSizeHintText: 25,
+                  colorHintText: AppColors.unSelectItemSelectedColor,
+
+                  contentPadding: EdgeInsets.only(right: 20),
+                ),
               ),
 
               const SizedBox(height: 10),
-              CustomTextField(
-                heightTextfield: 64,
-                hintText: "1267  2312  0918  2344",
-                textFieldTitle: "رقم البطاقه :",
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('هذا نص على الشمال'),
-                  Text('نص على اليمين'),
-                ],
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: CustomTextField(
+                  heightTextfield: 64,
+                  hintText: "1267  2312  0918  2344",
+                  textFieldTitle: "رقم البطاقه :",
+                  fontSizeTextFieldTitle: 25,
+                  fontSizeHintText: 25,
+                  contentPadding: EdgeInsets.only(right: 200),
+                  colorHintText: AppColors.unSelectItemSelectedColor,
+                ),
               ),
 
               const SizedBox(height: 16),
 
               // ========== العنصر الرابع: Row فيه 2 TextField نص الشاشة ==========
               Row(
-                children: const [
+                children: [
                   Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8.0),
-                      child: MyHalfTextField(hintText: 'نصفي 1'),
+                    child: CustomTextField(
+                      heightTextfield: 64,
+                      textAlign: TextAlign.right,
+                      hintText: "****",
+                      textFieldTitle: "cvv :",
+                      fontSizeTextFieldTitle: 25,
+                      fontSizeHintText: 25,
+                      contentPadding: EdgeInsets.only(right: 100),
+                      obscureText: true,
+                      colorHintText: AppColors.unSelectItemSelectedColor,
                     ),
                   ),
+
+                  SizedBox(width: 16),
+
                   Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: MyHalfTextField(hintText: 'نصفي 2'),
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: CustomTextField(
+                        heightTextfield: 64,
+                        textAlign: TextAlign.right,
+                        hintText: "02/2028",
+                        textFieldTitle: "تاريخ الانتهاء :",
+                        fontSizeTextFieldTitle: 25,
+                        fontSizeHintText: 25,
+                        contentPadding: EdgeInsets.only(right: 80),
+                        colorHintText: AppColors.unSelectItemSelectedColor,
+                      ),
                     ),
                   ),
                 ],
               ),
-
               const SizedBox(height: 24),
 
               // ========== العنصر الخامس: Button ==========
               SizedBox(
                 width: double.infinity,
-                height: 48,
+                height: 60,
                 child: ElevatedButton(
                   onPressed: () {
                     debugPrint('Confirm pressed');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(14),
                     ),
                   ),
                   child: Text(
                     'تأكيد',
                     style: AppTextStyles.syleNorsalMedium15(context).copyWith(
-                      fontSize: 10.sp,
+                      fontSize: 8.sp,
                       letterSpacing: 1,
                       color: AppColors.white,
                     ),
@@ -155,45 +153,6 @@ class MyFormPage extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-// ========== Widgets متكررة / Custom Widgets ==========
-class MyFullWidthTextField extends StatelessWidget {
-  final String hintText;
-  const MyFullWidthTextField({super.key, required this.hintText});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hintText,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 12,
-          vertical: 14,
-        ),
-      ),
-    );
-  }
-}
-
-class MyHalfTextField extends StatelessWidget {
-  final String hintText;
-  const MyHalfTextField({super.key, required this.hintText});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hintText,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 12,
-          vertical: 12,
         ),
       ),
     );
