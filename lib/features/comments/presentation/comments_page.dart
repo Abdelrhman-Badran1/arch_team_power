@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/features/comments/presentation/screens/widgets/build_write_messege.dart';
 import 'package:arch_team_power/features/comments/presentation/screens/widgets/user_comment_widgets.dart';
@@ -16,7 +17,10 @@ class CommentsPage extends StatelessWidget {
         backgroundColor: AppColors.background,
         appBar: AppBar(
           backgroundColor: AppColors.background,
-          title: const Text('التعليقات'),
+          title: Text(
+            'التعليقات',
+            style: AppTextStyles.syleNorsalRegular20(context),
+          ),
           leading: const Icon(Icons.arrow_back),
         ),
         body: ListView(

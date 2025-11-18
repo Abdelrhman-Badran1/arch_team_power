@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/widgets/action_button.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/widgets/notifications_item.dart';
@@ -13,26 +14,36 @@ class NotificationsPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        title: Text("الإشعارات"),
+        title: Text(
+          "الإشعارات",
+          style: AppTextStyles.syleNorsalRegular20(context),
+        ),
       ),
       body: Column(
         children: [
+          SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 "مقروء",
-                style: TextStyle(fontSize: 20, color: AppColors.disabled),
+                style: AppTextStyles.syleNorsalMedium13(
+                  context,
+                ).copyWith(color: AppColors.textHistory),
               ),
               SizedBox(width: 10),
               Text(
                 "غير مقروء",
-                style: TextStyle(fontSize: 20, color: AppColors.disabled),
+                style: AppTextStyles.syleNorsalMedium13(
+                  context,
+                ).copyWith(color: AppColors.textHistory),
               ),
               SizedBox(width: 10),
               Text(
                 "الكل",
-                style: TextStyle(fontSize: 20, color: AppColors.disabled),
+                style: AppTextStyles.syleNorsalMedium13(
+                  context,
+                ).copyWith(color: AppColors.textHistory),
               ),
             ],
           ),
@@ -45,7 +56,7 @@ class NotificationsPage extends StatelessWidget {
                 "تم تحديث حالة مشروع التوثيق الميداني اكتملت مرحلة التصوير التفصيلي",
 
             timeText: "الأربعاء الماضي الساعة 9:42",
-            actions: const [
+            actions: [
               ActionButton(
                 title: "قبول",
                 backgroundColor: AppColors.favorite,
@@ -53,8 +64,9 @@ class NotificationsPage extends StatelessWidget {
               ),
               ActionButton(
                 title: "رفض",
-                backgroundColor: Colors.white,
+
                 textColor: Colors.black,
+                borderColor: Border.all(color: Colors.grey),
               ),
             ],
           ),

@@ -13,6 +13,8 @@ class AppColors {
   static const Color surface = Color(0xFF40442B);
   // ه لون النص الرئيسي (Primary text)
   static const Color textPrimary = Color(0xFF353434);
+  static const Color textHistory = Color(0xff8A8A8A);
+
   // ه لون النصوص الثانوية أو العناصر الخافتة (Secondary text)
   static const Color textSecondary = Color(0xFF9E9B98);
   // ه لون النصوص على الخلفية الداكنة (Text on dark background)
