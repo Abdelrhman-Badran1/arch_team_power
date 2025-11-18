@@ -31,4 +31,5 @@ class AppAssets {
   static const kTotalRateStar = 'assets/image/total_rate_star.svg';
   static const kVerifyAvatar = 'assets/image/verify_avatar.png';
   static const kRashedStone = 'assets/image/rashed_stone.png';
+  static const kStartYourJourney = 'assets/image/start_your_journey_avatar.png';
 }

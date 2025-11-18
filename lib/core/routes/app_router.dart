@@ -6,13 +6,11 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/regist
 import 'package:arch_team_power/features/auth_screen/presentation/screens/verify_email_view.dart';
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
-import 'package:arch_team_power/features/information/presentation/screens/information_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
-import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
 import 'package:arch_team_power/features/notes/presentation/screens/notes_screen.dart';
-import 'package:arch_team_power/features/notes/presentation/screens/widget/notes_screen_body.dart';
 import 'package:arch_team_power/features/onboarding_screen/presentation/screens/intro_home_screen.dart';
+import 'package:arch_team_power/features/option/presentation/screens/option_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/layout/presentation/layout_page.dart';
@@ -24,20 +22,21 @@ import '../../features/layout/presentation/pages/profile/screens/vip_hall_screen
 class AppRouter {
   static const String kSplashScreen = '/';
   static const kIntroHomeScreen = "/intro_home_screen";
-  static const kHomeScreen = "/home_screen";
+  static const kLoginScreen = '/kloginscreen';
+  static const kRegisterScreen = '/kregisterscreen';
   static const kForgotPasswordView = '/forgotPasswordView';
   static const kNewPasswordView = '/newPasswordView';
   static const kOtpView = '/otpView';
   static const kVerifyEmailView = '/verifyEmailView';
-  static const kRegisterScreen = '/kregisterscreen';
+  static const kOptionScreen = '/OptionScreen';
+  static const kHomeScreen = "/home_screen";
   static const kDetailsScreen = '/DetailsScreen';
-  static const kLoginScreen = '/kloginscreen';
   static const kSettingsScreen = '/settingsscreen';
-  static const String kFaqScreen = "/faq_screen";
-  static const String kDigitalLibraryScreen = "/digital_library_screen";
-  static const String kEventsScreen = "/events_screen";
-  static const String kVipHallScreen = "/vip_hall_screen";
-  static const String kSubscriptionScreen = "/subscriptionscreen";
+  static const kFaqScreen = "/faq_screen";
+  static const kDigitalLibraryScreen = "/digital_library_screen";
+  static const kEventsScreen = "/events_screen";
+  static const kVipHallScreen = "/vip_hall_screen";
+  static const kSubscriptionScreen = "/subscriptionscreen";
   static const kComments = '/comments';
   static const kLibraryScreen = '/LibraryScreen';
 
@@ -51,7 +50,18 @@ class AppRouter {
         path: kIntroHomeScreen,
         builder: (context, state) => IntroHomeScreen(),
       ),
-      GoRoute(path: kHomeScreen, builder: (context, state) => LayoutPage()),
+      GoRoute(
+        path: kLoginScreen,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: kRegisterScreen,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: kOptionScreen,
+        builder: (context, state) => const OptionScreen(),
+      ),
       GoRoute(
         path: kForgotPasswordView,
         builder: (context, state) => const ForgotPasswordView(),
@@ -65,14 +75,8 @@ class AppRouter {
         path: kNewPasswordView,
         builder: (context, state) => const NewPasswordView(),
       ),
-      GoRoute(
-        path: kRegisterScreen,
-        builder: (context, state) => const RegisterScreen(),
-      ),
-      GoRoute(
-        path: kLoginScreen,
-        builder: (context, state) => const LoginScreen(),
-      ),
+      GoRoute(path: kHomeScreen, builder: (context, state) => LayoutPage()),
+
       GoRoute(
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),

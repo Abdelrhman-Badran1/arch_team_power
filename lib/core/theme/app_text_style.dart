@@ -75,7 +75,6 @@ class AppTextStyles {
       fontFamily: 'Norsal',
       fontSize: 14.sp,
       fontWeight: FontWeight.w500,
-      color: AppColors.white
     );
   }
 

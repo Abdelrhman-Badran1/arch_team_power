@@ -1,7 +1,7 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/auth_button.dart';
+import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +29,12 @@ class VerifyEmailViewBody extends StatelessWidget {
             ).copyWith(color: Color(0xff8A8A8A)),
           ),
           SizedBox(height: 30.h),
-          AuthButton(
+          CustomButton(
             title: S.of(context).check_your_email,
             buttonColor: Color(0xffD2B48C),
           ),
           SizedBox(height: 15.h),
-          AuthButton(
+          CustomButton(
             onTap: () => GoRouter.of(context).push(AppRouter.kOtpView),
             title: S.of(context).confirm_code,
             buttonColor: Color(0xffD2B48C),

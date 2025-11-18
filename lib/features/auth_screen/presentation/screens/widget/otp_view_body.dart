@@ -1,5 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/auth_button.dart';
+import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/count_up_timer.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/otp.dart';
@@ -23,7 +23,7 @@ class OtpViewBody extends StatelessWidget {
         SizedBox(height: 13.5.h),
         Otp(),
         SizedBox(height: 41.5.h),
-        AuthButton(
+        CustomButton(
           onTap: () => GoRouter.of(context).push(AppRouter.kNewPasswordView),
           title: S.of(context).send,
           buttonColor: Color(0xffD2B48C),

@@ -1,0 +1,50 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/core/utils/app_assets.dart';
+import 'package:arch_team_power/core/widgets/auth_button.dart';
+import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class OptionScreenBody extends StatelessWidget {
+  const OptionScreenBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 13.86.w, vertical: 28.h),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomAppBar(title: "! ابدأ رحلتك معنا"),
+            SizedBox(height: 40.h),
+            Center(
+              child: Image.asset(
+                AppAssets.kStartYourJourney,
+                height: 118.65.h,
+                width: 145.5.w,
+                fit: BoxFit.fill,
+              ),
+            ),
+            SizedBox(height: 40.h),
+            Text(
+              "لإثراء تجربتك، اختر طريقة الاستخدام التي تناسبك",
+              style: AppTextStyles.syleNorsalMedium14(
+                context,
+              ).copyWith(color: Color(0xFF8A8A8A)),
+            ),
+            SizedBox(height: 56.h),
+
+            CustomButton(title: "ايقونه سائح", buttonColor: Color(0xFFD2B48C)),
+            SizedBox(height: 17.h),
+            CustomButton(
+              buttonColor: Colors.white,
+              title: "ايقونه الباحث والمتخصص",
+              textColor: Color(0xFF8A8A8A),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

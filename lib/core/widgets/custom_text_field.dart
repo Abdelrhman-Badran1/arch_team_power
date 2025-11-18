@@ -66,7 +66,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           children: [
             Text(
               widget.textFieldTitle ?? '',
-              style: AppTextStyles.syleNorsalMedium15(
+              style: AppTextStyles.syleNorsalMedium14(
                 context,
               ).copyWith(fontSize: widget.fontSizeTextFieldTitle),
             ),
@@ -105,10 +105,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         hintText: widget.hintText,
                         hintStyle:
                             widget.hintStyle ??
-                            TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Norsal',
-                              color: widget.colorHintText,
+                            AppTextStyles.syleNorsalRegular10(context).copyWith(
+                              color: widget.colorHintText ?? Color(0xFF8A8A8A),
                               fontSize: widget.fontSizeHintText,
                             ),
                       ),
@@ -120,8 +118,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       child: IconButton(
                         icon: Icon(
                           obscureText
-                              ? CupertinoIcons.eye
-                              : CupertinoIcons.eye_slash,
+                              ? CupertinoIcons.eye_slash
+                              : CupertinoIcons.eye,
                           color: const Color(0xffD0D0D0),
                         ),
                         onPressed: toggleObscure,
