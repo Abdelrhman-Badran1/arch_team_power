@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -40,7 +41,7 @@ class ProfileTabs extends StatelessWidget {
               }
             },
             child: Container(
-              margin: EdgeInsets.only(right: 10.w),
+              margin: EdgeInsets.only(left: 10.w),
               padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -55,11 +56,9 @@ class ProfileTabs extends StatelessWidget {
               ),
               child: Text(
                 tabs[index],
-                style: TextStyle(
-                  fontSize: 13.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.syleNorsalRegular12(
+                  context,
+                ).copyWith(color: Color(0xFF8A8A8A)),
               ),
             ),
           );

@@ -4,6 +4,7 @@ import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CardPaymentButton extends StatelessWidget {
   final double width;
@@ -48,18 +49,10 @@ class CardPaymentButton extends StatelessWidget {
           children: [
             InkWell(
               onTap: onIconTap,
-              borderRadius: BorderRadius.circular(24),
               child: Container(
                 padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(shape: BoxShape.circle),
-                child: Image.asset("image/iconDisableToChangeButton.png"),
+                child: SvgPicture.asset(bankImageUrl),
               ),
-            ),
-
-            SizedBox(
-              width: 30,
-              height: 30,
-              child: Image.asset("image/logosmastercard.png"),
             ),
 
             const SizedBox(width: 12),
@@ -68,10 +61,8 @@ class CardPaymentButton extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 4),
                   Text(
                     maskedNumber,
-
                     style: AppTextStyles.syleNorsalMedium15(
                       context,
                     ).copyWith(fontSize: 13.sp, letterSpacing: 1.2),

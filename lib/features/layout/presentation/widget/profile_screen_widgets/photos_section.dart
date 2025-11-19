@@ -12,7 +12,7 @@ class PhotosSection extends StatelessWidget {
       height: 250.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.only(left: 20.w),
         itemCount: photos.length,
         separatorBuilder: (_, __) => SizedBox(width: 14.w),
 

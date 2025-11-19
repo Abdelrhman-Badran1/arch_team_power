@@ -1,8 +1,12 @@
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/core/widgets/auth_button.dart';
+import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/features/Payment_Methods/widgets/card_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
@@ -15,21 +19,15 @@ class PaymentPage extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: AppColors.background,
-        appBar: AppBar(
-          title: Text(
-            'وسائل الدفع',
-            style: AppTextStyles.syleNorsalMedium15(
-              context,
-            ).copyWith(fontSize: 17.sp, letterSpacing: 1),
-          ),
-          backgroundColor: AppColors.background,
-        ),
+
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          
+              SizedBox(height: 34.h),
+              CustomAppBar(title: 'وسائل الدفع'),
+              SizedBox(height: 34.h),
               Text(
                 'اختر الطريقة التي تفضلها لاستكمال طريقة الدفع',
                 style: AppTextStyles.syleNorsalMedium15(
@@ -39,19 +37,15 @@ class PaymentPage extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-            
               CardPaymentButton(
                 width: width,
                 onTap: () {
-                 
                   debugPrint('MasterCard button tapped');
                 },
                 onIconTap: () {
-                
                   debugPrint('MasterCard icon tapped');
                 },
-                bankImageUrl:
-                    'https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png',
+                bankImageUrl: 'assets/icons/mastercard_icon.svg',
                 lastDigits: '123',
                 label: 'MasterCard',
               ),
@@ -66,34 +60,15 @@ class PaymentPage extends StatelessWidget {
                 onIconTap: () {
                   debugPrint('Visa icon tapped');
                 },
-                bankImageUrl:
-                    'https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png',
+                bankImageUrl: 'assets/icons/visa_icon.svg',
                 lastDigits: '789',
                 label: 'Visa',
               ),
               SizedBox(height: 90),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    debugPrint('Confirm pressed');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    'تأكيد',
-                    style: AppTextStyles.syleNorsalMedium15(context).copyWith(
-                      fontSize: 11.sp,
-                      letterSpacing: 1,
-                      color: AppColors.white,
-                    ),
-                  ),
-                ),
+              CustomButton(
+                onTap: () => GoRouter.of(context).push(AppRouter.kMyFormPage),
+                title: 'تأكيد ',
+                buttonColor: Color(0xFFD2B48C),
               ),
             ],
           ),

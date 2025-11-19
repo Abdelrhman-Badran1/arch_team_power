@@ -35,7 +35,7 @@ class InscriptionLibraryList extends StatelessWidget {
     ];
 
     return SizedBox(
-      height: 240.h,
+      height: 195.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.symmetric(horizontal: 20.w),

@@ -33,7 +33,7 @@ class MyFormPage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  CardSliderWidget(images: ["image/cardvisa.png"]),
+                  CardSliderWidget(images: ["assets/image/cardvisa.png"]),
 
                   const SizedBox(height: 19),
                   Row(

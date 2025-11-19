@@ -16,7 +16,10 @@ Widget buildWriteMessegeAndSend(BuildContext context) {
                 width: 16,
                 height: 14,
                 padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset("image/image.svg", fit: BoxFit.contain),
+                child: SvgPicture.asset(
+                  "assets/image/image.svg",
+                  fit: BoxFit.contain,
+                ),
               ),
 
               hintText: "اكتب تعليق...",

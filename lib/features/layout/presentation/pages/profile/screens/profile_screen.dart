@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +15,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        
         drawer: const AppDrawer(),
         backgroundColor: Color(0xffF5F5F5),
 
@@ -35,17 +35,19 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(height: 25.h),
 
                 /// Subscription
-                Text("اشتراكي",
-                    style:
-                    TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold)),
+                Text(
+                  "اشتراكي",
+                  style: AppTextStyles.syleNorsalMedium14(context),
+                ),
                 SizedBox(height: 10.h),
                 const SubscriptionCard(),
                 SizedBox(height: 25.h),
 
                 /// Photos
-                Text("صور قمت بمشاركتها",
-                    style:
-                    TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold)),
+                Text(
+                  "صور قمت بمشاركتها",
+                  style: AppTextStyles.syleNorsalMedium14(context),
+                ),
                 SizedBox(height: 15.h),
                 const PhotosSection(),
 

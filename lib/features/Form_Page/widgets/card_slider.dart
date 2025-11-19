@@ -30,7 +30,10 @@ class CardSliderWidget extends StatelessWidget {
               child: PageView.builder(
                 itemCount: images.length,
                 itemBuilder: (context, index) {
-                  return Image.asset("image/cardvisa.png", fit: BoxFit.cover);
+                  return Image.asset(
+                    "assets/image/cardvisa.png",
+                    fit: BoxFit.cover,
+                  );
                 },
               ),
             ),

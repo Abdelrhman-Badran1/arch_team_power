@@ -1,4 +1,6 @@
+import 'package:arch_team_power/features/Form_Page/form_page.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/notifications_page.dart';
+import 'package:arch_team_power/features/Payment_Methods/payment_page.dart';
 import 'package:arch_team_power/features/Search_Fliter/presentation/screens/search_fillter.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/forgot_password_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/login_screen.dart';
@@ -9,8 +11,10 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/verify
 import 'package:arch_team_power/features/choseAppLang/presentation/screens/chose_app_lang_screen.dart';
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
+import 'package:arch_team_power/features/information/presentation/screens/information_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
 import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
+import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
 import 'package:arch_team_power/features/notes/presentation/screens/notes_screen.dart';
 import 'package:arch_team_power/features/onboarding_screen/presentation/screens/intro_home_screen.dart';
 import 'package:arch_team_power/features/option/presentation/screens/option_screen.dart';
@@ -35,6 +39,10 @@ class AppRouter {
   static const kOptionScreen = '/OptionScreen';
   static const kHomeScreen = "/home_screen";
   static const kFilterUI = '/FilterUI';
+  static const kPaymentPage = '/PaymentPage';
+  static const kMyFormPage = '/MyFormPage';
+  static const kNotesScreen = '/NotesScreen';
+  static const kInformationScreen = '/InformationScreen';
   static const kNotificationsPage = '/NotificationsPage';
   static const kDetailsScreen = '/DetailsScreen';
   static const kSettingsScreen = '/settingsscreen';
@@ -87,6 +95,8 @@ class AppRouter {
       ),
       GoRoute(path: kHomeScreen, builder: (context, state) => LayoutPage()),
       GoRoute(path: kFilterUI, builder: (context, state) => FilterUI()),
+      GoRoute(path: kMyFormPage, builder: (context, state) => MyFormPage()),
+
       GoRoute(
         path: kNotificationsPage,
         builder: (context, state) => NotificationsPage(),
@@ -94,6 +104,10 @@ class AppRouter {
       GoRoute(
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: kPaymentPage,
+        builder: (context, state) => const PaymentPage(),
       ),
       GoRoute(
         path: kSubscriptionScreen,
@@ -120,7 +134,15 @@ class AppRouter {
       ),
 
       GoRoute(path: kComments, builder: (context, state) => CommentsPage()),
-      GoRoute(path: kLibraryScreen, builder: (context, state) => NotesScreen()),
+      GoRoute(path: kNotesScreen, builder: (context, state) => NotesScreen()),
+      GoRoute(
+        path: kLibraryScreen,
+        builder: (context, state) => LibraryScreen(),
+      ),
+      GoRoute(
+        path: kInformationScreen,
+        builder: (context, state) => InformationScreen(),
+      ),
     ],
   );
 }
