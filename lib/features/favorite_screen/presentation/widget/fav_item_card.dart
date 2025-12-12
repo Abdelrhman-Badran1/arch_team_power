@@ -133,7 +133,7 @@ class _FavItemCardState extends State<FavItemCard> {
                     widget.model.description,
                     style: AppTextStyles.syleNorsalRegular10(
                       context,
-                    ).copyWith(color: Color(0xFF8A8A8A)),
+                    ).copyWith(color: const Color(0xFF8A8A8A)),
                   ),
 
                   const SizedBox(height: 8),
@@ -149,7 +149,7 @@ class _FavItemCardState extends State<FavItemCard> {
                         "(${widget.model.reviews} تقييم)",
                         style: AppTextStyles.syleNorsalRegular10(
                           context,
-                        ).copyWith(color: Color(0xFFDB9448)),
+                        ).copyWith(color: const Color(0xFFDB9448)),
                       ),
                     ],
                   ),

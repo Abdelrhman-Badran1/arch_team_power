@@ -10,13 +10,13 @@ class RateDialogActions extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        DialogActionContainer(
+        const DialogActionContainer(
           color: Color(0xffD2B48C),
           title: 'تأكيد',
           textColor: Colors.white,
         ),
         SizedBox(width: 10.w),
-        DialogActionContainer(
+        const DialogActionContainer(
           color: Color(0xFFD0D0D0),
           title: 'الغاء',
           textColor: Colors.black,

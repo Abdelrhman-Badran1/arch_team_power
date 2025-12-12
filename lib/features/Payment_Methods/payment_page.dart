@@ -26,7 +26,7 @@ class PaymentPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 34.h),
-              CustomAppBar(title: 'وسائل الدفع'),
+              const CustomAppBar(title: 'وسائل الدفع'),
               SizedBox(height: 34.h),
               Text(
                 'اختر الطريقة التي تفضلها لاستكمال طريقة الدفع',
@@ -64,11 +64,11 @@ class PaymentPage extends StatelessWidget {
                 lastDigits: '789',
                 label: 'Visa',
               ),
-              SizedBox(height: 90),
+              const SizedBox(height: 90),
               CustomButton(
                 onTap: () => GoRouter.of(context).push(AppRouter.kMyFormPage),
                 title: 'تأكيد ',
-                buttonColor: Color(0xFFD2B48C),
+                buttonColor: const Color(0xFFD2B48C),
               ),
             ],
           ),

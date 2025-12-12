@@ -76,12 +76,12 @@ class HomeScreen extends StatelessWidget {
                           .animate()
                           .fade(duration: 600.ms)
                           .slideY(begin: 0.3, duration: 600.ms),
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         'عرض المزيد',
                         style: AppTextStyles.syleNorsalRegular10(
                           context,
-                        ).copyWith(color: Color(0xFF8A8A8A)),
+                        ).copyWith(color: const Color(0xFF8A8A8A)),
                       ),
                     ],
                   ),
@@ -105,12 +105,12 @@ class HomeScreen extends StatelessWidget {
                           context,
                         ).copyWith(fontSize: 15.sp),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         'عرض المزيد',
                         style: AppTextStyles.syleNorsalRegular10(
                           context,
-                        ).copyWith(color: Color(0xFF8A8A8A)),
+                        ).copyWith(color: const Color(0xFF8A8A8A)),
                       ),
                     ],
                   ),
@@ -121,9 +121,9 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                 child: ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 10,
-                  itemBuilder: (context, index) => InformationScreenItem(),
+                  itemBuilder: (context, index) => const InformationScreenItem(),
                 ),
               ),
             ],

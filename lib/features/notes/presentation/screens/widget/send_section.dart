@@ -21,7 +21,6 @@ class SendSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(width: 10.w),
         NotesTextField(

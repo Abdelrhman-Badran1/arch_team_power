@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         drawer: const AppDrawer(),
-        backgroundColor: Color(0xffF5F5F5),
+        backgroundColor: const Color(0xffF5F5F5),
 
         body: SafeArea(
           child: SingleChildScrollView(

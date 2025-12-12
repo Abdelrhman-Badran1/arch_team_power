@@ -33,11 +33,11 @@ class SomeDetailsAboutTheActivePlace extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SomeDetailsAboutTheActivePlaceInfo(),
+                const SomeDetailsAboutTheActivePlaceInfo(),
                 Container(
                   width: 91.w,
                   height: 88.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(AppAssets.kMdaenImage),
                       fit: BoxFit.cover,

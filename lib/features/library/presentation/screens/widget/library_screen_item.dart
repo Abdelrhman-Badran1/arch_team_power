@@ -11,7 +11,7 @@ class LibraryScreenItem extends StatelessWidget {
     return Stack(
       children: [
         SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           clipBehavior: Clip.none,
           child: Container(
             width: 141.w,
@@ -20,10 +20,10 @@ class LibraryScreenItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(17.r),
               color: Colors.white,
             ),
-            child: LibraryScreenItemDetails(),
+            child: const LibraryScreenItemDetails(),
           ),
         ),
-        Positioned(left: 13.w, top: 8.5.h, child: CustomFavButton()),
+        Positioned(left: 13.w, top: 8.5.h, child: const CustomFavButton()),
       ],
     );
   }

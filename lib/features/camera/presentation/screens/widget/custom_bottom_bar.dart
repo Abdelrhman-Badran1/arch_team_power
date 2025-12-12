@@ -37,10 +37,10 @@ class CustomBottomBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CameraActions(title: 'الصور', onTap: onTapPickImage),
-                  CameraActions(title: 'البطاقة'),
-                  CameraActions(title: 'الملفات'),
+                  const CameraActions(title: 'البطاقة'),
+                  const CameraActions(title: 'الملفات'),
                   CameraActions(title: 'حفظ', onTap: onTapSaveImage),
-                  CameraActions(title: 'مشاركة'),
+                  const CameraActions(title: 'مشاركة'),
                 ],
               ),
               SizedBox(height: 15.h),

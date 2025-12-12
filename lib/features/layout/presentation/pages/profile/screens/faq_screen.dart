@@ -28,21 +28,21 @@ class FaqScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   ExpansionTile(
-                    title: Text("كيف يمكنني الاشتراك؟"),
+                    title: const Text("كيف يمكنني الاشتراك؟"),
                     children: [
                       Padding(
                         padding: EdgeInsets.all(15.w),
-                        child: Text(
+                        child: const Text(
                             "يمكنك الاشتراك من خلال صفحة البروفايل → تجديد الاشتراك."),
                       ),
                     ],
                   ),
                   ExpansionTile(
-                    title: Text("هل يمكنني استرجاع أموالي؟"),
+                    title: const Text("هل يمكنني استرجاع أموالي؟"),
                     children: [
                       Padding(
                         padding: EdgeInsets.all(15.w),
-                        child: Text("سياسة الاسترجاع تعتمد على نوع الاشتراك."),
+                        child: const Text("سياسة الاسترجاع تعتمد على نوع الاشتراك."),
                       ),
                     ],
                   ),

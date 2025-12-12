@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final List<Widget> actions = [
-  MessageAction(),
-  DetailsScreenBodyInfoActionsItem(
+  const MessageAction(),
+  const DetailsScreenBodyInfoActionsItem(
     icon: 'assets/icons/location_icon.svg',
     title: '4.5 km',
   ),
-  RateAction(),
+  const RateAction(),
 
-  DetailsScreenBodyInfoActionsItem(
+  const DetailsScreenBodyInfoActionsItem(
     icon: 'assets/icons/vr_icon.svg',
     title: 'VR',
   ),
-  DetailsScreenBodyInfoActionsItem(
+  const DetailsScreenBodyInfoActionsItem(
     icon: 'assets/icons/voice_icon.svg',
     title: 'VO',
   ),
@@ -42,9 +42,9 @@ class RateAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showDialog(context: context, builder: (context) => RateDialog());
+        showDialog(context: context, builder: (context) => const RateDialog());
       },
-      child: DetailsScreenBodyInfoActionsItem(
+      child: const DetailsScreenBodyInfoActionsItem(
         icon: 'assets/icons/star_icon.svg',
         title: '4.5',
       ),

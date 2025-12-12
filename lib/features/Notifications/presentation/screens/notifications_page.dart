@@ -21,7 +21,7 @@ class NotificationsPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -31,14 +31,14 @@ class NotificationsPage extends StatelessWidget {
                   context,
                 ).copyWith(color: AppColors.textHistory),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 "غير مقروء",
                 style: AppTextStyles.syleNorsalMedium13(
                   context,
                 ).copyWith(color: AppColors.textHistory),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 "الكل",
                 style: AppTextStyles.syleNorsalMedium13(
@@ -48,7 +48,7 @@ class NotificationsPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
 
           NotificationItem(
             imagePath: AppAssets.kNotificationImafe,
@@ -57,7 +57,7 @@ class NotificationsPage extends StatelessWidget {
 
             timeText: "الأربعاء الماضي الساعة 9:42",
             actions: [
-              ActionButton(
+              const ActionButton(
                 title: "قبول",
                 backgroundColor: AppColors.favorite,
                 textColor: Colors.white,

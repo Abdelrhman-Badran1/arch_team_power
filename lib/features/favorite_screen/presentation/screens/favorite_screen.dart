@@ -17,9 +17,9 @@ class FavoriteScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 34.h),
-              CustomAppBar(title: "المفضلة"),
+              const CustomAppBar(title: "المفضلة"),
               SizedBox(height: 34.h),
-              Expanded(child: FavList()),
+              const Expanded(child: FavList()),
             ],
           ),
         ),

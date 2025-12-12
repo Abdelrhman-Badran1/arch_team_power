@@ -15,7 +15,7 @@ class ProfileHeader extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 28.r,
-          backgroundImage: AssetImage(AppAssets.kProfileImage2),
+          backgroundImage: const AssetImage(AppAssets.kProfileImage2),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +28,7 @@ class ProfileHeader extends StatelessWidget {
               "سائح",
               style: AppTextStyles.syleNorsalRegular10(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
           ],
         ),

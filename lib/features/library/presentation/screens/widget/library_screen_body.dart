@@ -14,11 +14,11 @@ class LibraryScreenBody extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 35.h),
-              CustomAppBar(title: 'مكتبة النقوش الاثريه'),
+              const CustomAppBar(title: 'مكتبة النقوش الاثريه'),
               SizedBox(height: 35.h),
               Column(
                 children: [
-                  LibraryScreenSliverGridView(),
+                  const LibraryScreenSliverGridView(),
                   SizedBox(height: 55.h),
                 ],
               ),

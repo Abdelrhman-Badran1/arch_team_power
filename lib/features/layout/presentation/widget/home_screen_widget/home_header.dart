@@ -48,7 +48,7 @@ class HomeHeader extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 22.r,
-                backgroundImage: AssetImage(AppAssets.kProfileIamge1),
+                backgroundImage: const AssetImage(AppAssets.kProfileIamge1),
               ),
               Row(
                 children: [
@@ -62,7 +62,7 @@ class HomeHeader extends StatelessWidget {
                       width: 23.w,
                     ),
                   ),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
 
                   GestureDetector(
                     onTap: () =>

@@ -22,12 +22,12 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 34.h),
-                CustomAppBar(title: 'الاعدادات'),
+                const CustomAppBar(title: 'الاعدادات'),
                 SizedBox(height: 34.h),
 
                 ListView.separated(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: SettingsItemsData.items.length,
                   separatorBuilder: (_, __) => SizedBox(height: 12.h),
                   itemBuilder: (context, index) {

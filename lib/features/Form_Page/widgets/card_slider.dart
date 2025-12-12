@@ -20,8 +20,7 @@ class CardSliderWidget extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.10),
                   blurRadius: 20,
-                  spreadRadius: 0,
-                  offset: Offset(0, 40),
+                  offset: const Offset(0, 40),
                 ),
               ],
             ),

@@ -22,12 +22,12 @@ class DetailsScreenBodyInfoActionsItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color(0xA6D0D0D0),
               spreadRadius: 1,
               blurRadius: 6,
-              offset: const Offset(0, 3),
+              offset: Offset(0, 3),
             ),
           ],
         ),
@@ -43,7 +43,7 @@ class DetailsScreenBodyInfoActionsItem extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppTextStyles.syleNorsalMedium14(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
           ],
         ),

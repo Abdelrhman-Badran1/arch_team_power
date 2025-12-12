@@ -11,7 +11,7 @@ class DetailsScreenPageViewAndHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        DetailsPageView(),
+        const DetailsPageView(),
 
         Positioned(
           top: 35.h,
@@ -21,7 +21,7 @@ class DetailsScreenPageViewAndHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(CupertinoIcons.back, color: Colors.white, size: 23.sp),
-              CustomFavButton(),
+              const CustomFavButton(),
             ],
           ),
         ),

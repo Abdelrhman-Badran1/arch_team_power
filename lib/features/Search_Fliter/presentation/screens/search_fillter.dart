@@ -24,7 +24,7 @@ class FilterUI extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 34.h),
-                CustomAppBar(title: 'تصفية البحث'),
+                const CustomAppBar(title: 'تصفية البحث'),
                 SizedBox(height: 34.h),
 
                 Text('النوع', style: AppTextStyles.syleNorsalMedium14(context)),
@@ -33,7 +33,7 @@ class FilterUI extends StatelessWidget {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    CustomChip(
+                    const CustomChip(
                       text: "دينيه",
                       textColor: AppColors.background,
                       backgroundColor: AppColors.primary,
@@ -42,25 +42,25 @@ class FilterUI extends StatelessWidget {
                       text: "متاحف",
                       textColor: AppColors.textPrimary,
                       backgroundColor: AppColors.background,
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.grey),
                     ),
                     CustomChip(
                       text: "نقوش",
                       textColor: AppColors.textPrimary,
                       backgroundColor: AppColors.background,
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.grey),
                     ),
                     CustomChip(
                       text: "متاحف",
                       textColor: AppColors.textPrimary,
                       backgroundColor: AppColors.background,
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.grey),
                     ),
                   ],
                 ),
 
                 const SizedBox(height: 16),
-                DistanceSlider(),
+                const DistanceSlider(),
 
                 const SizedBox(height: 16),
 
@@ -87,7 +87,7 @@ class FilterUI extends StatelessWidget {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    CustomChip(
+                    const CustomChip(
                       text: "دينيه",
                       textColor: AppColors.background,
                       backgroundColor: AppColors.primary,
@@ -96,7 +96,7 @@ class FilterUI extends StatelessWidget {
                       text: "تاريخيه",
                       textColor: AppColors.textPrimary,
                       backgroundColor: AppColors.background,
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -111,7 +111,7 @@ class FilterUI extends StatelessWidget {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    CustomChip(
+                    const CustomChip(
                       text: "دينيه",
                       textColor: AppColors.background,
                       backgroundColor: AppColors.primary,
@@ -120,7 +120,7 @@ class FilterUI extends StatelessWidget {
                       text: "تاريخيه",
                       textColor: AppColors.textPrimary,
                       backgroundColor: AppColors.background,
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.grey),
                     ),
                   ],
                 ),

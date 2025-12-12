@@ -17,7 +17,7 @@ class RegisterScreen extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Color(0xfff9f8f8),
+          backgroundColor: const Color(0xfff9f8f8),
           body: GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
@@ -37,13 +37,13 @@ class RegisterScreen extends StatelessWidget {
                       style: AppTextStyles.syleNorsalMedium17(context),
                     ),
                     SizedBox(height: 34.h),
-                    CustomTextField(
+                    const CustomTextField(
                       textFieldTitle: 'البريد الإلكتروني',
                       hintText: 'ادخل البريد الإلكتروني',
                     ),
 
                     SizedBox(height: 20.h),
-                    CustomTextField(
+                    const CustomTextField(
                       textFieldTitle: 'كلمة المرور',
                       hintText: 'كلمة المرور',
                       obscureText: true,
@@ -51,7 +51,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: 20.h),
-                    CustomTextField(
+                    const CustomTextField(
                       textFieldTitle: 'تأكيد كلمة المرور ',
 
                       hintText: 'ادخل كلمة المرور',
@@ -59,19 +59,19 @@ class RegisterScreen extends StatelessWidget {
                       showEyeIcon: true,
                     ),
 
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Checkbox(value: false, onChanged: null),
+                            const Checkbox(value: false, onChanged: null),
                             Text(
                               'أوافق علي الشروط والأحكام',
                               style: AppTextStyles.syleNorsalRegular10(
                                 context,
-                              ).copyWith(color: Color(0xAB282828)),
+                              ).copyWith(color: const Color(0xAB282828)),
                             ),
                           ],
                         ),
@@ -83,32 +83,32 @@ class RegisterScreen extends StatelessWidget {
                         context,
                       ).pushReplacement(AppRouter.kHomeScreen),
                       title: 'إنشاء حساب',
-                      buttonColor: Color(0xffD2B48C),
+                      buttonColor: const Color(0xffD2B48C),
                     ),
 
                     SizedBox(height: 21.h),
                     Row(
                       children: [
-                        Expanded(child: Divider()),
+                        const Expanded(child: Divider()),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(
                             'أو',
                             style: AppTextStyles.syleNorsalRegular14(context),
                           ),
                         ),
-                        Expanded(child: Divider()),
+                        const Expanded(child: Divider()),
                       ],
                     ),
                     const SizedBox(height: 24.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SocialAuthItem(assetName: AppIcons.kGoogleIcon),
+                        const SocialAuthItem(assetName: AppIcons.kGoogleIcon),
                         SizedBox(width: 11.w),
-                        SocialAuthItem(assetName: AppIcons.kFaceBookIcon),
+                        const SocialAuthItem(assetName: AppIcons.kFaceBookIcon),
                         SizedBox(width: 11.w),
-                        SocialAuthItem(assetName: AppIcons.kAppleIcon),
+                        const SocialAuthItem(assetName: AppIcons.kAppleIcon),
                       ],
                     ),
                     SizedBox(height: 40.h),
@@ -129,7 +129,7 @@ class RegisterScreen extends StatelessWidget {
                             ' تسجيل دخول',
                             style: AppTextStyles.syleNorsalRegular14(
                               context,
-                            ).copyWith(color: Color(0xffD2B48C)),
+                            ).copyWith(color: const Color(0xffD2B48C)),
                           ),
                         ),
                       ],

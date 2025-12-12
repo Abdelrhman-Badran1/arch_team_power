@@ -13,8 +13,8 @@ class LangSelectorExpandFaild extends StatefulWidget {
 
 class _LangSelectorExpandFaildState extends State<LangSelectorExpandFaild> {
   final List<Map<String, dynamic>> languages = [
-    {"name": "English", "locale": Locale('en'), "flag": "🇬🇧"},
-    {"name": "اللغة العربية", "locale": Locale('ar'), "flag": "🇸🇦"},
+    {"name": "English", "locale": const Locale('en'), "flag": "🇬🇧"},
+    {"name": "اللغة العربية", "locale": const Locale('ar'), "flag": "🇸🇦"},
   ];
   @override
   Widget build(BuildContext context) {

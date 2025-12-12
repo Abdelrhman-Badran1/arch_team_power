@@ -12,7 +12,7 @@ class NotesScreen extends StatelessWidget {
         backgroundColor: const Color(0xffF6F6F6),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 13.86.w),
-          child: NotesScreenBody(),
+          child: const NotesScreenBody(),
         ),
       ),
     );

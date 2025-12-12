@@ -27,17 +27,17 @@ class CameraAppBar extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           GestureDetector(
             onTap: () => showModalBottomSheet(
               backgroundColor: const Color(0xffF4F2EF),
               context: context,
               isScrollControlled: true,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
               ),
               builder: (context) {
-                return OpenLangWidget();
+                return const OpenLangWidget();
               },
             ),
             child: Row(
@@ -46,9 +46,9 @@ class CameraAppBar extends StatelessWidget {
                   'English',
                   style: AppTextStyles.syleNorsalRegular14(
                     context,
-                  ).copyWith(color: Color(0xFFD2B48C)),
+                  ).copyWith(color: const Color(0xFFD2B48C)),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 SvgPicture.asset(AppIcons.kCameraLangIcon),
               ],
             ),

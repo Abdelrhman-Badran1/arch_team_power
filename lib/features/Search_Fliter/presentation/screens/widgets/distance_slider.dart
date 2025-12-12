@@ -28,25 +28,25 @@ class DistanceSlider extends StatelessWidget {
               '4 ك',
               style: AppTextStyles.syleNorsalMedium12(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
             Text(
               '10 ك',
               style: AppTextStyles.syleNorsalMedium12(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
             Text(
               '1000 ك',
               style: AppTextStyles.syleNorsalMedium12(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
             Text(
               '3000 ك',
               style: AppTextStyles.syleNorsalMedium12(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
           ],
         ),

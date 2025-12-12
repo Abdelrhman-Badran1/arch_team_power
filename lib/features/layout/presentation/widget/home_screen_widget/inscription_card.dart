@@ -132,7 +132,7 @@ class _InscriptionCardState extends State<InscriptionCard> {
                           textAlign: TextAlign.right,
                           style: AppTextStyles.syleNorsalMedium12(context),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Row(
                           children: [
                             const Icon(

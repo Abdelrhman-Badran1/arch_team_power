@@ -20,11 +20,11 @@ class LayoutPage extends StatefulWidget {
 class _LayoutPageState extends State<LayoutPage> {
   int selectedIndex = 0;
   List<Widget> screens = [
-    HomeScreen(),
-    MapScreen(),
-    CameraScreen(),
-    FavoriteScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const MapScreen(),
+    const CameraScreen(),
+    const FavoriteScreen(),
+    const ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class _LayoutPageState extends State<LayoutPage> {
 
           SvgPicture.asset(
             image,
-            colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),
         ],
       ),

@@ -24,12 +24,12 @@ class ChoseAppLangScreenBody extends StatelessWidget {
         SizedBox(height: 40.h),
         Image.asset(AppAssets.kChoseApplangAvatar, height: 150.h, width: 166.w),
         SizedBox(height: 34.h),
-        LangSelector(),
+        const LangSelector(),
         SizedBox(height: 27.h),
         CustomButton(
           onTap: () => GoRouter.of(context).push(AppRouter.kOptionScreen),
           title: AppLocalizations.of(context)!.confirm,
-          buttonColor: Color(0xFFD2B48C),
+          buttonColor: const Color(0xFFD2B48C),
         ),
       ],
     );

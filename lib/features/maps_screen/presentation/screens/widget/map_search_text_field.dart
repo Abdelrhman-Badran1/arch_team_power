@@ -16,7 +16,7 @@ class MapSearchTextField extends StatelessWidget {
       child: CustomSrearchTextField(
         hintText: 'ابحث عن اماكن اثريه....',
         prefix: SvgPicture.asset(AppIcons.kLocatMarkerIcon),
-        suffix: Icon(CupertinoIcons.search),
+        suffix: const Icon(CupertinoIcons.search),
       ),
     );
   }

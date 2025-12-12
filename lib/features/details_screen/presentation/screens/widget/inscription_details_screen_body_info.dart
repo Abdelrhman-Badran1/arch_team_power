@@ -15,7 +15,7 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DetailsScreenBodyInfoTitleAndCategoryName(),
+          const DetailsScreenBodyInfoTitleAndCategoryName(),
           SizedBox(height: 20.h),
           SizedBox(
             height: 85.h,
@@ -34,13 +34,13 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
                 'الحالة :',
                 style: AppTextStyles.syleNorsalRegular14(
                   context,
-                ).copyWith(color: Color(0xFF282828)),
+                ).copyWith(color: const Color(0xFF282828)),
               ),
               Text(
                 'غير واضح',
                 style: AppTextStyles.syleNorsalRegular12(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
             ],
           ),
@@ -51,13 +51,13 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
                 'تاريخ العثور على النقش',
                 style: AppTextStyles.syleNorsalRegular14(
                   context,
-                ).copyWith(color: Color(0xFF282828)),
+                ).copyWith(color: const Color(0xFF282828)),
               ),
               Text(
                 '20/3/1995',
                 style: AppTextStyles.syleNorsalRegular12(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
             ],
           ),
@@ -66,31 +66,31 @@ class InscriptionDetailsScreenBodyInfo extends StatelessWidget {
             'تفاصيل العثور علي النقش :',
             style: AppTextStyles.syleNorsalRegular14(
               context,
-            ).copyWith(color: Color(0xFF282828)),
+            ).copyWith(color: const Color(0xFF282828)),
           ),
           SizedBox(height: 10.h),
           Text(
             'اكتشفت البعثة المصرية برئاسة الدكتور زاهي حواس هذ ا النقش في مقبرة رمسيس الثالث الموجوده داخل المدينة المفقوده داخل الرمال ، والتي يعود تاريخها إلى عهد الملك أمنحتب الثالث، واستمر استخدام المدينة من قبل توت عنخ آمون، أي منذ 3000 عام.',
             style: AppTextStyles.syleNorsalRegular12(
               context,
-            ).copyWith(color: Color(0xFF8A8A8A)),
+            ).copyWith(color: const Color(0xFF8A8A8A)),
           ),
           SizedBox(height: 20.h),
           Text(
             'ترجمة النقش',
             style: AppTextStyles.syleNorsalRegular14(
               context,
-            ).copyWith(color: Color(0xFF282828)),
+            ).copyWith(color: const Color(0xFF282828)),
           ),
           SizedBox(height: 10.h),
           Text(
             '(السنة التاسعة الشهر الرابع قسندقس) وهو بالشهر المصرى الثامن عشر من الشهر الثانى من فصل الشتاء، فى عهد الملك الشاب الذى ظهر ملكًا على عرش والده، سيد تاج الصل، ومن شهرته عظيمة، ومن ثبت مصر عندما حررها، ومن قلبه محسن نحو الآلهة، ومن يقف فى وجه أعدائه، ومن يجعل حياة الناس حرة،.',
             style: AppTextStyles.syleNorsalRegular12(
               context,
-            ).copyWith(color: Color(0xFF8A8A8A)),
+            ).copyWith(color: const Color(0xFF8A8A8A)),
           ),
           SizedBox(height: 20.h),
-          SimilarPlacesNearYouListView(),
+          const SimilarPlacesNearYouListView(),
         ],
       ),
     );

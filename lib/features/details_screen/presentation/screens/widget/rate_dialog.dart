@@ -19,22 +19,21 @@ class _RateDialogState extends State<RateDialog> {
   Widget build(BuildContext context) {
     return SimpleDialog(
       elevation: 0,
-      backgroundColor: Color(0xfff9f8f8),
+      backgroundColor: const Color(0xfff9f8f8),
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 children: [
-                  TotalRateStar(),
+                  const TotalRateStar(),
                   SizedBox(height: 33.h),
                   Text(
                     'هل اعجبك النقش ؟ ',
                     style: AppTextStyles.syleNorsalMedium14(
                       context,
-                    ).copyWith(color: Color(0xFF282828)),
+                    ).copyWith(color: const Color(0xFF282828)),
                   ),
                   SizedBox(height: 13.h),
                   Text(
@@ -42,7 +41,7 @@ class _RateDialogState extends State<RateDialog> {
                     textAlign: TextAlign.center,
                     style: AppTextStyles.syleNorsalRegular14(
                       context,
-                    ).copyWith(color: Color(0xFF8A8A8A)),
+                    ).copyWith(color: const Color(0xFF8A8A8A)),
                   ),
                 ],
               ),
@@ -52,8 +51,8 @@ class _RateDialogState extends State<RateDialog> {
                 child: StarRating(
                   size: 22.sp,
                   rating: rating,
-                  color: Color(0xffFFCE31),
-                  borderColor: Color(0xffD0D0D0),
+                  color: const Color(0xffFFCE31),
+                  borderColor: const Color(0xffD0D0D0),
                   allowHalfRating: true,
                   starCount: starCount,
                   onRatingChanged: (rating) => setState(() {
@@ -62,7 +61,7 @@ class _RateDialogState extends State<RateDialog> {
                 ),
               ),
               SizedBox(height: 27.h),
-              RateDialogActions(),
+              const RateDialogActions(),
             ],
           ),
         ),

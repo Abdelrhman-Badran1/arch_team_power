@@ -14,7 +14,7 @@ class SimilarPlacesNearYouItem extends StatelessWidget {
           height: 64.h,
           width: 64.w,
           decoration: BoxDecoration(
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage(AppAssets.kTestImage5),
               fit: BoxFit.fill,
             ),
@@ -25,7 +25,7 @@ class SimilarPlacesNearYouItem extends StatelessWidget {
           'وادي الملوك',
           style: AppTextStyles.syleNorsalRegular12(
             context,
-          ).copyWith(color: Color(0xFF8A8A8A)),
+          ).copyWith(color: const Color(0xFF8A8A8A)),
         ),
       ],
     );

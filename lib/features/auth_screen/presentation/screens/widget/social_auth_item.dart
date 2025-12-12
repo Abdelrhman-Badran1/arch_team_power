@@ -15,7 +15,7 @@ class SocialAuthItem extends StatelessWidget {
         width: 52.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Color(0x4DE6E2DF),
+          color: const Color(0x4DE6E2DF),
         ),
         child: Center(
           child: SvgPicture.asset(assetName, height: 19.5.h, width: 19.5.w),

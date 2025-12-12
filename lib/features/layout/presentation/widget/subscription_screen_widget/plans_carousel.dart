@@ -48,10 +48,10 @@ class _PlansCarouselState extends State<PlansCarousel> {
               border: Border.all(color: const Color(0xffD4B08A)),
               boxShadow: isActive
                   ? [
-                      BoxShadow(
+                      const BoxShadow(
                         color: Colors.black26,
                         blurRadius: 10,
-                        offset: const Offset(0, 4),
+                        offset: Offset(0, 4),
                       ),
                     ]
                   : [],

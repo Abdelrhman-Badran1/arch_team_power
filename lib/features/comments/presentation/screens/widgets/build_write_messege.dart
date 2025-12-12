@@ -16,25 +16,28 @@ Widget buildWriteMessegeAndSend(BuildContext context) {
                 width: 16,
                 height: 14,
                 padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset(
-                  "assets/image/image.svg",
-                  fit: BoxFit.contain,
-                ),
+                child: SvgPicture.asset("assets/image/image.svg"),
               ),
 
               hintText: "اكتب تعليق...",
               hintStyle: AppTextStyles.syleNorsalRegular10(
                 context,
-              ).copyWith(color: Color(0xFFD0D0D0)),
+              ).copyWith(color: const Color(0xFFD0D0D0)),
               filled: true,
               fillColor: AppColors.white,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: AppColors.favorite, width: 2),
+                borderSide: const BorderSide(
+                  color: AppColors.favorite,
+                  width: 2,
+                ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: AppColors.primary, width: 0.0),
+                borderSide: const BorderSide(
+                  color: AppColors.primary,
+                  width: 0.0,
+                ),
               ),
             ),
           ),
@@ -50,7 +53,6 @@ Widget buildWriteMessegeAndSend(BuildContext context) {
             shape: BoxShape.circle,
             border: Border.all(
               color: AppColors.favorite, // لون البوردر
-              width: 1, // سمك البوردر
             ),
           ),
           child: Image.asset(

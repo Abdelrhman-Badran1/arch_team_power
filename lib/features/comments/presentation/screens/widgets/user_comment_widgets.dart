@@ -14,7 +14,7 @@ Widget buildMessage(
     padding: const EdgeInsets.only(bottom: 16.0),
     child: Container(
       padding: const EdgeInsets.all(12.0),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(17),
@@ -36,7 +36,7 @@ Widget buildMessage(
                   Text(
                     role,
                     style: AppTextStyles.syleNorsalRegular10(context).copyWith(
-                      color: Color(0xFF8A8A8A),
+                      color: const Color(0xFF8A8A8A),
                       fontWeight: FontWeight.w300,
                     ),
                   ),
@@ -52,7 +52,7 @@ Widget buildMessage(
             text,
             style: AppTextStyles.syleNorsalRegular12(
               context,
-            ).copyWith(color: Color(0xFF8A8A8A)),
+            ).copyWith(color: const Color(0xFF8A8A8A)),
           ),
 
           const SizedBox(height: 10),
@@ -75,7 +75,7 @@ Widget buildMessage(
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: 5,
                     right: 9,
                     child: Text(

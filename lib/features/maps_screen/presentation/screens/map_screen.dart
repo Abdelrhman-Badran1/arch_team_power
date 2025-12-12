@@ -6,10 +6,9 @@ class MapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF6F6F6),
-
+        backgroundColor: Color(0xffF6F6F6),
         body: MapScreenBody(),
       ),
     );

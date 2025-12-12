@@ -6,9 +6,9 @@ class CameraScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF4F2EF),
+        backgroundColor: Color(0xffF4F2EF),
         body: CameraScreenBody(),
       ),
     );

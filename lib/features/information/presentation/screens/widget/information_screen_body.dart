@@ -11,12 +11,12 @@ class InformationScreenBody extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 35.h),
-        CustomAppBar(title: 'معلومات اثريه'),
+        const CustomAppBar(title: 'معلومات اثريه'),
         SizedBox(height: 35.h),
         Expanded(
           child: ListView.builder(
             itemCount: 10,
-            itemBuilder: (context, index) => InformationScreenItem(),
+            itemBuilder: (context, index) => const InformationScreenItem(),
           ),
         ),
       ],

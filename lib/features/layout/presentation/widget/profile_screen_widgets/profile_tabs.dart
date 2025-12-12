@@ -46,7 +46,7 @@ class ProfileTabs extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12.r),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 5,
@@ -58,7 +58,7 @@ class ProfileTabs extends StatelessWidget {
                 tabs[index],
                 style: AppTextStyles.syleNorsalRegular12(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
             ),
           );

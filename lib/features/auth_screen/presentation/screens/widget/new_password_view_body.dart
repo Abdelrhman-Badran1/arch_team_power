@@ -41,12 +41,12 @@ class NewPasswordViewBody extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return ChangePasswordDialog();
+                  return const ChangePasswordDialog();
                 },
               );
             },
             title: AppLocalizations.of(context)!.change_password,
-            buttonColor: Color(0xffD2B48C),
+            buttonColor: const Color(0xffD2B48C),
           ),
         ],
       ),

@@ -17,7 +17,7 @@ class SomeDetailsAboutTheActivePlaceInfo extends StatelessWidget {
           textAlign: TextAlign.right,
           style: AppTextStyles.syleNorsalMedium15(
             context,
-          ).copyWith(color: Color(0xFFD2B48C)),
+          ).copyWith(color: const Color(0xFFD2B48C)),
         ),
         Row(
           spacing: 4,
@@ -27,7 +27,7 @@ class SomeDetailsAboutTheActivePlaceInfo extends StatelessWidget {
               textAlign: TextAlign.right,
               style: AppTextStyles.syleNorsalMedium12(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
             SvgPicture.asset(AppIcons.kLocatMarkerIcon),
           ],
@@ -37,9 +37,9 @@ class SomeDetailsAboutTheActivePlaceInfo extends StatelessWidget {
           textAlign: TextAlign.right,
           style: AppTextStyles.syleNorsalMedium12(
             context,
-          ).copyWith(color: Color(0xFF8A8A8A)),
+          ).copyWith(color: const Color(0xFF8A8A8A)),
         ),
-        SomeDetailsAboutTheActivePlaceRate(),
+        const SomeDetailsAboutTheActivePlaceRate(),
       ],
     );
   }
