@@ -1,4 +1,4 @@
-import 'package:arch_team_power/core/cubit/locale_cubit/locale_cubit.dart';
+import 'package:arch_team_power/features/choseAppLang/presentation/screens/manger/cubit/locale_cubit/locale_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
