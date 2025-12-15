@@ -19,17 +19,17 @@ class OtpViewBody extends StatelessWidget {
         SizedBox(height: 20.h),
         CustomAppBar(title: AppLocalizations.of(context)!.code_verification),
         SizedBox(height: 48.h),
-        Center(child: CountUpTimer()),
+        const Center(child: CountUpTimer()),
         SizedBox(height: 13.5.h),
-        Otp(),
+        const Otp(),
         SizedBox(height: 41.5.h),
         CustomButton(
           onTap: () => GoRouter.of(context).push(AppRouter.kNewPasswordView),
           title: AppLocalizations.of(context)!.send,
-          buttonColor: Color(0xffD2B48C),
+          buttonColor: const Color(0xffD2B48C),
         ),
         SizedBox(height: 14.h),
-        ResendCodeWidget(),
+        const ResendCodeWidget(),
       ],
     );
   }

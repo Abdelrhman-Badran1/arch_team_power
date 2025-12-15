@@ -63,13 +63,13 @@ class NoteItem extends StatelessWidget {
                     ),
                   ),
                   if (note.imagePath != null) ...[
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     NoteImage(note: note),
                   ],
                 ],
               ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               NoteActions(onEdit: onEdit, onDelete: onDelete),
             ],

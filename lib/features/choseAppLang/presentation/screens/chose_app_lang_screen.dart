@@ -12,7 +12,7 @@ class ChoseAppLangScreen extends StatelessWidget {
         backgroundColor: const Color(0xffF6F6F6),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 13.86.w, vertical: 28.h),
-          child: ChoseAppLangScreenBody(),
+          child: const ChoseAppLangScreenBody(),
         ),
       ),
     );

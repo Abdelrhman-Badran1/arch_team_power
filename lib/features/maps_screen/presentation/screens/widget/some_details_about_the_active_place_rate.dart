@@ -25,13 +25,13 @@ class _SomeDetailsAboutTheActivePlaceRateState
           textAlign: TextAlign.right,
           style: AppTextStyles.syleNorsalMedium12(
             context,
-          ).copyWith(color: Color(0xFF8A8A8A)),
+          ).copyWith(color: const Color(0xFF8A8A8A)),
         ),
         StarRating(
           size: 16.sp,
           rating: rating,
-          color: Color(0xffFFCE31),
-          borderColor: Color(0xffD0D0D0),
+          color: const Color(0xffFFCE31),
+          borderColor: const Color(0xffD0D0D0),
           allowHalfRating: true,
           starCount: starCount,
           onRatingChanged: (rating) => setState(() {

@@ -35,7 +35,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
           CustomButton(
             onTap: () => GoRouter.of(context).push(AppRouter.kVerifyEmailView),
             title: AppLocalizations.of(context)!.send_code,
-            buttonColor: Color(0xffD2B48C),
+            buttonColor: const Color(0xffD2B48C),
           ),
         ],
       ),

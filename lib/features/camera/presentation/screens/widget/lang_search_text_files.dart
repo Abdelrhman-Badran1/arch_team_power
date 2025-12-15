@@ -18,7 +18,7 @@ class LangSearchTextFiled extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.5),
             blurRadius: 12,
-            offset: Offset(0, 6),
+            offset: const Offset(0, 6),
           ),
         ],
       ),
@@ -27,14 +27,14 @@ class LangSearchTextFiled extends StatelessWidget {
           hintText: "ابحث عن اللغه اللي تريدها",
           hintStyle: AppTextStyles.syleNorsalRegular10(
             context,
-          ).copyWith(color: Color(0xFFC4C4C4)),
+          ).copyWith(color: const Color(0xFFC4C4C4)),
           prefixIcon: Icon(
             Icons.language,
-            color: Color(0xFF8A8A8A),
+            color: const Color(0xFF8A8A8A),
             size: 23.sp,
           ),
 
-          suffixIcon: Icon(CupertinoIcons.search),
+          suffixIcon: const Icon(CupertinoIcons.search),
           filled: true,
           fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(

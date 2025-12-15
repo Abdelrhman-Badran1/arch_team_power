@@ -11,7 +11,7 @@ class LibraryScreenItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(4.33),
+      padding: const EdgeInsets.all(4.33),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +38,7 @@ class LibraryScreenItemDetails extends StatelessWidget {
                 'السعودية , العلا ',
                 style: AppTextStyles.syleNorsalRegular10(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
             ],
           ),
@@ -49,16 +49,16 @@ class LibraryScreenItemDetails extends StatelessWidget {
                 'الحاله : غير واضح',
                 style: AppTextStyles.syleNorsalRegular10(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 children: [
                   Text(
                     '4.5',
                     style: AppTextStyles.syleNorsalRegular10(context),
                   ),
-                  SizedBox(width: 2),
+                  const SizedBox(width: 2),
                   Image.asset(AppAssets.kRatingStar),
                 ],
               ),

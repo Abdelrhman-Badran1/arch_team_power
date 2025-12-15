@@ -36,7 +36,7 @@ class DigitalLibraryScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(12.r),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(color: Colors.black12, blurRadius: 4),
                       ],
                     ),

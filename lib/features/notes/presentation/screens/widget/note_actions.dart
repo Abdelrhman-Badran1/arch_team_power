@@ -14,14 +14,14 @@ class NoteActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         NotesActionItem(
-          color: Color(0xFF4B5320),
+          color: const Color(0xFF4B5320),
           title: 'تعديل ',
           onTap: () => onEdit,
         ),
 
         const SizedBox(width: 8),
         NotesActionItem(
-          color: Color(0xFFD2B48C),
+          color: const Color(0xFFD2B48C),
           title: 'حذف ',
           onTap: () => onDelete,
         ),

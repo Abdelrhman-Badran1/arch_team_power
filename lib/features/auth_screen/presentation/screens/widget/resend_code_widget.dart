@@ -14,12 +14,12 @@ class ResendCodeWidget extends StatelessWidget {
           AppLocalizations.of(context)!.didnt_receive_code,
           style: AppTextStyles.syleNorsalRegular14(context),
         ),
-        SizedBox(width: 3),
+        const SizedBox(width: 3),
         Text(
           AppLocalizations.of(context)!.resend_it,
           style: AppTextStyles.syleNorsalRegular14(
             context,
-          ).copyWith(color: Color(0xffDB9448)),
+          ).copyWith(color: const Color(0xffDB9448)),
         ),
       ],
     );

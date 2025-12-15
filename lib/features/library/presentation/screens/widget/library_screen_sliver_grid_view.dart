@@ -8,7 +8,7 @@ class LibraryScreenSliverGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       clipBehavior: Clip.none,
       itemCount: 10,
@@ -17,7 +17,7 @@ class LibraryScreenSliverGridView extends StatelessWidget {
         mainAxisSpacing: 50.h,
         crossAxisSpacing: 10.w,
       ),
-      itemBuilder: (context, index) => Center(child: LibraryScreenItem()),
+      itemBuilder: (context, index) => const Center(child: LibraryScreenItem()),
     );
   }
 }

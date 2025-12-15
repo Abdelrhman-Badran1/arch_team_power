@@ -1,4 +1,4 @@
-import 'package:arch_team_power/core/cubit/locale_cubit/locale_cubit.dart';
+import 'package:arch_team_power/features/choseAppLang/presentation/screens/manger/cubit/locale_cubit/locale_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +13,8 @@ class LangSelectorExpandFaild extends StatefulWidget {
 
 class _LangSelectorExpandFaildState extends State<LangSelectorExpandFaild> {
   final List<Map<String, dynamic>> languages = [
-    {"name": "English", "locale": Locale('en'), "flag": "🇬🇧"},
-    {"name": "اللغة العربية", "locale": Locale('ar'), "flag": "🇸🇦"},
+    {"name": "English", "locale": const Locale('en'), "flag": "🇬🇧"},
+    {"name": "اللغة العربية", "locale": const Locale('ar'), "flag": "🇸🇦"},
   ];
   @override
   Widget build(BuildContext context) {

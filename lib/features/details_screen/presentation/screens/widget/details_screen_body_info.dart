@@ -16,7 +16,7 @@ class DetailsScreenBodyInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DetailsScreenBodyInfoTitleAndCategoryName(),
+          const DetailsScreenBodyInfoTitleAndCategoryName(),
           SizedBox(height: 20.h),
           SizedBox(
             height: 85.h,
@@ -33,13 +33,13 @@ class DetailsScreenBodyInfo extends StatelessWidget {
             AppLocalizations.of(context)!.change_password,
             style: AppTextStyles.syleNorsalRegular14(
               context,
-            ).copyWith(color: Color(0xFFCE1225)),
+            ).copyWith(color: const Color(0xFFCE1225)),
           ),
           Text(
             '7:30 صباحا -4 مساء',
             style: AppTextStyles.syleNorsalRegular12(
               context,
-            ).copyWith(color: Color(0xFF282828)),
+            ).copyWith(color: const Color(0xFF282828)),
           ),
           SizedBox(height: 20.h),
           Text('الوصف', style: AppTextStyles.syleNorsalRegular14(context)),
@@ -47,10 +47,10 @@ class DetailsScreenBodyInfo extends StatelessWidget {
             'معبد الكرنك، الواقع في مدينة الأقصر بجنوب مصر، هو أحد أعظم المعابد في العالم وأكبر دور عبادة تاريخي شُيد في العصور القديمة، يتميز بقاعة الأعمدة الضخمة التي تضم 134 عمودًا شاهقًا، وطريق الكباش الممتد، والبحيرة المقدسة التي كانت تستخدم في الطقوس الدينية',
             style: AppTextStyles.syleNorsalMedium12(
               context,
-            ).copyWith(color: Color(0xFF8A8A8A)),
+            ).copyWith(color: const Color(0xFF8A8A8A)),
           ),
           SizedBox(height: 20.h),
-          SimilarPlacesNearYouListView(),
+          const SimilarPlacesNearYouListView(),
         ],
       ),
     );

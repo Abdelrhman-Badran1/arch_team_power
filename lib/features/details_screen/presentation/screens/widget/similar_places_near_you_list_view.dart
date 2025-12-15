@@ -21,8 +21,8 @@ class SimilarPlacesNearYouListView extends StatelessWidget {
           height: 90.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(left: 8),
+            itemBuilder: (context, index) => const Padding(
+              padding: EdgeInsets.only(left: 8),
               child: SimilarPlacesNearYouItem(),
             ),
             itemCount: 10,

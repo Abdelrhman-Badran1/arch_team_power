@@ -1,4 +1,4 @@
-import 'package:arch_team_power/core/cubit/locale_cubit/locale_cubit.dart';
+import 'package:arch_team_power/features/choseAppLang/presentation/screens/manger/cubit/locale_cubit/locale_cubit.dart';
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/features/notes/models/note_model.dart';
 import 'package:arch_team_power/l10n/app_localizations.dart';

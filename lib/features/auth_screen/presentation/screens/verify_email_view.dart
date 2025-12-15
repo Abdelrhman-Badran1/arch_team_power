@@ -9,10 +9,10 @@ class VerifyEmailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xfff9f8f8),
+        backgroundColor: const Color(0xfff9f8f8),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 13.86.w),
-          child: VerifyEmailViewBody(),
+          child: const VerifyEmailViewBody(),
         ),
       ),
     );

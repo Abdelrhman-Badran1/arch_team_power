@@ -8,7 +8,7 @@ class DetailsScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [DetailsScreenPageViewAndHeader(), DetailsScreenBodyInfo()],

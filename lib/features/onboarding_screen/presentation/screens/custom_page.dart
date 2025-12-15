@@ -80,9 +80,9 @@ class _CustomPageState extends State<CustomPage>
         children: [
           Positioned.fill(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage(AppAssets.kOnPordingBackGroundImage),
+                  image: AssetImage(AppAssets.kOnPordingBackGroundImage),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -94,7 +94,7 @@ class _CustomPageState extends State<CustomPage>
                     position: _slideAnimation,
                     child: FadeTransition(
                       opacity: _fadeAnimation,
-                      child: Container(
+                      child: SizedBox(
                         width: 400.w,
                         height: 800.h,
                         child: Image.asset(widget.introPagesData.image),
@@ -136,7 +136,7 @@ class _CustomPageState extends State<CustomPage>
                           textAlign: TextAlign.center,
                           style: AppTextStyles.syleNorsalRegular20(
                             context,
-                          ).copyWith(color: Color(0xFF4B5320)),
+                          ).copyWith(color: const Color(0xFF4B5320)),
                         ),
 
                         /// النقاط (Indicators)
@@ -184,7 +184,7 @@ class _CustomPageState extends State<CustomPage>
                                   "تخطي",
                                   style: AppTextStyles.syleNorsalMedium15(
                                     context,
-                                  ).copyWith(color: Color(0xFF4B5320)),
+                                  ).copyWith(color: const Color(0xFF4B5320)),
                                 ),
                               ),
                             ),

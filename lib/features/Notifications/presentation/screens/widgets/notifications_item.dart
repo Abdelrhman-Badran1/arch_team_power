@@ -45,7 +45,6 @@ class NotificationItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   textDirection: TextDirection.rtl,
                   children: actions
                       .map(

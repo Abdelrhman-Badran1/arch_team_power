@@ -17,7 +17,7 @@ class OptionScreenBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            CustomAppBar(title: "! ابدأ رحلتك معنا"),
+            const CustomAppBar(title: "! ابدأ رحلتك معنا"),
             SizedBox(height: 40.h),
             Center(
               child: Image.asset(
@@ -32,13 +32,13 @@ class OptionScreenBody extends StatelessWidget {
               "لإثراء تجربتك، اختر طريقة الاستخدام التي تناسبك",
               style: AppTextStyles.syleNorsalMedium14(
                 context,
-              ).copyWith(color: Color(0xFF8A8A8A)),
+              ).copyWith(color: const Color(0xFF8A8A8A)),
             ),
             SizedBox(height: 56.h),
 
             CustomButton(
               title: "ايقونه سائح",
-              buttonColor: Color(0xFFD2B48C),
+              buttonColor: const Color(0xFFD2B48C),
               onTap: () =>
                   GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen),
             ),
@@ -46,7 +46,7 @@ class OptionScreenBody extends StatelessWidget {
             CustomButton(
               buttonColor: Colors.white,
               title: "ايقونه الباحث والمتخصص",
-              textColor: Color(0xFF8A8A8A),
+              textColor: const Color(0xFF8A8A8A),
               onTap: () {},
             ),
           ],

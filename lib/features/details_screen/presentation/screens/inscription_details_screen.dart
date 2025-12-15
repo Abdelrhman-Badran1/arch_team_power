@@ -6,7 +6,7 @@ class InscriptionDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xfff9f8f8),
         body: InscriptionDetailsScreenBody(),

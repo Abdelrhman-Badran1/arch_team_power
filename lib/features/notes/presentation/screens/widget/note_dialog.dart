@@ -35,12 +35,12 @@ class NoteDialog extends StatelessWidget {
         actions: [
           NotesActionItem(
             title: 'تأكيد',
-            color: Color(0xFF4B5320),
+            color: const Color(0xFF4B5320),
             onTap: onSave,
           ),
           NotesActionItem(
             title: 'إلغاء',
-            color: Color(0xFFD2B48C),
+            color: const Color(0xFFD2B48C),
             onTap: () => Navigator.pop(context),
           ),
         ],

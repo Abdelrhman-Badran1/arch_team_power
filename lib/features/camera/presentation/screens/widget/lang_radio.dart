@@ -14,8 +14,8 @@ class LangRadio extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Row(
         children: [
-          Radio<String>(value: lang.code, activeColor: Color(0xffD2B48C)),
-          Spacer(),
+          Radio<String>(value: lang.code, activeColor: const Color(0xffD2B48C)),
+          const Spacer(),
           Expanded(
             child: Text(
               lang.name,

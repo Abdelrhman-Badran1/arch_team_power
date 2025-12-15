@@ -24,7 +24,7 @@ class LangSelectorFiald extends StatelessWidget {
             AppLocalizations.of(context)!.choose_app_language,
             style: AppTextStyles.syleNorsalRegular12(
               context,
-            ).copyWith(color: Color(0xFF8A8A8A)),
+            ).copyWith(color: const Color(0xFF8A8A8A)),
           ),
           const Spacer(),
           Icon(isOpen ? Icons.expand_less : Icons.expand_more),

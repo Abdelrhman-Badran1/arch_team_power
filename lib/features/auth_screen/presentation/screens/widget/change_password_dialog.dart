@@ -12,12 +12,11 @@ class ChangePasswordDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleDialog(
       elevation: 0,
-      backgroundColor: Color(0xfff9f8f8),
+      backgroundColor: const Color(0xfff9f8f8),
       children: [
         Padding(
           padding: EdgeInsets.all(40.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SvgPicture.asset(AppAssets.kDoneSticker),
               SizedBox(height: 45.h),
@@ -28,7 +27,7 @@ class ChangePasswordDialog extends StatelessWidget {
                   context,
                 ).copyWith(color: Colors.black),
               ),
-              SizedBox(height: 6),
+              const SizedBox(height: 6),
               Text(
                 AppLocalizations.of(
                   context,
@@ -36,7 +35,7 @@ class ChangePasswordDialog extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: AppTextStyles.syleNorsalRegular14(
                   context,
-                ).copyWith(color: Color(0xff8A8A8A)),
+                ).copyWith(color: const Color(0xff8A8A8A)),
               ),
             ],
           ),

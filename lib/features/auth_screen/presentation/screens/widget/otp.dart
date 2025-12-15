@@ -6,12 +6,12 @@ class Otp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return const Form(
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [OtpField(), OtpField(), OtpField(), OtpField()],
+          children: [OtpField(), OtpField(), OtpField(), OtpField()],
         ),
       ),
     );

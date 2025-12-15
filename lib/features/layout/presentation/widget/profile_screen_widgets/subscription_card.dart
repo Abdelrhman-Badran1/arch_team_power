@@ -23,7 +23,7 @@ class SubscriptionCard extends StatelessWidget {
             "حالة الاشتراك",
             style: AppTextStyles.syleNorsalMedium14(
               context,
-            ).copyWith(color: Color(0xFF8A8A8A)),
+            ).copyWith(color: const Color(0xFF8A8A8A)),
           ),
           SizedBox(height: 8.h),
 
@@ -55,7 +55,6 @@ class SubscriptionCard extends StatelessWidget {
                   /// percentage text
                   Positioned.fill(
                     child: Align(
-                      alignment: Alignment.center,
                       child: Text(
                         "${(value * 100).toInt()}%",
                         style: AppTextStyles.syleNorsalMedium10(
@@ -78,13 +77,13 @@ class SubscriptionCard extends StatelessWidget {
                 "تاريخ الانتهاء ",
                 style: AppTextStyles.syleNorsalRegular14(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
               Text(
                 "23 / 12 / 2024",
                 style: AppTextStyles.syleNorsalMedium14(
                   context,
-                ).copyWith(color: Color(0xFF8A8A8A)),
+                ).copyWith(color: const Color(0xFF8A8A8A)),
               ),
             ],
           ),

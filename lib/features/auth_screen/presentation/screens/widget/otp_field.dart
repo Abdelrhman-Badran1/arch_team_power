@@ -43,7 +43,7 @@ class _OtpFieldState extends State<OtpField> {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           filled: true,
-          fillColor: Color(0xfff9f8f8),
+          fillColor: const Color(0xfff9f8f8),
           contentPadding: EdgeInsets.zero,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.r),
