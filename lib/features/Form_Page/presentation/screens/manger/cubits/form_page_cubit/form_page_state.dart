@@ -14,4 +14,3 @@ final class FormPageFailure extends FormPageState {
 
   FormPageFailure({required this.errorMessage});
 }
-

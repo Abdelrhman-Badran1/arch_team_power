@@ -14,4 +14,3 @@ final class InformationFailure extends InformationState {
 
   InformationFailure({required this.errorMessage});
 }
-

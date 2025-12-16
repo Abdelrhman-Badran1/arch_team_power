@@ -6,4 +6,3 @@ part 'form_page_state.dart';
 class FormPageCubit extends Cubit<FormPageState> {
   FormPageCubit() : super(FormPageInitial());
 }
-

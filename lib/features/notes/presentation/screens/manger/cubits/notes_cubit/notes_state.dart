@@ -14,4 +14,3 @@ final class NotesFailure extends NotesState {
 
   NotesFailure({required this.errorMessage});
 }
-

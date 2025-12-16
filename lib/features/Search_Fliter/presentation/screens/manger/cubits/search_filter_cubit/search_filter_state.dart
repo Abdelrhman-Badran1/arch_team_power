@@ -14,4 +14,3 @@ final class SearchFilterFailure extends SearchFilterState {
 
   SearchFilterFailure({required this.errorMessage});
 }
-

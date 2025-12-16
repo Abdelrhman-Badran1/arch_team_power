@@ -48,7 +48,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get check_email => 'Check email';
 
   @override
-  String get password_recovery => 'A password recovery code has been sent to your email address.';
+  String get password_recovery =>
+      'A password recovery code has been sent to your email address.';
 
   @override
   String get check_your_email => 'Check your email';
@@ -57,7 +58,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password_has_been_changed => 'Password has been changed';
 
   @override
-  String get your_password_has_been_successfully_changed => 'Your password has been successfully changed.';
+  String get your_password_has_been_successfully_changed =>
+      'Your password has been successfully changed.';
 
   @override
   String get confirm_code => 'Confirm code';
@@ -75,7 +77,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get did_you_like_the_engraving => 'Did you like the engraving?';
 
   @override
-  String get rate_the_engraving => 'Please rate the engraving so others can see it.';
+  String get rate_the_engraving =>
+      'Please rate the engraving so others can see it.';
 
   @override
   String get confirm => 'confirm';
@@ -90,13 +93,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get not_clear => 'not clear';
 
   @override
-  String get date_of_discovery_of_the_inscription => 'Date of discovery of the inscription :';
+  String get date_of_discovery_of_the_inscription =>
+      'Date of discovery of the inscription :';
 
   @override
-  String get details_of_finding_the_inscription => 'Details of finding the inscription:';
+  String get details_of_finding_the_inscription =>
+      'Details of finding the inscription:';
 
   @override
-  String get translation_of_the_inscription => 'Translation of the inscription:';
+  String get translation_of_the_inscription =>
+      'Translation of the inscription:';
 
   @override
   String get closed_now => 'closed now';

@@ -43,8 +43,6 @@ class _FavListState extends State<FavList> {
   ];
 
   void removeItem(int index) {
-    final removed = items[index];
-
     setState(() => items.removeAt(index));
 
     ScaffoldMessenger.of(context).showSnackBar(

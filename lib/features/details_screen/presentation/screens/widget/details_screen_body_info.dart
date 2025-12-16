@@ -1,5 +1,5 @@
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/features/details_screen/data/details_actions.dart';
+import 'package:arch_team_power/features/details_screen/presentation/data/details_actions.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/details_screen_body_info_title_and_category_name.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/similar_places_near_you_list_view.dart';
 import 'package:arch_team_power/l10n/app_localizations.dart';

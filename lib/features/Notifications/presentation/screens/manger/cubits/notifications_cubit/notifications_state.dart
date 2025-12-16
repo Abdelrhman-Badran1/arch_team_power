@@ -14,4 +14,3 @@ final class NotificationsFailure extends NotificationsState {
 
   NotificationsFailure({required this.errorMessage});
 }
-

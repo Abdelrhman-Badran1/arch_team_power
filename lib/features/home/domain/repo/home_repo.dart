@@ -1,0 +1,7 @@
+import 'package:arch_team_power/core/errors/failure.dart';
+import 'package:arch_team_power/features/home/domain/entities/popular_places_entity.dart';
+import 'package:dartz/dartz.dart';
+
+abstract class HomeRepo {
+  Future<Either<Failure, List<PopularPlacesEntity>>> fetchPopularPlaces();
+}

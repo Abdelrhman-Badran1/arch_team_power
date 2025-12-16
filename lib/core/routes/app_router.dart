@@ -12,19 +12,19 @@ import 'package:arch_team_power/features/choseAppLang/presentation/screens/chose
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
 import 'package:arch_team_power/features/information/presentation/screens/information_screen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/settings_screen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/subscription_screen.dart';
 import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
 import 'package:arch_team_power/features/notes/presentation/screens/notes_screen.dart';
 import 'package:arch_team_power/features/onboarding_screen/presentation/screens/intro_home_screen.dart';
 import 'package:arch_team_power/features/option/presentation/screens/option_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/digital_library_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/events_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/faq_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/settings_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/subscription_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/vip_hall_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/layout/presentation/layout_page.dart';
-import '../../features/layout/presentation/pages/profile/screens/digital_library_screen.dart';
-import '../../features/layout/presentation/pages/profile/screens/events_screen.dart';
-import '../../features/layout/presentation/pages/profile/screens/faq_screen.dart';
-import '../../features/layout/presentation/pages/profile/screens/vip_hall_screen.dart';
 
 class AppRouter {
   static const String kSplashScreen = '/';
@@ -93,13 +93,19 @@ class AppRouter {
         path: kNewPasswordView,
         builder: (context, state) => const NewPasswordView(),
       ),
-      GoRoute(path: kHomeScreen, builder: (context, state) => LayoutPage()),
-      GoRoute(path: kFilterUI, builder: (context, state) => FilterUI()),
-      GoRoute(path: kMyFormPage, builder: (context, state) => MyFormPage()),
+      GoRoute(
+        path: kHomeScreen,
+        builder: (context, state) => const LayoutPage(),
+      ),
+      GoRoute(path: kFilterUI, builder: (context, state) => const FilterUI()),
+      GoRoute(
+        path: kMyFormPage,
+        builder: (context, state) => const MyFormPage(),
+      ),
 
       GoRoute(
         path: kNotificationsPage,
-        builder: (context, state) => NotificationsPage(),
+        builder: (context, state) => const NotificationsPage(),
       ),
       GoRoute(
         path: AppRouter.kSettingsScreen,
@@ -121,7 +127,7 @@ class AppRouter {
       ),
       GoRoute(
         path: kDetailsScreen,
-        builder: (context, state) => DetailsScreen(),
+        builder: (context, state) => const DetailsScreen(),
       ),
       GoRoute(
         path: kEventsScreen,
@@ -134,14 +140,17 @@ class AppRouter {
       ),
 
       GoRoute(path: kComments, builder: (context, state) => CommentsPage()),
-      GoRoute(path: kNotesScreen, builder: (context, state) => NotesScreen()),
+      GoRoute(
+        path: kNotesScreen,
+        builder: (context, state) => const NotesScreen(),
+      ),
       GoRoute(
         path: kLibraryScreen,
-        builder: (context, state) => LibraryScreen(),
+        builder: (context, state) => const LibraryScreen(),
       ),
       GoRoute(
         path: kInformationScreen,
-        builder: (context, state) => InformationScreen(),
+        builder: (context, state) => const InformationScreen(),
       ),
     ],
   );

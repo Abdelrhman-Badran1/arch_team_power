@@ -29,7 +29,6 @@ class _CustomPageState extends State<CustomPage>
   // الألوان الأساسية
   static const Color beigeColor = Color(0xFFD2B48C);
   static const Color primaryColor = Color(0xFF4B5320);
-  static const Color secondaryTextColor = Color(0xFF837561);
   static const Color deepDark = Color(0xFF40442B);
 
   bool _isExiting = false;

@@ -48,7 +48,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get check_email => 'التحقق من البريد';
 
   @override
-  String get password_recovery => 'تم إرسال كود استعادة كلمة المرور إلى بريدك الإلكتروني';
+  String get password_recovery =>
+      'تم إرسال كود استعادة كلمة المرور إلى بريدك الإلكتروني';
 
   @override
   String get check_your_email => 'تحقق من بريدك الالكتروني';
@@ -57,7 +58,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password_has_been_changed => 'تم تغيير كلمة المرور';
 
   @override
-  String get your_password_has_been_successfully_changed => 'تم تغيير كلمة المرور الخاصه بك بنجاح';
+  String get your_password_has_been_successfully_changed =>
+      'تم تغيير كلمة المرور الخاصه بك بنجاح';
 
   @override
   String get confirm_code => 'تأكيد الكود';

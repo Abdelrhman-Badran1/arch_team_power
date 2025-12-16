@@ -2,7 +2,7 @@ import 'dart:ui';
 
 class SettingsItemModel {
   final String title;
-  final String iconPath;        // SVG or PNG asset
+  final String iconPath; // SVG or PNG asset
   final bool isLogout;
   final VoidCallback? onTap;
 

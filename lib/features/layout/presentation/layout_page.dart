@@ -3,8 +3,8 @@ import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/features/camera/presentation/screens/camera_screen.dart';
 import 'package:arch_team_power/features/favorite_screen/presentation/screens/favorite_screen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/home/screens/home_sceen.dart';
-import 'package:arch_team_power/features/layout/presentation/pages/profile/screens/profile_screen.dart';
+import 'package:arch_team_power/features/home/presentation/screens/home_sceen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -99,7 +99,10 @@ class _LayoutPageState extends State<LayoutPage> {
 
           SvgPicture.asset(
             image,
-            colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(
+              AppColors.primary,
+              BlendMode.srcIn,
+            ),
           ),
         ],
       ),

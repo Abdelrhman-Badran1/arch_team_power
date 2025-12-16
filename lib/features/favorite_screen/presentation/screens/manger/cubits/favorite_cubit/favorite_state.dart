@@ -14,4 +14,3 @@ final class FavoriteFailure extends FavoriteState {
 
   FavoriteFailure({required this.errorMessage});
 }
-

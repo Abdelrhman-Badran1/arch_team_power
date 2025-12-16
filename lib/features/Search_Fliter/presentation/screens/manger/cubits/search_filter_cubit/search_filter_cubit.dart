@@ -6,4 +6,3 @@ part 'search_filter_state.dart';
 class SearchFilterCubit extends Cubit<SearchFilterState> {
   SearchFilterCubit() : super(SearchFilterInitial());
 }
-

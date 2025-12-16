@@ -14,4 +14,3 @@ final class LibraryFailure extends LibraryState {
 
   LibraryFailure({required this.errorMessage});
 }
-

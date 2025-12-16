@@ -1,4 +1,4 @@
-import 'package:arch_team_power/features/details_screen/data/details_image_list.dart';
+import 'package:arch_team_power/features/details_screen/presentation/data/details_image_list.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/dot_indctor.dart';
 import 'package:flutter/material.dart';
 

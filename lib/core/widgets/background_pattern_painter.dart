@@ -48,10 +48,7 @@ class BackgroundPatternPainter extends CustomPainter {
       ];
 
       final paintImageLayer = Paint()
-        ..colorFilter = const ColorFilter.mode(
-          Colors.black26,
-          BlendMode.srcIn,
-        );
+        ..colorFilter = const ColorFilter.mode(Colors.black26, BlendMode.srcIn);
 
       for (int i = 0; i < bgImages!.length && i < positions.length; i++) {
         final img = bgImages![i];

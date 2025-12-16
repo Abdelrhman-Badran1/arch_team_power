@@ -42,9 +42,6 @@ class _CountUpTimerState extends State<CountUpTimer> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      timeString,
-      style: AppTextStyles.syleNorsalRegular14(context)
-    );
+    return Text(timeString, style: AppTextStyles.syleNorsalRegular14(context));
   }
 }
