@@ -6,8 +6,8 @@ plugins {
 
 android {
     namespace = "com.example.arch_team_power"
-    compileSdk = 35
-    ndkVersion = "25.2.9519653"
+    compileSdk = 36
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -21,7 +21,7 @@ android {
     defaultConfig {
         applicationId = "com.example.arch_team_power"
         minSdk = flutter.minSdkVersion
-        targetSdk = 34
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
