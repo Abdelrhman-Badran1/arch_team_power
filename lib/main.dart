@@ -20,7 +20,7 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: false, // خليته شغال
+      enabled: true, // خليته شغال
       builder: (context) =>
           BlocProvider(create: (context) => LocaleCubit(), child: MyApp()),
     ),
