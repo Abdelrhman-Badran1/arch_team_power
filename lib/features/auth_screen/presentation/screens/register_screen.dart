@@ -4,6 +4,7 @@ import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/core/widgets/custom_text_field.dart';
 import 'package:arch_team_power/core/widgets/auth_button.dart';
+import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
@@ -23,7 +24,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-    final _emailController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -46,7 +47,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           body: BlocProvider(
             create: (context) => SignUpCubit(
               SignupUseCase(
-                AuthRepoImpl(AuthRemoteDataSourceImpl(ApiService(Dio()))),
+                AuthRepoImpl(
+                  remoteDataSource: AuthRemoteDataSourceImpl(ApiService(Dio())),
+                  localDataSource: AuthLocalDataSourceImpl(),
+                ),
               ),
             ),
             child: GestureDetector(
@@ -70,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           style: AppTextStyles.syleNorsalMedium17(context),
                         ),
                         SizedBox(height: 34.h),
-                       CustomTextField(
+                        CustomTextField(
                           controller: _emailController,
                           textFieldTitle: 'البريد الإلكتروني',
                           hintText: 'ادخل البريد الإلكتروني',
@@ -83,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                  
+
                         SizedBox(height: 20.h),
                         CustomTextField(
                           controller: _passwordController,
@@ -99,9 +103,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                  
+
                         SizedBox(height: 20.h),
-                     CustomTextField(
+                        CustomTextField(
                           controller: _confirmPasswordController,
                           textFieldTitle: 'تأكيد كلمة المرور',
                           hintText: 'أعد كتابة كلمة المرور',
@@ -115,9 +119,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                  
+
                         const SizedBox(height: 8),
-                  
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -135,10 +139,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ],
                         ),
                         SizedBox(height: 49.h),
-                       BlocConsumer<SignUpCubit, SignUpState>(
+                        BlocConsumer<SignUpCubit, SignUpState>(
                           listener: (context, state) {
                             if (state is SignUpSuccess) {
-                              
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('تم انشاء الحساب بنجاح'),
@@ -170,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             );
                           },
                         ),
-                  
+
                         SizedBox(height: 21.h),
                         Row(
                           children: [
@@ -181,7 +184,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               child: Text(
                                 'أو',
-                                style: AppTextStyles.syleNorsalRegular14(context),
+                                style: AppTextStyles.syleNorsalRegular14(
+                                  context,
+                                ),
                               ),
                             ),
                             const Expanded(child: Divider()),
@@ -191,13 +196,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const SocialAuthItem(assetName: AppIcons.kGoogleIcon),
+                            const SocialAuthItem(
+                              assetName: AppIcons.kGoogleIcon,
+                            ),
                             SizedBox(width: 11.w),
                             const SocialAuthItem(
                               assetName: AppIcons.kFaceBookIcon,
                             ),
                             SizedBox(width: 11.w),
-                            const SocialAuthItem(assetName: AppIcons.kAppleIcon),
+                            const SocialAuthItem(
+                              assetName: AppIcons.kAppleIcon,
+                            ),
                           ],
                         ),
                         SizedBox(height: 40.h),

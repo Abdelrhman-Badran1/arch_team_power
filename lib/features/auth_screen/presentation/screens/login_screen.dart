@@ -4,6 +4,7 @@ import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/core/widgets/custom_text_field.dart';
 import 'package:arch_team_power/core/widgets/auth_button.dart';
+import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
@@ -44,7 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
           body: BlocProvider(
             create: (context) => LoginCubit(
               LoginUseCase(
-                AuthRepoImpl(AuthRemoteDataSourceImpl(ApiService(Dio()))),
+                AuthRepoImpl(
+                  remoteDataSource: AuthRemoteDataSourceImpl(ApiService(Dio())),
+                  localDataSource: AuthLocalDataSourceImpl(),
+                ),
               ),
             ),
             child: GestureDetector(
