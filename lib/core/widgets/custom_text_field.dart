@@ -21,6 +21,7 @@ class CustomTextField extends StatefulWidget {
     this.fontSizeHintText,
     this.contentPadding,
     this.colorHintText,
+    this.keyboardType,
   });
 
   final bool? canRequestFocus;
@@ -37,6 +38,7 @@ class CustomTextField extends StatefulWidget {
   final double? fontSizeHintText;
   final EdgeInsetsGeometry? contentPadding;
   final Color? colorHintText;
+  final TextInputType? keyboardType;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -87,6 +89,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      keyboardType: widget.keyboardType,
                       textAlign: widget.textAlign ?? TextAlign.start,
                       autocorrect: false,
                       enableSuggestions: false,
@@ -106,7 +109,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         hintStyle:
                             widget.hintStyle ??
                             AppTextStyles.syleNorsalRegular10(context).copyWith(
-                              color: widget.colorHintText ?? Color(0xFF8A8A8A),
+                              color:
+                                  widget.colorHintText ??
+                                  const Color(0xFF8A8A8A),
                               fontSize: widget.fontSizeHintText,
                             ),
                       ),
