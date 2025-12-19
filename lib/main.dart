@@ -26,6 +26,7 @@ void main() async {
 
   runApp(
     DevicePreview(
+      enabled: false, // هنا فعلنا DevicePreview
       builder: (context) =>
           BlocProvider(create: (_) => LocaleCubit(), child: const MyApp()),
     ),
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 locale: locale,
                 useInheritedMediaQuery: true, // مهم مع DevicePreview
-                builder: DevicePreview.appBuilder, // مهم جداً
+                builder: DevicePreview.appBuilder, // مهم جداً مع DevicePreview
                 supportedLocales: AppLocalizations.supportedLocales,
                 localizationsDelegates: [
                   AppLocalizations.delegate,

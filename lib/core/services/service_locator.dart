@@ -11,12 +11,14 @@ import 'package:dio/dio.dart';
 final sl = GetIt.instance;
 
 Future<void> initServiceLocator() async {
+  // Local
   sl.registerLazySingleton<AuthLocalDataSource>(
     () => AuthLocalDataSourceImpl(),
   );
 
+  // Dio
   sl.registerLazySingleton<Dio>(() {
-    final dio = Dio(
+    return Dio(
       BaseOptions(
         baseUrl: "https://archtech.test-trifhi.com/api/",
         connectTimeout: const Duration(seconds: 15),
@@ -24,29 +26,28 @@ Future<void> initServiceLocator() async {
         headers: {'Accept': 'application/json'},
       ),
     );
-
-    sl.registerLazySingleton(
-  () => CheckAuthStatusUseCase(sl<AuthLocalDataSource>()),
-);
-
-    return dio;
   });
 
-  sl.registerLazySingleton<ApiService>(
-    () => ApiService(sl<Dio>()),
-  );
+  // Api Service
+  sl.registerLazySingleton<ApiService>(() => ApiService(sl<Dio>()));
 
+  // Remote
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl<ApiService>()),
   );
 
+  // Repo
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
-    remoteDataSource:   sl<AuthRemoteDataSource>(),
- localDataSource:      sl<AuthLocalDataSource>(),
+      remoteDataSource: sl<AuthRemoteDataSource>(),
+      localDataSource: sl<AuthLocalDataSource>(),
     ),
   );
 
+  // UseCases
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
+  sl.registerLazySingleton(
+    () => CheckAuthStatusUseCase(sl<AuthLocalDataSource>()),
+  );
 }
