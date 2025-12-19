@@ -16,7 +16,7 @@ class PopularPlacesDetailsRepoImpl extends HomeRepo {
   );
 
   @override
-  Future<Either<Failure, List<PopularPlacesEntity>>> fetchPopularPlaces() {
+  Future<Either<Failure, List<PopularSectionEntity>>> fetchPopularPlaces() {
     throw UnimplementedError();
   }
 }

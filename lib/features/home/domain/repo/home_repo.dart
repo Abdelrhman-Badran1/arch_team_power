@@ -5,5 +5,6 @@ import 'package:flutter/material.dart';
 
 abstract class HomeRepo {
   // Future<Either<Failure, List<Slider>>> fetchSlider();
-  Future<Either<Failure, List<PopularPlacesEntity>>> fetchPopularPlaces();
+
+  Future<Either<Failure, List<PopularSectionEntity>>> fetchPopularPlaces();
 }

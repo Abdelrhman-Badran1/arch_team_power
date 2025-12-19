@@ -10,7 +10,7 @@ class FetchPopularPlacesUseCase extends UseCaseNoParam {
   FetchPopularPlacesUseCase(this.homeRepo);
 
   @override
-  Future<Either<Failure, List<PopularPlacesEntity>>> call() {
+  Future<Either<Failure, List<PopularSectionEntity>>> call() {
     return homeRepo.fetchPopularPlaces();
   }
 }
