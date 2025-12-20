@@ -1,22 +1,33 @@
 import 'package:arch_team_power/core/errors/failure.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
+import 'package:arch_team_power/features/home/data/model/home/slider.data.dart';
 import 'package:arch_team_power/features/home/domain/entities/popular_places_entity.dart';
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/src/material/slider.dart';
 
-class PopularPlacesDetailsRepoImpl extends HomeRepo {
+class HomeRepoImplemtion extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
   final HomeLocalDataSource homeLocalDataSource;
 
-  PopularPlacesDetailsRepoImpl(
-    this.homeRemoteDataSource,
-    this.homeLocalDataSource,
-  );
+  HomeRepoImplemtion(this.homeRemoteDataSource, this.homeLocalDataSource);
 
   @override
   Future<Either<Failure, List<PopularSectionEntity>>> fetchPopularPlaces() {
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<Sliderr>>> fetchSliders() async {
+    try {
+      final sliders = await homeRemoteDataSource.fetchSliders();
+      return Right(sliders);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDiorError(e));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
   }
 }

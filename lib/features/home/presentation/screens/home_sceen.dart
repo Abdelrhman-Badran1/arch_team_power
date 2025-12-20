@@ -1,10 +1,14 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/home_cubit/home_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/famous_places_list.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/home_header.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_library_list.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/section_title.dart';
+import 'package:arch_team_power/features/home/presentation/screens/widgets/slider.dart';
 import 'package:arch_team_power/features/information/presentation/screens/widget/information_screen_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +24,10 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: BlocProvider(
-          create: (context) => HomeCubit(),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => sl<SliderCubitCubit>()..fetchSliders()),
+          ],
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,23 +42,11 @@ class HomeScreen extends StatelessWidget {
                 //       .fade(duration: 600.ms)
                 //       .slideY(begin: 0.3, duration: 600.ms),
                 // ),
+                SliderWidget(),
                 // const CategoriesList()
                 //     .animate()
                 //     .fade(duration: 700.ms)
                 //     .slideY(begin: 0.3, duration: 700.ms, curve: Curves.easeOut),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    child: Image.asset(
-                      "assets/image/befor_search.png",
-                      fit: BoxFit.cover,
-                      width: 400.w,
-                    ),
-                  ),
-                ),
 
                 /// ====== أكثر الأماكن المشهورة ======
                 Padding(

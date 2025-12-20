@@ -5,18 +5,36 @@ import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_i
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
-import 'package:arch_team_power/features/profile/data/data_sources/profile_remote_data_source.dart';
+import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
+import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
+import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
+import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initServiceLocator() async {
+  // Local
   sl.registerLazySingleton<AuthLocalDataSource>(
     () => AuthLocalDataSourceImpl(),
   );
+  sl.registerLazySingleton<HomeLocalDataSource>(
+    () => HomeLocalDataSourceImpl(),
+  );
+  sl.registerLazySingleton<HomeRemoteDataSource>(
+    () => HomeRemoteDataSourceImpl(sl<ApiService>()),
+  );
+  sl.registerLazySingleton<HomeRepo>(
+    () => HomeRepoImplemtion(
+      sl<HomeRemoteDataSource>(),
+      sl<HomeLocalDataSource>(),
+    ),
+  );
+
+  // Dio
   sl.registerLazySingleton<Dio>(() {
-    final dio = Dio(
+    return Dio(
       BaseOptions(
         baseUrl: "https://archtech.test-trifhi.com/api/",
         connectTimeout: const Duration(seconds: 15),
@@ -24,44 +42,25 @@ Future<void> initServiceLocator() async {
         headers: {'Accept': 'application/json'},
       ),
     );
-
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await sl<AuthLocalDataSource>().getToken();
-          if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
-          handler.next(options);
-        },
-        onError: (DioException e, handler) {
-          handler.next(e);
-        },
-      ),
-    );
-
-    return dio;
   });
 
+  // Api Service
   sl.registerLazySingleton<ApiService>(() => ApiService(sl<Dio>()));
 
+  // Remote
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl<ApiService>()),
   );
 
+  // Repo
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
       remoteDataSource: sl<AuthRemoteDataSource>(),
       localDataSource: sl<AuthLocalDataSource>(),
     ),
   );
-  sl.registerLazySingleton<ProfileRemoteDataSource>(
-    () => ProfileRemoteDataSourceImpl(
-      apiService: sl<ApiService>(),
-      authLocalDataSource: sl<AuthLocalDataSource>(),
-    ),
-  );
 
+  // UseCases
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(
