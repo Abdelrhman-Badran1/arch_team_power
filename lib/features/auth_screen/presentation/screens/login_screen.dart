@@ -137,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         BlocConsumer<LoginCubit, LoginState>(
                           listener: (context, state) {
                             if (state is LoginSuccess) {
+                              GoRouter.of(context).go(AppRouter.kHomeScreen);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('تم تسجيل الدخول بنجاح'),

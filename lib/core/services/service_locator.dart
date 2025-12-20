@@ -5,6 +5,7 @@ import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_i
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
+import 'package:arch_team_power/features/profile/data/data_sources/profile_remote_data_source.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 
@@ -14,7 +15,6 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<AuthLocalDataSource>(
     () => AuthLocalDataSourceImpl(),
   );
-
   sl.registerLazySingleton<Dio>(() {
     final dio = Dio(
       BaseOptions(
@@ -25,16 +25,25 @@ Future<void> initServiceLocator() async {
       ),
     );
 
-    sl.registerLazySingleton(
-  () => CheckAuthStatusUseCase(sl<AuthLocalDataSource>()),
-);
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = await sl<AuthLocalDataSource>().getToken();
+          if (token != null && token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+          handler.next(options);
+        },
+        onError: (DioException e, handler) {
+          handler.next(e);
+        },
+      ),
+    );
 
     return dio;
   });
 
-  sl.registerLazySingleton<ApiService>(
-    () => ApiService(sl<Dio>()),
-  );
+  sl.registerLazySingleton<ApiService>(() => ApiService(sl<Dio>()));
 
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl<ApiService>()),
@@ -42,11 +51,20 @@ Future<void> initServiceLocator() async {
 
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
-    remoteDataSource:   sl<AuthRemoteDataSource>(),
- localDataSource:      sl<AuthLocalDataSource>(),
+      remoteDataSource: sl<AuthRemoteDataSource>(),
+      localDataSource: sl<AuthLocalDataSource>(),
+    ),
+  );
+  sl.registerLazySingleton<ProfileRemoteDataSource>(
+    () => ProfileRemoteDataSourceImpl(
+      apiService: sl<ApiService>(),
+      authLocalDataSource: sl<AuthLocalDataSource>(),
     ),
   );
 
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
+  sl.registerLazySingleton(
+    () => CheckAuthStatusUseCase(sl<AuthLocalDataSource>()),
+  );
 }

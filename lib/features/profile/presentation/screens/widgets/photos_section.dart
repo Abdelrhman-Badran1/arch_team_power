@@ -1,4 +1,3 @@
-import 'package:arch_team_power/features/layout/data/dummy_photos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -40,3 +39,16 @@ class PhotosSection extends StatelessWidget {
     );
   }
 }
+const List<String> photos = [
+  "assets/image/image1.png",
+  "assets/image/image2.png",
+  "assets/image/image3.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+  "assets/image/image4.png",
+];

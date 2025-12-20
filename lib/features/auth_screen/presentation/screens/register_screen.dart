@@ -142,6 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         BlocConsumer<SignUpCubit, SignUpState>(
                           listener: (context, state) {
                             if (state is SignUpSuccess) {
+                              GoRouter.of(context).go(AppRouter.kHomeScreen);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('تم انشاء الحساب بنجاح'),
