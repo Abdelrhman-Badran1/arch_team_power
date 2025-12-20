@@ -26,7 +26,7 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: false, // هنا فعلنا DevicePreview
+      enabled: true, // هنا فعلنا DevicePreview
       builder: (context) =>
           BlocProvider(create: (_) => LocaleCubit(), child: const MyApp()),
     ),

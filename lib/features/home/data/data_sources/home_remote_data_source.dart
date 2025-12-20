@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<PopularSectionEntity>> fetchPopularPlaces();
+  Future<List<Sliderr>> fetchSliders();
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -13,13 +14,17 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
 
   HomeRemoteDataSourceImpl(this.apiService);
 
-  @override
-  Future<List<Sliderr>> getSliders() async {
-    final response = await apiService.get(endPoint: 'home');
-
-    final data = Dataa.fromJson(response['data']);
-
-    return data.sliders ?? [];
+  Future<List<Sliderr>> fetchSliders() async {
+    try {
+      final response = await apiService.get(endPoint: 'home');
+      final dataJson = response['data']['sliders'] as List<dynamic>?;
+      final sliders = dataJson
+          ?.map((e) => Sliderr.fromJson(e as Map<String, dynamic>))
+          .toList();
+      return sliders ?? [];
+    } catch (e) {
+      throw Exception('Failed to fetch sliders: $e');
+    }
   }
 
   Future<List<PopularSectionEntity>> fetchPopularPlaces() {
