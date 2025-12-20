@@ -1,9 +1,7 @@
 import 'package:arch_team_power/core/services/service_locator.dart';
-import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/choseAppLang/presentation/screens/manger/cubit/locale_cubit/locale_cubit.dart';
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/features/notes/models/note_model.dart';
-import 'package:arch_team_power/features/splash_screen/presentation/manger/cubit/splash_cubit.dart';
 import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -45,22 +43,19 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return BlocBuilder<LocaleCubit, Locale>(
           builder: (context, locale) {
-            return BlocProvider(
-              create: (context) => SplashCubit(sl<CheckAuthStatusUseCase>()),
-              child: MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                locale: locale,
-                useInheritedMediaQuery: true, // مهم مع DevicePreview
-                builder: DevicePreview.appBuilder, // مهم جداً مع DevicePreview
-                supportedLocales: AppLocalizations.supportedLocales,
-                localizationsDelegates: [
-                  AppLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                routerConfig: AppRouter.router,
-              ),
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              locale: locale,
+              useInheritedMediaQuery: true, // مهم مع DevicePreview
+              builder: DevicePreview.appBuilder, // مهم جداً مع DevicePreview
+              supportedLocales: AppLocalizations.supportedLocales,
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              routerConfig: AppRouter.router,
             );
           },
         );

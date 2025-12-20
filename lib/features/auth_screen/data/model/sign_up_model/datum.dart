@@ -23,7 +23,6 @@ class Datum extends UserEntity {
          userName: name ?? '',
          userEmail: email ?? '',
          userRole: role ?? '',
-         userId: id ?? 0,
          userToken: token ?? '',
        );
 

@@ -1,46 +1,37 @@
-import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> saveToken(String token);
   Future<String?> getToken();
   Future<void> clearToken();
-
   Future<bool> isLoggedIn();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
+  static const _tokenKey = 'token';
+
   @override
   Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
+    await prefs.setString(_tokenKey, token);
   }
 
   @override
   Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token');
+    return prefs.getString(_tokenKey);
   }
 
   @override
   Future<void> clearToken() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('token');
+    await prefs.remove(_tokenKey);
   }
 
   @override
   Future<bool> isLoggedIn() async {
     final token = await getToken();
-    return token != null && token.isNotEmpty;
-  }
-}
-
-class CheckAuthStatusUseCase {
-  final AuthLocalDataSource localDataSource;
-
-  CheckAuthStatusUseCase(this.localDataSource);
-
-  Future<bool> call() {
-    return localDataSource.isLoggedIn();
+    if (token == null || token.trim().isEmpty) return false;
+    return true;
   }
 }

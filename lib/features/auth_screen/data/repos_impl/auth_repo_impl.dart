@@ -23,9 +23,10 @@ class AuthRepoImpl implements AuthRepo {
       await localDataSource.saveToken(user.userToken);
 
       return Right(user);
-    } on DioException catch (e) {
-      return Left(ServerFailure.fromDiorError(e));
     } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
       return Left(ServerFailure(e.toString()));
     }
   }
@@ -42,10 +43,31 @@ class AuthRepoImpl implements AuthRepo {
       await localDataSource.saveToken(user.userToken);
 
       return Right(user);
-    } on DioException catch (e) {
-      return Left(ServerFailure.fromDiorError(e));
     } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
       return Left(ServerFailure(e.toString()));
     }
+  }
+}
+
+class AuthInterceptor extends Interceptor {
+  final AuthLocalDataSource localDataSource;
+
+  AuthInterceptor(this.localDataSource);
+
+  @override
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    final token = await localDataSource.getToken();
+
+    if (token != null) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
+
+    super.onRequest(options, handler);
   }
 }

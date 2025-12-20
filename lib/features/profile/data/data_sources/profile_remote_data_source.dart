@@ -1,5 +1,4 @@
 import 'package:arch_team_power/core/services/api_service.dart';
-import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/profile/data/models/profile_model/profile_model.dart';
 import 'package:arch_team_power/features/profile/domain/entities/profile_entity.dart';
 
@@ -14,17 +13,12 @@ abstract class ProfileRemoteDataSource {
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   final ApiService apiService;
-  final AuthLocalDataSource authLocalDataSource;
 
-  ProfileRemoteDataSourceImpl({
-    required this.apiService,
-    required this.authLocalDataSource,
-  });
+  ProfileRemoteDataSourceImpl({required this.apiService});
 
   @override
   Future<ProfileEntity> getprofileInfo() async {
     final data = await apiService.get(endPoint: 'profile');
-
     return ProfileModel.fromJson(data);
   }
 

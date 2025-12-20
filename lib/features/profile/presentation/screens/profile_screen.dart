@@ -1,15 +1,12 @@
-import 'package:arch_team_power/core/services/api_service.dart';
+import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
-import 'package:arch_team_power/features/profile/data/data_sources/profile_remote_data_source.dart';
-import 'package:arch_team_power/features/profile/data/repos_impl/profile_repo_impl.dart';
+import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
 import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/widgets/app_drawer.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/widgets/photos_section.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/widgets/profile_header.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/widgets/profile_tabs.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/widgets/subscription_card.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,12 +18,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetProfileDataCubit(
-        ProfilerepoImpl(
-          profileRemoteDataSource: ProfileRemoteDataSourceImpl(
-            authLocalDataSource: AuthLocalDataSourceImpl(),
-            apiService: ApiService(Dio()),
-          ),
-        ),
+        sl<ProfileRepo>(),
       )..getProfileData(),
       child: Scaffold(
         drawer: const AppDrawer(),
