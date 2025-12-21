@@ -1,0 +1,27 @@
+import 'package:arch_team_power/features/home/data/model/popular/popular_place.dart';
+import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
+import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
+
+part 'pobular_state.dart';
+
+class PobularCubit extends Cubit<PobularState> {
+  final HomeRepoImplemtion homeRepository;
+
+  PobularCubit(this.homeRepository) : super(PobularInitial());
+
+  Future<void> fetchPopularPlaces() async {
+    emit(PobularLoading());
+
+    final result = await homeRepository.fetchAllPopularPlaces();
+
+    result.fold(
+      (failure) {
+        emit(PobularError(failure.message));
+      },
+      (popularPlaces) {
+        emit(PobularLoaded(popularPlaces));
+      },
+    );
+  }
+}

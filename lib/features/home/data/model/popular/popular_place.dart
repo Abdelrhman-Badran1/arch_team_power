@@ -1,6 +1,4 @@
-import 'image.dart';
-
-class Datum {
+class PopularPlace {
   int? id;
   String? name;
   String? nameAr;
@@ -11,9 +9,9 @@ class Datum {
   int? order;
   int? ruinsCount;
   int? subPlacesCount;
-  List<Image>? images;
+  List<dynamic>? images;
 
-  Datum({
+  PopularPlace({
     this.id,
     this.name,
     this.nameAr,
@@ -27,7 +25,7 @@ class Datum {
     this.images,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory PopularPlace.fromJson(Map<String, dynamic> json) => PopularPlace(
     id: json['id'] as int?,
     name: json['name'] as String?,
     nameAr: json['name_ar'] as String?,
@@ -38,9 +36,7 @@ class Datum {
     order: json['order'] as int?,
     ruinsCount: json['ruins_count'] as int?,
     subPlacesCount: json['sub_places_count'] as int?,
-    images: (json['images'] as List<dynamic>?)
-        ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
-        .toList(),
+    images: json['images'] as List<dynamic>?,
   );
 
   Map<String, dynamic> toJson() => {
@@ -54,6 +50,6 @@ class Datum {
     'order': order,
     'ruins_count': ruinsCount,
     'sub_places_count': subPlacesCount,
-    'images': images?.map((e) => e.toJson()).toList(),
+    'images': images,
   };
 }

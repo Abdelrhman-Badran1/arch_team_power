@@ -1,4 +1,3 @@
-
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/features/auth_screen/domain/entities/user_entity.dart';
 

@@ -2,6 +2,7 @@ import 'package:arch_team_power/core/errors/failure.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:arch_team_power/features/home/data/model/home/slider.data.dart';
+import 'package:arch_team_power/features/home/data/model/popular/popular_place.dart';
 import 'package:arch_team_power/features/home/domain/entities/popular_places_entity.dart';
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -24,6 +25,18 @@ class HomeRepoImplemtion extends HomeRepo {
     try {
       final sliders = await homeRemoteDataSource.fetchSliders();
       return Right(sliders);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDiorError(e));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<PopularPlace>>> fetchAllPopularPlaces() async {
+    try {
+      final popular = await homeRemoteDataSource.fetchPopularPlaces();
+      return Right(popular);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDiorError(e));
     } catch (e) {

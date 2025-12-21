@@ -1,12 +1,14 @@
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/features/home/data/model/home/data.data.dart';
 import 'package:arch_team_power/features/home/data/model/home/slider.data.dart';
+import 'package:arch_team_power/features/home/data/model/popular/popular_place.dart';
 import 'package:arch_team_power/features/home/domain/entities/popular_places_entity.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<PopularSectionEntity>> fetchPopularPlaces();
   Future<List<Sliderr>> fetchSliders();
+  Future<List<PopularPlace>> fetchPopularPlaces();
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -27,8 +29,22 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     }
   }
 
-  Future<List<PopularSectionEntity>> fetchPopularPlaces() {
-    // TODO: implement fetchPopularPlaces
-    throw UnimplementedError();
+  @override
+  Future<List<PopularPlace>> fetchPopularPlaces() async {
+    try {
+      final response = await apiService.get(endPoint: 'popular-places');
+
+      if (response['data'] == null) {
+        throw Exception('popular places is null');
+      }
+
+      return (response['data'] as List)
+          .map((e) => PopularPlace.fromJson(e))
+          .toList();
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'Network error occurred');
+    } catch (e) {
+      throw Exception('Unexpected error: $e');
+    }
   }
 }
