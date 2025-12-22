@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
@@ -15,6 +14,7 @@ import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/s
 import 'package:arch_team_power/features/profile/data/data_sources/profile_remote_data_source.dart';
 import 'package:arch_team_power/features/profile/data/repos_impl/profile_repo_impl.dart';
 import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
+import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
 import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -32,13 +32,12 @@ Future<void> initServiceLocator() async {
 
   sl.registerLazySingleton<Dio>(() {
     final dio = Dio();
-
-    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
-        (client) {
-          client.badCertificateCallback =
-              (X509Certificate cert, String host, int port) => true;
-          return client;
-        };
+    (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
+      final client = HttpClient();
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
 
     dio.interceptors.add(AuthInterceptor(sl<AuthLocalDataSource>()));
 
@@ -80,6 +79,7 @@ Future<void> initServiceLocator() async {
 
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
+  sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
 
   sl.registerFactory(() => SliderCubitCubit(sl<HomeRepo>()));
 }

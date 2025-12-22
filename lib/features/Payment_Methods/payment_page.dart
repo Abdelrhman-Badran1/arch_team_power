@@ -71,7 +71,13 @@ class PaymentPage extends StatelessWidget {
                 SizedBox(height: 90.h),
                 CustomButton(
                   onTap: () => GoRouter.of(context).push(AppRouter.kMyFormPage),
-                  title: 'تأكيد ',
+                  title: Text(
+                    'تأكيد ',
+                    style: AppTextStyles.syleNorsalMedium15(
+                      context,
+                    ).copyWith(color: Colors.white),
+                  ),
+
                   buttonColor: const Color(0xFFD2B48C),
                 ),
               ],

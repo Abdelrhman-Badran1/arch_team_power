@@ -1,13 +1,15 @@
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/features/profile/data/models/profile_model/profile_model.dart';
 import 'package:arch_team_power/features/profile/domain/entities/profile_entity.dart';
+import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<ProfileEntity> getprofileInfo();
   Future<ProfileEntity> updateProfileInfo({
     required String name,
     required String email,
-    String? profileImage,
+    XFile? profileImage,
   });
 }
 
@@ -26,13 +28,24 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   Future<ProfileEntity> updateProfileInfo({
     required String name,
     required String email,
-    String? profileImage,
+    XFile? profileImage,
   }) async {
+    final formData = FormData.fromMap({
+      'name': name,
+      'email': email,
+      if (profileImage != null)
+        'profile_image': await MultipartFile.fromFile(
+          profileImage.path,
+          filename: profileImage.name,
+        ),
+    });
+
     final response = await apiService.post(
       endPoint: 'profile',
-      data: {'name': name, 'email': email, 'profile_image': profileImage},
+      data: formData,
+      isMultipart: true,
     );
 
-    return ProfileEntity.fromJson(response);
+    return ProfileModel.fromJson(response);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/change_password_dialog.dart';
@@ -45,7 +46,12 @@ class NewPasswordViewBody extends StatelessWidget {
                 },
               );
             },
-            title: AppLocalizations.of(context)!.change_password,
+            title: Text(
+              AppLocalizations.of(context)!.change_password,
+              style: AppTextStyles.syleNorsalMedium15(
+                context,
+              ).copyWith(color: Colors.white),
+            ),
             buttonColor: const Color(0xffD2B48C),
           ),
         ],

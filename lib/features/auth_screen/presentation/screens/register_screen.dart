@@ -168,8 +168,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       }
                                     },
                               title: state is SignUpLoading
-                                  ? 'جاري إنشاء الحساب...'
-                                  : 'إنشاء حساب',
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : Text(
+                                      'إنشاء حساب',
+                                      style: AppTextStyles.syleNorsalMedium15(
+                                        context,
+                                      ).copyWith(color: Colors.white),
+                                    ),
                               buttonColor: const Color(0xffD2B48C),
                             );
                           },

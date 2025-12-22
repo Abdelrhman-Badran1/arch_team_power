@@ -21,6 +21,7 @@ import 'package:arch_team_power/features/profile/presentation/screens/events_scr
 import 'package:arch_team_power/features/profile/presentation/screens/faq_screen.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/settings_screen.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/subscription_screen.dart';
+import 'package:arch_team_power/features/profile/presentation/screens/update_profile_screen.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/vip_hall_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -46,6 +47,7 @@ class AppRouter {
   static const kNotificationsPage = '/NotificationsPage';
   static const kDetailsScreen = '/DetailsScreen';
   static const kSettingsScreen = '/settingsscreen';
+  static const kUpdateProfileScreen = '/UpdateProfileScreen';
   static const kFaqScreen = "/faq_screen";
   static const kDigitalLibraryScreen = "/digital_library_screen";
   static const kEventsScreen = "/events_screen";
@@ -110,6 +112,10 @@ class AppRouter {
       GoRoute(
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: kUpdateProfileScreen,
+        builder: (context, state) => const UpdateProfileScreen(),
       ),
       GoRoute(
         path: kPaymentPage,

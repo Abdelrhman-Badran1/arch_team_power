@@ -28,7 +28,13 @@ class ChoseAppLangScreenBody extends StatelessWidget {
         SizedBox(height: 27.h),
         CustomButton(
           onTap: () => GoRouter.of(context).push(AppRouter.kOptionScreen),
-          title: AppLocalizations.of(context)!.confirm,
+          title: Text(
+            AppLocalizations.of(context)!.confirm,
+            style: AppTextStyles.syleNorsalMedium15(
+              context,
+            ).copyWith(color: Colors.white),
+          ),
+
           buttonColor: const Color(0xFFD2B48C),
         ),
       ],

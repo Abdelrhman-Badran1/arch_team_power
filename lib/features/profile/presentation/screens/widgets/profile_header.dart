@@ -1,6 +1,6 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/core/utils/app_assets.dart';
+import 'package:arch_team_power/core/widgets/home_screen_profile_image.dart';
 import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,25 +12,15 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetProfileDataCubit, GetProfileDataState>(
-      listener: (context, state) {
-        if (state is GetProfileDataSuccess) {
-          // Handle success state
-        } else if (state is GetProfileDataFailure) {
-          // Handle failure state
-        } else if (state is GetProfileDataLoading) {
-          // Handle loading state
-        }
-      },
+    return BlocBuilder<ProfileDataCubit, ProfileDataState>(
       builder: (context, state) {
         if (state is GetProfileDataSuccess) {
           return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CircleAvatar(
-                radius: 28.r,
-                backgroundImage: const AssetImage(AppAssets.kProfileImage2),
+              HomeScreenProfileImage(
+                networkImage: state.profileData.userProfileImage,
               ),
+              SizedBox(width: 12.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -46,7 +36,7 @@ class ProfileHeader extends StatelessWidget {
                   ),
                 ],
               ),
-
+              const Spacer(),
               GestureDetector(
                 onTap: () =>
                     GoRouter.of(context).push(AppRouter.kSettingsScreen),
@@ -61,15 +51,12 @@ class ProfileHeader extends StatelessWidget {
               context,
             ).copyWith(color: Colors.red),
           );
-        } else if (state is GetProfileDataLoading) {
-          return SizedBox(
-            height: 56.h,
-            child: Center(child: CircularProgressIndicator()),
-          );
         }
         return SizedBox(
           height: 56.h,
-          child: Center(child: CircularProgressIndicator()),
+          child: const Center(
+            child: CircularProgressIndicator(color: Color(0xffD2B48C)),
+          ),
         );
       },
     );

@@ -2,14 +2,14 @@ import 'dart:ui';
 
 class SettingsItemModel {
   final String title;
-  final String iconPath; // SVG or PNG asset
+  final String iconPath;
   final bool isLogout;
-  final VoidCallback? onTap;
+  final String? pageRoute;
 
   SettingsItemModel({
     required this.title,
     required this.iconPath,
     this.isLogout = false,
-    this.onTap,
+    this.pageRoute,
   });
 }

@@ -74,6 +74,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             SizedBox(height: 10.h),
             Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               height: widget.heightTextfield,
               width: 297.w,
               decoration: BoxDecoration(

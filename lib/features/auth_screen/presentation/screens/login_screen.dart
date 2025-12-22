@@ -162,8 +162,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                       }
                                     },
                               title: state is LoginLoading
-                                  ? 'جاري تسجيل الدخول...'
-                                  : 'تسجيل الدخول',
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : Text(
+                                      'تسجيل الدخول',
+                                      style: AppTextStyles.syleNorsalMedium15(
+                                        context,
+                                      ).copyWith(color: Colors.white),
+                                    ),
                               buttonColor: const Color(0xffD2B48C),
                             );
                           },

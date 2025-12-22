@@ -34,4 +34,5 @@ class AppAssets {
   static const kStartYourJourney = 'assets/image/start_your_journey_avatar.png';
   static const kChoseApplangAvatar = 'assets/image/chose_app_lang_avatar.png';
   static const kEmptyNotesImage = 'assets/image/empty_notes_list_avatar.svg';
+  static const kNullProfileimage = 'assets/image/null_profile_image.png';
 }
