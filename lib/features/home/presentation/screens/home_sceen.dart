@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 //       .fade(duration: 600.ms)
                 //       .slideY(begin: 0.3, duration: 600.ms),
                 // ),
-                SliderWidget(),
+                const SliderWidget(),
                 // const CategoriesList()
                 //     .animate()
                 //     .fade(duration: 700.ms)

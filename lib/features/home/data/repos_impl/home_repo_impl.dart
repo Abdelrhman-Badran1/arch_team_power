@@ -7,7 +7,6 @@ import 'package:arch_team_power/features/home/domain/entities/popular_places_ent
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/src/material/slider.dart';
 
 class HomeRepoImplemtion extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;

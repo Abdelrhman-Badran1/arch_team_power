@@ -16,7 +16,7 @@ class InformationScreen extends StatelessWidget {
           backgroundColor: Color(0xfff9f8f8),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 13.86.w),
-            child: InformationScreenBody(),
+            child: const InformationScreenBody(),
           ),
         ),
       ),

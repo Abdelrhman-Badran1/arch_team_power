@@ -19,9 +19,9 @@ class InformationScreenItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
               color: Colors.white,
             ),
-            child: InformationScreenItemDetails(),
+            child: const InformationScreenItemDetails(),
           ),
-          Positioned(top: 10.5.h, left: 11.5.w, child: CustomFavButton()),
+          Positioned(top: 10.5.h, left: 11.5.w, child: const CustomFavButton()),
         ],
       ),
     );
