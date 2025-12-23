@@ -16,7 +16,8 @@ class ApiService {
 
   Future<Map<String, dynamic>> post({
     required String endPoint,
-    Map<String, dynamic>? data,
+    dynamic data,
+    bool isMultipart = false,
   }) async {
     final response = await dio.post('$baseUrl$endPoint', data: data);
     return _handleResponse(response.data);

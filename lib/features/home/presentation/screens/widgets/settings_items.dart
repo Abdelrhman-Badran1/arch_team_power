@@ -1,9 +1,12 @@
 import 'package:arch_team_power/core/models/settings_item_model.dart';
+import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/utils/app_icons.dart';
+import 'package:flutter/material.dart';
 
 class SettingsItemsData {
-  static List<SettingsItemModel> items = [
+  static List<SettingsItemModel> items(BuildContext context) => [
     SettingsItemModel(
+      pageRoute: AppRouter.kUpdateProfileScreen,
       title: "تعديل الملف الشخصي",
       iconPath: AppIcons.kEditProfileIcon,
     ),

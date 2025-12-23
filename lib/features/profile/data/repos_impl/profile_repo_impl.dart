@@ -4,6 +4,7 @@ import 'package:arch_team_power/features/profile/domain/entities/profile_entity.
 import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilerepoImpl implements ProfileRepo {
   final ProfileRemoteDataSource profileRemoteDataSource;
@@ -27,7 +28,7 @@ class ProfilerepoImpl implements ProfileRepo {
   Future<Either<Failure, ProfileEntity>> updateHomeInfo({
     required String email,
     required String name,
-    String? profileImage,
+    XFile? profileImage,
   }) async {
     try {
       final updateProfileData = await profileRemoteDataSource.updateProfileInfo(

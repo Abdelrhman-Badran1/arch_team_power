@@ -1,4 +1,3 @@
-import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,7 +9,7 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     this.textColor,
   });
-  final String title;
+  final Widget title;
   final Color? buttonColor, textColor;
   final Function()? onTap;
   @override
@@ -24,14 +23,7 @@ class CustomButton extends StatelessWidget {
           color: buttonColor,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Center(
-          child: Text(
-            title,
-            style: AppTextStyles.syleNorsalMedium15(
-              context,
-            ).copyWith(color: textColor ?? Colors.white),
-          ),
-        ),
+        child: Center(child: title),
       ),
     );
   }

@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          GetProfileDataCubit(sl<ProfileRepo>())..getProfileData(),
+          ProfileDataCubit(sl<ProfileRepo>())..getProfileData(),
       child: Scaffold(
         drawer: const AppDrawer(),
         backgroundColor: const Color(0xffF5F5F5),

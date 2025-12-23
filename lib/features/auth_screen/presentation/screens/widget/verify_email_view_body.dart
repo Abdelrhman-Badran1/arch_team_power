@@ -30,13 +30,24 @@ class VerifyEmailViewBody extends StatelessWidget {
           ),
           SizedBox(height: 30.h),
           CustomButton(
-            title: AppLocalizations.of(context)!.check_your_email,
+            title: Text(
+              AppLocalizations.of(context)!.check_your_email,
+              style: AppTextStyles.syleNorsalMedium15(
+                context,
+              ).copyWith(color: Colors.white),
+            ),
+
             buttonColor: const Color(0xffD2B48C),
           ),
           SizedBox(height: 15.h),
           CustomButton(
             onTap: () => GoRouter.of(context).push(AppRouter.kOtpView),
-            title: AppLocalizations.of(context)!.confirm_code,
+            title: Text(
+              AppLocalizations.of(context)!.confirm_code,
+              style: AppTextStyles.syleNorsalMedium15(
+                context,
+              ).copyWith(color: Colors.white),
+            ),
             buttonColor: const Color(0xffD2B48C),
           ),
         ],

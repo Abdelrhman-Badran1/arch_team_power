@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
@@ -34,7 +35,13 @@ class ForgotPasswordViewBody extends StatelessWidget {
           SizedBox(height: 42.h),
           CustomButton(
             onTap: () => GoRouter.of(context).push(AppRouter.kVerifyEmailView),
-            title: AppLocalizations.of(context)!.send_code,
+            title: Text(
+              AppLocalizations.of(context)!.send_code,
+              style: AppTextStyles.syleNorsalMedium15(
+                context,
+              ).copyWith(color: Colors.white),
+            ),
+
             buttonColor: const Color(0xffD2B48C),
           ),
         ],

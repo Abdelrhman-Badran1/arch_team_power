@@ -37,7 +37,13 @@ class OptionScreenBody extends StatelessWidget {
             SizedBox(height: 56.h),
 
             CustomButton(
-              title: "ايقونه سائح",
+              title: Text(
+                "ايقونه سائح",
+                style: AppTextStyles.syleNorsalMedium15(
+                  context,
+                ).copyWith(color: Colors.white),
+              ),
+
               buttonColor: const Color(0xFFD2B48C),
               onTap: () =>
                   GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen),
@@ -45,7 +51,13 @@ class OptionScreenBody extends StatelessWidget {
             SizedBox(height: 17.h),
             CustomButton(
               buttonColor: Colors.white,
-              title: "ايقونه الباحث والمتخصص",
+              title: Text(
+                "ايقونه الباحث والمتخصص",
+                style: AppTextStyles.syleNorsalMedium15(
+                  context,
+                ).copyWith(color: Colors.white),
+              ),
+
               textColor: const Color(0xFF8A8A8A),
               onTap: () {},
             ),

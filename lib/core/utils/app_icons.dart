@@ -42,4 +42,5 @@ class AppIcons {
   static const kUnAciveHomeIcon = 'assets/icons/un_acive_home_icon.svg';
   static const kActiveFavIcon = 'assets/icons/active_fav_icon.svg';
   static const kActiveProfileIcon = 'assets/icons/active_profile_icon.svg';
+  static const kCamIcon = 'assets/icons/cam icon.svg';
 }

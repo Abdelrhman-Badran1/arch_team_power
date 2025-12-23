@@ -24,9 +24,11 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: true,
-      builder: (context) =>
-          BlocProvider(create: (_) => LocaleCubit(), child: const MyApp()),
+      enabled: false,
+      builder: (context) => BlocProvider(
+        create: (context) => LocaleCubit(),
+        child: const MyApp(),
+      ),
     ),
   );
 }
