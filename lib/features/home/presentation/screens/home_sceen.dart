@@ -2,8 +2,10 @@ import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
+import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/home_cubit/home_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/pubularPlaces/pobular_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/famous_places_list.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/home_header.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_library_list.dart';
@@ -27,6 +29,10 @@ class HomeScreen extends StatelessWidget {
         body: MultiBlocProvider(
           providers: [
             BlocProvider(create: (_) => sl<SliderCubitCubit>()..fetchSliders()),
+            BlocProvider(
+              create: (_) => sl<PobularCubit>()..fetchPopularPlaces(),
+            ),
+            BlocProvider(create: (_) => sl<BannerCubit>()..fetchBanners()),
           ],
           child: SingleChildScrollView(
             child: Column(

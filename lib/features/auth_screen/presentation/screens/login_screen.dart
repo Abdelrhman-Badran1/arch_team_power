@@ -187,22 +187,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         const SizedBox(height: 24.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SocialAuthItem(
-                              assetName: AppIcons.kGoogleIcon,
-                            ),
-                            SizedBox(width: 11.w),
-                            const SocialAuthItem(
-                              assetName: AppIcons.kFaceBookIcon,
-                            ),
-                            SizedBox(width: 11.w),
-                            const SocialAuthItem(
-                              assetName: AppIcons.kAppleIcon,
-                            ),
-                          ],
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SocialAuthItem(
+                                assetName: AppIcons.kGoogleIcon,
+                              ),
+                              SizedBox(width: 11.w),
+                              const SocialAuthItem(
+                                assetName: AppIcons.kFaceBookIcon,
+                              ),
+                              SizedBox(width: 11.w),
+                              const SocialAuthItem(
+                                assetName: AppIcons.kAppleIcon,
+                              ),
+                            ],
+                          ),
                         ),
+
                         SizedBox(height: 138.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
