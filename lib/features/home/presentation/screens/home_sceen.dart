@@ -1,7 +1,9 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/pubularPlaces/pobular_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/famous_places_list.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/home_header.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_library_list.dart';
