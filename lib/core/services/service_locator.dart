@@ -11,6 +11,17 @@ import 'package:arch_team_power/features/home/data/data_sources/home_remote_data
 import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
+import 'package:arch_team_power/features/notes/data/data_source/notes_remote_data_source.dart';
+import 'package:arch_team_power/features/notes/data/repo_impl/notes_repo_impl.dart';
+import 'package:arch_team_power/features/notes/domain/repo/notes_repo.dart';
+import 'package:arch_team_power/features/notes/domain/use_cases/create_note_use_case.dart';
+import 'package:arch_team_power/features/notes/domain/use_cases/del_note_use_case.dart';
+import 'package:arch_team_power/features/notes/domain/use_cases/edit_note_use_case.dart';
+import 'package:arch_team_power/features/notes/domain/use_cases/get_notes_use_case.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/manger/cubits/create_note_cubit/create_note_cubit.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/manger/cubits/delete_note_cubit/delete_note_cubit.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/manger/cubits/edit_notes_cubit/edit_notes_cubit.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/manger/cubits/get_notes_cubit/get_notes_cubit.dart';
 import 'package:arch_team_power/features/profile/data/data_sources/profile_remote_data_source.dart';
 import 'package:arch_team_power/features/profile/data/repos_impl/profile_repo_impl.dart';
 import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
@@ -22,6 +33,7 @@ import 'package:dio/dio.dart';
 final sl = GetIt.instance;
 
 Future<void> initServiceLocator() async {
+  // localDataSources //
   sl.registerLazySingleton<AuthLocalDataSource>(
     () => AuthLocalDataSourceImpl(),
   );
@@ -29,7 +41,7 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<HomeLocalDataSource>(
     () => HomeLocalDataSourceImpl(),
   );
-
+// dio //
   sl.registerLazySingleton<Dio>(() {
     final dio = Dio();
     (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
@@ -43,9 +55,9 @@ Future<void> initServiceLocator() async {
 
     return dio;
   });
-
+// apiService //
   sl.registerLazySingleton<ApiService>(() => ApiService(sl<Dio>()));
-
+// RemoteDataSource //
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl<ApiService>()),
   );
@@ -57,7 +69,10 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<ProfileRemoteDataSource>(
     () => ProfileRemoteDataSourceImpl(apiService: sl<ApiService>()),
   );
-
+ sl.registerLazySingleton<NotesRemoteDataSource>(
+    () => NotesRemoteDataSourceImpl( sl<ApiService>()),
+  );
+// repo //
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
       remoteDataSource: sl<AuthRemoteDataSource>(),
@@ -71,15 +86,28 @@ Future<void> initServiceLocator() async {
       sl<HomeLocalDataSource>(),
     ),
   );
-
+  sl.registerLazySingleton<NotesRepo>(
+    () => NotesRepoImpl(remoteDataSource: sl<NotesRemoteDataSource>()),
+  );
   sl.registerLazySingleton<ProfileRepo>(
     () =>
         ProfilerepoImpl(profileRemoteDataSource: sl<ProfileRemoteDataSource>()),
   );
-
+// use cases //
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
+  sl.registerLazySingleton(() => GetNotesUseCase(notesRepo:  sl<NotesRepo>()));
+  sl.registerLazySingleton(() => EditNoteUseCase(notesRepo:  sl<NotesRepo>()));
+  sl.registerLazySingleton(() => DelNoteUseCase(notesRepo:  sl<NotesRepo>()));
+  sl.registerLazySingleton(() => CreateNoteUseCase(notesRepo:  sl<NotesRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
-  sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
 
+  // cubits //
+  sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
   sl.registerFactory(() => SliderCubitCubit(sl<HomeRepo>()));
+  sl.registerFactory(() => GetNotesCubit(sl<GetNotesUseCase>()));
+  sl.registerFactory(() => EditNotesCubit(sl<EditNoteUseCase>()));
+  sl.registerFactory(() => DeleteNoteCubit(sl<DelNoteUseCase>()));
+  sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
+
+
 }

@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:arch_team_power/core/errors/handle_response.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
@@ -11,7 +10,7 @@ class ApiService {
 
   Future<Map<String, dynamic>> get({required String endPoint}) async {
     final response = await dio.get('$baseUrl$endPoint');
-    return _handleResponse(response.data);
+    return handleResponse(response.data);
   }
 
   Future<Map<String, dynamic>> post({
@@ -20,23 +19,23 @@ class ApiService {
     bool isMultipart = false,
   }) async {
     final response = await dio.post('$baseUrl$endPoint', data: data);
-    return _handleResponse(response.data);
+    return handleResponse(response.data);
   }
-
-  Map<String, dynamic> _handleResponse(dynamic data) {
-    if (data is Map<String, dynamic>) {
-      return data;
-    }
-
-    if (data is String) {
-      if (data.trim().startsWith('<!DOCTYPE html')) {
-        throw Exception(
-          'Server returned HTML instead of JSON (check endpoint or auth)',
-        );
-      }
-      return jsonDecode(data) as Map<String, dynamic>;
-    }
-
-    throw Exception('Unexpected response type: ${data.runtimeType}');
+   Future<Map<String, dynamic>> put({
+    required String endPoint,
+    Map<String, dynamic>? data,
+  }) async {
+    final response = await dio.put(
+      '$baseUrl$endPoint',
+      data: data,
+    );
+    return handleResponse(response.data);
   }
+ Future<Map<String, dynamic>> delete({
+    required String endPoint,
+  }) async {
+    final response = await dio.delete('$baseUrl$endPoint');
+    return handleResponse(response.data);
+  }
+  
 }

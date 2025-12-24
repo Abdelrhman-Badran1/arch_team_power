@@ -7,9 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingScreenBody extends StatelessWidget {
-  const SettingScreenBody({
-    super.key,
-  });
+  const SettingScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class SettingScreenBody extends StatelessWidget {
           SizedBox(height: 20.h),
           const CustomAppBar(title: 'الاعدادات'),
           SizedBox(height: 34.h),
-      
+
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -29,9 +27,7 @@ class SettingScreenBody extends StatelessWidget {
               return SettingsItemTile(
                 onTap: () {
                   if (index == 0) {
-                    GoRouter.of(
-                      context,
-                    ).push(AppRouter.kUpdateProfileScreen);
+                    GoRouter.of(context).push(AppRouter.kUpdateProfileScreen);
                   } else if (index == 2) {
                     GoRouter.of(context).push(AppRouter.kPaymentPage);
                   }

@@ -44,7 +44,6 @@ class ProfileTabs extends StatelessWidget {
               margin: EdgeInsets.only(left: 10.w),
               padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
               decoration: BoxDecoration(
-                
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12.r),
                 boxShadow: const [

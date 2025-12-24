@@ -10,8 +10,13 @@ class EmptyNotesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(AppAssets.kEmptyNotesImage),
+        SvgPicture.asset(
+          AppAssets.kEmptyNotesImage,
+          height: 150.h,
+          width: 150.w,
+        ),
         SizedBox(height: 10.h),
         Text(
           'قم بإضافة ملاحظات جديدة',

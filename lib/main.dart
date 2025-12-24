@@ -1,7 +1,6 @@
 import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/features/choseAppLang/presentation/screens/manger/cubit/locale_cubit/locale_cubit.dart';
 import 'package:arch_team_power/core/routes/app_router.dart';
-import 'package:arch_team_power/features/notes/models/note_model.dart';
 import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -9,14 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Hive.initFlutter();
-  Hive.registerAdapter(NoteModelAdapter());
-  await Hive.openBox<NoteModel>('notes');
 
   AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
 

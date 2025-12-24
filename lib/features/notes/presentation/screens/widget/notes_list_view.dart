@@ -1,71 +1,27 @@
-import 'package:arch_team_power/features/notes/models/note_model.dart';
-import 'package:arch_team_power/features/notes/presentation/screens/widget/note_dialog.dart';
+import 'package:arch_team_power/core/services/service_locator.dart';
+import 'package:arch_team_power/features/notes/domain/entity/notes_entity.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/manger/cubits/delete_note_cubit/delete_note_cubit.dart';
+import 'package:arch_team_power/features/notes/presentation/screens/manger/cubits/edit_notes_cubit/edit_notes_cubit.dart';
 import 'package:arch_team_power/features/notes/presentation/screens/widget/note_item.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NotesListView extends StatefulWidget {
-  const NotesListView({super.key, required this.box});
-  final Box<NoteModel> box;
-
-  @override
-  State<NotesListView> createState() => _NotesListViewState();
-}
-
-class _NotesListViewState extends State<NotesListView> {
-  final TextEditingController titleController = TextEditingController();
-
-  final TextEditingController detailsController = TextEditingController();
-
-  String? imagePath;
-  Future<void> pickImage(Function(void Function()) setDialogState) async {
-    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (picked != null) {
-      setDialogState(() => imagePath = picked.path);
-    }
-  }
-
-  void saveTemp() {
-    if (titleController.text.trim().isEmpty &&
-        detailsController.text.trim().isEmpty) {
-      return;
-    }
-
-    Navigator.pop(context);
-    setState(() {});
-  }
-
-  late Box<NoteModel> notesBox;
-  void openNoteDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => NoteDialog(
-        titleController: titleController,
-        detailsController: detailsController,
-        imagePath: imagePath,
-        onPickImage: pickImage,
-        onSave: saveTemp,
-        onImageDelete: () => setState(() => imagePath = null),
-      ),
-    );
-  }
-
+class NotesListView extends StatelessWidget {
+  const NotesListView({super.key, required this.noteEntity});
+final List<NoteEntity>  noteEntity;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: widget.box.length,
-      itemBuilder: (context, index) => NoteItem(
-        note: widget.box.getAt(index)!,
-        index: index,
-        onEdit: (note) {
-          titleController.text = note.title;
-          detailsController.text = note.details ?? "";
-          imagePath = note.imagePath;
-          openNoteDialog();
-        },
-        onDelete: () => notesBox.deleteAt(index),
+    return MultiBlocProvider(
+      providers: [
+             BlocProvider(create: (context) => sl<DeleteNoteCubit>()),
+                  BlocProvider(create: (context) => sl<EditNotesCubit>()),
+      ],child: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: noteEntity.length,
+        itemBuilder: (context, index) => NoteItem(
+          noteEntity: noteEntity[index],
+      
+        ),
       ),
     );
   }

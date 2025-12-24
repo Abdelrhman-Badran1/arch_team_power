@@ -7,17 +7,11 @@ class NoteDialog extends StatelessWidget {
     super.key,
     required this.titleController,
     required this.detailsController,
-    required this.imagePath,
-    required this.onPickImage,
     required this.onSave,
-    required this.onImageDelete,
   });
   final TextEditingController titleController;
   final TextEditingController detailsController;
-  final String? imagePath;
-  final Function(Function(void Function())) onPickImage;
   final VoidCallback onSave;
-  final VoidCallback onImageDelete;
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
@@ -26,10 +20,9 @@ class NoteDialog extends StatelessWidget {
 
         contentPadding: const EdgeInsets.all(16),
         content: NoteDialogDetails(
+          detailsController: detailsController,
           setDialogState: setDialogState,
           titleController: titleController,
-          imagePath: imagePath,
-          onPickImage: onPickImage,
         ),
 
         actions: [

@@ -9,7 +9,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffF5F5F5),
-    
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 13.86.w),
@@ -19,5 +19,3 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 }
-
-
