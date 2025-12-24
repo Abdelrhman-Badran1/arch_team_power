@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/errors/failure.dart';
+import 'package:arch_team_power/features/home/data/model/banner/banner.dart';
 import 'package:arch_team_power/features/home/data/model/home/slider.data.dart';
 import 'package:arch_team_power/features/home/data/model/popular/popular_place.dart';
 import 'package:arch_team_power/features/home/domain/entities/popular_places_entity.dart';
@@ -10,4 +11,5 @@ abstract class HomeRepo {
   Future<Either<Failure, List<Sliderr>>> fetchSliders();
   Future<Either<Failure, List<PopularSectionEntity>>> fetchPopularPlaces();
   Future<Either<Failure, List<PopularPlace>>> fetchAllPopularPlaces();
+  Future<Either<Failure, List<Bannner>>> fetchBanners();
 }

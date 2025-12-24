@@ -10,6 +10,7 @@ import 'package:arch_team_power/features/home/data/data_sources/home_local_data_
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
+import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
 import 'package:arch_team_power/features/notes/data/data_source/notes_remote_data_source.dart';
 import 'package:arch_team_power/features/notes/data/repo_impl/notes_repo_impl.dart';
