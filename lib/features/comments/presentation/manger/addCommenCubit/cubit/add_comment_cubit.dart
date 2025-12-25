@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:arch_team_power/core/errors/failure.dart';
-import 'package:arch_team_power/features/comments/data/model/post/data.comment.dart';
-import 'package:arch_team_power/features/comments/data/model/post/post.comment.dart';
+import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/data.comment.dart';
+import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:arch_team_power/core/services/api_service.dart';
-import 'package:arch_team_power/features/comments/data/model/post/post.comment.dart';
+import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
 import 'package:dio/dio.dart';
 
 abstract class CommentRemoteDataSource {

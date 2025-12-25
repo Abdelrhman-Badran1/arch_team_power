@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:arch_team_power/core/errors/failure.dart';
-import 'package:arch_team_power/features/comments/data/model/post/post.comment.dart';
+import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
 import 'package:dartz/dartz.dart';
