@@ -6,6 +6,10 @@ import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_i
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
+import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
+import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
+import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
+import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
@@ -43,7 +47,7 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<HomeLocalDataSource>(
     () => HomeLocalDataSourceImpl(),
   );
-// dio //
+  // dio //
   sl.registerLazySingleton<Dio>(() {
     final dio = Dio();
     (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
@@ -57,9 +61,9 @@ Future<void> initServiceLocator() async {
 
     return dio;
   });
-// apiService //
+  // apiService //
   sl.registerLazySingleton<ApiService>(() => ApiService(sl<Dio>()));
-// RemoteDataSource //
+  // RemoteDataSource //
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl<ApiService>()),
   );
@@ -67,14 +71,17 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(sl<ApiService>()),
   );
+  sl.registerLazySingleton<CommentRemoteDataSource>(
+    () => CommentRemoteDataSourceImpl(sl<ApiService>()),
+  );
 
   sl.registerLazySingleton<ProfileRemoteDataSource>(
     () => ProfileRemoteDataSourceImpl(apiService: sl<ApiService>()),
   );
- sl.registerLazySingleton<NotesRemoteDataSource>(
-    () => NotesRemoteDataSourceImpl( sl<ApiService>()),
+  sl.registerLazySingleton<NotesRemoteDataSource>(
+    () => NotesRemoteDataSourceImpl(sl<ApiService>()),
   );
-// repo //
+  // repo //
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
       remoteDataSource: sl<AuthRemoteDataSource>(),
@@ -88,19 +95,20 @@ Future<void> initServiceLocator() async {
       sl<HomeLocalDataSource>(),
     ),
   );
-  sl.registerLazySingleton<NotesRepo>(
-    () => NotesRepoImpl(remoteDataSource: sl<NotesRemoteDataSource>()),
+  sl.registerLazySingleton<CommentRepo>(
+    () => CommerntRepoImpl(sl<CommentRemoteDataSource>()),
   );
+
   sl.registerLazySingleton<ProfileRepo>(
     () =>
         ProfilerepoImpl(profileRemoteDataSource: sl<ProfileRemoteDataSource>()),
   );
-// use cases //
+  // use cases //
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
-  sl.registerLazySingleton(() => GetNotesUseCase(notesRepo:  sl<NotesRepo>()));
-  sl.registerLazySingleton(() => EditNoteUseCase(notesRepo:  sl<NotesRepo>()));
-  sl.registerLazySingleton(() => DelNoteUseCase(notesRepo:  sl<NotesRepo>()));
-  sl.registerLazySingleton(() => CreateNoteUseCase(notesRepo:  sl<NotesRepo>()));
+  sl.registerLazySingleton(() => GetNotesUseCase(notesRepo: sl<NotesRepo>()));
+  sl.registerLazySingleton(() => EditNoteUseCase(notesRepo: sl<NotesRepo>()));
+  sl.registerLazySingleton(() => DelNoteUseCase(notesRepo: sl<NotesRepo>()));
+  sl.registerLazySingleton(() => CreateNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
 
   // cubits //
@@ -112,5 +120,6 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
   sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
   sl.registerFactory(() => PobularCubit(sl<HomeRepo>()));
-
+  sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
+  sl.registerFactory(() => AddCommentCubit(sl<CommentRepo>()));
 }
