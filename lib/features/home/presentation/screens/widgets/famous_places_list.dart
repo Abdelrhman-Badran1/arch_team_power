@@ -3,7 +3,6 @@ import 'package:arch_team_power/features/home/presentation/manger/cubits/pubular
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:cached_network_image/cached_network_image.dart'; // لازم تضيف الباكدج
 
 class FamousPlacesList extends StatelessWidget {
   const FamousPlacesList({super.key});
@@ -19,7 +18,7 @@ class FamousPlacesList extends StatelessWidget {
         } else if (state is PobularLoaded) {
           final places = state.popularPlaces;
           return SizedBox(
-            height: 120.h,
+            height: 100.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.only(left: 14.w),
@@ -29,29 +28,21 @@ class FamousPlacesList extends StatelessWidget {
                 final imageUrl = place.image ?? '';
 
                 return Padding(
-                  padding: EdgeInsets.only(right: 15.w),
+                  padding: EdgeInsets.only(right: 5.w),
                   child: Column(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(15.r),
-                        child: imageUrl.isNotEmpty
-                            ? CachedNetworkImage(
-                                imageUrl: imageUrl,
-
-                                width: 80.w,
-                                height: 80.h,
-                                fit: BoxFit.contain,
-                                placeholder: (context, url) =>
-                                    Container(color: Colors.grey[300]),
-                                errorWidget: (context, url, error) =>
-                                    Container(color: Colors.grey[300]),
-                              )
-                            : Container(
-                                width: 80.w,
-                                height: 80.h,
-                                color: Colors.grey[300],
-                              ),
+                      Container(
+                        height: 65.h,
+                        width: 65.w,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(imageUrl),
+                            fit: BoxFit.fill,
+                          ),
+                          borderRadius: BorderRadius.circular(15.r),
+                        ),
                       ),
+
                       SizedBox(height: 5.h),
                       Text(
                         place.nameAr ?? 'بدون اسم',

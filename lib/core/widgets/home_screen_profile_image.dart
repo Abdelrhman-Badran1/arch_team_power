@@ -20,14 +20,14 @@ class HomeScreenProfileImage extends StatelessWidget {
     if (networkImage != null && networkImage!.isNotEmpty) {
       imageWidget = Image.network(
         networkImage!,
-        height: height ?? 50.h,
-        width: width ?? 50.w,
+        height: height ?? 40.h,
+        width: width ?? 40.w,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) {
           return Image.asset(
             AppAssets.kNullProfileimage,
-            height: height ?? 50.h,
-            width: width ?? 50.w,
+            height: height ?? 40.h,
+            width: width ?? 40.w,
             fit: BoxFit.fill,
           );
         },
@@ -35,8 +35,8 @@ class HomeScreenProfileImage extends StatelessWidget {
     } else {
       imageWidget = Image.asset(
         AppAssets.kNullProfileimage,
-        height: height ?? 50.h,
-        width: width ?? 50.w,
+        height: height ?? 40.h,
+        width: width ?? 40.w,
         fit: BoxFit.cover,
       );
     }

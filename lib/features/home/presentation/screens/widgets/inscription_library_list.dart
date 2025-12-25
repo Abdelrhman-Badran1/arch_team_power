@@ -35,14 +35,13 @@ class InscriptionLibraryList extends StatelessWidget {
     ];
 
     return SizedBox(
-      height: 195.h,
+      height: 145.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
         itemCount: inscriptions.length,
         itemBuilder: (context, index) {
           final item = inscriptions[index];
-          return InscriptionCard(
+          return InscriptionItem(
                 image: item['image'] as String,
                 title: item['title'] as String,
                 location: item['location'] as String,

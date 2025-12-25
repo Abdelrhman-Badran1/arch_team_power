@@ -1,20 +1,12 @@
-import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/services/service_locator.dart';
-import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/pubularPlaces/pobular_cubit.dart';
-import 'package:arch_team_power/features/home/presentation/screens/widgets/famous_places_list.dart';
-import 'package:arch_team_power/features/home/presentation/screens/widgets/home_header.dart';
-import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_library_list.dart';
-import 'package:arch_team_power/features/home/presentation/screens/widgets/section_title.dart';
-import 'package:arch_team_power/features/home/presentation/screens/widgets/slider.dart';
-import 'package:arch_team_power/features/information/presentation/screens/widget/information_screen_item.dart';
+import 'package:arch_team_power/features/home/presentation/screens/widgets/home_screen_body.dart';
+import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
+import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,123 +18,21 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: MultiBlocProvider(
           providers: [
-            BlocProvider(create: (_) => sl<SliderCubitCubit>()..fetchSliders()),
             BlocProvider(
-              create: (_) => sl<PobularCubit>()..fetchPopularPlaces(),
+              create: (context) => sl<SliderCubitCubit>()..fetchSliders(),
             ),
-            BlocProvider(create: (_) => sl<BannerCubit>()..fetchBanners()),
+            BlocProvider(
+              create: (context) => sl<PobularCubit>()..fetchPopularPlaces(),
+            ),
+            BlocProvider(
+              create: (context) => sl<BannerCubit>()..fetchBanners(),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  ProfileDataCubit(sl<ProfileRepo>())..getProfileData(),
+            ),
           ],
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HomeHeader(),
-
-                /// ====== التصنيفات ======
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-                //   child: const SectionTitle(title: "التصنيفات")
-                //       .animate()
-                //       .fade(duration: 600.ms)
-                //       .slideY(begin: 0.3, duration: 600.ms),
-                // ),
-                const SliderWidget(),
-                // const CategoriesList()
-                //     .animate()
-                //     .fade(duration: 700.ms)
-                //     .slideY(begin: 0.3, duration: 700.ms, curve: Curves.easeOut),
-
-                /// ====== أكثر الأماكن المشهورة ======
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                    vertical: 10.h,
-                  ),
-                  child: const SectionTitle(title: "أكثر الأماكن المشهورة")
-                      .animate()
-                      .fade(duration: 600.ms)
-                      .slideY(begin: 0.3, duration: 600.ms),
-                ),
-                const FamousPlacesList()
-                    .animate()
-                    .fade(duration: 700.ms)
-                    .slideY(begin: 0.3, duration: 700.ms),
-
-                /// ====== مكتبة النقوش القديمة ======
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                    vertical: 10.h,
-                  ),
-                  child: GestureDetector(
-                    onTap: () =>
-                        GoRouter.of(context).push(AppRouter.kLibraryScreen),
-                    child: Row(
-                      children: [
-                        const SectionTitle(title: "مكتبة النقوش القديمة")
-                            .animate()
-                            .fade(duration: 600.ms)
-                            .slideY(begin: 0.3, duration: 600.ms),
-                        const Spacer(),
-                        Text(
-                          'عرض المزيد',
-                          style: AppTextStyles.syleNorsalRegular10(
-                            context,
-                          ).copyWith(color: const Color(0xFF8A8A8A)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const InscriptionLibraryList()
-                    .animate()
-                    .fade(duration: 700.ms)
-                    .slideY(begin: 0.3, duration: 700.ms),
-                SizedBox(height: 20.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                    vertical: 10.h,
-                  ),
-                  child: GestureDetector(
-                    onTap: () =>
-                        GoRouter.of(context).push(AppRouter.kInformationScreen),
-                    child: Row(
-                      children: [
-                        Text(
-                          'معلومة اثرية تهمك',
-                          style: AppTextStyles.syleNorsalRegular14(
-                            context,
-                          ).copyWith(fontSize: 15.sp),
-                        ),
-                        const Spacer(),
-                        Text(
-                          'عرض المزيد',
-                          style: AppTextStyles.syleNorsalRegular10(
-                            context,
-                          ).copyWith(color: const Color(0xFF8A8A8A)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                    vertical: 10.h,
-                  ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 10,
-                    itemBuilder: (context, index) =>
-                        const InformationScreenItem(),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          child: const HomeScreenBody(),
         ),
       ),
     );

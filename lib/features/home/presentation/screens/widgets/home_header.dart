@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:arch_team_power/core/routes/app_router.dart';
-import 'package:arch_team_power/core/utils/app_assets.dart';
+import 'package:arch_team_power/core/widgets/profile_header.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'search_box.dart';
@@ -57,11 +56,12 @@ class _HomeHeaderState extends State<HomeHeader> {
       builder: (context, state) {
         if (state is SliderCubitLoaded) {
           final sliders = state.sliders;
+
           return SizedBox(
-            height: 300.h,
+            height: 240.h,
+            width: double.infinity,
             child: Stack(
               children: [
-                // PageView مع PageController للتحريك التلقائي
                 PageView.builder(
                   controller: _pageController,
                   itemCount: sliders.length,
@@ -82,7 +82,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                   },
                 ),
 
-                // Overlay Gradient
+                /// Gradient Overlay
                 Container(
                   height: 300.h,
                   width: double.infinity,
@@ -98,19 +98,17 @@ class _HomeHeaderState extends State<HomeHeader> {
                   ),
                 ),
 
-                /// شريط علوي (إشعارات + صورة)
+                /// Top Bar
                 Positioned(
-                  top: 55.h,
-                  left: 20.w,
-                  right: 20.w,
+                  top: 20.h,
+                  left: 15.w,
+                  right: 15.w,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
-                        radius: 22.r,
-                        backgroundImage: const AssetImage(
-                          AppAssets.kProfileIamge1,
-                        ),
+                      const ProfileHeader(
+                        nameColor: Colors.white,
+                        roleColor: Colors.white,
                       ),
                       Row(
                         children: [
@@ -120,7 +118,10 @@ class _HomeHeaderState extends State<HomeHeader> {
                             ).push(AppRouter.kNotesScreen),
                             child: SvgPicture.asset(
                               'assets/icons/note_edit_icon.svg',
-                              color: Colors.white,
+                              colorFilter: const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              ),
                               height: 23.h,
                               width: 23.w,
                             ),
@@ -142,23 +143,26 @@ class _HomeHeaderState extends State<HomeHeader> {
                   ),
                 ),
 
-                /// مربع البحث
+                /// Search Box
                 Positioned(
-                  bottom: 25.h,
+                  bottom: 60.h,
                   left: 20.w,
                   right: 20.w,
-                  child: const SearchBox()
-                      .animate()
-                      .fade(duration: 600.ms)
-                      .slideY(begin: 0.4, duration: 600.ms),
+                  child: const SearchBox(),
                 ),
               ],
             ),
-          ).animate().fade(duration: 800.ms).scale(duration: 800.ms);
+          );
         } else if (state is SliderCubitError) {
-          return const Center(child: Text("error"));
+          return const SizedBox(
+            height: 300,
+            child: Center(child: Text("error")),
+          );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const SizedBox(
+            height: 300,
+            child: Center(child: CircularProgressIndicator()),
+          );
         }
       },
     );

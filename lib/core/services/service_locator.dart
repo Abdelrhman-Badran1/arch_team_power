@@ -12,6 +12,7 @@ import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dar
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
 import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/pubularPlaces/pobular_cubit.dart';
 import 'package:arch_team_power/features/notes/data/data_source/notes_remote_data_source.dart';
 import 'package:arch_team_power/features/notes/data/repo_impl/notes_repo_impl.dart';
 import 'package:arch_team_power/features/notes/domain/repo/notes_repo.dart';
@@ -109,6 +110,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => EditNotesCubit(sl<EditNoteUseCase>()));
   sl.registerFactory(() => DeleteNoteCubit(sl<DelNoteUseCase>()));
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
-
+  sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
+  sl.registerFactory(() => PobularCubit(sl<HomeRepo>()));
 
 }

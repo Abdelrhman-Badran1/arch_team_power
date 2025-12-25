@@ -1,5 +1,4 @@
 import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
-import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,19 +12,19 @@ class SliderWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is BannerCubitLoaded) {
           return Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 20.h),
             child: SizedBox(
-              height: 180.h,
+              height: 75.h,
               child: PageView.builder(
                 itemCount: state.banners.length,
                 itemBuilder: (context, index) {
                   final banner = state.banners[index];
 
                   return ClipRRect(
-                    borderRadius: BorderRadius.circular(35),
+                    borderRadius: BorderRadius.circular(15.r),
                     child: Image.network(
                       banner.image!,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                       width: double.infinity,
                     ),
                   );
