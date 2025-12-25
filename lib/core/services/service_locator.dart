@@ -120,6 +120,6 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
   sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
   sl.registerFactory(() => PobularCubit(sl<HomeRepo>()));
-  sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
+  //
   sl.registerFactory(() => AddCommentCubit(sl<CommentRepo>()));
 }
