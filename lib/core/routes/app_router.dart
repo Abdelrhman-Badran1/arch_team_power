@@ -11,6 +11,9 @@ import 'package:arch_team_power/features/auth_screen/presentation/screens/verify
 import 'package:arch_team_power/features/choseAppLang/presentation/screens/chose_app_lang_screen.dart';
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
+import 'package:arch_team_power/features/details_screen/presentation/screens/inscription_details_screen.dart';
+import 'package:arch_team_power/features/home/domain/entities/inscriptions_library_ruin_entity.dart';
+import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
 import 'package:arch_team_power/features/information/presentation/screens/information_screen.dart';
 import 'package:arch_team_power/features/library/presentation/screens/library_screen.dart';
 import 'package:arch_team_power/features/notes/presentation/screens/notes_screen.dart';
@@ -46,10 +49,12 @@ class AppRouter {
   static const kInformationScreen = '/InformationScreen';
   static const kNotificationsPage = '/NotificationsPage';
   static const kDetailsScreen = '/DetailsScreen';
+  static const kInscriptionDetailsScreen = '/InscriptionDetailsScreen';
+
   static const kSettingsScreen = '/settingsscreen';
   static const kUpdateProfileScreen = '/UpdateProfileScreen';
   static const kFaqScreen = "/faq_screen";
-  static const kDigitalLibraryScreen = "/digital_library_screen";
+  static const kDetailsLibraryScreen = "/digital_library_screen";
   static const kEventsScreen = "/events_screen";
   static const kVipHallScreen = "/vip_hall_screen";
   static const kSubscriptionScreen = "/subscriptionscreen";
@@ -128,12 +133,19 @@ class AppRouter {
       GoRoute(path: kFaqScreen, builder: (context, state) => const FaqScreen()),
 
       GoRoute(
-        path: kDigitalLibraryScreen,
+        path: kDetailsLibraryScreen,
         builder: (context, state) => const DigitalLibraryScreen(),
       ),
       GoRoute(
         path: kDetailsScreen,
-        builder: (context, state) => const DetailsScreen(),
+        builder: (context, state) =>
+            DetailsScreen(subPlaceEntity: state.extra as SubPlaceEntity),
+      ),
+      GoRoute(
+        path: kInscriptionDetailsScreen,
+        builder: (context, state) => InscriptionDetailsScreen(
+          inscriptionsEntity: state.extra as InscriptionsEntity,
+        ),
       ),
       GoRoute(
         path: kEventsScreen,

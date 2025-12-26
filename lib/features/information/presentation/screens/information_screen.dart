@@ -1,4 +1,5 @@
-import 'package:arch_team_power/features/information/presentation/screens/manger/cubits/information_cubit/information_cubit.dart';
+import 'package:arch_team_power/core/services/service_locator.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/sub_places_cubit/sub_places_cubit.dart';
 import 'package:arch_team_power/features/information/presentation/screens/widget/information_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,12 +10,14 @@ class InformationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => InformationCubit(),
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Color(0xfff9f8f8),
-          body: Padding(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => sl<SubPlacesCubit>()..getSubPlaces()),
+      ],
+      child: Scaffold(
+        backgroundColor: const Color(0xfff9f8f8),
+        body: SafeArea(
+          child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 13.86.w),
             child: const InformationScreenBody(),
           ),

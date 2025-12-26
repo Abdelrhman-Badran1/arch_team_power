@@ -9,17 +9,23 @@ import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
-import 'package:arch_team_power/features/comments/presentation/manger/GetCommentCubit/cubit/get_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
 import 'package:arch_team_power/features/home/domain/repo/home_repo.dart';
-import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
-import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
+import 'package:arch_team_power/features/home/domain/use_cases/get_inscriptions_details_use_case.dart';
+import 'package:arch_team_power/features/home/domain/use_cases/get_inscriptions_library_use_case.dart';
+import 'package:arch_team_power/features/home/domain/use_cases/get_sub_places_details_use_case.dart';
+import 'package:arch_team_power/features/home/domain/use_cases/get_sub_places_use_case.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/Inscriptions_details_cubit/inscriptions_details_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/banner_cubit/banner_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/inscriptions_library_cubit/inscriptions_library_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/slider_cubit/slider_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/pubularPlaces/pobular_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/sub_places_cubit/sub_places_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/sub_places_details_cubit/sub_places_details_cubit.dart';
 import 'package:arch_team_power/features/notes/data/data_source/notes_remote_data_source.dart';
-import 'package:arch_team_power/features/notes/data/repo_impl/notes_repo_impl.dart';
 import 'package:arch_team_power/features/notes/domain/repo/notes_repo.dart';
 import 'package:arch_team_power/features/notes/domain/use_cases/create_note_use_case.dart';
 import 'package:arch_team_power/features/notes/domain/use_cases/del_note_use_case.dart';
@@ -40,15 +46,15 @@ import 'package:dio/dio.dart';
 final sl = GetIt.instance;
 
 Future<void> initServiceLocator() async {
-  // localDataSources //
+  // Local DataSources //
   sl.registerLazySingleton<AuthLocalDataSource>(
     () => AuthLocalDataSourceImpl(),
   );
-
   sl.registerLazySingleton<HomeLocalDataSource>(
     () => HomeLocalDataSourceImpl(),
   );
-  // dio //
+
+  // Dio //
   sl.registerLazySingleton<Dio>(() {
     final dio = Dio();
     (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
@@ -57,32 +63,31 @@ Future<void> initServiceLocator() async {
           (X509Certificate cert, String host, int port) => true;
       return client;
     };
-
     dio.interceptors.add(AuthInterceptor(sl<AuthLocalDataSource>()));
-
     return dio;
   });
-  // apiService //
+
+  // ApiService //
   sl.registerLazySingleton<ApiService>(() => ApiService(sl<Dio>()));
-  // RemoteDataSource //
+
+  // Remote DataSources //
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl<ApiService>()),
   );
-
   sl.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(sl<ApiService>()),
   );
   sl.registerLazySingleton<CommentRemoteDataSource>(
     () => CommentRemoteDataSourceImpl(sl<ApiService>()),
   );
-
   sl.registerLazySingleton<ProfileRemoteDataSource>(
     () => ProfileRemoteDataSourceImpl(apiService: sl<ApiService>()),
   );
   sl.registerLazySingleton<NotesRemoteDataSource>(
     () => NotesRemoteDataSourceImpl(sl<ApiService>()),
   );
-  // repo //
+
+  // Repositories //
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
       remoteDataSource: sl<AuthRemoteDataSource>(),
@@ -96,6 +101,7 @@ Future<void> initServiceLocator() async {
       sl<HomeLocalDataSource>(),
     ),
   );
+
   sl.registerLazySingleton<CommentRepo>(
     () => CommerntRepoImpl(sl<CommentRemoteDataSource>()),
   );
@@ -104,15 +110,28 @@ Future<void> initServiceLocator() async {
     () =>
         ProfilerepoImpl(profileRemoteDataSource: sl<ProfileRemoteDataSource>()),
   );
-  // use cases //
+
+  // Use Cases //
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
+  sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
+
   sl.registerLazySingleton(() => GetNotesUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => EditNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => DelNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => CreateNoteUseCase(notesRepo: sl<NotesRepo>()));
-  sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
 
-  // cubits //
+  sl.registerLazySingleton(
+    () => GetSubPlacesDetailsUseCase(homeRepo: sl<HomeRepo>()),
+  );
+  sl.registerLazySingleton(() => GetSubPlacesUseCase(homeRepo: sl<HomeRepo>()));
+  sl.registerLazySingleton(
+    () => GetInscriptionsDetailsUseCase(homeRepo: sl<HomeRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => GetInscriptionsUseCase(homeRepo: sl<HomeRepo>()),
+  );
+
+  // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
   sl.registerFactory(() => SliderCubitCubit(sl<HomeRepo>()));
   sl.registerFactory(() => GetNotesCubit(sl<GetNotesUseCase>()));
@@ -121,7 +140,15 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
   sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
   sl.registerFactory(() => PobularCubit(sl<HomeRepo>()));
-  //
+  sl.registerFactory(() => SubPlacesCubit(sl<GetSubPlacesUseCase>()));
+  sl.registerFactory(
+    () => SubPlacesDetailsCubit(sl<GetSubPlacesDetailsUseCase>()),
+  );
+  sl.registerFactory(
+    () => InscriptionsDetailsCubit(sl<GetInscriptionsDetailsUseCase>()),
+  );
+  sl.registerFactory(
+    () => InscriptionsLibraryCubit(sl<GetInscriptionsUseCase>()),
+  );
   sl.registerFactory(() => AddCommentCubit(sl<CommentRepo>()));
-  sl.registerFactory(() => GetCommentCubit(sl<CommentRepo>()));
 }

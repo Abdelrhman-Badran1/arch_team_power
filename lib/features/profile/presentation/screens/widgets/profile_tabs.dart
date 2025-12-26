@@ -28,7 +28,7 @@ class ProfileTabs extends StatelessWidget {
                   break;
 
                 case 1:
-                  context.push(AppRouter.kDigitalLibraryScreen);
+                  context.push(AppRouter.kDetailsLibraryScreen);
                   break;
 
                 case 2:
