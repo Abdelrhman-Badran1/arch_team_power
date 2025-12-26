@@ -7,7 +7,10 @@ class CreateNoteUseCase {
   final NotesRepo notesRepo;
 
   CreateNoteUseCase({required this.notesRepo});
-  Future<Either<Failure,NoteEntity>> call({required String title,required String description}){
+  Future<Either<Failure, NoteEntity>> call({
+    required String title,
+    required String description,
+  }) {
     return notesRepo.createNote(title: title, description: description);
   }
 }

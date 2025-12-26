@@ -13,7 +13,7 @@ class GetNotesCubit extends Cubit<GetNotesState> {
     final response = await getNotesUseCase();
     response.fold(
       (failure) {
-        if (failure.message == 'Your request was not found, please try later'){
+        if (failure.message == 'Your request was not found, please try later') {
           emit(GetNotesEmpty());
           return;
         }

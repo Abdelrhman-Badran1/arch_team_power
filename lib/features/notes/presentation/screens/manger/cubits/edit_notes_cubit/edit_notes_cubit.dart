@@ -8,13 +8,24 @@ part 'edit_notes_state.dart';
 class EditNotesCubit extends Cubit<EditNotesState> {
   EditNotesCubit(this.editNotesUseCase) : super(EditNotesInitial());
   final EditNoteUseCase editNotesUseCase;
-  Future<void> editNote({required String title, required String description, required num id}) async {
+  Future<void> editNote({
+    required String title,
+    required String description,
+    required num id,
+  }) async {
     emit(EditNotesLoading());
-    final response = await editNotesUseCase(title: title, description: description, id: id);
-    response.fold((failure) {
-      emit(EditNotesFailure(errorMessage: failure.message));
-    }, (note) {
-      emit(EditNotesSuccess(note: note));
-    });
+    final response = await editNotesUseCase(
+      title: title,
+      description: description,
+      id: id,
+    );
+    response.fold(
+      (failure) {
+        emit(EditNotesFailure(errorMessage: failure.message));
+      },
+      (note) {
+        emit(EditNotesSuccess(note: note));
+      },
+    );
   }
 }

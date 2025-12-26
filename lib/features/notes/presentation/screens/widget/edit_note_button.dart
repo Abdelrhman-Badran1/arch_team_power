@@ -24,29 +24,29 @@ class _EditButtonState extends State<EditButton> {
     detailsController = TextEditingController(text: widget.note.description);
   }
 
- void openNoteDialog() {
-  final editCubit = context.read<EditNotesCubit>();
+  void openNoteDialog() {
+    final editCubit = context.read<EditNotesCubit>();
 
-  showDialog(
-    context: context,
-    builder: (context) => BlocProvider.value(
-      value: editCubit,
-      child: NoteDialog(
-        titleController: titleController,
-        detailsController: detailsController,
-        onSave: () {
-          editCubit.editNote(
-            id: widget.note.id,
-            title: titleController.text,
-            description: detailsController.text,
-          );
+    showDialog(
+      context: context,
+      builder: (context) => BlocProvider.value(
+        value: editCubit,
+        child: NoteDialog(
+          titleController: titleController,
+          detailsController: detailsController,
+          onSave: () {
+            editCubit.editNote(
+              id: widget.note.id,
+              title: titleController.text,
+              description: detailsController.text,
+            );
 
-          Navigator.pop(context);
-        },
+            Navigator.pop(context);
+          },
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   void dispose() {

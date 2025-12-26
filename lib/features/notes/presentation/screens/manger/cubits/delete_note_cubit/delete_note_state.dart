@@ -4,12 +4,15 @@ part of 'delete_note_cubit.dart';
 sealed class DeleteNoteState {}
 
 final class DeleteNoteInitial extends DeleteNoteState {}
+
 final class DeleteNoteLoading extends DeleteNoteState {}
+
 final class DeleteNoteSuccess extends DeleteNoteState {
   final String note;
 
   DeleteNoteSuccess({required this.note});
 }
+
 final class DeleteNoteFailure extends DeleteNoteState {
   final String errorMessage;
 

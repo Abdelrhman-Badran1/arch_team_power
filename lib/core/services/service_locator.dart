@@ -9,6 +9,7 @@ import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
+import 'package:arch_team_power/features/comments/presentation/manger/GetCommentCubit/cubit/get_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
@@ -122,4 +123,5 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => PobularCubit(sl<HomeRepo>()));
   //
   sl.registerFactory(() => AddCommentCubit(sl<CommentRepo>()));
+  sl.registerFactory(() => GetCommentCubit(sl<CommentRepo>()));
 }

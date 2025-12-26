@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:arch_team_power/core/errors/failure.dart';
+import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment_respose.dart';
 import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
@@ -28,6 +29,22 @@ class CommerntRepoImpl implements CommentRepo {
       if (e is DioException) {
         return Left(ServerFailure.fromDiorError(e));
       }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, GetCommentRespose>> getComments({
+    required int ruinId,
+  }) async {
+    try {
+      final response = await commentRemoteDataSource.getComments(
+        ruinId: ruinId,
+      );
+      return Right(response);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDiorError(e));
+    } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
   }

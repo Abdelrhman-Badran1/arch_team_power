@@ -2,9 +2,7 @@ import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomCircularProgressIndicator extends StatelessWidget {
-  const CustomCircularProgressIndicator({
-    super.key,
-  });
+  const CustomCircularProgressIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {

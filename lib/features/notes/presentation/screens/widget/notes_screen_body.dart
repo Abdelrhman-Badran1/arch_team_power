@@ -19,5 +19,3 @@ class NotesScreenBody extends StatelessWidget {
     );
   }
 }
-
-

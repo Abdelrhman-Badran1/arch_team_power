@@ -7,7 +7,11 @@ class EditNoteUseCase {
   final NotesRepo notesRepo;
 
   EditNoteUseCase({required this.notesRepo});
-  Future<Either<Failure,NoteEntity>> call({required String title , required String description,required num id}){
+  Future<Either<Failure, NoteEntity>> call({
+    required String title,
+    required String description,
+    required num id,
+  }) {
     return notesRepo.updateNote(title: title, description: description, id: id);
   }
 }

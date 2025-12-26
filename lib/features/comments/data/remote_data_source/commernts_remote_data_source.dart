@@ -1,6 +1,10 @@
 import 'dart:io';
+import 'package:arch_team_power/core/errors/failure.dart';
 import 'package:arch_team_power/core/services/api_service.dart';
+import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment_respose.dart';
+import 'package:arch_team_power/features/comments/data/model/Like/like_model/like_model.dart';
 import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
+import 'package:arch_team_power/features/comments/presentation/manger/like/like/like.dart';
 import 'package:dio/dio.dart';
 
 abstract class CommentRemoteDataSource {
@@ -11,6 +15,9 @@ abstract class CommentRemoteDataSource {
     File? image,
     required int ruinid,
   });
+
+  Future<GetCommentRespose> getComments({required int ruinId});
+  Future<LikeModelRespose> likeComment({required int commentId});
 }
 
 class CommentRemoteDataSourceImpl implements CommentRemoteDataSource {
@@ -65,6 +72,35 @@ class CommentRemoteDataSourceImpl implements CommentRemoteDataSource {
       }
     } catch (e) {
       throw Exception('Failed to post comment: $e');
+    }
+  }
+
+  @override
+  Future<GetCommentRespose> getComments({required int ruinId}) async {
+    try {
+      final response = await apiService.get(
+        endPoint: 'comments?ruin_id=$ruinId',
+      );
+
+      return GetCommentRespose.fromJson(response);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
+    } catch (e) {
+      throw ServerFailure(e.toString());
+    }
+  }
+
+  @override
+  Future<LikeModelRespose> likeComment({required int commentId}) async {
+    try {
+      final response = await apiService.post(
+        endPoint: 'comments/like',
+        data: {'comment_id': commentId},
+      );
+
+      return LikeModelRespose.fromJson(response);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     }
   }
 }

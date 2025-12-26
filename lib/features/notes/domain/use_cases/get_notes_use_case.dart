@@ -7,7 +7,7 @@ class GetNotesUseCase {
   final NotesRepo notesRepo;
 
   GetNotesUseCase({required this.notesRepo});
-  Future<Either<Failure,List<NoteEntity>>>call(){
+  Future<Either<Failure, List<NoteEntity>>> call() {
     return notesRepo.getNotes();
   }
 }

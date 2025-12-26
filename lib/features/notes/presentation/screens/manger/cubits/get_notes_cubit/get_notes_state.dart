@@ -6,6 +6,7 @@ sealed class GetNotesState {}
 final class GetNotesInitial extends GetNotesState {}
 
 final class GetNotesLoading extends GetNotesState {}
+
 final class GetNotesEmpty extends GetNotesState {}
 
 final class GetNotesSuccess extends GetNotesState {
