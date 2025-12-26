@@ -26,6 +26,7 @@ import 'package:arch_team_power/features/home/presentation/manger/cubits/pubular
 import 'package:arch_team_power/features/home/presentation/manger/cubits/sub_places_cubit/sub_places_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/sub_places_details_cubit/sub_places_details_cubit.dart';
 import 'package:arch_team_power/features/notes/data/data_source/notes_remote_data_source.dart';
+import 'package:arch_team_power/features/notes/data/repo_impl/notes_repo_impl.dart';
 import 'package:arch_team_power/features/notes/domain/repo/notes_repo.dart';
 import 'package:arch_team_power/features/notes/domain/use_cases/create_note_use_case.dart';
 import 'package:arch_team_power/features/notes/domain/use_cases/del_note_use_case.dart';
@@ -101,7 +102,9 @@ Future<void> initServiceLocator() async {
       sl<HomeLocalDataSource>(),
     ),
   );
-
+  sl.registerLazySingleton<NotesRepo>(
+    () => NotesRepoImpl(remoteDataSource: sl<NotesRemoteDataSource>()),
+  );
   sl.registerLazySingleton<CommentRepo>(
     () => CommerntRepoImpl(sl<CommentRemoteDataSource>()),
   );
