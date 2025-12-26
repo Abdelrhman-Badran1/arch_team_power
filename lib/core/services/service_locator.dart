@@ -6,9 +6,11 @@ import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_i
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
+import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
+import 'package:arch_team_power/features/comments/presentation/manger/GetCommentCubit/cubit/get_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
@@ -135,6 +137,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
   sl.registerFactory(() => SliderCubitCubit(sl<HomeRepo>()));
   sl.registerFactory(() => GetNotesCubit(sl<GetNotesUseCase>()));
+
   sl.registerFactory(() => EditNotesCubit(sl<EditNoteUseCase>()));
   sl.registerFactory(() => DeleteNoteCubit(sl<DelNoteUseCase>()));
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
@@ -144,9 +147,11 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(
     () => SubPlacesDetailsCubit(sl<GetSubPlacesDetailsUseCase>()),
   );
+
   sl.registerFactory(
     () => InscriptionsDetailsCubit(sl<GetInscriptionsDetailsUseCase>()),
   );
+  sl.registerFactory(() => GetCommentCubit(sl<CommentRepo>()));
   sl.registerFactory(
     () => InscriptionsLibraryCubit(sl<GetInscriptionsUseCase>()),
   );

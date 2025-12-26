@@ -37,45 +37,64 @@ class CommentsPage extends StatelessWidget {
                     SizedBox(height: 34.h),
                     const CustomAppBar(title: 'التعليقات'),
                     SizedBox(height: 34.h),
-                    BlocBuilder<GetCommentCubit, GetCommentState>(
-                      builder: (context, state) {
-                        if (state is GetCommentSuccess) {
-                          final comments = state.getCommentRespose.data ?? [];
-
-                          return ListView.builder(
-                            itemCount: comments.length,
-
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: const EdgeInsets.all(16.0),
-                            itemBuilder: (BuildContext context, int index) {
-                              final comment = comments[index];
-                              return buildMessage(
-                                context,
-                                name: comment.user?.name ?? 'مجهول',
-                                role: comment.user?.role ?? '',
-                                description: comment.description ?? '',
-                                imageUser: comment.user?.image ?? '',
-                                imageComment:
-                                    (comment.images != null &&
-                                        comment.images!.isNotEmpty)
-                                    ? comment.images!.first
-                                    : '',
-                              );
-                            },
+                    BlocListener<AddCommentCubit, AddCommentState>(
+                      listener: (context, state) {
+                        if (state is AddCommentSuccess) {
+                          context.read<GetCommentCubit>().getComments(
+                            ruinId: ruinId,
                           );
-                        } else if (state is GetCommentLoading) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('تم اضافة التعليق بنجاح'),
+                            ),
                           );
-                        } else if (state is GetCommentError) {
-                          return Center(child: Text(state.message));
-                        } else {
-                          return const Center(
-                            child: Text('لا توجد تعليقات حتى الآن'),
+                        } else if (state is AddCommentFailure) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.errorMessage)),
                           );
                         }
                       },
+                      child: BlocBuilder<GetCommentCubit, GetCommentState>(
+                        builder: (context, state) {
+                          if (state is GetCommentSuccess) {
+                            final comments = state.getCommentRespose.data ?? [];
+
+                            return ListView.builder(
+                              itemCount: comments.length,
+
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.all(16.0),
+                              itemBuilder: (BuildContext context, int index) {
+                                final comment = comments[index];
+                                return buildMessage(
+                                  context,
+                                  name: comment.user?.name ?? 'مجهول',
+                                  role: comment.user?.role ?? '',
+                                  description: comment.description ?? '',
+                                  imageUser: comment.user?.image ?? '',
+                                  imageComment:
+                                      (comment.images != null &&
+                                          comment.images!.isNotEmpty)
+                                      ? comment.images!.first
+                                      : '',
+                                );
+                              },
+                            );
+                          } else if (state is GetCommentLoading) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          } else if (state is GetCommentError) {
+                            return Center(child: Text(state.message));
+                          } else {
+                            return const Center(
+                              child: Text('لا توجد تعليقات حتى الآن'),
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),
