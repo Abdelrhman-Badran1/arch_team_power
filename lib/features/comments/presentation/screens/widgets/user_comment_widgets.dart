@@ -7,8 +7,9 @@ Widget buildMessage(
   BuildContext context, {
   required String name,
   required String role,
-  required String text,
-  required String imagePath,
+  required String description,
+  required String imageUser,
+  required String imageComment,
 }) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 16.0),
@@ -27,7 +28,7 @@ Widget buildMessage(
         children: [
           Row(
             children: [
-              CircleAvatar(radius: 25, backgroundImage: AssetImage(imagePath)),
+              CircleAvatar(radius: 25, backgroundImage: AssetImage(imageUser)),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +50,7 @@ Widget buildMessage(
 
           // الكومنت
           Text(
-            text,
+            description,
             style: AppTextStyles.syleNorsalRegular12(
               context,
             ).copyWith(color: const Color(0xFF8A8A8A)),
@@ -64,54 +65,79 @@ Widget buildMessage(
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      imagePath,
-                      width: 116,
-                      height: 88,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const Positioned(
-                    top: 5,
-                    right: 9,
-                    child: Text(
-                      "1/4",
-                      style: TextStyle(color: AppColors.white, fontSize: 20),
-                    ),
-                  ),
+              if (imageComment.isNotEmpty)
+                SizedBox(
+                  width: 116,
+                  height: 88,
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          imageComment,
 
-                  Positioned(
-                    bottom: 8,
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(4, (index) {
-                        bool isActive = index == 0; // خلي الصورة الحالية رقم 0
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          child: Container(
-                            width: isActive ? 12 : 6,
-                            height: isActive ? 3 : 6,
-                            decoration: BoxDecoration(
-                              color: isActive
-                                  ? AppColors.white
-                                  : Colors.grey[400],
-                              borderRadius: isActive
-                                  ? BorderRadius.circular(2)
-                                  : BorderRadius.circular(50),
-                            ),
+                          fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return const SizedBox(
+                              width: 116,
+                              height: 88,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              ),
+                            );
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return const SizedBox.shrink();
+                          },
+                        ),
+                      ),
+                      const Positioned(
+                        top: 5,
+                        right: 9,
+                        child: Text(
+                          "1/4",
+                          style: TextStyle(
+                            color: AppColors.white,
+                            fontSize: 20,
                           ),
-                        );
-                      }), //
-                    ),
+                        ),
+                      ),
+
+                      Positioned(
+                        bottom: 8,
+                        left: 0,
+                        right: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(4, (index) {
+                            bool isActive =
+                                index == 0; // خلي الصورة الحالية رقم 0
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 4,
+                              ),
+                              child: Container(
+                                width: isActive ? 12 : 6,
+                                height: isActive ? 3 : 6,
+                                decoration: BoxDecoration(
+                                  color: isActive
+                                      ? AppColors.white
+                                      : Colors.grey[400],
+                                  borderRadius: isActive
+                                      ? BorderRadius.circular(2)
+                                      : BorderRadius.circular(50),
+                                ),
+                              ),
+                            );
+                          }), //
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
 
               Padding(
                 padding: const EdgeInsets.only(top: 45, right: 20),
