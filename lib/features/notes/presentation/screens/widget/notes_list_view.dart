@@ -8,20 +8,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotesListView extends StatelessWidget {
   const NotesListView({super.key, required this.noteEntity});
-final List<NoteEntity>  noteEntity;
+  final List<NoteEntity> noteEntity;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-             BlocProvider(create: (context) => sl<DeleteNoteCubit>()),
-                  BlocProvider(create: (context) => sl<EditNotesCubit>()),
-      ],child: ListView.builder(
+        BlocProvider(create: (context) => sl<DeleteNoteCubit>()),
+        BlocProvider(create: (context) => sl<EditNotesCubit>()),
+      ],
+      child: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: noteEntity.length,
-        itemBuilder: (context, index) => NoteItem(
-          noteEntity: noteEntity[index],
-      
-        ),
+        itemBuilder: (context, index) =>
+            NoteItem(noteEntity: noteEntity[index]),
       ),
     );
   }

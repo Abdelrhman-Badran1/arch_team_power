@@ -4,7 +4,7 @@ import 'package:arch_team_power/features/notes/presentation/screens/widget/edit_
 import 'package:flutter/material.dart';
 
 class NoteActions extends StatelessWidget {
-  const NoteActions({super.key, required this.note, });
+  const NoteActions({super.key, required this.note});
   final NoteEntity note;
 
   @override
@@ -19,8 +19,3 @@ class NoteActions extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

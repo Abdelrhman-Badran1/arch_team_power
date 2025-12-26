@@ -1,5 +1,9 @@
-import 'package:arch_team_power/core/utils/app_assets.dart';
+import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/core/widgets/custom_circular_progress_indicator.dart';
+import 'package:arch_team_power/core/widgets/custom_error_widget.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/inscriptions_library_cubit/inscriptions_library_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -10,49 +14,41 @@ class InscriptionLibraryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inscriptions = [
-      {
-        'image': AppAssets.kCartImage,
-        'title': 'نقش أثري قديم',
-        'location': 'السعودية، حائل',
-        'rating': 4.5,
-        'status': 'الحالة غير واضحة',
+    return BlocBuilder<InscriptionsLibraryCubit, InscriptionsLibraryState>(
+      builder: (context, state) {
+        if (state is InscriptionsLibrarySuccess) {
+          return SizedBox(
+            height: 145.h,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.inscriptionsLibrary.length,
+              itemBuilder: (context, index) {
+                return InscriptionItem(
+                      inscriptionsEntity: state.inscriptionsLibrary[index],
+                    )
+                    .animate()
+                    .fadeIn(duration: 600.ms, delay: (index * 200).ms)
+                    .slideX(
+                      begin: 0.2,
+                      duration: 600.ms,
+                      curve: Curves.easeOut,
+                    );
+              },
+            ),
+          );
+        } else if (state is InscriptionsLibraryEmpty) {
+          return Center(
+            child: Text(
+              'No Data',
+              style: AppTextStyles.syleNorsalMedium15(context),
+            ),
+          );
+        } else if (state is InscriptionsLibraryFailure) {
+          return CustomErrorWidget(errorMessage: state.errorMessage);
+        } else {
+          return const CustomCircularProgressIndicator();
+        }
       },
-      {
-        'image': AppAssets.kCartImage,
-        'title': 'نقش نبطي',
-        'location': 'العلا، المملكة',
-        'rating': 4.3,
-        'status': 'محفوظ بشكل جيد',
-      },
-      {
-        'image': AppAssets.kCartImage,
-        'title': 'نقش عربي قديم',
-        'location': 'تبوك، السعودية',
-        'rating': 4.8,
-        'status': 'بحالة ممتازة',
-      },
-    ];
-
-    return SizedBox(
-      height: 145.h,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: inscriptions.length,
-        itemBuilder: (context, index) {
-          final item = inscriptions[index];
-          return InscriptionItem(
-                image: item['image'] as String,
-                title: item['title'] as String,
-                location: item['location'] as String,
-                rating: item['rating'] as double,
-                status: item['status'] as String,
-              )
-              .animate()
-              .fadeIn(duration: 600.ms, delay: (index * 200).ms)
-              .slideX(begin: 0.2, duration: 600.ms, curve: Curves.easeOut);
-        },
-      ),
     );
   }
 }

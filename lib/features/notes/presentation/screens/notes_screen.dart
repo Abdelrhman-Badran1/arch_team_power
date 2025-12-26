@@ -13,10 +13,10 @@ class NotesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider( create: (context) => sl<GetNotesCubit>()..getNotes(),),
-        BlocProvider( create: (context) => sl<CreateNoteCubit>(),),
+        BlocProvider(create: (context) => sl<GetNotesCubit>()..getNotes()),
+        BlocProvider(create: (context) => sl<CreateNoteCubit>()),
       ],
-     
+
       child: Scaffold(
         backgroundColor: const Color(0xffF6F6F6),
         body: Padding(

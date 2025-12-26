@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DeleteNoteButtonBlocListener extends StatelessWidget {
-  const DeleteNoteButtonBlocListener({
-    super.key,
-    required this.note,
-  });
+  const DeleteNoteButtonBlocListener({super.key, required this.note});
 
   final NoteEntity note;
 

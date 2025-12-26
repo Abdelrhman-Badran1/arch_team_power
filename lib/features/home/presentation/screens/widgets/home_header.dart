@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/widgets/profile_header.dart';
-import 'package:arch_team_power/features/home/presentation/manger/cubits/cubit/slider_cubit_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/slider_cubit/slider_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

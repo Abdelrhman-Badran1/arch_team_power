@@ -1,17 +1,21 @@
-import 'dart:math';
-
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/features/home/data/model/banner/banner.dart';
-import 'package:arch_team_power/features/home/data/model/banner/banner_response.dart';
-import 'package:arch_team_power/features/home/data/model/home/data.data.dart';
 import 'package:arch_team_power/features/home/data/model/home/slider.data.dart';
+import 'package:arch_team_power/features/home/data/model/inscriptions_library_model/ruin.dart';
 import 'package:arch_team_power/features/home/data/model/popular/popular_place.dart';
+import 'package:arch_team_power/features/home/data/model/sub_places/sub_places_model.dart';
+import 'package:arch_team_power/features/home/domain/entities/inscriptions_library_ruin_entity.dart';
+import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
 import 'package:dio/dio.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<Sliderr>> fetchSliders();
   Future<List<PopularPlace>> fetchPopularPlaces();
   Future<List<Bannner>> fetchBanner();
+  Future<List<InscriptionsEntity>> getInscriptions();
+  Future<InscriptionsEntity> getInscriptionsDetails({required int id});
+  Future<List<SubPlaceEntity>> getSubPlaces();
+  Future<SubPlaceEntity> getSubPlacesDetails({required int id});
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -66,5 +70,38 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     } catch (e) {
       throw Exception('Failed to fetch Banner: $e');
     }
+  }
+
+  @override
+  Future<List<InscriptionsEntity>> getInscriptions() async {
+    final response = await apiService.get(endPoint: 'places/category/1');
+
+    final ruinsList = response['data']['ruins'] as List;
+
+    return ruinsList.map((e) => RuinModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<RuinModel> getInscriptionsDetails({required int id}) async {
+    final response = await apiService.get(endPoint: 'places/$id');
+
+    return RuinModel.fromJson(response['data']);
+  }
+
+  @override
+  Future<List<SubPlaceEntity>> getSubPlaces() async {
+    final response = await apiService.get(endPoint: 'sub-places');
+    final places = (response['data']['sub_places'] as List)
+        .map((e) => SubPlaceModel.fromJson(e))
+        .toList();
+    return places;
+  }
+
+  @override
+  Future<SubPlaceEntity> getSubPlacesDetails({required int id}) async {
+    final response = await apiService.get(endPoint: 'sub-places/$id');
+    final place = SubPlaceModel.fromJson(response['data']);
+
+    return place;
   }
 }

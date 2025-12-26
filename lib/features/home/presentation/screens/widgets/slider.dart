@@ -1,4 +1,4 @@
-import 'package:arch_team_power/features/home/presentation/manger/banner_cubit/banner_cubit.dart';
+import 'package:arch_team_power/features/home/presentation/manger/cubits/banner_cubit/banner_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

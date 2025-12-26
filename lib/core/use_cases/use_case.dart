@@ -1,7 +1,7 @@
 import 'package:arch_team_power/core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
 
-abstract class UseCase<Type, Param> {
+abstract class UseCase<Param> {
   Future<Either<Failure, Type>> call({required Param pram});
 }
 

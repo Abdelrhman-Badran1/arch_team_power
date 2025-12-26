@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/widgets/custom_fav_button.dart';
+import 'package:arch_team_power/features/home/domain/entities/inscriptions_library_ruin_entity.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_item_image.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_item_lication_and_status.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_item_title_and_rate.dart';
@@ -6,19 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InscriptionItem extends StatelessWidget {
-  const InscriptionItem({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.location,
-    required this.rating,
-    required this.status,
-  });
-  final String image;
-  final String title;
-  final String location;
-  final double rating;
-  final String status;
+  const InscriptionItem({super.key, required this.inscriptionsEntity});
+  final InscriptionsEntity inscriptionsEntity;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,12 +34,15 @@ class InscriptionItem extends StatelessWidget {
               children: [
                 const SizedBox(height: 8),
 
-                InscriptionItemImage(image: image),
+                InscriptionItemImage(inscriptionsEntity: inscriptionsEntity),
                 const SizedBox(height: 5),
-                InscriptionItemTitleAndRate(title: title, rating: rating),
+                InscriptionItemTitleAndRate(
+                  title: inscriptionsEntity.name,
+                  rating: inscriptionsEntity.rate,
+                ),
                 InscriptionItemLicationAndStatus(
-                  location: location,
-                  status: status,
+                  location: inscriptionsEntity.location,
+                  status: inscriptionsEntity.status,
                 ),
               ],
             ),

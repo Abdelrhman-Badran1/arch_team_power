@@ -21,21 +21,17 @@ class ApiService {
     final response = await dio.post('$baseUrl$endPoint', data: data);
     return handleResponse(response.data);
   }
-   Future<Map<String, dynamic>> put({
+
+  Future<Map<String, dynamic>> put({
     required String endPoint,
     Map<String, dynamic>? data,
   }) async {
-    final response = await dio.put(
-      '$baseUrl$endPoint',
-      data: data,
-    );
+    final response = await dio.put('$baseUrl$endPoint', data: data);
     return handleResponse(response.data);
   }
- Future<Map<String, dynamic>> delete({
-    required String endPoint,
-  }) async {
+
+  Future<Map<String, dynamic>> delete({required String endPoint}) async {
     final response = await dio.delete('$baseUrl$endPoint');
     return handleResponse(response.data);
   }
-  
 }

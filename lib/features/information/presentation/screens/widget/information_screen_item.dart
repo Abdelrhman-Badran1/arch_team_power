@@ -1,11 +1,12 @@
 import 'package:arch_team_power/core/widgets/custom_fav_button.dart';
+import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
 import 'package:arch_team_power/features/information/presentation/screens/widget/information_screen_item_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InformationScreenItem extends StatelessWidget {
-  const InformationScreenItem({super.key});
-
+  const InformationScreenItem({super.key, required this.subPlaceEntity});
+  final SubPlaceEntity subPlaceEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +20,7 @@ class InformationScreenItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
               color: Colors.white,
             ),
-            child: const InformationScreenItemDetails(),
+            child: InformationScreenItemDetails(subPlaceEntity: subPlaceEntity),
           ),
           Positioned(top: 10.5.h, left: 11.5.w, child: const CustomFavButton()),
         ],

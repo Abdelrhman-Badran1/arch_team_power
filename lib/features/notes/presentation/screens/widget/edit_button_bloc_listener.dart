@@ -7,10 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditButtonBlocListener extends StatelessWidget {
-  const EditButtonBlocListener({
-    super.key,
-    required this.note,
-  });
+  const EditButtonBlocListener({super.key, required this.note});
 
   final NoteEntity note;
 

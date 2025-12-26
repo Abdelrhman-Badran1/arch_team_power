@@ -7,7 +7,8 @@ class NoteDialogDetails extends StatelessWidget {
   const NoteDialogDetails({
     super.key,
     required this.titleController,
-    required this.setDialogState, required this.detailsController,
+    required this.setDialogState,
+    required this.detailsController,
   });
 
   final TextEditingController titleController, detailsController;
@@ -38,8 +39,6 @@ class NoteDialogDetails extends StatelessWidget {
           height: 80.h,
         ),
 
-     
-       
         SizedBox(height: 20.h),
       ],
     );

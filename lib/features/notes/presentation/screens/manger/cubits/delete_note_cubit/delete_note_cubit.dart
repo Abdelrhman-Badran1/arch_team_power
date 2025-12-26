@@ -10,9 +10,13 @@ class DeleteNoteCubit extends Cubit<DeleteNoteState> {
   Future<void> deleteNote({required num id}) async {
     emit(DeleteNoteLoading());
     final response = await deleteNoteUseCase(id: id);
-    response.fold((failure) {
-      emit(DeleteNoteFailure(errorMessage: failure.message));
-    }, (note) {
-      emit(DeleteNoteSuccess(note: note));
-    });
-  }}
+    response.fold(
+      (failure) {
+        emit(DeleteNoteFailure(errorMessage: failure.message));
+      },
+      (note) {
+        emit(DeleteNoteSuccess(note: note));
+      },
+    );
+  }
+}
