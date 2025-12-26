@@ -1,22 +1,22 @@
 import 'package:arch_team_power/features/details_screen/presentation/screens/widget/dot_indctor.dart';
-import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
+import 'package:arch_team_power/features/home/domain/entities/inscriptions_library_ruin_entity.dart';
 import 'package:flutter/material.dart';
 
-class DotIdctorList extends StatelessWidget {
-  const DotIdctorList({
+class InscriptionDotIdctorList extends StatelessWidget {
+  const InscriptionDotIdctorList({
     super.key,
     required this.cruntPageIndex,
-    required this.subPlaceEntity,
+    required this.inscriptionsEntity,
   });
 
   final int cruntPageIndex;
-  final SubPlaceEntity subPlaceEntity;
+  final InscriptionsEntity inscriptionsEntity;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(subPlaceEntity.images.length, (index) {
+      children: List.generate(inscriptionsEntity.images.length, (index) {
         return CustomDotIndicator(isActive: index == cruntPageIndex);
       }),
     );

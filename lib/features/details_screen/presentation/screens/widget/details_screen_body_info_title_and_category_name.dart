@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailsScreenBodyInfoTitleAndCategoryName extends StatelessWidget {
-  const DetailsScreenBodyInfoTitleAndCategoryName({super.key});
-
+  const DetailsScreenBodyInfoTitleAndCategoryName({
+    super.key,
+    required this.name,
+  });
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(height: 17.h),
+        Text(name, style: AppTextStyles.syleNorsalRegular20(context)),
         Text(
-          'معبد الكرنك في الاقصر',
-          style: AppTextStyles.syleNorsalRegular20(context),
-        ),
-        Text(
-          'المواقع التاريخيه والاثار القديمه',
+          'معلومات اثريه تَهمك',
           style: AppTextStyles.syleNorsalRegular14(
             context,
           ).copyWith(color: Colors.grey),

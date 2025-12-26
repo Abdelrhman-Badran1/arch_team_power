@@ -25,6 +25,8 @@ class InscriptionsEntity {
   final String workDate;
   final List<RuinImageEntity> images;
   final InscriptionsLibraryPopularPlaceEntity popularPlace;
+  final List<InscriptionsEntity>? similarPlaces;
+
   final String status;
   final String statusEn;
   final bool isClosed;
@@ -57,6 +59,7 @@ class InscriptionsEntity {
     required this.popularPlace,
     required this.status,
     required this.statusEn,
+    this.similarPlaces,
     required this.isClosed,
     required this.hasVr,
     required this.hasAudioGuide,
