@@ -1,7 +1,6 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/core/utils/app_icons.dart';
 import 'package:arch_team_power/core/widgets/custom_text_field.dart';
 import 'package:arch_team_power/core/widgets/auth_button.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
@@ -9,7 +8,6 @@ import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remo
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/manger/cubits/login_cubit/login_cubit.dart';
-import 'package:arch_team_power/features/auth_screen/presentation/screens/widget/social_auth_item.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,18 +37,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: const Color(0xfff9f8f8),
-          body: BlocProvider(
-            create: (context) => LoginCubit(
-              LoginUseCase(
-                AuthRepoImpl(
-                  remoteDataSource: AuthRemoteDataSourceImpl(ApiService(Dio())),
-                  localDataSource: AuthLocalDataSourceImpl(),
-                ),
+      child: Scaffold(
+        backgroundColor: const Color(0xfff9f8f8),
+        body: BlocProvider(
+          create: (context) => LoginCubit(
+            LoginUseCase(
+              AuthRepoImpl(
+                remoteDataSource: AuthRemoteDataSourceImpl(ApiService(Dio())),
+                localDataSource: AuthLocalDataSourceImpl(),
               ),
             ),
+          ),
+          child: SafeArea(
             child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).unfocus();
@@ -176,44 +174,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               buttonColor: const Color(0xffD2B48C),
                             );
                           },
-                        ),
-                        const SizedBox(height: 24.0),
-                        Row(
-                          children: [
-                            const Expanded(child: Divider()),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                              ),
-                              child: Text(
-                                'أو',
-                                style: AppTextStyles.syleNorsalRegular14(
-                                  context,
-                                ),
-                              ),
-                            ),
-                            const Expanded(child: Divider()),
-                          ],
-                        ),
-                        const SizedBox(height: 24.0),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SocialAuthItem(
-                                assetName: AppIcons.kGoogleIcon,
-                              ),
-                              SizedBox(width: 11.w),
-                              const SocialAuthItem(
-                                assetName: AppIcons.kFaceBookIcon,
-                              ),
-                              SizedBox(width: 11.w),
-                              const SocialAuthItem(
-                                assetName: AppIcons.kAppleIcon,
-                              ),
-                            ],
-                          ),
                         ),
 
                         SizedBox(height: 138.h),

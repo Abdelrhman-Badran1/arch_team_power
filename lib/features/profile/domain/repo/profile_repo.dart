@@ -11,4 +11,5 @@ abstract class ProfileRepo {
     required String name,
     XFile? profileImage,
   });
+  Future<Either<Failure, Unit>> logout();
 }

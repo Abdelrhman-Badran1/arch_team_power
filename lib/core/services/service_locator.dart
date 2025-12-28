@@ -6,7 +6,6 @@ import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_i
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
-import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
@@ -42,6 +41,7 @@ import 'package:arch_team_power/features/profile/data/data_sources/profile_remot
 import 'package:arch_team_power/features/profile/data/repos_impl/profile_repo_impl.dart';
 import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
 import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
+import 'package:arch_team_power/features/profile/presentation/manger/cubits/log_out_cubit/log_out_cubit.dart';
 import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -138,9 +138,14 @@ Future<void> initServiceLocator() async {
 
   // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
+  sl.registerFactory(
+    () => LogOutCubit(
+      authLocalDataSource: sl<AuthLocalDataSource>(),
+      profilerepo: sl<ProfileRepo>(),
+    ),
+  );
   sl.registerFactory(() => SliderCubitCubit(sl<HomeRepo>()));
   sl.registerFactory(() => GetNotesCubit(sl<GetNotesUseCase>()));
-
   sl.registerFactory(() => EditNotesCubit(sl<EditNoteUseCase>()));
   sl.registerFactory(() => DeleteNoteCubit(sl<DelNoteUseCase>()));
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));

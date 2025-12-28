@@ -45,4 +45,18 @@ class ProfilerepoImpl implements ProfileRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> logout() async {
+    try {
+      await profileRemoteDataSource.logout();
+      return right(unit);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDiorError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

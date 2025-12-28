@@ -32,9 +32,17 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xFFD2B48C),
-        body: SizedBox.expand(
-          child: Image.asset("assets/image/spash_image.png", fit: BoxFit.cover),
+        // backgroundColor: const Color(0xFFD2B48C),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/image/spash_image.png"),
+              fit: BoxFit.fill,
+            ),
+          ),
+          // child: Image.asset("assets/image/spash_image.png", fit: BoxFit.cover),
         ),
       ),
     );
