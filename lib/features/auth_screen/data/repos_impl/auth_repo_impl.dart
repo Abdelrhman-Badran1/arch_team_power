@@ -50,6 +50,51 @@ class AuthRepoImpl implements AuthRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> checkResetCode({
+    required String email,
+    required String code,
+  }) async {
+    try {
+      final response = await remoteDataSource.checkResetCode(email, code);
+      await localDataSource.saveToken(response.userToken);
+      return Right(response);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> resendVerifyCode({
+    required String email,
+  }) async {
+    try {
+      await remoteDataSource.resendVerifyCode(email);
+      return const Right(unit);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> sendVerifyCode({required String email}) async {
+    try {
+      await remoteDataSource.sendVerifyCode(email);
+      return const Right(unit);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }
 
 class AuthInterceptor extends Interceptor {

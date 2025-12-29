@@ -95,7 +95,7 @@ class AppRouter {
         path: kVerifyEmailView,
         builder: (context, state) => const VerifyEmailView(),
       ),
-      GoRoute(path: kOtpView, builder: (context, state) => const OtpView()),
+      GoRoute(path: kOtpView, builder: (context, state) => OtpView(email: state.extra as String)),
       GoRoute(
         path: kNewPasswordView,
         builder: (context, state) => const NewPasswordView(),

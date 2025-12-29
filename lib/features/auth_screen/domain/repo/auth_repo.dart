@@ -13,4 +13,10 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+  Future<Either<Failure, Unit>> sendVerifyCode({required String email});
+  Future<Either<Failure, Unit>> resendVerifyCode({required String email});
+  Future<Either<Failure, UserEntity>> checkResetCode({
+    required String email,
+    required String code,
+  });
 }

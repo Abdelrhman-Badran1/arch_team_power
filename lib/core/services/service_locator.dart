@@ -4,8 +4,12 @@ import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_loca
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
+import 'package:arch_team_power/features/auth_screen/domain/use_cases/check_reset_code_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
+import 'package:arch_team_power/features/auth_screen/domain/use_cases/resend_verify_code_use_case.dart';
+import 'package:arch_team_power/features/auth_screen/domain/use_cases/send_verify_code_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/manger/cubits/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
@@ -135,7 +139,15 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(
     () => GetInscriptionsUseCase(homeRepo: sl<HomeRepo>()),
   );
-
+  sl.registerLazySingleton(
+    () => CheckResetCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => ResendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => SendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
   // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
   sl.registerFactory(
@@ -159,6 +171,14 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(
     () => InscriptionsDetailsCubit(sl<GetInscriptionsDetailsUseCase>()),
   );
+  sl.registerFactory(
+    () => ForgotPasswordCubit(
+      checkResetCodeUseCase: sl<CheckResetCodeUseCase>(),
+      resendVerifyCodeUseCase: sl<ResendVerifyCodeUseCase>(),
+      sendVerifyCodeUseCase: sl<SendVerifyCodeUseCase>(),
+    ),
+  );
+
   sl.registerFactory(() => GetCommentCubit(sl<CommentRepo>()));
   sl.registerFactory(
     () => InscriptionsLibraryCubit(sl<GetInscriptionsUseCase>()),

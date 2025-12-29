@@ -3,22 +3,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OtpField extends StatefulWidget {
-  const OtpField({super.key});
+  const OtpField({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   State<OtpField> createState() => _OtpFieldState();
 }
 
 class _OtpFieldState extends State<OtpField> {
-  final TextEditingController controller = TextEditingController();
   Color borderColor = const Color(0xffE6E2DF);
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(() {
+    widget.controller.addListener(() {
       setState(() {
-        borderColor = controller.text.isNotEmpty
+        borderColor = widget.controller.text.isNotEmpty
             ? const Color(0xffD2B48C)
             : const Color(0xffE6E2DF);
       });
@@ -29,18 +30,21 @@ class _OtpFieldState extends State<OtpField> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 59.h,
-      width: 64.w,
+      width: 40.w,
       child: TextFormField(
-        controller: controller,
+        controller: widget.controller,
         textDirection: TextDirection.ltr,
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
           }
         },
-        style: Theme.of(context).textTheme.headlineMedium,
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1),
+          FilteringTextInputFormatter.digitsOnly,
+        ],
         decoration: InputDecoration(
           filled: true,
           fillColor: const Color(0xfff9f8f8),
@@ -54,10 +58,6 @@ class _OtpFieldState extends State<OtpField> {
             borderSide: BorderSide(color: borderColor),
           ),
         ),
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(1),
-          FilteringTextInputFormatter.digitsOnly,
-        ],
       ),
     );
   }
