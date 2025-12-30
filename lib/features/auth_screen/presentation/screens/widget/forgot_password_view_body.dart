@@ -22,64 +22,65 @@ class ForgotPasswordViewBody extends StatefulWidget {
 
 class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
   final TextEditingController emailController = TextEditingController();
-  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
+    return BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
       listener: (context, state) {
         if (state is SendEmailVerifyCodeSuccess) {
-          isLoading = false;
           GoRouter.of(
             context,
           ).push(AppRouter.kOtpView, extra: emailController.text.trim());
         } else if (state is SendEmailVerifyCodeFailure) {
-          isLoading = false;
           customShowSnackBar(context, title: state.errorMessage);
-        } else if (state is SendEmailVerifyCodeLoading) {
-          isLoading = true;
         }
       },
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 20.h),
-            CustomAppBar(
-              title: AppLocalizations.of(context)!.forgot_password_appbar_title,
-            ),
-            SizedBox(height: 40.h),
-            Image.asset(AppAssets.kForgotPasswordAvatar),
-            SizedBox(height: 41.h),
-            CustomTextField(
-              controller: emailController,
-              hintText: AppLocalizations.of(
-                context,
-              )!.forgot_password_text_field_hint,
-              textFieldTitle: AppLocalizations.of(
-                context,
-              )!.forgot_password_text_field_title,
-            ),
-            SizedBox(height: 42.h),
-            CustomButton(
-              onTap: () {
-                context.read<ForgotPasswordCubit>().sendVerifyCode(
-                  email: emailController.text.trim(),
-                );
-              },
+      builder: (context, state) {
+        final isLoading = state is CkeckResetCodeLoading;
 
-              title: isLoading
-                  ? const CustomCircularProgressIndicator()
-                  : Text(
-                      AppLocalizations.of(context)!.send_code,
-                      style: AppTextStyles.syleNorsalMedium15(
-                        context,
-                      ).copyWith(color: Colors.white),
-                    ),
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 20.h),
+              CustomAppBar(
+                title: AppLocalizations.of(
+                  context,
+                )!.forgot_password_appbar_title,
+              ),
+              SizedBox(height: 40.h),
+              Image.asset(AppAssets.kForgotPasswordAvatar),
+              SizedBox(height: 41.h),
+              CustomTextField(
+                controller: emailController,
+                hintText: AppLocalizations.of(
+                  context,
+                )!.forgot_password_text_field_hint,
+                textFieldTitle: AppLocalizations.of(
+                  context,
+                )!.forgot_password_text_field_title,
+              ),
+              SizedBox(height: 42.h),
+              CustomButton(
+                onTap: () {
+                  context.read<ForgotPasswordCubit>().sendVerifyCode(
+                    email: emailController.text.trim(),
+                  );
+                },
 
-              buttonColor: const Color(0xffD2B48C),
-            ),
-          ],
-        ),
-      ),
+                title: isLoading
+                    ? const CustomCircularProgressIndicator(color: Colors.white)
+                    : Text(
+                        AppLocalizations.of(context)!.send_code,
+                        style: AppTextStyles.syleNorsalMedium15(
+                          context,
+                        ).copyWith(color: Colors.white),
+                      ),
+
+                buttonColor: const Color(0xffD2B48C),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

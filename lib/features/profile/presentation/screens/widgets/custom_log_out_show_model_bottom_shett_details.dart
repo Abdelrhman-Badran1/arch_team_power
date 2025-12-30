@@ -20,6 +20,7 @@ class CustomLogOutShowModelBottomShettDetails extends StatelessWidget {
       listener: (context, state) {
         if (state is LogOutSuccess) {
           isLoading = false;
+          GoRouter.of(context).pushReplacement(AppRouter.kLoginScreen);
         } else if (state is LogOutLoading) {
           isLoading = true;
         } else if (state is LogOutFailure) {
@@ -56,13 +57,12 @@ class CustomLogOutShowModelBottomShettDetails extends StatelessWidget {
                     CustomButton(
                       onTap: () {
                         context.read<LogOutCubit>().logout();
-                        GoRouter.of(
-                          context,
-                        ).pushReplacement(AppRouter.kLoginScreen);
                       },
                       width: 70.w,
                       title: isLoading
-                          ? const CustomCircularProgressIndicator()
+                          ? const CustomCircularProgressIndicator(
+                              color: Colors.white,
+                            )
                           : Text(
                               'تأكيد',
                               style: AppTextStyles.syleNorsalMedium14(context),

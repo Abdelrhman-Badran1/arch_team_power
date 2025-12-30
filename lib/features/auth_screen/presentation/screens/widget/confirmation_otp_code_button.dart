@@ -20,7 +20,7 @@ class ConfirmationOtpCodeButton extends StatelessWidget {
     return BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
       listener: (context, state) {
         if (state is CkeckResetCodeSuccess) {
-          GoRouter.of(context).push(AppRouter.kNewPasswordView);
+          GoRouter.of(context).push(AppRouter.kHomeScreen);
         } else if (state is CkeckResetCodeFailure) {
           customShowSnackBar(context, title: state.errorMessage);
         }
@@ -29,22 +29,18 @@ class ConfirmationOtpCodeButton extends StatelessWidget {
         final isLoading = state is CkeckResetCodeLoading;
 
         return CustomButton(
-          onTap: isLoading
-              ? null
-              : () {
-                  final code = otpKey.currentState?.getOtpCode() ?? '';
+          onTap: () {
+            final code = otpKey.currentState?.getOtpCode() ?? '';
 
-                  if (code.length != 6) {
-                    customShowSnackBar(context, title: 'ادخل الكود كامل');
-                    return;
-                  }
+            if (code.length != 6) {
+              customShowSnackBar(context, title: 'ادخل الكود كامل');
+              return;
+            }
 
-                  context.read<ForgotPasswordCubit>().checkResetCode(
-                    code: code,
-                  );
-                },
+            context.read<ForgotPasswordCubit>().checkResetCode(code: code);
+          },
           title: isLoading
-              ? const CustomCircularProgressIndicator()
+              ? const CustomCircularProgressIndicator(color: Colors.white)
               : Text(
                   AppLocalizations.of(context)!.send,
                   style: AppTextStyles.syleNorsalMedium15(
