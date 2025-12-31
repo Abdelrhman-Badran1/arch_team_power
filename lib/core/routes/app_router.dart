@@ -1,6 +1,7 @@
 import 'package:arch_team_power/features/Form_Page/form_page.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/notifications_page.dart';
 import 'package:arch_team_power/features/Payment_Methods/payment_page.dart';
+import 'package:arch_team_power/features/Payment_Methods/subscription_plans_screen.dart';
 import 'package:arch_team_power/features/Search_Fliter/presentation/screens/search_fillter.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/forgot_password_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/login_screen.dart';
@@ -50,7 +51,7 @@ class AppRouter {
   static const kNotificationsPage = '/NotificationsPage';
   static const kDetailsScreen = '/DetailsScreen';
   static const kInscriptionDetailsScreen = '/InscriptionDetailsScreen';
-
+  static const kSubscriptionPlansScreen = '/SubscriptionPlansScreen';
   static const kSettingsScreen = '/settingsscreen';
   static const kUpdateProfileScreen = '/UpdateProfileScreen';
   static const kFaqScreen = "/faq_screen";
@@ -95,7 +96,10 @@ class AppRouter {
         path: kVerifyEmailView,
         builder: (context, state) => const VerifyEmailView(),
       ),
-      GoRoute(path: kOtpView, builder: (context, state) => OtpView(email: state.extra as String)),
+      GoRoute(
+        path: kOtpView,
+        builder: (context, state) => OtpView(email: state.extra as String),
+      ),
       GoRoute(
         path: kNewPasswordView,
         builder: (context, state) => const NewPasswordView(),
@@ -117,6 +121,10 @@ class AppRouter {
       GoRoute(
         path: AppRouter.kSettingsScreen,
         builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: kSubscriptionPlansScreen,
+        builder: (context, state) => const SubscriptionPlansScreen(),
       ),
       GoRoute(
         path: kUpdateProfileScreen,

@@ -1,6 +1,7 @@
 class AppAssets {
   static const kAser = 'assets/image/asar.png';
-  static const kbackSubGroundImage = 'assets/image/bacground_sub_pic.png';
+  static const kSubscriptionPlansAvatar =
+      'assets/image/subscription_plans_avatar.svg';
   static const kSearchbackGroundImage = 'assets/image/back_search.png';
   static const kBeforSearchImage = 'assets/image/befor_search.png';
   static const kCartImage = 'assets/image/card_pic.png';

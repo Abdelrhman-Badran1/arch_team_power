@@ -33,7 +33,9 @@ class SettingScreenBody extends StatelessWidget {
                   if (index == 0) {
                     GoRouter.of(context).push(AppRouter.kUpdateProfileScreen);
                   } else if (index == 2) {
-                    GoRouter.of(context).push(AppRouter.kPaymentPage);
+                    GoRouter.of(
+                      context,
+                    ).push(AppRouter.kSubscriptionPlansScreen);
                   } else if (index == 5) {
                     showModalBottomSheet(
                       backgroundColor: Colors.white,

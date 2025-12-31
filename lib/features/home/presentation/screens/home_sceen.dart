@@ -17,36 +17,32 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => sl<SliderCubitCubit>()..fetchSliders(),
-            ),
-            BlocProvider(
-              create: (context) => sl<PobularCubit>()..fetchPopularPlaces(),
-            ),
-            BlocProvider(
-              create: (context) => sl<BannerCubit>()..fetchBanners(),
-            ),
-            BlocProvider(
-              create: (context) =>
-                  ProfileDataCubit(sl<ProfileRepo>())..getProfileData(),
-            ),
-            BlocProvider(create: (context) => sl<InscriptionsDetailsCubit>()),
-            BlocProvider(
-              create: (context) =>
-                  sl<InscriptionsLibraryCubit>()..getInscriptions(),
-            ),
-            BlocProvider(
-              create: (context) => sl<SubPlacesCubit>()..getSubPlaces(),
-            ),
-            BlocProvider(create: (context) => sl<SubPlacesDetailsCubit>()),
-          ],
-          child: const HomeScreenBody(),
-        ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => sl<SliderCubitCubit>()..fetchSliders(),
+          ),
+          BlocProvider(
+            create: (context) => sl<PobularCubit>()..fetchPopularPlaces(),
+          ),
+          BlocProvider(create: (context) => sl<BannerCubit>()..fetchBanners()),
+          BlocProvider(
+            create: (context) =>
+                ProfileDataCubit(sl<ProfileRepo>())..getProfileData(),
+          ),
+          BlocProvider(create: (context) => sl<InscriptionsDetailsCubit>()),
+          BlocProvider(
+            create: (context) =>
+                sl<InscriptionsLibraryCubit>()..getInscriptions(),
+          ),
+          BlocProvider(
+            create: (context) => sl<SubPlacesCubit>()..getSubPlaces(),
+          ),
+          BlocProvider(create: (context) => sl<SubPlacesDetailsCubit>()),
+        ],
+        child: const SafeArea(child: HomeScreenBody()),
       ),
     );
   }
