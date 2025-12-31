@@ -1,22 +1,35 @@
 import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../data/fav_model/fav_model.dart';
 
-class FavItemCard extends StatefulWidget {
-  final FavModel model;
-  final VoidCallback onRemove;
+class FavItemCard extends StatelessWidget {
+  const FavItemCard({
+    super.key,
+    required this.name,
+    required this.description,
 
-  const FavItemCard({super.key, required this.model, required this.onRemove});
+    required this.image,
+    required this.mapPhoto,
 
-  @override
-  State<FavItemCard> createState() => _FavItemCardState();
-}
+    required this.totalReviews,
+    required this.averageRating,
+  });
 
-class _FavItemCardState extends State<FavItemCard> {
-  bool isFavTapped = false;
+  final String name;
+  final String description;
+
+  final String image;
+  final String mapPhoto;
+  // final String lat;
+  // final String lang;
+  // final String popularPlaceId;
+  // final String governorateName;
+  // final String regionName;
+  final String totalReviews;
+  final String averageRating;
 
   @override
   Widget build(BuildContext context) {
@@ -46,69 +59,39 @@ class _FavItemCardState extends State<FavItemCard> {
         child: Row(
           textDirection: TextDirection.rtl,
           children: [
-            /// الصورة + القلب (على الصورة)
             Stack(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    widget.model.image,
+                  child: Image.network(
+                    image,
                     width: 85.w,
                     height: 85.h,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(
+                        Icons.image_not_supported,
+                        size: 40,
+                        color: Colors.grey,
+                      );
+                    },
                   ),
                 ),
 
-                /// القلب فوق الصورة (كما التصميم)
+                /// القلب فوق الصورة
                 Positioned(
                   top: 6.w,
                   left: 50.w,
-                  child: GestureDetector(
-                    onTap: () async {
-                      setState(() => isFavTapped = true);
-                      await Future.delayed(700.ms);
-                      widget.onRemove();
-                    },
-                    child: Animate(
-                      target: isFavTapped ? 1 : 0,
-                      effects: [
-                        ScaleEffect(
-                          begin: const Offset(1, 1),
-                          end: const Offset(1.4, 1.4),
-                          duration: 350.ms,
-                          curve: Curves.elasticOut,
-                        ),
-
-                        RotateEffect(begin: 0, end: 0.10, duration: 150.ms),
-
-                        MoveEffect(
-                          begin: const Offset(0, 0),
-                          end: const Offset(-0.04, 0),
-                          duration: 70.ms,
-                        ),
-                        MoveEffect(
-                          begin: const Offset(-0.04, 0),
-                          end: const Offset(0.04, 0),
-                          duration: 70.ms,
-                        ),
-                        MoveEffect(
-                          begin: const Offset(0.04, 0),
-                          end: const Offset(0, 0),
-                          duration: 70.ms,
-                        ),
-                      ],
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.9),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.favorite,
-                          color: AppColors.secondary,
-                          size: 20,
-                        ),
-                      ),
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.9),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.favorite,
+                      color: AppColors.secondary,
+                      size: 20,
                     ),
                   ),
                 ),
@@ -122,15 +105,12 @@ class _FavItemCardState extends State<FavItemCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.model.title,
-                    style: AppTextStyles.syleNorsalRegular14(context),
-                  ),
+                  Text(name, style: AppTextStyles.syleNorsalRegular14(context)),
 
                   const SizedBox(height: 5),
 
                   Text(
-                    widget.model.description,
+                    description,
                     style: AppTextStyles.syleNorsalRegular10(
                       context,
                     ).copyWith(color: const Color(0xFF8A8A8A)),
@@ -140,13 +120,13 @@ class _FavItemCardState extends State<FavItemCard> {
                   Row(
                     children: [
                       Text(
-                        widget.model.rate.toString(),
+                        totalReviews,
                         style: AppTextStyles.syleNorsalMedium12(context),
                       ),
                       SizedBox(width: 4.w),
                       SizedBox(width: 6.w),
                       Text(
-                        "(${widget.model.reviews} تقييم)",
+                        averageRating,
                         style: AppTextStyles.syleNorsalRegular10(
                           context,
                         ).copyWith(color: const Color(0xFFDB9448)),

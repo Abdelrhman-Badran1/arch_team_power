@@ -1,10 +1,13 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/widgets/custom_fav_button.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_cubit.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_state.dart';
 import 'package:arch_team_power/features/home/domain/entities/inscriptions_library_ruin_entity.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_item_image.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_item_lication_and_status.dart';
 import 'package:arch_team_power/features/home/presentation/screens/widgets/inscription_item_title_and_rate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -53,7 +56,30 @@ class InscriptionItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(top: 10.h, left: 10.w, child: const CustomFavButton()),
+              Positioned(
+                top: 10.h,
+                left: 10.w,
+                child: BlocBuilder<PostFavouriteCubit, PostFavouriteState>(
+                  builder: (context, state) {
+                    bool isFav = inscriptionsEntity.isFavorite;
+                    if (state is PostFavouriteSuccess) {
+                      if (state.response.data != null &&
+                          state.response.data!.isFavorite != null) {
+                        isFav = state.response.data!.isFavorite!;
+                      }
+                    }
+
+                    return CustomFavButton(
+                      isActive: isFav,
+                      onTap: () {
+                        context.read<PostFavouriteCubit>().toggleFavourite(
+                          inscriptionsEntity.id,
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

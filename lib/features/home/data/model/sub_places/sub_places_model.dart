@@ -27,7 +27,7 @@ class SubPlaceModel extends SubPlaceEntity {
     super.popularPlace,
     super.similarPlaces,
     required super.order,
-    required super.isActive,
+    required super.isFavorite,
   });
 
   factory SubPlaceModel.fromJson(Map<String, dynamic> json) {
@@ -63,7 +63,7 @@ class SubPlaceModel extends SubPlaceEntity {
                 .toList()
           : null,
       order: json['order'],
-      isActive: json['is_active'],
+      isFavorite: json['is_active'],
     );
   }
 }

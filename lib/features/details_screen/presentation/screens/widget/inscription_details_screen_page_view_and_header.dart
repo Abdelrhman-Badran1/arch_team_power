@@ -34,7 +34,7 @@ class InscriptionDetailsScreenPageViewAndHeader extends StatelessWidget {
                   size: 23.sp,
                 ),
               ),
-              const CustomFavButton(),
+              // const CustomFavButton(isActive: null,, onTap: () {  },),
             ],
           ),
         ),

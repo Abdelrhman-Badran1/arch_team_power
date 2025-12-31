@@ -1,3 +1,4 @@
+import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/features/Form_Page/form_page.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/notifications_page.dart';
 import 'package:arch_team_power/features/Payment_Methods/presentation/screens/payment_page.dart';
@@ -13,6 +14,8 @@ import 'package:arch_team_power/features/choseAppLang/presentation/screens/chose
 import 'package:arch_team_power/features/comments/presentation/comments_page.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/details_screen.dart';
 import 'package:arch_team_power/features/details_screen/presentation/screens/inscription_details_screen.dart';
+import 'package:arch_team_power/features/favorite_screen/domain/repo/favourite_repo.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/domain/entities/inscriptions_library_ruin_entity.dart';
 import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
 import 'package:arch_team_power/features/information/presentation/screens/information_screen.dart';
@@ -28,6 +31,7 @@ import 'package:arch_team_power/features/profile/presentation/screens/subscripti
 import 'package:arch_team_power/features/profile/presentation/screens/update_profile_screen.dart';
 import 'package:arch_team_power/features/profile/presentation/screens/vip_hall_screen.dart';
 import 'package:arch_team_power/features/splash_screen/presentation/screen/splash_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/layout/presentation/layout_page.dart';
 
@@ -106,7 +110,10 @@ class AppRouter {
       ),
       GoRoute(
         path: kHomeScreen,
-        builder: (context, state) => const LayoutPage(),
+        builder: (context, state) => BlocProvider(
+          create: (_) => sl<PostFavouriteCubit>(),
+          child: const LayoutPage(),
+        ),
       ),
       GoRoute(path: kFilterUI, builder: (context, state) => const FilterUI()),
       GoRoute(

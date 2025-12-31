@@ -20,6 +20,11 @@ import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_i
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/GetCommentCubit/cubit/get_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
+import 'package:arch_team_power/features/favorite_screen/data/data%20source/favourite_remote_data_source.dart';
+import 'package:arch_team_power/features/favorite_screen/data/repo_impl/favourite_repo_impl.dart';
+import 'package:arch_team_power/features/favorite_screen/domain/repo/favourite_repo.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/get_favourite_cubite/cubit/get_favourite_cubit.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:arch_team_power/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:arch_team_power/features/home/data/repos_impl/home_repo_impl.dart';
@@ -98,9 +103,16 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<NotesRemoteDataSource>(
     () => NotesRemoteDataSourceImpl(sl<ApiService>()),
   );
+  // تسجيل الـ FavouriteRemoteDataSource
+  sl.registerLazySingleton<FavouriteRemoteDataSource>(
+    () => FavouriteRemoteDataSourceImpl(sl<ApiService>()),
+  );
+
+  // تسجيل الـ PaymentGatewayRemoteDataSource
   sl.registerLazySingleton<PaymentGatewayRemoteDataSource>(
     () => PaymentGatewayRemoteDataSourceImpl(apiService: sl<ApiService>()),
   );
+
   // Repositories //
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
@@ -117,6 +129,9 @@ Future<void> initServiceLocator() async {
   );
   sl.registerLazySingleton<NotesRepo>(
     () => NotesRepoImpl(remoteDataSource: sl<NotesRemoteDataSource>()),
+  );
+  sl.registerLazySingleton<FavouriteRepoAbstract>(
+    () => FavouriteRepositoryImpl(sl<FavouriteRemoteDataSource>()),
   );
   sl.registerLazySingleton<CommentRepo>(
     () => CommerntRepoImpl(sl<CommentRemoteDataSource>()),
@@ -151,6 +166,8 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(
     () => GetInscriptionsUseCase(homeRepo: sl<HomeRepo>()),
   );
+
+  sl.registerFactory(() => GetFavouriteCubit(sl<FavouriteRepoAbstract>()));
   sl.registerLazySingleton(
     () => CheckResetCodeUseCase(authRepo: sl<AuthRepo>()),
   );
@@ -159,11 +176,6 @@ Future<void> initServiceLocator() async {
   );
   sl.registerLazySingleton(
     () => SendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
-  );
-  sl.registerLazySingleton(
-    () => GetSubscriptionPlansUseCase(
-      paymentGatewayRepo: sl<PaymentGatewayRepo>(),
-    ),
   );
   // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
@@ -179,6 +191,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(() => DeleteNoteCubit(sl<DelNoteUseCase>()));
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
   sl.registerFactory(() => BannerCubit(sl<HomeRepo>()));
+  sl.registerFactory(() => PostFavouriteCubit(sl<FavouriteRepoAbstract>()));
   sl.registerFactory(() => PobularCubit(sl<HomeRepo>()));
   sl.registerFactory(() => SubPlacesCubit(sl<GetSubPlacesUseCase>()));
   sl.registerFactory(

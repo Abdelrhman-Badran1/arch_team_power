@@ -1,6 +1,5 @@
 part of 'inscriptions_library_cubit.dart';
 
-@immutable
 sealed class InscriptionsLibraryState {}
 
 final class InscriptionsLibraryInitial extends InscriptionsLibraryState {}

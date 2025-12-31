@@ -27,7 +27,7 @@ class LibraryScreenItem extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(left: 13.w, top: 8.5.h, child: const CustomFavButton()),
+        // Positioned(left: 13.w, top: 8.5.h, child: const CustomFavButton()),
       ],
     );
   }
