@@ -29,6 +29,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle syleNorsalSemiBold13(context) {
+    return TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Norsal',
+
+      fontSize: 13.sp,
+    );
+  }
+
   static TextStyle syleNorsalMedium16(context) {
     return TextStyle(
       fontFamily: 'Norsal',
@@ -65,6 +74,14 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: 'Norsal',
       fontSize: 17.sp,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle syleNorsalMedium20(context) {
+    return TextStyle(
+      fontFamily: 'Norsal',
+      fontSize: 20.sp,
       fontWeight: FontWeight.w500,
     );
   }

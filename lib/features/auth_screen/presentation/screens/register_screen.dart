@@ -41,27 +41,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: const Color(0xfff9f8f8),
-          body: BlocProvider(
-            create: (context) => SignUpCubit(
-              SignupUseCase(
-                AuthRepoImpl(
-                  remoteDataSource: AuthRemoteDataSourceImpl(ApiService(Dio())),
-                  localDataSource: AuthLocalDataSourceImpl(),
-                ),
+      child: Scaffold(
+        backgroundColor: const Color(0xfff9f8f8),
+        body: BlocProvider(
+          create: (context) => SignUpCubit(
+            SignupUseCase(
+              AuthRepoImpl(
+                remoteDataSource: AuthRemoteDataSourceImpl(ApiService(Dio())),
+                localDataSource: AuthLocalDataSourceImpl(),
               ),
             ),
-            child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 13.86.w,
-                  vertical: 28.h,
-                ),
+          ),
+          child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 13.86.w,
+                vertical: 28.h,
+              ),
+              child: SafeArea(
                 child: Form(
                   key: _formKey,
                   child: SingleChildScrollView(

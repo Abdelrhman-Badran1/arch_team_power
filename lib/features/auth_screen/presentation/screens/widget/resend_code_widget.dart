@@ -3,8 +3,8 @@ import 'package:arch_team_power/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class ResendCodeWidget extends StatelessWidget {
-  const ResendCodeWidget({super.key});
-
+  const ResendCodeWidget({super.key, required this.onTap});
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,11 +15,14 @@ class ResendCodeWidget extends StatelessWidget {
           style: AppTextStyles.syleNorsalRegular14(context),
         ),
         const SizedBox(width: 3),
-        Text(
-          AppLocalizations.of(context)!.resend_it,
-          style: AppTextStyles.syleNorsalRegular14(
-            context,
-          ).copyWith(color: const Color(0xffDB9448)),
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            AppLocalizations.of(context)!.resend_it,
+            style: AppTextStyles.syleNorsalRegular14(
+              context,
+            ).copyWith(color: const Color(0xffDB9448)),
+          ),
         ),
       ],
     );

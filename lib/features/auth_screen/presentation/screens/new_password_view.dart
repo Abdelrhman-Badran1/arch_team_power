@@ -7,17 +7,15 @@ class NewPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color(0xfff9f8f8),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 13.86.w),
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
-            child: const NewPasswordViewBody(),
-          ),
+    return Scaffold(
+      backgroundColor: const Color(0xfff9f8f8),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 13.86.w),
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: const SafeArea(child: NewPasswordViewBody()),
         ),
       ),
     );

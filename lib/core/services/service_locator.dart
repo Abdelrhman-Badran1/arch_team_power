@@ -4,9 +4,12 @@ import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_loca
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
 import 'package:arch_team_power/features/auth_screen/domain/repo/auth_repo.dart';
+import 'package:arch_team_power/features/auth_screen/domain/use_cases/check_reset_code_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/login_use_case.dart';
+import 'package:arch_team_power/features/auth_screen/domain/use_cases/resend_verify_code_use_case.dart';
+import 'package:arch_team_power/features/auth_screen/domain/use_cases/send_verify_code_use_case.dart';
 import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use_case.dart';
-import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/manger/cubits/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
@@ -47,6 +50,7 @@ import 'package:arch_team_power/features/profile/data/data_sources/profile_remot
 import 'package:arch_team_power/features/profile/data/repos_impl/profile_repo_impl.dart';
 import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
 import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
+import 'package:arch_team_power/features/profile/presentation/manger/cubits/log_out_cubit/log_out_cubit.dart';
 import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -146,13 +150,28 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(
     () => GetInscriptionsUseCase(homeRepo: sl<HomeRepo>()),
   );
+
   sl.registerFactory(() => GetFavouriteCubit(sl<FavouriteRepoAbstract>()));
+  sl.registerLazySingleton(
+    () => CheckResetCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => ResendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => SendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
 
   // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
+  sl.registerFactory(
+    () => LogOutCubit(
+      authLocalDataSource: sl<AuthLocalDataSource>(),
+      profilerepo: sl<ProfileRepo>(),
+    ),
+  );
   sl.registerFactory(() => SliderCubitCubit(sl<HomeRepo>()));
   sl.registerFactory(() => GetNotesCubit(sl<GetNotesUseCase>()));
-
   sl.registerFactory(() => EditNotesCubit(sl<EditNoteUseCase>()));
   sl.registerFactory(() => DeleteNoteCubit(sl<DelNoteUseCase>()));
   sl.registerFactory(() => CreateNoteCubit(sl<CreateNoteUseCase>()));
@@ -167,6 +186,14 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(
     () => InscriptionsDetailsCubit(sl<GetInscriptionsDetailsUseCase>()),
   );
+  sl.registerFactory(
+    () => ForgotPasswordCubit(
+      checkResetCodeUseCase: sl<CheckResetCodeUseCase>(),
+      resendVerifyCodeUseCase: sl<ResendVerifyCodeUseCase>(),
+      sendVerifyCodeUseCase: sl<SendVerifyCodeUseCase>(),
+    ),
+  );
+
   sl.registerFactory(() => GetCommentCubit(sl<CommentRepo>()));
   sl.registerFactory(
     () => InscriptionsLibraryCubit(sl<GetInscriptionsUseCase>()),

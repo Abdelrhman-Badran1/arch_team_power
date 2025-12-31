@@ -11,6 +11,7 @@ abstract class ProfileRemoteDataSource {
     required String email,
     XFile? profileImage,
   });
+  Future<void> logout();
 }
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
@@ -47,5 +48,10 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     );
 
     return ProfileModel.fromJson(response);
+  }
+
+  @override
+  Future<void> logout() async {
+    await apiService.post(endPoint: 'logout');
   }
 }
