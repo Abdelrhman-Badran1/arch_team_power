@@ -25,7 +25,7 @@ class SubPlaceEntity {
   final SubPlacesPopularPlaceEntity? popularPlace;
   final List<SubPlaceEntity>? similarPlaces;
   final int order;
-  final bool isActive;
+  final bool isFavorite;
 
   const SubPlaceEntity({
     required this.id,
@@ -51,6 +51,6 @@ class SubPlaceEntity {
     this.popularPlace,
     this.similarPlaces,
     required this.order,
-    required this.isActive,
+    required this.isFavorite,
   });
 }

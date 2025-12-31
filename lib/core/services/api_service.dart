@@ -17,8 +17,15 @@ class ApiService {
     required String endPoint,
     dynamic data,
     bool isMultipart = false,
+    Map<String, String>? headers,
   }) async {
-    final response = await dio.post('$baseUrl$endPoint', data: data);
+    final response = await dio.post(
+      '$baseUrl$endPoint',
+      data: data,
+      options: Options(
+        headers: headers, // استخدم الهيدر هنا
+      ),
+    );
     return handleResponse(response.data);
   }
 

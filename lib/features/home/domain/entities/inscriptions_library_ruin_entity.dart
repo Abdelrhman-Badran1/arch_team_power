@@ -32,6 +32,7 @@ class InscriptionsEntity {
   final bool isClosed;
   final bool hasVr;
   final bool hasAudioGuide;
+  final bool isFavorite;
 
   const InscriptionsEntity({
     required this.id,
@@ -63,5 +64,6 @@ class InscriptionsEntity {
     required this.isClosed,
     required this.hasVr,
     required this.hasAudioGuide,
+    this.isFavorite = false,
   });
 }
