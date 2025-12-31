@@ -1,7 +1,7 @@
 import 'package:arch_team_power/features/Form_Page/form_page.dart';
 import 'package:arch_team_power/features/Notifications/presentation/screens/notifications_page.dart';
-import 'package:arch_team_power/features/Payment_Methods/payment_page.dart';
-import 'package:arch_team_power/features/Payment_Methods/subscription_plans_screen.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/screens/payment_page.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/screens/subscription_plans_screen.dart';
 import 'package:arch_team_power/features/Search_Fliter/presentation/screens/search_fillter.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/forgot_password_view.dart';
 import 'package:arch_team_power/features/auth_screen/presentation/screens/login_screen.dart';

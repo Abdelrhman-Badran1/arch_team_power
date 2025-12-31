@@ -1,10 +1,15 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/entity/subscription_plan_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSubscriptionPlansUnActiveItem extends StatelessWidget {
-  const CustomSubscriptionPlansUnActiveItem({super.key});
+  const CustomSubscriptionPlansUnActiveItem({
+    super.key,
+    required this.subscriptionPlanEntity,
+  });
+  final SubscriptionPlanEntity subscriptionPlanEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,8 @@ class CustomSubscriptionPlansUnActiveItem extends StatelessWidget {
         children: [
           SizedBox(height: 5.h),
           Text(
-            '12\nشهر',
+            '${subscriptionPlanEntity.months}\n${subscriptionPlanEntity.name}',
+
             textAlign: TextAlign.center,
             style: AppTextStyles.syleNorsalSemiBold13(
               context,
@@ -29,7 +35,7 @@ class CustomSubscriptionPlansUnActiveItem extends StatelessWidget {
           ),
           SizedBox(height: 3.h),
           Text(
-            '199.99 ريال',
+            '${subscriptionPlanEntity.currency} ${subscriptionPlanEntity.price}',
             style: AppTextStyles.syleNorsalSemiBold13(
               context,
             ).copyWith(color: Colors.grey),

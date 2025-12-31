@@ -1,5 +1,10 @@
 import 'dart:io';
 import 'package:arch_team_power/core/services/api_service.dart';
+import 'package:arch_team_power/features/Payment_Methods/data/data_sources/payment_gateway_remote_data_source.dart';
+import 'package:arch_team_power/features/Payment_Methods/data/repos_impl/payment_gateway_repo_impl.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/repo/payment_gateway_repo.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/use_cases/get_subscription_plans_use_case.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/manger/cubits/payment_cubit/get_subscription_plans_cubit.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
@@ -93,7 +98,9 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<NotesRemoteDataSource>(
     () => NotesRemoteDataSourceImpl(sl<ApiService>()),
   );
-
+  sl.registerLazySingleton<PaymentGatewayRemoteDataSource>(
+    () => PaymentGatewayRemoteDataSourceImpl(apiService: sl<ApiService>()),
+  );
   // Repositories //
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
@@ -118,6 +125,11 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<ProfileRepo>(
     () =>
         ProfilerepoImpl(profileRemoteDataSource: sl<ProfileRemoteDataSource>()),
+  );
+  sl.registerLazySingleton<PaymentGatewayRepo>(
+    () => PaymentGatewayRepoImpl(
+      paymentGatewayRemoteDataSource: sl<PaymentGatewayRemoteDataSource>(),
+    ),
   );
 
   // Use Cases //
@@ -147,6 +159,11 @@ Future<void> initServiceLocator() async {
   );
   sl.registerLazySingleton(
     () => SendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => GetSubscriptionPlansUseCase(
+      paymentGatewayRepo: sl<PaymentGatewayRepo>(),
+    ),
   );
   // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
@@ -184,4 +201,7 @@ Future<void> initServiceLocator() async {
     () => InscriptionsLibraryCubit(sl<GetInscriptionsUseCase>()),
   );
   sl.registerFactory(() => AddCommentCubit(sl<CommentRepo>()));
+  sl.registerFactory(
+    () => GetSubscriptionPlansCubit(sl<GetSubscriptionPlansUseCase>()),
+  );
 }

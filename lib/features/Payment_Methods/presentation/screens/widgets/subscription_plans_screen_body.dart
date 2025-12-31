@@ -1,9 +1,8 @@
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
-import 'package:arch_team_power/features/Payment_Methods/widgets/custom_subscription_plans_item.dart';
-import 'package:arch_team_power/features/Payment_Methods/widgets/subscription_plans_screen_actions.dart';
-import 'package:arch_team_power/features/Payment_Methods/widgets/subscription_plans_screen_header.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/screens/widgets/subscription_plans_screen_header.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/screens/widgets/subscription_plans_screen_list_and_actions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,8 +16,6 @@ class SubscriptionPlansScreenBody extends StatefulWidget {
 
 class _SubscriptionPlansScreenBodyState
     extends State<SubscriptionPlansScreenBody> {
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,27 +31,7 @@ class _SubscriptionPlansScreenBodyState
           ).copyWith(color: AppColors.primary),
         ),
         SizedBox(height: 45.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(
-            3,
-            (index) => GestureDetector(
-              onTap: () {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
-              child: CustomSubscriptionPlansItem(
-                isActive: selectedIndex == index,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: 40.h),
-        SubscriptionPlansScreenActions(
-          subscripOnTap: () {},
-          unSubscripOnTap: () {},
-        ),
+        const SubscriptionPlansScreenListAndActions(),
       ],
     );
   }
