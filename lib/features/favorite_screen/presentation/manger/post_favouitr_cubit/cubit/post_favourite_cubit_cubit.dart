@@ -1,58 +1,43 @@
-import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_state.dart';
-import 'package:bloc/bloc.dart';
-import 'package:arch_team_power/core/errors/failure.dart';
-import 'package:arch_team_power/features/favorite_screen/data/models/post/post_favourite/post_favourite_respose.dart';
 import 'package:arch_team_power/features/favorite_screen/domain/repo/favourite_repo.dart';
-import 'package:dartz/dartz.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/favorite_key.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PostFavouriteCubit extends Cubit<PostFavouriteState> {
+class PostFavouriteCubit extends Cubit<Map<String, Set<int>>> {
   final FavouriteRepoAbstract repo;
 
-  PostFavouriteCubit(this.repo) : super(PostFavouriteInitial());
+  PostFavouriteCubit(this.repo)
+    : super({FavouriteType.ruin: <int>{}, FavouriteType.subPlace: <int>{}});
 
-  void toggleFavourite(int placeId) async {
-    emit(PostFavouriteLoading());
-    final result = await repo.toggleFavourite(placeId: placeId);
-    result.fold(
-      (failure) => emit(PostFavouriteFailure(failure.message)),
-      (response) =>
-          emit(PostFavouriteSuccess(response)), // هنا لازم يكون عندك Data
-    );
+  Future<void> loadInitialFavourites() async {
+    final result = await repo.getFavourites();
+
+    result.fold((failure) {}, (response) {
+      final favouriteIds = response.data?.map((e) => e.id!).toSet() ?? <int>{};
+
+      emit({FavouriteType.ruin: favouriteIds, FavouriteType.subPlace: <int>{}});
+    });
+  }
+
+  Future<void> toggleFavourite({required int id, required String type}) async {
+    final result = await repo.toggleFavourite(placeId: id, type: type);
+
+    result.fold((failure) {}, (response) {
+      final newState = {
+        FavouriteType.ruin: Set<int>.from(state[FavouriteType.ruin]!),
+        FavouriteType.subPlace: Set<int>.from(state[FavouriteType.subPlace]!),
+      };
+
+      if (response.data?.isFavorite == true) {
+        newState[type]!.add(id);
+      } else {
+        newState[type]!.remove(id);
+      }
+
+      emit(newState);
+    });
+  }
+
+  bool isFavourite(int id, String type) {
+    return state[type]?.contains(id) ?? false;
   }
 }
-
-// import 'package:arch_team_power/features/favorite_screen/data/models/favorite_model.dart/favourite_model.dart';
-// import 'package:arch_team_power/features/favorite_screen/domain/repo/favourite_repo.dart';
-// import 'package:arch_team_power/features/favorite_screen/presentation/widget/fav_list.dart';
-// import 'package:bloc/bloc.dart';
-// import 'package:meta/meta.dart';
-
-// part 'post_favourite_cubit_state.dart';
-
-// class PostFavouriteCubit extends Cubit<PostFavouriteCubitState> {
-//   final FavouriteRepo favouriteRepo;
-//   PostFavouriteCubit(this.favouriteRepo) : super(PostFavouriteCubitInitial());
-
-//   List<FavoriteModel> favoriteList = [];
-
-//   void setInitialFavorites(List<FavoriteModel> items) {
-//     favoriteList = items;
-//     emit(PostFavouriteUpdated(List.from(favoriteList)));
-//   }
-
-//   Future<void> toggleFavourite(int placeId) async {
-//     emit(PostFavouriteLoading());
-//     final result = await favouriteRepo.toggleFavourite(placeId);
-
-//     result.fold((failure) => emit(PostFavouriteFailure(failure.message)), (
-//       response,
-//     ) {
-//       final index = favoriteList.indexWhere((element) => element.id == placeId);
-//       if (index != -1) {
-//         favoriteList[index].isFavorite =
-//             response.data?.isFavorite ?? favoriteList[index].isFavorite;
-//         emit(PostFavouriteUpdated(List.from(favoriteList)));
-//       }
-//     });
-//   }
-// }

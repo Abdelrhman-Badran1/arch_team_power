@@ -32,9 +32,13 @@ class FavouriteRepositoryImpl implements FavouriteRepoAbstract {
   @override
   Future<Either<Failure, PostFavouriteResponse>> toggleFavourite({
     required int placeId,
+    required String type,
   }) async {
     try {
-      final response = await remoteDataSource.toggleFavourite(placeId: placeId);
+      final response = await remoteDataSource.toggleFavourite(
+        placeId: placeId,
+        type: type,
+      );
 
       print(
         'Repo Raw Response: $response',

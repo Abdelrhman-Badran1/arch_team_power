@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 abstract class FavouriteRepoAbstract {
   Future<Either<Failure, PostFavouriteResponse>> toggleFavourite({
     required int placeId,
+    required String type,
   });
   Future<Either<Failure, GetFavouriteResponse>> getFavourites();
 }

@@ -7,7 +7,10 @@ import 'package:arch_team_power/features/favorite_screen/data/models/post/post_f
 import 'package:dio/dio.dart';
 
 abstract class FavouriteRemoteDataSource {
-  Future<PostFavouriteResponse> toggleFavourite({required int placeId});
+  Future<PostFavouriteResponse> toggleFavourite({
+    required int placeId,
+    required String type,
+  });
   Future<GetFavouriteResponse> getFavourites();
 }
 
@@ -17,15 +20,16 @@ class FavouriteRemoteDataSourceImpl implements FavouriteRemoteDataSource {
   FavouriteRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<PostFavouriteResponse> toggleFavourite({required int placeId}) async {
+  Future<PostFavouriteResponse> toggleFavourite({
+    required int placeId,
+    required String type,
+  }) async {
     try {
       final token = await sl<AuthLocalDataSource>().getToken();
       print('My token => $token');
-
       final response = await apiService.post(
         endPoint: 'favorites/toggle',
-        data: {'object_id': placeId, 'type': 'ruin'},
-        headers: {'Authorization': 'Bearer $token'},
+        data: {'object_id': placeId, 'type': type},
       );
       print('Raw toggleFavourite response => $response');
       return PostFavouriteResponse.fromJson(response);

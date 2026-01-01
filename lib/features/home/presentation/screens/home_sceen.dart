@@ -1,4 +1,5 @@
 import 'package:arch_team_power/core/services/service_locator.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/Inscriptions_details_cubit/inscriptions_details_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/banner_cubit/banner_cubit.dart';
 import 'package:arch_team_power/features/home/presentation/manger/cubits/inscriptions_library_cubit/inscriptions_library_cubit.dart';
@@ -41,6 +42,10 @@ class HomeScreen extends StatelessWidget {
             create: (context) => sl<SubPlacesCubit>()..getSubPlaces(),
           ),
           BlocProvider(create: (context) => sl<SubPlacesDetailsCubit>()),
+          BlocProvider(
+            create: (context) =>
+                sl<PostFavouriteCubit>()..loadInitialFavourites(),
+          ),
         ],
         child: const SafeArea(child: HomeScreenBody()),
       ),

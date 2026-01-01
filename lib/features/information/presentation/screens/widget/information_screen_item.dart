@@ -1,7 +1,7 @@
 import 'package:arch_team_power/core/routes/app_router.dart';
 import 'package:arch_team_power/core/widgets/custom_fav_button.dart';
+import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/favorite_key.dart';
 import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_cubit.dart';
-import 'package:arch_team_power/features/favorite_screen/presentation/manger/post_favouitr_cubit/cubit/post_favourite_cubit_state.dart';
 import 'package:arch_team_power/features/home/domain/entities/sub_places_entity.dart';
 import 'package:arch_team_power/features/information/presentation/screens/widget/information_screen_item_details.dart';
 import 'package:flutter/material.dart';
@@ -37,22 +37,18 @@ class InformationScreenItem extends StatelessWidget {
             Positioned(
               top: 10.5.h,
               left: 11.5.w,
-              child: BlocBuilder<PostFavouriteCubit, PostFavouriteState>(
-                builder: (context, state) {
-                  bool isFav = false;
+              child: BlocBuilder<PostFavouriteCubit, Map<String, Set<int>>>(
+                builder: (context, favs) {
+                  final isFav = favs[FavouriteType.subPlace]!.contains(
+                    subPlaceEntity.id,
+                  );
 
-                  if (state is PostFavouriteSuccess) {
-                    isFav = state.response.data?.isFavorite ?? false;
-                  }
-
-                  return IconButton(
-                    icon: Icon(
-                      isFav ? Icons.favorite : Icons.favorite_border,
-                      color: isFav ? Colors.red : Colors.grey,
-                    ),
-                    onPressed: () {
+                  return CustomFavButton(
+                    isActive: isFav,
+                    onTap: () {
                       context.read<PostFavouriteCubit>().toggleFavourite(
-                        subPlaceEntity.id,
+                        id: subPlaceEntity.id,
+                        type: FavouriteType.subPlace,
                       );
                     },
                   );
