@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:arch_team_power/core/errors/failure.dart';
 import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment_respose.dart';
+import 'package:arch_team_power/features/comments/data/model/LikeeModellll/like_modell_response/like_modell_response.dart';
 import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
@@ -42,6 +43,24 @@ class CommerntRepoImpl implements CommentRepo {
         ruinId: ruinId,
       );
       return Right(response);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDiorError(e));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LikeModelRespnse>> likeComment({
+    required int commentId,
+    required bool isLike,
+  }) async {
+    try {
+      final result = await commentRemoteDataSource.likeComment(
+        commentId: commentId,
+        isLike: isLike,
+      );
+      return Right(result);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDiorError(e));
     } catch (e) {

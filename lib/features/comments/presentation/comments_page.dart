@@ -1,9 +1,9 @@
 import 'package:arch_team_power/core/services/service_locator.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
-import 'package:arch_team_power/core/utils/app_assets.dart';
 import 'package:arch_team_power/core/widgets/custom_app_bar.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/GetCommentCubit/cubit/get_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
+import 'package:arch_team_power/features/comments/presentation/manger/likeCubit/like_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/screens/widgets/build_write_messege.dart';
 import 'package:arch_team_power/features/comments/presentation/screens/widgets/user_comment_widgets.dart';
 
@@ -25,6 +25,7 @@ class CommentsPage extends StatelessWidget {
           BlocProvider(
             create: (_) => sl<GetCommentCubit>()..getComments(ruinId: ruinId),
           ),
+          BlocProvider(create: (_) => sl<LikeCommentCubit>()),
         ],
         child: SafeArea(
           child: Scaffold(
@@ -68,7 +69,9 @@ class CommentsPage extends StatelessWidget {
                               padding: const EdgeInsets.all(16.0),
                               itemBuilder: (BuildContext context, int index) {
                                 final comment = comments[index];
+
                                 return buildMessage(
+                                  commentId: comment.id!,
                                   context,
                                   name: comment.user?.name ?? 'مجهول',
                                   role: comment.user?.role ?? '',
@@ -79,6 +82,7 @@ class CommentsPage extends StatelessWidget {
                                           comment.images!.isNotEmpty)
                                       ? comment.images!.first
                                       : '',
+                                  totalLikes: comment.totalLikes ?? 0,
                                 );
                               },
                             );

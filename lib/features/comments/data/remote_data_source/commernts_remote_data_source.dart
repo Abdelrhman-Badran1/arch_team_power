@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:arch_team_power/core/errors/failure.dart';
 import 'package:arch_team_power/core/services/api_service.dart';
 import 'package:arch_team_power/features/comments/data/model/GetCommentModel/get_comment/get_comment_respose.dart';
-import 'package:arch_team_power/features/comments/data/model/Like/like_model/like_model.dart';
+import 'package:arch_team_power/features/comments/data/model/LikeeModellll/like_modell_response/like_modell_response.dart';
 import 'package:arch_team_power/features/comments/data/model/addCommentModel/post/post.comment.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/like/like/like.dart';
 import 'package:dio/dio.dart';
@@ -17,7 +17,10 @@ abstract class CommentRemoteDataSource {
   });
 
   Future<GetCommentRespose> getComments({required int ruinId});
-  Future<LikeModelRespose> likeComment({required int commentId});
+  Future<LikeModelRespnse> likeComment({
+    required int commentId,
+    required bool isLike,
+  });
 }
 
 class CommentRemoteDataSourceImpl implements CommentRemoteDataSource {
@@ -91,16 +94,15 @@ class CommentRemoteDataSourceImpl implements CommentRemoteDataSource {
   }
 
   @override
-  Future<LikeModelRespose> likeComment({required int commentId}) async {
-    try {
-      final response = await apiService.post(
-        endPoint: 'comments/like',
-        data: {'comment_id': commentId},
-      );
+  Future<LikeModelRespnse> likeComment({
+    required int commentId,
+    required bool isLike,
+  }) async {
+    final response = await apiService.post(
+      endPoint: 'comments/like',
+      data: {'comment_id': commentId, 'is_like': isLike},
+    );
 
-      return LikeModelRespose.fromJson(response);
-    } on DioException catch (e) {
-      throw ServerFailure.fromDiorError(e);
-    }
+    return LikeModelRespnse.fromJson(response);
   }
 }
