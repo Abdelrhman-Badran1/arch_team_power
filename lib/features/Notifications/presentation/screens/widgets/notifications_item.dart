@@ -1,39 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:arch_team_power/core/theme/app_colors.dart';
 import 'package:arch_team_power/core/theme/app_text_style.dart';
-import 'package:arch_team_power/features/Notifications/presentation/screens/widgets/action_button.dart';
-import 'package:flutter/material.dart';
+import 'package:arch_team_power/core/helper_function/format_date.dart';
+import 'package:arch_team_power/core/widgets/notiy_option_dilog.dart';
+import 'package:arch_team_power/features/Notifications/presentation/screens/manger/cubits/delete_Notification_cubit/delete_notification_cubit.dart';
 
 class NotificationItem extends StatelessWidget {
-  final String imagePath;
   final String mainText;
   final String timeText;
-  final List<ActionButton> actions;
+  final bool isRead;
 
   const NotificationItem({
-    required this.imagePath,
+    super.key,
     required this.mainText,
     required this.timeText,
-    required this.actions,
-    super.key,
+    this.isRead = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+    return Container(
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: AppColors.background,
+        borderRadius: BorderRadius.circular(12),
+        border: isRead ? null : Border.all(color: AppColors.primary, width: 2),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        textDirection: TextDirection.rtl,
         children: [
-          SizedBox(
-            height: 27,
-            width: 27,
-            child: CircleAvatar(
-              radius: 25,
-              backgroundImage: AssetImage(imagePath),
-            ),
+          /// زرار الثلاث نقط
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) => NotificationOptionsDialog(
+                  onMarkAsRead: () {
+                    Navigator.pop(context);
+                  },
+                  onDelete: () {
+                    // delete single notification (لو هتضيفه بعدين)
+                    Navigator.pop(context);
+                  },
+                  onDeleteAll: () {
+                    context.read<DeleteAllNotificationsCubit>().deleteAll();
+                    Navigator.pop(context);
+                  },
+                ),
+              );
+            },
           ),
+
           const SizedBox(width: 10),
+
+          /// محتوى الإشعار
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -43,23 +65,11 @@ class NotificationItem extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: AppTextStyles.syleNorsalMedium15(context),
                 ),
-                const SizedBox(height: 5),
-                Row(
-                  textDirection: TextDirection.rtl,
-                  children: actions
-                      .map(
-                        (action) => Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: action,
-                        ),
-                      )
-                      .toList(),
-                ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 6),
                 Text(
-                  timeText,
+                  formatNotificationTime(timeText),
                   textAlign: TextAlign.right,
-                  style: AppTextStyles.syleNorsalRegular14(
+                  style: AppTextStyles.syleNorsalRegular10(
                     context,
                   ).copyWith(color: AppColors.textHistory),
                 ),

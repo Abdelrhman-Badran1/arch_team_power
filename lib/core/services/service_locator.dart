@@ -1,5 +1,12 @@
 import 'dart:io';
 import 'package:arch_team_power/core/services/api_service.dart';
+import 'package:arch_team_power/features/Notifications/data/Notification_Repo_impl/notification_repo_impl.dart';
+import 'package:arch_team_power/features/Notifications/data/Notify_reomete_data_source/notify_remote_data_source.dart';
+import 'package:arch_team_power/features/Notifications/domain/Notidication_Usecase/delete_all_notification%20usecase.dart';
+import 'package:arch_team_power/features/Notifications/domain/Notidication_Usecase/get_Notidication_usecase.dart';
+import 'package:arch_team_power/features/Notifications/domain/repo/notificarion%20_repo.dart';
+import 'package:arch_team_power/features/Notifications/presentation/screens/manger/cubits/delete_Notification_cubit/delete_notification_cubit.dart';
+import 'package:arch_team_power/features/Notifications/presentation/screens/manger/cubits/notifications_cubit/notifications_cubit.dart';
 import 'package:arch_team_power/features/Payment_Methods/data/data_sources/payment_gateway_remote_data_source.dart';
 import 'package:arch_team_power/features/Payment_Methods/data/repos_impl/payment_gateway_repo_impl.dart';
 import 'package:arch_team_power/features/Payment_Methods/domain/repo/payment_gateway_repo.dart';
@@ -25,9 +32,11 @@ import 'package:arch_team_power/features/auth_screen/domain/use_cases/signup_use
 import 'package:arch_team_power/features/auth_screen/presentation/screens/manger/cubits/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:arch_team_power/features/comments/data/remote_data_source/commernts_remote_data_source.dart';
 import 'package:arch_team_power/features/comments/data/repo_impl/commernt_repo_impl.dart';
+import 'package:arch_team_power/features/comments/domain/CommentUseCase/like_comment_usecase.dart';
 import 'package:arch_team_power/features/comments/domain/repo/commernt_repo.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/GetCommentCubit/cubit/get_comment_cubit.dart';
 import 'package:arch_team_power/features/comments/presentation/manger/addCommenCubit/cubit/add_comment_cubit.dart';
+import 'package:arch_team_power/features/comments/presentation/manger/likeCubit/like_comment_cubit.dart';
 import 'package:arch_team_power/features/favorite_screen/data/data%20source/favourite_remote_data_source.dart';
 import 'package:arch_team_power/features/favorite_screen/data/repo_impl/favourite_repo_impl.dart';
 import 'package:arch_team_power/features/favorite_screen/domain/repo/favourite_repo.dart';
@@ -126,7 +135,9 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<PaymentGatewayRemoteDataSource>(
     () => PaymentGatewayRemoteDataSourceImpl(apiService: sl<ApiService>()),
   );
-
+  sl.registerLazySingleton<NotificationRemoteDataSource>(
+    () => NotificationRemoteDataSourceImpl(sl<ApiService>()),
+  );
   // Repositories //
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
@@ -171,7 +182,9 @@ Future<void> initServiceLocator() async {
       PopularPlacesDetailsLocalDataSourceImpl(),
     ),
   );
-
+  sl.registerLazySingleton<NotificationRepository>(
+    () => NotificationRepositoryImpl(sl<NotificationRemoteDataSource>()),
+  );
   // Use Cases //
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
@@ -180,7 +193,12 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(() => EditNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => DelNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => CreateNoteUseCase(notesRepo: sl<NotesRepo>()));
-
+  sl.registerLazySingleton(
+    () => GetAllNotificationsUseCase(sl<NotificationRepository>()),
+  );
+  sl.registerLazySingleton(
+    () => DeleteAllNotificationsUseCase(sl<NotificationRepository>()),
+  );
   sl.registerLazySingleton(
     () => GetSubscriptionPlansUseCase(
       paymentGatewayRepo: sl<PaymentGatewayRepo>(),
@@ -225,6 +243,8 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(
     () => SendVerifyCodeUseCase(authRepo: sl<AuthRepo>()),
   );
+  sl.registerLazySingleton(() => LikeCommentUseCase(sl<CommentRepo>()));
+
   // Cubits //
   sl.registerFactory(() => ProfileDataCubit(sl<ProfileRepo>()));
   sl.registerFactory(
@@ -281,10 +301,17 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(
     () => AppleSubscriptionCubit(sl<AppleSubscriptionUseCase>()),
   );
+  sl.registerFactory(() => LikeCommentCubit(sl<LikeCommentUseCase>()));
 
   // Auth Cubits //
   sl.registerFactory(() => LoginCubit(sl<LoginUseCase>()));
   sl.registerFactory(() => SignUpCubit(sl<SignupUseCase>()));
 
-  ;
+  sl.registerFactory(
+    () => NotificationsCubit(sl<GetAllNotificationsUseCase>()),
+  );
+
+  sl.registerFactory(
+    () => DeleteAllNotificationsCubit(sl<DeleteAllNotificationsUseCase>()),
+  );
 }

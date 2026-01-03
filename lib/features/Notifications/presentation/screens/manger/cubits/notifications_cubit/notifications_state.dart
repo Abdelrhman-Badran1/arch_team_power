@@ -1,16 +1,19 @@
-part of 'notifications_cubit.dart';
+import 'package:arch_team_power/features/Notifications/domain/entity/notification_entity.dart';
 
-@immutable
-sealed class NotificationsState {}
+abstract class NotificationsState {}
 
-final class NotificationsInitial extends NotificationsState {}
+class NotificationsInitial extends NotificationsState {}
 
-final class NotificationsLoading extends NotificationsState {}
+class NotificationsLoading extends NotificationsState {}
 
-final class NotificationsSuccess extends NotificationsState {}
+class NotificationsLoaded extends NotificationsState {
+  final List<NotificationEntity> notifications;
 
-final class NotificationsFailure extends NotificationsState {
-  final String errorMessage;
+  NotificationsLoaded(this.notifications);
+}
 
-  NotificationsFailure({required this.errorMessage});
+class NotificationsError extends NotificationsState {
+  final String message;
+
+  NotificationsError(this.message);
 }
