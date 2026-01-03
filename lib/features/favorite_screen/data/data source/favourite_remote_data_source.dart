@@ -25,13 +25,11 @@ class FavouriteRemoteDataSourceImpl implements FavouriteRemoteDataSource {
     required String type,
   }) async {
     try {
-      final token = await sl<AuthLocalDataSource>().getToken();
-      print('My token => $token');
+      await sl<AuthLocalDataSource>().getToken();
       final response = await apiService.post(
         endPoint: 'favorites/toggle',
         data: {'object_id': placeId, 'type': type},
       );
-      print('Raw toggleFavourite response => $response');
       return PostFavouriteResponse.fromJson(response);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
@@ -44,10 +42,8 @@ class FavouriteRemoteDataSourceImpl implements FavouriteRemoteDataSource {
   Future<GetFavouriteResponse> getFavourites() async {
     try {
       final data = await apiService.get(endPoint: 'favorites');
-      print('Raw getFavourites response => $data'); // ← هنا نتأكد إن الداتا جت
 
       final response = GetFavouriteResponse.fromJson(data);
-      print('Parsed getFavourites response => ${response.data}');
 
       return response;
     } on DioException catch (e) {

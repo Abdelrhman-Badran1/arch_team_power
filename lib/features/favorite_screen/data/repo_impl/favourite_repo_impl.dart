@@ -5,25 +5,6 @@ import 'package:arch_team_power/features/favorite_screen/data/models/post/post_f
 import 'package:arch_team_power/features/favorite_screen/domain/repo/favourite_repo.dart';
 import 'package:dartz/dartz.dart';
 
-// class FavouriteRepoImpl implements FavouriteRepo {
-//   final FavouriteRemoteDataSource remoteDataSource;
-
-//   FavouriteRepoImpl(this.remoteDataSource);
-//   @override
-//   Future<Either<Failure, PostFavouriteResponse>> toggleFavourite({
-//     required int placeId,
-//   }) async {
-//     try {
-//       final response = await remoteDataSource.toggleFavourite(placeId: placeId);
-//       return Right(response);
-//     } on DioException catch (e) {
-//       return Left(ServerFailure.fromDiorError(e));
-//     } catch (e) {
-//       return Left(ServerFailure(e.toString()));
-//     }
-//   }
-// }
-
 class FavouriteRepositoryImpl implements FavouriteRepoAbstract {
   final FavouriteRemoteDataSource remoteDataSource;
 
@@ -40,21 +21,14 @@ class FavouriteRepositoryImpl implements FavouriteRepoAbstract {
         type: type,
       );
 
-      print(
-        'Repo Raw Response: $response',
-      ); // 🔴 اطبع كل response قبل أي parsing
-
       if (response.success == true) {
         return Right(response);
       } else {
         return Left(ServerFailure(response.message ?? 'Unknown error'));
       }
     } on ServerFailure catch (e) {
-      print('Repo ServerFailure => ${e.message}');
       return Left(e);
-    } catch (e, s) {
-      print('Repo Unexpected Error => $e');
-      print(s);
+    } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
   }

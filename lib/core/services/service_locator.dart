@@ -4,7 +4,15 @@ import 'package:arch_team_power/features/Payment_Methods/data/data_sources/payme
 import 'package:arch_team_power/features/Payment_Methods/data/repos_impl/payment_gateway_repo_impl.dart';
 import 'package:arch_team_power/features/Payment_Methods/domain/repo/payment_gateway_repo.dart';
 import 'package:arch_team_power/features/Payment_Methods/domain/use_cases/get_subscription_plans_use_case.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/use_cases/get_subscription_status_use_case.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/use_cases/cancel_subscription_use_case.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/use_cases/apple_subscription_use_case.dart';
+import 'package:arch_team_power/features/Payment_Methods/domain/use_cases/google_play_activate_subscription_use_case.dart';
 import 'package:arch_team_power/features/Payment_Methods/presentation/manger/cubits/payment_cubit/get_subscription_plans_cubit.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/manger/cubits/google_play_subscription_cubit/google_play_subscription_cubit.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/manger/cubits/get_subscription_status_cubit/get_subscription_status_cubit.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/manger/cubits/cancel_subscription_cubit/cancel_subscription_cubit.dart';
+import 'package:arch_team_power/features/Payment_Methods/presentation/manger/cubits/appl_subscription_cubit/apple_subscription_cubit.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_local_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/data_sources/auth_remote_data_source.dart';
 import 'package:arch_team_power/features/auth_screen/data/repos_impl/auth_repo_impl.dart';
@@ -56,6 +64,12 @@ import 'package:arch_team_power/features/profile/data/repos_impl/profile_repo_im
 import 'package:arch_team_power/features/profile/domain/repo/profile_repo.dart';
 import 'package:arch_team_power/features/profile/presentation/manger/cubits/get_profile_data_cubit/get_profile_data_cubit.dart';
 import 'package:arch_team_power/features/profile/presentation/manger/cubits/log_out_cubit/log_out_cubit.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/manger/cubits/login_cubit/login_cubit.dart';
+import 'package:arch_team_power/features/auth_screen/presentation/screens/manger/cubits/sign_up_cubit/sign_up_cubit.dart';
+import 'package:arch_team_power/features/details_screen/data/data_sources/popular_places_details_remote_data_source.dart';
+import 'package:arch_team_power/features/details_screen/data/repos_impl/popular_places_details_repo_impl.dart';
+import 'package:arch_team_power/features/details_screen/domain/repo/popular_places_details_repo.dart';
+import 'package:arch_team_power/features/details_screen/data/data_sources/popular_places_details_local_data_source.dart';
 import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -147,6 +161,17 @@ Future<void> initServiceLocator() async {
     ),
   );
 
+  sl.registerLazySingleton<PopularPlacesDetailsRemoteDataSource>(
+    () => PopularPlacesDetailsRemoteDataSourceImpl(sl<ApiService>()),
+  );
+
+  sl.registerLazySingleton<PopularPlacesDetailsRepo>(
+    () => PopularPlacesDetailsRepoImpl(
+      sl<PopularPlacesDetailsRemoteDataSource>(),
+      PopularPlacesDetailsLocalDataSourceImpl(),
+    ),
+  );
+
   // Use Cases //
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepo>()));
   sl.registerLazySingleton(() => SignupUseCase(sl<AuthRepo>()));
@@ -155,6 +180,29 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(() => EditNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => DelNoteUseCase(notesRepo: sl<NotesRepo>()));
   sl.registerLazySingleton(() => CreateNoteUseCase(notesRepo: sl<NotesRepo>()));
+
+  sl.registerLazySingleton(
+    () => GetSubscriptionPlansUseCase(
+      paymentGatewayRepo: sl<PaymentGatewayRepo>(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => GetSubscriptionStatusUseCase(
+      paymentGatewayRepo: sl<PaymentGatewayRepo>(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () =>
+        CancelSubscriptionUseCase(paymentGatewayRepo: sl<PaymentGatewayRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => AppleSubscriptionUseCase(sl<PaymentGatewayRepo>()),
+  );
+  sl.registerLazySingleton(
+    () => GooglePlayActivateSubscriptionUseCase(
+      paymentGatewayRepo: sl<PaymentGatewayRepo>(),
+    ),
+  );
 
   sl.registerLazySingleton(
     () => GetSubPlacesDetailsUseCase(homeRepo: sl<HomeRepo>()),
@@ -217,4 +265,26 @@ Future<void> initServiceLocator() async {
   sl.registerFactory(
     () => GetSubscriptionPlansCubit(sl<GetSubscriptionPlansUseCase>()),
   );
+
+  // Additional Payment Methods Cubits //
+  sl.registerFactory(
+    () => GooglePlaySubscriptionCubit(
+      sl<GooglePlayActivateSubscriptionUseCase>(),
+    ),
+  );
+  sl.registerFactory(
+    () => GetSubscriptionStatusCubit(sl<GetSubscriptionStatusUseCase>()),
+  );
+  sl.registerFactory(
+    () => CancelSubscriptionCubit(sl<CancelSubscriptionUseCase>()),
+  );
+  sl.registerFactory(
+    () => AppleSubscriptionCubit(sl<AppleSubscriptionUseCase>()),
+  );
+
+  // Auth Cubits //
+  sl.registerFactory(() => LoginCubit(sl<LoginUseCase>()));
+  sl.registerFactory(() => SignUpCubit(sl<SignupUseCase>()));
+
+  ;
 }

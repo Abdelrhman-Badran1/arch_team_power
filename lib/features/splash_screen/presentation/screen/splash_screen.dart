@@ -19,7 +19,16 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _checkAuth() async {
-    final isLoggedIn = await sl<AuthLocalDataSource>().isLoggedIn();
+    final localDataSource = sl<AuthLocalDataSource>();
+
+    final isFirstTime = await localDataSource.isFirstTime();
+
+    if (isFirstTime) {
+      GoRouter.of(context).go(AppRouter.kIntroHomeScreen);
+      return;
+    }
+
+    final isLoggedIn = await localDataSource.isLoggedIn();
 
     if (isLoggedIn) {
       GoRouter.of(context).go(AppRouter.kHomeScreen);
@@ -32,7 +41,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: const Color(0xFFD2B48C),
         body: Container(
           height: double.infinity,
           width: double.infinity,
@@ -42,7 +50,6 @@ class _SplashScreenState extends State<SplashScreen> {
               fit: BoxFit.fill,
             ),
           ),
-          // child: Image.asset("assets/image/spash_image.png", fit: BoxFit.cover),
         ),
       ),
     );

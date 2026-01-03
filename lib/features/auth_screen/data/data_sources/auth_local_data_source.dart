@@ -5,10 +5,15 @@ abstract class AuthLocalDataSource {
   Future<String?> getToken();
   Future<void> clearToken();
   Future<bool> isLoggedIn();
+  Future<bool> isFirstTime();
+  Future<void> setFirstTimeFalse();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   static const _tokenKey = 'token';
+  static const _firstTimeKey = 'is_first_time';
+  Future<SharedPreferences> get _prefs async =>
+      await SharedPreferences.getInstance();
 
   @override
   Future<void> saveToken(String token) async {
@@ -33,5 +38,17 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     final token = await getToken();
     if (token == null || token.trim().isEmpty) return false;
     return true;
+  }
+
+  @override
+  Future<bool> isFirstTime() async {
+    final prefs = await _prefs;
+    return prefs.getBool(_firstTimeKey) ?? true;
+  }
+
+  @override
+  Future<void> setFirstTimeFalse() async {
+    final prefs = await _prefs;
+    await prefs.setBool(_firstTimeKey, false);
   }
 }
